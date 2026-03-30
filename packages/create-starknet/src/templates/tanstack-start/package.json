@@ -1,0 +1,48 @@
+{
+  "name": "create-starknet-app-tanstack-start",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "biome format",
+    "lint": "biome lint",
+    "check": "biome check"
+  },
+  "dependencies": {
+    "@starknet-io/get-starknet-core": "^5.0.0",
+    "@starknet-io/get-starknet-modal": "^5.0.0",
+    "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
+    "@starknet-start/chains": "^1.0.0",
+    "@starknet-start/providers": "^1.0.0",
+    "@starknet-start/react": "^1.0.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-router": "latest",
+    "@tanstack/react-start": "latest",
+    "@tanstack/router-plugin": "^1.132.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "starknet": "^9.4.2",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.5",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.4",
+    "typescript": "^5.7.2",
+    "vite": "^7.3.1",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lightningcss"
+    ]
+  }
+}

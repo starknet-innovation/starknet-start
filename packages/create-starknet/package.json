@@ -37,7 +37,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@starknet-react/typescript-config": "workspace:^",
+    "@starknet-start/typescript-config": "workspace:^",
     "@types/cross-spawn": "^6.0.2",
     "chalk": "4.1.2",
     "commander": "^10.0.0",

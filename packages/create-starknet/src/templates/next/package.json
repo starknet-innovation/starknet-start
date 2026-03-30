@@ -3,28 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "biome check",
+    "format": "biome format --write"
   },
   "dependencies": {
-    "@starknet-react/chains": "^5.0.2",
-    "@starknet-react/core": "^5.0.2",
     "@starknet-io/get-starknet-core": "^5.0.0",
-    "next": "15.4.4",
+    "@starknet-io/get-starknet-modal": "^5.0.0",
+    "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
+    "@starknet-start/chains": "^1.0.0",
+    "@starknet-start/providers": "^1.0.0",
+    "@starknet-start/react": "^1.0.0",
+    "next": "16.2.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "starknet": "^9.4.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "@biomejs/biome": "2.2.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
