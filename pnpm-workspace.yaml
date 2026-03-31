@@ -5,6 +5,7 @@ packages:
   - packages/providers
   - packages/query
   - packages/react
+  - packages/create-starknet
   # - packages/vue
   - docs
 

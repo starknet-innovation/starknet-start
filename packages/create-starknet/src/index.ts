@@ -3,6 +3,7 @@
 import path from "node:path";
 import chalk from "chalk";
 import { Command, Option } from "commander";
+import fs from "fs-extra";
 import prompts from "prompts";
 
 import createStarknetPackageJson from "../package.json";
@@ -10,6 +11,7 @@ import {
   installDependencies,
   installTemplate,
   type Template,
+  type TemplateInstallResult,
 } from "./helpers/installation";
 import {
   getPackageManager,
@@ -28,10 +30,17 @@ let packageManager: PackageManager | null = null;
 
 const templateNameToFolder: Array<[string, Template]> = [
   ["Next.js", "next"],
-  ["Vite (React)", "vite"],
+  ["TanStack Start", "tanstack-start"],
 ];
 
 const program = new Command();
+
+type CliOptions = {
+  template?: Template;
+  useNpm?: boolean;
+  useYarn?: boolean;
+  usePnpm?: boolean;
+};
 
 program
   .name(createStarknetPackageJson.name)
@@ -65,7 +74,7 @@ program
       "Explicitly tell the CLI to bootstrap the app using pnpm",
     ),
   )
-  .action((projectDirectory, options) => {
+  .action((projectDirectory: string | undefined, options: CliOptions) => {
     if (projectDirectory) {
       projectPath = projectDirectory;
     }
@@ -115,6 +124,15 @@ async function run() {
   const resolvedProjectPath = path.resolve(projectPath);
   const projectName = path.basename(resolvedProjectPath);
 
+  if (
+    fs.existsSync(resolvedProjectPath) &&
+    fs.readdirSync(resolvedProjectPath).length > 0
+  ) {
+    throw new Error(
+      `Directory ${chalk.red(resolvedProjectPath)} already exists and is not empty.`,
+    );
+  }
+
   // If the project template has not already been selected with the options
   if (selectedTemplate === null) {
     const response = await prompts({
@@ -138,7 +156,20 @@ async function run() {
     packageManager = getPackageManager();
   }
 
-  installTemplate(selectedTemplate, resolvedProjectPath, projectName);
+  if (selectedTemplate === null) {
+    throw new Error("A template should be selected");
+  }
+
+  console.log(
+    `Creating ${chalk.cyan(projectName)} at ${chalk.green(resolvedProjectPath)} using ${chalk.cyan(selectedTemplate)} template...`,
+  );
+
+  const installResult = installTemplate(
+    selectedTemplate,
+    resolvedProjectPath,
+    projectName,
+  );
+  logTemplateFiles(installResult);
 
   await installDependencies(packageManager, resolvedProjectPath);
 
@@ -150,6 +181,21 @@ async function run() {
   console.log(
     `    ${chalk.cyan(`${packageManager} ${packageManager === "yarn" ? "" : "run "}dev`)}`,
   );
+}
+
+function logTemplateFiles({ filePaths }: TemplateInstallResult) {
+  console.log(chalk.gray(`Copied ${filePaths.length} files:`));
+  const maxItems = 20;
+  const filesToShow = filePaths.slice(0, maxItems);
+  for (const filePath of filesToShow) {
+    console.log(chalk.gray(`  - ${filePath}`));
+  }
+
+  if (filePaths.length > maxItems) {
+    console.log(chalk.gray(`  ... and ${filePaths.length - maxItems} more`));
+  }
+
+  console.log("");
 }
 
 run()

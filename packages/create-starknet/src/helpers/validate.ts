@@ -14,8 +14,18 @@ export function getPackageNameValidation(projectPath: string) {
     ].join("\n");
   }
 
-  if (fs.existsSync(path.resolve(projectPath))) {
-    return "A file with this name already exists";
+  const resolvedProjectPath = path.resolve(projectPath);
+  if (fs.existsSync(resolvedProjectPath)) {
+    const stat = fs.statSync(resolvedProjectPath);
+
+    if (
+      stat.isDirectory() &&
+      fs.readdirSync(resolvedProjectPath).length === 0
+    ) {
+      return true;
+    }
+
+    return "Target directory already exists and is not empty";
   }
 
   return true;

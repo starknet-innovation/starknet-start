@@ -36,12 +36,12 @@
     "format": "biome format . --write"
   },
   "dependencies": {
-    "@starknet-start/chains": "workspace:*"
+    "@starknet-start/chains": "workspace:^"
   },
   "devDependencies": {
-    "@starknet-start/typescript-config": "workspace:*",
-    "rimraf": "^4.4.1",
+    "@starknet-start/typescript-config": "workspace:^",
+    "rimraf": "^4.1.2",
     "tsdown": "^0.16.8",
-    "vitest": "^1.6.1"
+    "vitest": "^4.0.15"
   }
 }

@@ -17,16 +17,23 @@ You will be asked for the name of your project before it can be created for you.
 ## Non-interactive
 
 You can also pass command line arguments to set up a new project
-non-interactively. See `create-starknet-app --help`:
+non-interactively. See `create-starknet --help`:
 
 ```
 create-starknet [project-directory] [options]
 
 Options:
   -V, --version  output the version number
-  -t, --template <name>  Explicitly tell the CLI to bootstrap the app using the specified template (choices: "next", "vite")
+  -t, --template <name>  Explicitly tell the CLI to bootstrap the app using the specified template (choices: "next", "tanstack-start")
   --use-npm              Explicitly tell the CLI to bootstrap the app using npm
   --use-yarn             Explicitly tell the CLI to bootstrap the app using yarn
   --use-pnpm             Explicitly tell the CLI to bootstrap the app using pnpm
   -h, --help     display help for command
+```
+
+Examples:
+
+```bash
+npx create-starknet my-app --template next --use-pnpm
+npx create-starknet my-app --template tanstack-start --use-pnpm
 ```

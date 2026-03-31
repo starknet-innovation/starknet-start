@@ -239,7 +239,7 @@ describe("useContract", () => {
               "requestId": 0,
               "retries": 200,
               "specVersion": undefined,
-              "transactionRetryIntervalFallback": undefined,
+              "transactionRetryIntervalFallback": 5000,
               "waitMode": false,
             },
             "getStateUpdate": [Function],
