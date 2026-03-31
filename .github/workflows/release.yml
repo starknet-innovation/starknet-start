@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Set Node version
         uses: actions/setup-node@v4
         with:
@@ -29,7 +31,7 @@ jobs:
           git config user.email "capy-bot@apibara.com"
           git remote set-url origin "https://${GIT_TOKEN}@github.com/starknet-start/starknet-start"
         env:
-          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies
         run: pnpm install --strict-peer-dependencies=false --no-frozen-lockfile
       - name: Publish package
