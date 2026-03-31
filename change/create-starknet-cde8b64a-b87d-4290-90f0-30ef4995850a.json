@@ -1,5 +1,5 @@
 {
-  "type": "major",
+  "type": "patch",
   "comment": "feat: update create-starknet with next and tanstack templates",
   "packageName": "create-starknet",
   "email": "jadejajaipal5@gmail.com",
