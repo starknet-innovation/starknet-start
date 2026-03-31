@@ -24,9 +24,6 @@ export const mainnet = {
     alchemy: {
       http: ["https://starknet-mainnet.g.alchemy.com/v2"],
     },
-    blast: {
-      http: ["https://starknet-mainnet.blastapi.io"],
-    },
     infura: {
       http: ["https://starknet-mainnet.infura.io/v3"],
     },
@@ -40,10 +37,7 @@ export const mainnet = {
       http: [],
     },
     public: {
-      http: [
-        "https://starknet-mainnet.public.blastapi.io/rpc/v0_10",
-        "https://rpc.starknet.lava.build",
-      ],
+      http: ["https://starknet.drpc.org", "https://rpc.starknet.lava.build"],
     },
   },
   paymasterRpcUrls: {
@@ -71,9 +65,6 @@ export const sepolia = {
   },
   testnet: true,
   rpcUrls: {
-    blast: {
-      http: ["https://starknet-sepolia.blastapi.io"],
-    },
     infura: {
       http: ["https://starknet-sepolia.infura.io/v3"],
     },
@@ -84,7 +75,10 @@ export const sepolia = {
       http: [],
     },
     public: {
-      http: ["https://starknet-sepolia.public.blastapi.io"],
+      http: [
+        "https://api.zan.top/public/starknet-sepolia/rpc/v0_10",
+        "https://starknet-sepolia.drpc.org/",
+      ],
     },
   },
   paymasterRpcUrls: {
