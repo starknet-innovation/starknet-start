@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chains: update public rpc",
+  "packageName": "@starknet-start/chains",
+  "email": "francesco@ceccon.me",
+  "dependentChangeType": "patch"
+}
