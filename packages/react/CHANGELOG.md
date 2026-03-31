@@ -1,8 +1,16 @@
-# Change Log - @starknet-react/core
+# Change Log - @starknet-start/react
 
-<!-- This log was last generated on Fri, 19 Sep 2025 09:41:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 31 Mar 2026 14:03:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.7
+
+Tue, 31 Mar 2026 14:03:06 GMT
+
+### Patches
+
+- chore: update deps (jadejajaipal5@gmail.com)
 
 ## 5.0.3
 

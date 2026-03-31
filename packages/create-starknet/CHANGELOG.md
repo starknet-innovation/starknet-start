@@ -1,8 +1,16 @@
 # Change Log - create-starknet
 
-<!-- This log was last generated on Mon, 08 Sep 2025 15:33:35 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 31 Mar 2026 14:03:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 10.0.1
+
+Tue, 31 Mar 2026 14:03:06 GMT
+
+### Patches
+
+- feat: update create-starknet with next and tanstack templates (jadejajaipal5@gmail.com)
 
 ## 5.0.2
 

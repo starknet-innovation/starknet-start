@@ -1,6 +1,21 @@
 {
-  "name": "@starknet-react/core",
+  "name": "@starknet-start/react",
   "entries": [
+    {
+      "date": "Tue, 31 Mar 2026 14:03:06 GMT",
+      "version": "1.0.7",
+      "tag": "@starknet-start/react_v1.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "jadejajaipal5@gmail.com",
+            "package": "@starknet-start/react",
+            "commit": "e222b5f715fad9fc6a436e86af5d99f2c8c29cf7",
+            "comment": "chore: update deps"
+          }
+        ]
+      }
+    },
     {
       "date": "Fri, 19 Sep 2025 09:41:34 GMT",
       "version": "5.0.3",
