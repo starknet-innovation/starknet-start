@@ -1,6 +1,6 @@
 # Migrating to Starknet Start
 
-Starknet Start React (formerly Starknet React) represents a major rewrite of the library. The core packages have been renamed and restructured to support multiple frameworks (React, Vue) and provide a more consistent experience with the wider Starknet ecosystem via `get-starknet`.
+Starknet Start React (formerly Starknet React) represents a major rewrite of the library. The core packages have been renamed and restructured to support multiple frameworks (React, Vue) and provide a more consistent experience with the wider Starknet ecosystem via `@starknet-io/get-starknet-core`.
 
 The most significant change is the renaming of the package from `@starknet-react/core` (or `starknet-react`) to `@starknet-start/react`.
 
@@ -40,7 +40,7 @@ yarn add @starknet-start/react starknet @tanstack/react-query
 
 ## Enhancements to `StarknetConfig`
 
-The `StarknetConfig` component to track the dapps current state is now a lightweight wrapper around the `GetStarknetProvider` from `@starknet-io/get-starknet-modal`.
+The `StarknetConfig` component to track the dapps current state is now a lightweight wrapper around the [`GetStarknetProvider` from `@starknet-io/get-starknet-modal`](https://get-starknet.starknet-react.com/modal/GetStarknetProvider).
 
 ### 1. Update Imports
 
@@ -79,14 +79,14 @@ function App() {
 
 ```tsx
 import { StarknetConfig } from "@starknet-start/react";
-import { mainnet, sepolia } from "@starknet-start/chains";
-import { jsonRpcProvider } from "@starknet-start/providers";
+import { mainnet } from "@starknet-start/chains";
+import { publicProvider } from "@starknet-start/providers";
 
 function App() {
   return (
     <StarknetConfig
-      chains={[mainnet, sepolia]}
-      provider={jsonRpcProvider({ rpc: (chain) => ... })}
+      chains={[mainnet]}
+      provider={publicProvider()}
     >
       {children}
     </StarknetConfig>
@@ -114,7 +114,12 @@ import { mainnet, sepolia } from "@starknet-start/chains";
 Similarly, RPC providers and other network logic reside in `@starknet-start/providers`.
 
 ```ts
-import { jsonRpcProvider } from "@starknet-start/providers";
+import {
+  jsonRpcProvider,
+  publicProvider,
+  alchemyProvider,
+  /* and more... */
+} from "@starknet-start/providers";
 ```
 
 ## Breaking Changes Checklist
@@ -126,11 +131,11 @@ import { jsonRpcProvider } from "@starknet-start/providers";
 
 ## Get Starknet Integration
 
-Starknet Start integrates deeply with the [Get Starknet](https://get-starknet.io) ecosystem to provide a unified wallet connection experience. This ensures your dApp behaves consistently with other major Starknet applications and automatically supports new wallets as they adhere to the standard.
+Starknet Start integrates deeply with the [Get Starknet](https://get-starknet.starknet-react.com/) ecosystem to provide a unified wallet connection experience. This ensures your dApp behaves consistently with other major Starknet applications and automatically supports new wallets as they adhere to the standard.
 
 ### Wallet Discovery
 
-The `StarknetConfig` automatically handles wallet discovery using the underlying `get-starknet` library.
+The `StarknetConfig` automatically handles wallet discovery using the underlying get starknet library.
 
 - **Automatic Detection**: Standard Starknet wallets (like Argent X and Braavos) are detected automatically via the `window` object.
 - **No Manual Connectors**: You no longer need to instantiate `InjectedConnector` classes for standard wallets.

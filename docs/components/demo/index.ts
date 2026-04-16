@@ -17,6 +17,7 @@ import { StarkName } from "./stark-name";
 import { StarkProfile } from "./stark-profile";
 import { SwitchChain } from "./switch-chain";
 import { WalletPermission } from "./wallet-permission";
+import { UI } from "./ui";
 
 export default {
   Account,
@@ -38,4 +39,5 @@ export default {
   ChangeDefaultNetwork,
   DeployContract,
   Events,
+  UI,
 };

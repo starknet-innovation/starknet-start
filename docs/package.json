@@ -22,6 +22,7 @@
     "@starknet-io/get-starknet-core": "^5.0.0",
     "@starknet-io/get-starknet-modal": "^5.0.0",
     "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
+    "@starknet-io/get-starknet-ui": "^5.0.0",
     "@starknet-start/chains": "workspace:^",
     "@starknet-start/explorers": "workspace:^",
     "@starknet-start/providers": "workspace:^",

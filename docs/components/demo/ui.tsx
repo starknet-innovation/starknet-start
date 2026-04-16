@@ -1,11 +1,15 @@
 import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
 import { useAccount } from "@starknet-start/react";
+import { WalletConnectModal } from "@starknet-io/get-starknet-ui";
 import stringify from "safe-stable-stringify";
 import { DemoContainer } from "../starknet";
 
-export function Account() {
+export function UI() {
   return (
-    <DemoContainer hasWallet>
+    <DemoContainer hasWallet={false}>
+      <div className="w-full flex justify-end pb-2">
+        <WalletConnectModal />
+      </div>
       <AccountInner />
     </DemoContainer>
   );
