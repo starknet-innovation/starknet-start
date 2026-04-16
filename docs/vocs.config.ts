@@ -15,4 +15,9 @@ export default defineConfig({
     { text: "Docs", link: "/docs/getting-started", match: "/docs" },
     { text: "Demo", link: "/demo", match: "/demo" },
   ],
+  vite: {
+    ssr: {
+      noExternal: ["@starknet-io/get-starknet-ui"],
+    },
+  },
 });
