@@ -32,7 +32,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: "pnpm"
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Install dependencies
         run: pnpm install --strict-peer-dependencies=false --no-frozen-lockfile
