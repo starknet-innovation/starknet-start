@@ -1,11 +1,10 @@
 import type { FunctionRet } from "abi-wan-kanabi/kanabi";
+
 import { assertType, describe, it } from "vitest";
+
 import { tokenAddress } from "../../test/devnet";
 import { testAbi } from "../../test/test-abi";
-import {
-  type UseReadContractProps,
-  useReadContract,
-} from "./use-read-contract";
+import { type UseReadContractProps, useReadContract } from "./use-read-contract";
 
 type TAbi = typeof testAbi;
 

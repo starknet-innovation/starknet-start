@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
+
 import { defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
 import { useConnect } from "./use-connect";
 import { useDisconnect } from "./use-disconnect";
 import { type UseWatchAssetArgs, useWatchAsset } from "./use-watch-asset";
 
-const addrxASTR =
-  "0x005EF67D8c38B82ba699F206Bf0dB59f1828087A710Bad48Cc4d51A2B0dA4C29";
+const addrxASTR = "0x005EF67D8c38B82ba699F206Bf0dB59f1828087A710Bad48Cc4d51A2B0dA4C29";
 const myAsset: UseWatchAssetArgs = {
   type: "ERC20",
   options: {

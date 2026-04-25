@@ -1,4 +1,5 @@
 import type { Address } from "@starknet-start/chains";
+
 import {
   STARKNET_ID_CONTRACTS,
   type StarkProfileQueryFnParams,
@@ -7,6 +8,7 @@ import {
   starkProfileQueryKey,
 } from "@starknet-start/query";
 import { useMemo } from "react";
+
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useContract } from "./use-contract";
 import { useNetwork } from "./use-network";
@@ -31,10 +33,7 @@ export type StarkProfileArgs = UseQueryProps<
 /** Value returned by `useStarkProfile` hook. */
 export type GetStarkprofileResponse = StarkProfileResponse;
 
-export type UseStarkProfileResult = UseQueryResult<
-  GetStarkprofileResponse,
-  Error
->;
+export type UseStarkProfileResult = UseQueryResult<GetStarkprofileResponse, Error>;
 
 /**
  * Hook for fetching Stark profile for address.
@@ -56,10 +55,7 @@ export function useStarkProfile({
     address: networkContracts.multicall,
   });
 
-  const enabled = useMemo(
-    () => Boolean(enabled_ && address),
-    [enabled_, address],
-  );
+  const enabled = useMemo(() => Boolean(enabled_ && address), [enabled_, address]);
 
   const { refetchInterval, ...rest } = props;
 
@@ -77,8 +73,7 @@ export function useStarkProfile({
       namingContract,
       network: chain.network,
       identityContract,
-      multicallContract:
-        multicallContract_ as StarkProfileQueryFnParams["multicallContract"],
+      multicallContract: multicallContract_ as StarkProfileQueryFnParams["multicallContract"],
     }),
     enabled,
     refetchInterval,

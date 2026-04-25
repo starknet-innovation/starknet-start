@@ -1,6 +1,7 @@
 import { useBlockNumber, useEvents, useNetwork } from "@starknet-start/react";
 import stringify from "safe-stable-stringify";
 import { BlockTag } from "starknet";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 
@@ -13,14 +14,13 @@ function EventsInner() {
   const toBlock = BlockTag.LATEST;
 
   const pageSize = 3;
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    status,
-  } = useEvents({ address, eventName, fromBlock, toBlock, pageSize });
+  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status } = useEvents({
+    address,
+    eventName,
+    fromBlock,
+    toBlock,
+    pageSize,
+  });
 
   const response =
     status === "pending" ? (
@@ -33,10 +33,7 @@ function EventsInner() {
     ) : (
       <>
         <div>
-          <Button
-            onClick={() => fetchNextPage()}
-            disabled={!hasNextPage || isFetchingNextPage}
-          >
+          <Button onClick={() => fetchNextPage()} disabled={!hasNextPage || isFetchingNextPage}>
             {isFetchingNextPage
               ? "Loading more events ..."
               : hasNextPage
@@ -60,13 +57,7 @@ function EventsInner() {
   return (
     <div className="flex flex-col gap-4">
       <p>Fetching events for</p>
-      <pre>
-        {stringify(
-          { address, eventName, fromBlock, toBlock, pageSize },
-          null,
-          2,
-        )}
-      </pre>
+      <pre>{stringify({ address, eventName, fromBlock, toBlock, pageSize }, null, 2)}</pre>
       {response}
     </div>
   );

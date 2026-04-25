@@ -1,20 +1,20 @@
 {
   "name": "@starknet-start/react",
   "version": "1.0.7",
+  "keywords": [
+    "ethereum",
+    "l2",
+    "starknet"
+  ],
+  "homepage": "https://start.starknet-react.com/",
   "license": "MIT",
   "repository": "starknet-start/starknet-start",
-  "homepage": "https://start.starknet-react.com/",
-  "keywords": [
-    "starknet",
-    "ethereum",
-    "l2"
-  ],
-  "type": "module",
   "files": [
     "dist",
     "src",
     "README.md"
   ],
+  "type": "module",
   "main": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "exports": {
@@ -29,18 +29,20 @@
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
     "test": "vitest --fileParallelism=false",
-    "test:ci": "vitest run",
-    "lint": "biome check src",
-    "lint:fix": "pnpm lint --write",
-    "format:check": "biome format .",
-    "format": "biome format . --write"
+    "test:ci": "vitest run"
   },
-  "peerDependencies": {
-    "@starknet-io/get-starknet-core": ">=5.0.0",
-    "@starknet-io/get-starknet-modal": ">=5.0.0",
-    "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
-    "react": ">=19.0.0",
-    "starknet": ">=9.0.0"
+  "dependencies": {
+    "@starknet-io/types-js": "^0.10.1",
+    "@starknet-start/chains": "workspace:^",
+    "@starknet-start/explorers": "workspace:^",
+    "@starknet-start/providers": "workspace:^",
+    "@starknet-start/query": "workspace:^",
+    "@tanstack/react-query": "^5.25.0",
+    "abi-wan-kanabi": "^2.2.4",
+    "eventemitter3": "^5.0.1",
+    "lossless-json": "^4.3.0",
+    "viem": "^2.21.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@starknet-io/get-starknet-core": "^5.0.0",
@@ -61,17 +63,11 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.15"
   },
-  "dependencies": {
-    "@starknet-io/types-js": "^0.10.1",
-    "@starknet-start/chains": "workspace:^",
-    "@starknet-start/explorers": "workspace:^",
-    "@starknet-start/providers": "workspace:^",
-    "@starknet-start/query": "workspace:^",
-    "@tanstack/react-query": "^5.25.0",
-    "abi-wan-kanabi": "^2.2.4",
-    "eventemitter3": "^5.0.1",
-    "lossless-json": "^4.3.0",
-    "viem": "^2.21.1",
-    "zod": "^3.22.4"
+  "peerDependencies": {
+    "@starknet-io/get-starknet-core": ">=5.0.0",
+    "@starknet-io/get-starknet-modal": ">=5.0.0",
+    "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
+    "react": ">=19.0.0",
+    "starknet": ">=9.0.0"
   }
 }

@@ -12,15 +12,13 @@ import type { Call, CallOptions, Contract, ProviderInterface } from "starknet";
 
 // did this because "Omit" wont work directly over an abstract class
 type Contract_ = {
-  [K in keyof Contract as K extends "populate" | "populateTransaction" | "call"
-    ? never
-    : K]: Contract[K];
+  [K in keyof Contract as K extends "populate" | "populateTransaction" | "call" ? never : K]: Contract[K];
 };
 
-type ArgsArray_<
-  TAbi extends Abi,
-  TFunctionName extends ExtractAbiFunctionNames<TAbi>,
-> = ExtractArgs<TAbi, ExtractAbiFunction<TAbi, TFunctionName>>;
+type ArgsArray_<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>> = ExtractArgs<
+  TAbi,
+  ExtractAbiFunction<TAbi, TFunctionName>
+>;
 
 // with reference to 'abi-wan-kanabi' but with args accepting only array type
 type TypedContractActions_<TAbi extends Abi> = {
@@ -42,11 +40,9 @@ type TypedContractActions_<TAbi extends Abi> = {
   withOptions(options: CallOptions): StarknetTypedContract<TAbi>;
 };
 
-type TypedContract_<TAbi extends Abi> = TypedContractActions_<TAbi> &
-  ContractFunctions<TAbi>;
+type TypedContract_<TAbi extends Abi> = TypedContractActions_<TAbi> & ContractFunctions<TAbi>;
 
-export type StarknetTypedContract<TAbi extends Abi> = TypedContract_<TAbi> &
-  Contract_;
+export type StarknetTypedContract<TAbi extends Abi> = TypedContract_<TAbi> & Contract_;
 
 /** Arguments for `useContract`. */
 export interface UseContractArgs<TAbi extends Abi> {

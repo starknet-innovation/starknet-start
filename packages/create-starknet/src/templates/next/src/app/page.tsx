@@ -4,15 +4,10 @@ export default function Home() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-8 px-4 py-10 sm:px-8">
       <section className="space-y-3">
-        <p className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
-          Starknet Start
-        </p>
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Next.js starter wired for Starknet.
-        </h1>
+        <p className="text-sm font-semibold uppercase tracking-wide text-zinc-500">Starknet Start</p>
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Next.js starter wired for Starknet.</h1>
         <p className="max-w-2xl text-zinc-600">
-          This project uses the latest Starknet Start packages and includes a
-          wallet connect example out of the box.
+          This project uses the latest Starknet Start packages and includes a wallet connect example out of the box.
         </p>
       </section>
 

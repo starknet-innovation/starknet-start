@@ -2,6 +2,7 @@ import { sepolia } from "@starknet-start/chains";
 import { useNetwork, useSwitchChain } from "@starknet-start/react";
 import stringify from "safe-stable-stringify";
 import { constants } from "starknet";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 
@@ -17,10 +18,7 @@ function SwitchChainInner() {
   const { chain } = useNetwork();
   const { isError, isPending, data, error, switchChain } = useSwitchChain({
     params: {
-      chainId:
-        chain.id === sepolia.id
-          ? constants.StarknetChainId.SN_MAIN
-          : constants.StarknetChainId.SN_SEPOLIA,
+      chainId: chain.id === sepolia.id ? constants.StarknetChainId.SN_MAIN : constants.StarknetChainId.SN_SEPOLIA,
     },
   });
 
@@ -45,27 +43,16 @@ function SwitchChainInner() {
         )}
       </pre>
 
-      <Button onClick={() => switchChain()}>
-        Switch Chain between Mainnet and Sepolia
-      </Button>
-      <Button
-        onClick={() =>
-          switchChain({ chainId: constants.StarknetChainId.SN_MAIN })
-        }
-      >
+      <Button onClick={() => switchChain()}>Switch Chain between Mainnet and Sepolia</Button>
+      <Button onClick={() => switchChain({ chainId: constants.StarknetChainId.SN_MAIN })}>
         Switch to Mainnet (Override)
       </Button>
-      <Button
-        onClick={() =>
-          switchChain({ chainId: constants.StarknetChainId.SN_SEPOLIA })
-        }
-      >
+      <Button onClick={() => switchChain({ chainId: constants.StarknetChainId.SN_SEPOLIA })}>
         Switch to Sepolia (Override)
       </Button>
 
       <p className="text-sm text-muted-foreground">
-        Important: This does not work with Braavos wallet, as they don't support
-        the API at the moment.
+        Important: This does not work with Braavos wallet, as they don't support the API at the moment.
       </p>
     </div>
   );

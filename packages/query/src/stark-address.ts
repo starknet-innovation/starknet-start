@@ -1,10 +1,6 @@
 import type { Address } from "@starknet-start/chains";
-import {
-  CallData,
-  Provider,
-  type ProviderInterface,
-  starknetId,
-} from "starknet";
+
+import { CallData, Provider, type ProviderInterface, starknetId } from "starknet";
 
 export type StarkAddressQueryKeyParams = {
   name?: string;
@@ -21,11 +17,7 @@ const StarknetIdNamingContract: Record<string, string> = {
   mainnet: "0x6ac597f8116f886fa1c97a23fa4e08299975ecaf6b598873ca6792b9bbfb678",
 };
 
-export function starkAddressQueryKey({
-  name,
-  contract,
-  network,
-}: StarkAddressQueryKeyParams) {
+export function starkAddressQueryKey({ name, contract, network }: StarkAddressQueryKeyParams) {
   return [
     {
       entity: "addressFromStarkName" as const,
@@ -36,12 +28,7 @@ export function starkAddressQueryKey({
   ] as const;
 }
 
-export function starkAddressQueryFn({
-  name,
-  contract,
-  provider,
-  network,
-}: StarkAddressQueryFnParams) {
+export function starkAddressQueryFn({ name, contract, provider, network }: StarkAddressQueryFnParams) {
   return async (): Promise<Address> => {
     if (!name) throw new Error("name is required");
     if (!network) throw new Error("network is required");

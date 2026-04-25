@@ -1,9 +1,10 @@
 import type { Address } from "@starknet-start/chains";
+
 import { balanceQueryFn, balanceQueryKey } from "@starknet-start/query";
 import { useMemo } from "react";
 import { type BlockNumber, BlockTag } from "starknet";
-import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 
+import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useContract } from "./use-contract";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
 import { useNetwork } from "./use-network";
@@ -17,12 +18,7 @@ export type Balance = {
   value: bigint;
 };
 
-export type UseBalanceProps = UseQueryProps<
-  Balance,
-  Error,
-  Balance,
-  ReturnType<typeof balanceQueryKey>
-> & {
+export type UseBalanceProps = UseQueryProps<Balance, Error, Balance, ReturnType<typeof balanceQueryKey>> & {
   /** The contract's address. Defaults to the native currency. */
   token?: Address;
   /** The address to fetch balance for. */
@@ -62,16 +58,10 @@ export function useBalance({
     [chain, token, address, blockIdentifier],
   );
 
-  const enabled = useMemo(
-    () => Boolean(enabled_ && contract && address),
-    [enabled_, contract, address],
-  );
+  const enabled = useMemo(() => Boolean(enabled_ && contract && address), [enabled_, contract, address]);
 
   const refetchInterval =
-    refetchInterval_ ??
-    (blockIdentifier === BlockTag.PRE_CONFIRMED && watch
-      ? DEFAULT_FETCH_INTERVAL
-      : undefined);
+    refetchInterval_ ?? (blockIdentifier === BlockTag.PRE_CONFIRMED && watch ? DEFAULT_FETCH_INTERVAL : undefined);
 
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),

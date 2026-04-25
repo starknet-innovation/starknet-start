@@ -1,7 +1,8 @@
-import {
-  StandardEvents,
-  type StandardEventsListeners,
-} from "@starknet-io/get-starknet-core";
+import type { ExplorerFactory } from "@starknet-start/explorers";
+import type { ChainProviderFactory } from "@starknet-start/providers";
+import type { AccountInterface, PaymasterRpc, ProviderInterface } from "starknet";
+
+import { StandardEvents, type StandardEventsListeners } from "@starknet-io/get-starknet-core";
 import {
   GetStarknetProvider,
   type UseConnect,
@@ -9,33 +10,12 @@ import {
   useStarknetProvider,
 } from "@starknet-io/get-starknet-modal";
 import { StarknetWalletApi } from "@starknet-io/get-starknet-wallet-standard/features";
-import {
-  type Address,
-  type Chain,
-  mainnet,
-  sepolia,
-} from "@starknet-start/chains";
-import type { ExplorerFactory } from "@starknet-start/explorers";
-import type { ChainProviderFactory } from "@starknet-start/providers";
-import {
-  avnuPaymasterProvider,
-  type ChainPaymasterFactory,
-} from "@starknet-start/providers/paymaster";
+import { type Address, type Chain, mainnet, sepolia } from "@starknet-start/chains";
+import { avnuPaymasterProvider, type ChainPaymasterFactory } from "@starknet-start/providers/paymaster";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import type {
-  AccountInterface,
-  PaymasterRpc,
-  ProviderInterface,
-} from "starknet";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { constants, WalletAccountV5 } from "starknet";
+
 import { AccountProvider } from "./account";
 
 type Simplify<T> = { [K in keyof T]: T[K] } & {};
@@ -60,8 +40,7 @@ export type StarknetState = Simplify<
 const StarknetContext = createContext<StarknetState | undefined>(undefined);
 
 export type StarknetProviderProps = Simplify<
-  StarknetProviderInnerProps &
-    Omit<GetStarknetProviderProps, "children"> & { children?: React.ReactNode }
+  StarknetProviderInnerProps & Omit<GetStarknetProviderProps, "children"> & { children?: React.ReactNode }
 >;
 
 type StarknetProviderInnerProps = {
@@ -86,11 +65,7 @@ type StarknetProviderInnerProps = {
 export function StarknetProvider(props: StarknetProviderProps) {
   const { recommendedWallets, extraWallets, store, children, ...rest } = props;
   return (
-    <GetStarknetProvider
-      extraWallets={extraWallets}
-      recommendedWallets={recommendedWallets}
-      store={store}
-    >
+    <GetStarknetProvider extraWallets={extraWallets} recommendedWallets={recommendedWallets} store={store}>
       <StarknetProviderInner {...rest}>{children}</StarknetProviderInner>
     </GetStarknetProvider>
   );
@@ -106,20 +81,11 @@ function StarknetProviderInner({
   paymasterProvider,
   queryClient,
 }: StarknetProviderInnerProps) {
-  const { connect, disconnect, isConnecting, isError, connected } =
-    useGetStarknetConnect();
-  const {
-    extraWallets,
-    injectedWallets,
-    onSelectedChange,
-    recommendedWallets,
-    wallets,
-    selected,
-  } = useStarknetProvider();
+  const { connect, disconnect, isConnecting, isError, connected } = useGetStarknetConnect();
+  const { extraWallets, injectedWallets, onSelectedChange, recommendedWallets, wallets, selected } =
+    useStarknetProvider();
 
-  const defaultChain = defaultChainId
-    ? (chains.find((c) => c.id === defaultChainId) ?? chains[0])
-    : chains[0];
+  const defaultChain = defaultChainId ? (chains.find((c) => c.id === defaultChainId) ?? chains[0]) : chains[0];
 
   if (defaultChain === undefined) {
     throw new Error("Must provide at least one chain.");
@@ -139,21 +105,17 @@ function StarknetProviderInner({
     () => providerForChain(defaultChain, provider),
     [defaultChain, provider],
   );
-  const _paymasterProvider = useMemo(
-    () => paymasterProvider ?? avnuPaymasterProvider({}),
-    [paymasterProvider],
-  );
+  const _paymasterProvider = useMemo(() => paymasterProvider ?? avnuPaymasterProvider({}), [paymasterProvider]);
   const { paymasterProvider: defaultPaymasterProvider } = useMemo(
     () => paymasterProviderForChain(defaultChain, _paymasterProvider),
     [defaultChain, _paymasterProvider],
   );
 
   const [currentChain, setCurrentChain] = useState<Chain>(defaultChain);
-  const [currentProvider, setCurrentProvider] =
-    useState<ProviderInterface>(defaultProvider);
-  const [currentPaymasterProvider, setCurrentPaymasterProvider] = useState<
-    PaymasterRpc | undefined
-  >(defaultPaymasterProvider);
+  const [currentProvider, setCurrentProvider] = useState<ProviderInterface>(defaultProvider);
+  const [currentPaymasterProvider, setCurrentPaymasterProvider] = useState<PaymasterRpc | undefined>(
+    defaultPaymasterProvider,
+  );
   const [address, setAddress] = useState<Address | undefined>();
   const [account, setAccount] = useState<AccountInterface | undefined>();
 
@@ -165,8 +127,7 @@ function StarknetProviderInner({
       }
 
       const { provider: newProvider } = providerForChain(targetChain, provider);
-      const { paymasterProvider: newPaymasterProvider } =
-        paymasterProviderForChain(targetChain, _paymasterProvider);
+      const { paymasterProvider: newPaymasterProvider } = paymasterProviderForChain(targetChain, _paymasterProvider);
       setCurrentChain(targetChain);
       setCurrentProvider(newProvider);
       setCurrentPaymasterProvider(newPaymasterProvider);
@@ -231,10 +192,7 @@ function StarknetProviderInner({
                     params: { chainId: targetStarknetChainId },
                   })
                   .catch((error: Error) => {
-                    console.warn(
-                      "Failed to switch wallet to target chain:",
-                      error,
-                    );
+                    console.warn("Failed to switch wallet to target chain:", error);
                     updateChainAndProvider(chainId);
                   });
               }
@@ -352,10 +310,7 @@ export function useStarknetManager() {
   return { connect, disconnect };
 }
 
-function providerForChain(
-  chain: Chain,
-  factory: ChainProviderFactory,
-): { chain: Chain; provider: ProviderInterface } {
+function providerForChain(chain: Chain, factory: ChainProviderFactory): { chain: Chain; provider: ProviderInterface } {
   const provider = factory(chain);
   if (provider) {
     return { chain, provider };
@@ -374,9 +329,7 @@ function paymasterProviderForChain(
   throw new Error(`No paymaster provider found for chain ${chain.name}`);
 }
 
-export function starknetChainId(
-  chainId: bigint,
-): constants.StarknetChainId | undefined {
+export function starknetChainId(chainId: bigint): constants.StarknetChainId | undefined {
   switch (chainId) {
     case mainnet.id:
       return constants.StarknetChainId.SN_MAIN;

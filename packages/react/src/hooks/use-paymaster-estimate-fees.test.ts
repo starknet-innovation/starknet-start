@@ -1,5 +1,7 @@
 import type { Abi } from "abi-wan-kanabi";
+
 import { describe, expect, it } from "vitest";
+
 import { defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
 import { useAccount } from "./use-account";
@@ -9,8 +11,7 @@ import { useDisconnect } from "./use-disconnect";
 import { useNetwork } from "./use-network";
 import { usePaymasterEstimateFees } from "./use-paymaster-estimate-fees";
 
-const _STARKNET_SEPOLIA_NATIVE_TOKEN_ADDRESS =
-  "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d";
+const _STARKNET_SEPOLIA_NATIVE_TOKEN_ADDRESS = "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d";
 
 function usePaymasterEstimateFeesWithConnect() {
   const { chain } = useNetwork();
@@ -22,9 +23,7 @@ function usePaymasterEstimateFeesWithConnect() {
 
   const { address } = useAccount();
 
-  const calls = contract
-    ? [contract.populate("transfer", [address ?? "0x01", 1n])]
-    : undefined;
+  const calls = contract ? [contract.populate("transfer", [address ?? "0x01", 1n])] : undefined;
 
   return {
     estimatePaymasterFees: usePaymasterEstimateFees({

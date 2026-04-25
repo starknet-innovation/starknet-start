@@ -1,5 +1,7 @@
 import type { Abi } from "abi-wan-kanabi";
+
 import { describe, expect, it } from "vitest";
+
 import { defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
 import { UserRejectedRequestError } from "../errors";
@@ -20,10 +22,7 @@ function useSendTransactionWithConnect() {
 
   const { address } = useAccount();
 
-  const calls =
-    contract && address
-      ? [contract.populate("transfer", [address, 1n])]
-      : undefined;
+  const calls = contract && address ? [contract.populate("transfer", [address, 1n])] : undefined;
 
   return {
     sendTransaction: useSendTransaction({ calls }),
@@ -71,9 +70,7 @@ describe("useSendTransaction", () => {
 
       await waitFor(() => {
         expect(result.current.sendTransaction.isError).toBeTruthy();
-        expect(result.current.sendTransaction.error).toBeInstanceOf(
-          UserRejectedRequestError,
-        );
+        expect(result.current.sendTransaction.error).toBeInstanceOf(UserRejectedRequestError);
       });
     } finally {
       defaultConnector.updateOptions({ rejectRequest: false });

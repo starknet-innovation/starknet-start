@@ -1,9 +1,4 @@
-import type {
-  AccountInterface,
-  Call,
-  PaymasterDetails,
-  PaymasterFeeEstimate,
-} from "starknet";
+import type { AccountInterface, Call, PaymasterDetails, PaymasterFeeEstimate } from "starknet";
 
 export type PaymasterEstimateFeesArgs = {
   calls?: Call[];
@@ -14,10 +9,7 @@ export type PaymasterEstimateFeesQueryFnParams = {
   account?: AccountInterface;
 } & PaymasterEstimateFeesArgs;
 
-export function paymasterEstimateFeesQueryKey({
-  calls,
-  options,
-}: PaymasterEstimateFeesArgs) {
+export function paymasterEstimateFeesQueryKey({ calls, options }: PaymasterEstimateFeesArgs) {
   return [
     {
       entity: "estimatePaymasterTransactionFee" as const,
@@ -27,11 +19,7 @@ export function paymasterEstimateFeesQueryKey({
   ] as const;
 }
 
-export function paymasterEstimateFeesQueryFn({
-  account,
-  calls,
-  options,
-}: PaymasterEstimateFeesQueryFnParams) {
+export function paymasterEstimateFeesQueryFn({ account, calls, options }: PaymasterEstimateFeesQueryFnParams) {
   return async (): Promise<PaymasterFeeEstimate> => {
     if (!account) throw new Error("account is required");
     if (!calls || calls.length === 0) throw new Error("calls are required");

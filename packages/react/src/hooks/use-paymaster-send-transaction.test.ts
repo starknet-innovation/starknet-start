@@ -1,5 +1,7 @@
 import type { Abi } from "abi-wan-kanabi";
+
 import { describe, expect, it } from "vitest";
+
 import { defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
 import { useAccount } from "./use-account";
@@ -19,10 +21,7 @@ function usePaymasterSendTransactionWithConnect() {
 
   const { address } = useAccount();
 
-  const calls =
-    contract && address
-      ? [contract.populate("transfer", [address, 1n])]
-      : undefined;
+  const calls = contract && address ? [contract.populate("transfer", [address, 1n])] : undefined;
 
   return {
     sendTransaction: usePaymasterSendTransaction({
@@ -41,9 +40,7 @@ function usePaymasterSendTransactionWithConnect() {
 
 describe("useSendTransaction", () => {
   it.skip("sends a transaction sucessfully", async () => {
-    const { result } = renderHook(() =>
-      usePaymasterSendTransactionWithConnect(),
-    );
+    const { result } = renderHook(() => usePaymasterSendTransactionWithConnect());
 
     await act(async () => {
       result.current.connect.connect({
@@ -65,9 +62,7 @@ describe("useSendTransaction", () => {
   });
 
   it("throws error if user rejects transaction", async () => {
-    const { result } = renderHook(() =>
-      usePaymasterSendTransactionWithConnect(),
-    );
+    const { result } = renderHook(() => usePaymasterSendTransactionWithConnect());
 
     await act(async () => {
       await result.current.connect.connectAsync({

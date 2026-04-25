@@ -1,27 +1,15 @@
 import type { Address } from "@starknet-start/chains";
-import type {
-  Abi,
-  ExtractAbiFunction,
-  ExtractAbiFunctionNames,
-  ExtractArgs,
-  FunctionRet,
-} from "abi-wan-kanabi/kanabi";
+import type { Abi, ExtractAbiFunction, ExtractAbiFunctionNames, ExtractArgs, FunctionRet } from "abi-wan-kanabi/kanabi";
 import type { BlockNumber } from "starknet";
 
 import type { UseQueryProps, UseQueryResult } from "../query";
 
 import { type CallQueryKey, type UseCallProps, useCall } from "./use-call";
 
-type Result<
-  TAbi extends Abi,
-  TFunctionName extends ExtractAbiFunctionNames<TAbi>,
-> = FunctionRet<TAbi, TFunctionName>;
+type Result<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>> = FunctionRet<TAbi, TFunctionName>;
 
 /** Options for `useReadContract`. */
-export type UseReadContractProps<
-  TAbi extends Abi,
-  TFunctionName extends ExtractAbiFunctionNames<TAbi>,
-> = UseQueryProps<
+export type UseReadContractProps<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>> = UseQueryProps<
   Result<TAbi, TFunctionName>,
   Error,
   Result<TAbi, TFunctionName>,
@@ -64,12 +52,8 @@ export type UseReadContractResult<
  *
  * - You must pass `abi` as `const` for autocomplete to work.
  */
-export function useReadContract<
-  TAbi extends Abi,
-  TFunctionName extends ExtractAbiFunctionNames<TAbi>,
->(props: UseReadContractProps<TAbi, TFunctionName>) {
-  return useCall(props as UseCallProps) as UseReadContractResult<
-    TAbi,
-    TFunctionName
-  >;
+export function useReadContract<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>>(
+  props: UseReadContractProps<TAbi, TFunctionName>,
+) {
+  return useCall(props as UseCallProps) as UseReadContractResult<TAbi, TFunctionName>;
 }

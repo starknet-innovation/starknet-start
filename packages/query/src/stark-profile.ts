@@ -1,4 +1,5 @@
 import type { Address } from "@starknet-start/chains";
+
 import { CairoCustomEnum, cairo, hash, shortString } from "starknet";
 
 export type StarkProfileQueryKeyParams = {
@@ -38,31 +39,20 @@ export type StarknetIdContracts = {
 
 export const STARKNET_ID_CONTRACTS: Record<string, StarknetIdContracts> = {
   mainnet: {
-    identity:
-      "0x010600c390695989731eef336ff6b3c1843f9b16a0b8d52bb6bfe9d41ed96965",
-    naming:
-      "0x06ac597f8116f886fa1c97a23fa4e08299975ecaf6b598873ca6792b9bbfb678",
-    verifier:
-      "0x02265a6dad1676e91f36d6d3139fb7154436cc4d0a4f4c398f8d2c2b465640c1",
-    verifier_pop:
-      "0x0640c1e6bc1036a728f6b33eb48fcd5d57e52bd9772b2cc1a2862ab674c41eee",
-    verifier_pfp:
-      "0x030ffa01fe336357448dfba17342310f1f0f769ab7628aa0ec70ff1a6e59e4b3",
-    multicall:
-      "0x03f62dcceae415a78030c4f8f478dbf3c4302e10cd0fdcc066c423c508e49269",
+    identity: "0x010600c390695989731eef336ff6b3c1843f9b16a0b8d52bb6bfe9d41ed96965",
+    naming: "0x06ac597f8116f886fa1c97a23fa4e08299975ecaf6b598873ca6792b9bbfb678",
+    verifier: "0x02265a6dad1676e91f36d6d3139fb7154436cc4d0a4f4c398f8d2c2b465640c1",
+    verifier_pop: "0x0640c1e6bc1036a728f6b33eb48fcd5d57e52bd9772b2cc1a2862ab674c41eee",
+    verifier_pfp: "0x030ffa01fe336357448dfba17342310f1f0f769ab7628aa0ec70ff1a6e59e4b3",
+    multicall: "0x03f62dcceae415a78030c4f8f478dbf3c4302e10cd0fdcc066c423c508e49269",
   },
   sepolia: {
-    identity:
-      "0x0493c4f52d301373d4cc45f764d98819fcbe2f9eca0bdc2886970ea308f025a7",
+    identity: "0x0493c4f52d301373d4cc45f764d98819fcbe2f9eca0bdc2886970ea308f025a7",
     naming: "0x0154bc2e1af9260b9e66af0e9c46fc757ff893b3ff6a85718a810baf1474",
-    verifier:
-      "0x06b6307c6f2160e9e507c8478a2de23c9118db9daf66d05be92af8efcf7f50be",
-    verifier_pop:
-      "0x04605a7aa2f50ee9b746fbdc3c19c4fa1bea1261d6ae0b1b8972cbabf7578d0a",
-    verifier_pfp:
-      "0x0732a6e74c958b8ce5fe40425d77f0d8fa2dd2379119665b78ab75540bd1b5a8",
-    multicall:
-      "0x05b33dcb162d432c50a6ce40685cc0612118803b0057d82a67fa73580f2d5d90",
+    verifier: "0x06b6307c6f2160e9e507c8478a2de23c9118db9daf66d05be92af8efcf7f50be",
+    verifier_pop: "0x04605a7aa2f50ee9b746fbdc3c19c4fa1bea1261d6ae0b1b8972cbabf7578d0a",
+    verifier_pfp: "0x0732a6e74c958b8ce5fe40425d77f0d8fa2dd2379119665b78ab75540bd1b5a8",
+    multicall: "0x05b33dcb162d432c50a6ce40685cc0612118803b0057d82a67fa73580f2d5d90",
   },
 };
 
@@ -183,9 +173,7 @@ export function starkProfileQueryFn({
         {
           execution: staticExecution(),
           to: hardcoded(identity),
-          selector: hardcoded(
-            hash.getSelectorFromName("get_extended_verifier_data"),
-          ),
+          selector: hardcoded(hash.getSelectorFromName("get_extended_verifier_data")),
           calldata: [
             reference(1, 0),
             hardcoded(shortString.encodeShortString("nft_pp_id")),
@@ -197,9 +185,7 @@ export function starkProfileQueryFn({
         {
           execution: notEqual(6, 0, 0),
           to: hardcoded(identity),
-          selector: hardcoded(
-            hash.getSelectorFromName("get_extended_verifier_data"),
-          ),
+          selector: hardcoded(hash.getSelectorFromName("get_extended_verifier_data")),
           calldata: [
             reference(1, 0),
             hardcoded(shortString.encodeShortString("nft_pp_metadata")),
@@ -211,17 +197,8 @@ export function starkProfileQueryFn({
       ],
     ]);
 
-    const [
-      ,
-      domainToId,
-      twitter,
-      github,
-      discord,
-      proofOfPersonhood,
-      nftContract,
-      nftTokenId,
-      nftMetadata,
-    ] = data.responses;
+    const [, domainToId, twitter, github, discord, proofOfPersonhood, nftContract, nftTokenId, nftMetadata] =
+      data.responses;
 
     const decodedProofOfPersonhood = decodeProofOfPersonhood(proofOfPersonhood);
     const domain = decodeDomain(domainToId);
@@ -267,15 +244,7 @@ function numToHex(value: bigint) {
   return `0x${value.toString(16)}`;
 }
 
-function decodeSocials({
-  twitter,
-  github,
-  discord,
-}: {
-  twitter: bigint;
-  github: bigint;
-  discord: bigint;
-}) {
+function decodeSocials({ twitter, github, discord }: { twitter: bigint; github: bigint; discord: bigint }) {
   return {
     twitter: decodeVerifierData(twitter),
     github: decodeVerifierData(github),
@@ -321,11 +290,7 @@ function staticExecution() {
   });
 }
 
-function notEqual(
-  responseIndex: number,
-  calldataIndex: number,
-  expected: number,
-) {
+function notEqual(responseIndex: number, calldataIndex: number, expected: number) {
   return new CairoCustomEnum({
     NotEqual: {
       arguments_indices: {

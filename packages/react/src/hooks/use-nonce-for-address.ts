@@ -1,19 +1,13 @@
 import type { Address } from "@starknet-start/chains";
-import {
-  nonceForAddressQueryFn,
-  nonceForAddressQueryKey,
-} from "@starknet-start/query";
+
+import { nonceForAddressQueryFn, nonceForAddressQueryKey } from "@starknet-start/query";
 import { type BlockNumber, BlockTag, type Nonce } from "starknet";
+
 import { useStarknet } from "../context/starknet";
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 
 /** Arguments for `useNonceForAddress`. */
-export type UseNonceForAddressProps = UseQueryProps<
-  Nonce,
-  Error,
-  Nonce,
-  ReturnType<typeof nonceForAddressQueryKey>
-> & {
+export type UseNonceForAddressProps = UseQueryProps<Nonce, Error, Nonce, ReturnType<typeof nonceForAddressQueryKey>> & {
   /** Address to fetch nonce for. */
   address?: Address;
   /** Identifier for the block to fetch. */

@@ -1,17 +1,15 @@
 import type { Address } from "@starknet-start/chains";
 import type { AccountInterface } from "starknet";
+
 import { reactive, shallowRef, watch } from "vue";
 
 import type { Connector } from "../connectors";
+
 import { useStarknet } from "../context/starknet";
 import { getAddress } from "../utils";
 import { useProvider } from "./use-provider";
 
-export type AccountStatus =
-  | "connected"
-  | "disconnected"
-  | "connecting"
-  | "reconnecting";
+export type AccountStatus = "connected" | "disconnected" | "connecting" | "reconnecting";
 
 export interface UseAccountResult {
   account?: AccountInterface;
@@ -66,10 +64,7 @@ export function useAccount(): UseAccountResult {
       setConnectedState(accountRef.value);
 
       try {
-        const connectedAccount = (await starknet.connector.account(
-          provider,
-          paymasterProvider,
-        )) as AccountInterface;
+        const connectedAccount = (await starknet.connector.account(provider, paymasterProvider)) as AccountInterface;
         accountRef.value = connectedAccount;
         setConnectedState(connectedAccount);
       } catch {
@@ -82,13 +77,7 @@ export function useAccount(): UseAccountResult {
   };
 
   watch(
-    () => [
-      starknet.connector,
-      provider,
-      paymasterProvider,
-      starknet.address,
-      starknet.chain,
-    ],
+    () => [starknet.connector, provider, paymasterProvider, starknet.address, starknet.chain],
     () => {
       refreshState().catch(() => {
         /* ignore */

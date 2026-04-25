@@ -1,4 +1,5 @@
 import type { WatchAssetParameters } from "@starknet-io/types-js";
+
 import {
   type RequestArgs,
   type RequestResult,
@@ -16,14 +17,9 @@ export type UseWatchAssetProps = Omit<
   params?: UseWatchAssetArgs;
 };
 
-export type UseWatchAssetResult = Omit<
-  UseWalletRequestResult<"wallet_watchAsset">,
-  "request" | "requestAsync"
-> & {
+export type UseWatchAssetResult = Omit<UseWalletRequestResult<"wallet_watchAsset">, "request" | "requestAsync"> & {
   watchAsset: (args?: UseWatchAssetArgs) => void;
-  watchAssetAsync: (
-    args?: UseWatchAssetArgs,
-  ) => Promise<RequestResult<"wallet_watchAsset">>;
+  watchAssetAsync: (args?: UseWatchAssetArgs) => Promise<RequestResult<"wallet_watchAsset">>;
 };
 
 /**

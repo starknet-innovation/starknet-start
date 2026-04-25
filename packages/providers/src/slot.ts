@@ -1,4 +1,5 @@
 import { getSlotChain } from "@starknet-start/chains";
+
 import { jsonRpcProvider } from "./jsonrpc";
 
 /** Arguments for `slotProvider`. */

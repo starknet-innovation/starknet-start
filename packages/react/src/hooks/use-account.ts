@@ -1,17 +1,15 @@
 import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-core";
 import type { Address } from "@starknet-start/chains";
+
 import { useCallback, useEffect, useState } from "react";
+
 import { useStarknetAccount } from "../context/account";
 import { useStarknet } from "../context/starknet";
 import { getAddress } from "../utils";
 import { useProvider } from "./use-provider";
 
 /** Account connection status. */
-export type AccountStatus =
-  | "connected"
-  | "disconnected"
-  | "connecting"
-  | "reconnecting";
+export type AccountStatus = "connected" | "disconnected" | "connecting" | "reconnecting";
 
 /** Value returned from `useAccount`. */
 export type UseAccountResult = {

@@ -1,7 +1,8 @@
 import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
-import { useAccount } from "@starknet-start/react";
 import { WalletConnectModal } from "@starknet-io/get-starknet-ui";
+import { useAccount } from "@starknet-start/react";
 import stringify from "safe-stable-stringify";
+
 import { DemoContainer } from "../starknet";
 
 export function UI() {
@@ -24,9 +25,7 @@ function AccountInner() {
         {stringify(
           {
             address: address ?? "Connect wallet first",
-            connector:
-              connector?.features[StarknetWalletApi].id ??
-              "Connect wallet first",
+            connector: connector?.features[StarknetWalletApi].id ?? "Connect wallet first",
           },
           null,
           2,

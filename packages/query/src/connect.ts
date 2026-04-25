@@ -6,11 +6,7 @@ export function connectMutationKey({ chainId }: { chainId: string }) {
   return [{ entity: "connect", chainId }] as const;
 }
 
-export function connectMutationFn({
-  connect,
-}: {
-  connect: (args: ConnectVariables) => Promise<void> | void;
-}) {
+export function connectMutationFn({ connect }: { connect: (args: ConnectVariables) => Promise<void> | void }) {
   return async (variables?: ConnectVariables) => {
     return await connect(variables ?? {});
   };

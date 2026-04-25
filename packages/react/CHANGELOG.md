@@ -38,8 +38,9 @@ Mon, 25 Aug 2025 20:12:46 GMT
 - BREAKING: upgrade starknet.js from 7.6.4 to 8.1.2
 
 This upgrade includes breaking changes from starknet.js v8:
+
 - Internal RPC channel updated from 0.8.1 to 0.9.0
-- Contract class now uses _Contract instead of Contract
+- Contract class now uses \_Contract instead of Contract
 - Response parser uses resourceBoundsOverhead instead of margin
 - Added new deployer and defaultTipType properties to Account
 - Block identifier defaults changed from 'pending' to 'latest' (valentin@pupucecorp.com)
@@ -517,7 +518,6 @@ Tue, 29 Oct 2024 16:28:38 GMT
 - [#268](https://github.com/apibara/starknet-react/pull/268) [`0161696`](https://github.com/apibara/starknet-react/commit/01616966f5a12040481a2a950122ce9ec978f69a) Thanks [@fracek](https://github.com/fracek)! - Upgrade to starknet.js v5.
 
   Breaking changes:
-
   - The `id`, `name`, and `icon` methods in the `Connector` base class are now
     properties.
   - All Starknet.js types are now from v5. Follow [Starknet.js migration
@@ -525,7 +525,6 @@ Tue, 29 Oct 2024 16:28:38 GMT
     application.
 
   This release also removes several deprecated functions:
-
   - `useStarknetBlock`, use `useBlock`.
   - `useStarknetInvoke`, use `useContractWrite` with a single call.
   - `useStarknet`. To access the currently connected account, using

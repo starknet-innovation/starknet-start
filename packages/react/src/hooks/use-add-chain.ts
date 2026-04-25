@@ -17,14 +17,9 @@ export type UseAddChainProps = Omit<
   params?: UseAddChainArgs;
 };
 
-export type UseAddChainResult = Omit<
-  UseWalletRequestResult<"wallet_addStarknetChain">,
-  "request" | "requestAsync"
-> & {
+export type UseAddChainResult = Omit<UseWalletRequestResult<"wallet_addStarknetChain">, "request" | "requestAsync"> & {
   addChain: (args?: UseAddChainArgs) => void;
-  addChainAsync: (
-    args?: UseAddChainArgs,
-  ) => Promise<RequestResult<"wallet_addStarknetChain">>;
+  addChainAsync: (args?: UseAddChainArgs) => Promise<RequestResult<"wallet_addStarknetChain">>;
 };
 
 /**

@@ -3,7 +3,6 @@
 @source 'components/**/*';
 @source 'lib/**/*';
 
-
 pre {
   @apply dark:bg-white/5 bg-black/5 rounded-lg p-2 text-sm!;
   tab-size: 4;
@@ -121,4 +120,3 @@ pre {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
-

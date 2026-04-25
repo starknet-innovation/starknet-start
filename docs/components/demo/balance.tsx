@@ -1,4 +1,5 @@
 import { useAccount, useBalance } from "@starknet-start/react";
+
 import { DemoContainer } from "../starknet";
 
 function AccountBalance({ account }: { account: `0x${string}` }) {
@@ -42,11 +43,7 @@ function BalanceInner() {
 
   return (
     <div className="">
-      {address ? (
-        <AccountBalance account={address} />
-      ) : (
-        <p>Connect wallet to display its balance.</p>
-      )}
+      {address ? <AccountBalance account={address} /> : <p>Connect wallet to display its balance.</p>}
     </div>
   );
 }

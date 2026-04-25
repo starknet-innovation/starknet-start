@@ -1,11 +1,9 @@
-import {
-  type EstimateFeesArgs,
-  estimateFeesQueryFn,
-  estimateFeesQueryKey,
-} from "@starknet-start/query";
+import type { EstimateFeeResponseOverhead } from "starknet";
+
+import { type EstimateFeesArgs, estimateFeesQueryFn, estimateFeesQueryKey } from "@starknet-start/query";
 import { useMemo } from "react";
 import { useStarknetAccount } from "src/context/account";
-import type { EstimateFeeResponseOverhead } from "starknet";
+
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
 
@@ -22,10 +20,7 @@ export type UseEstimateFeesProps = EstimateFeesArgs &
   };
 
 /** Value returned from `useEstimateFees`. */
-export type UseEstimateFeesResult = UseQueryResult<
-  EstimateFeeResponseOverhead,
-  Error
->;
+export type UseEstimateFeesResult = UseQueryResult<EstimateFeeResponseOverhead, Error>;
 
 /**
  * Hook to estimate fees for smart contract calls.
@@ -43,10 +38,7 @@ export function useEstimateFees({
 }: UseEstimateFeesProps): UseEstimateFeesResult {
   const { account } = useStarknetAccount();
 
-  const queryKey_ = useMemo(
-    () => estimateFeesQueryKey({ calls, options }),
-    [calls, options],
-  );
+  const queryKey_ = useMemo(() => estimateFeesQueryKey({ calls, options }), [calls, options]);
 
   const enabled = useMemo(() => Boolean(enabled_ && calls), [enabled_, calls]);
 

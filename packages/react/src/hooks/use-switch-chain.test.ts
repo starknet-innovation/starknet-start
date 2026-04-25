@@ -1,5 +1,6 @@
 import { constants } from "starknet";
 import { describe, expect, it } from "vitest";
+
 import { defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
 import { useConnect } from "./use-connect";

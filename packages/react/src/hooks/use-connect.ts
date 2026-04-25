@@ -1,16 +1,10 @@
 import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-core";
-import {
-  type ConnectVariables,
-  connectMutationFn,
-  connectMutationKey,
-} from "@starknet-start/query";
+
+import { type ConnectVariables, connectMutationFn, connectMutationKey } from "@starknet-start/query";
 import { useCallback } from "react";
+
 import { useStarknet } from "../context/starknet";
-import {
-  type UseMutationProps,
-  type UseMutationResult,
-  useMutation,
-} from "../query";
+import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";
 
 export type { ConnectVariables };
 
@@ -19,10 +13,7 @@ type MutationResult = UseMutationResult<void, Error, ConnectVariables>;
 export type UseConnectProps = UseMutationProps<void, Error, ConnectVariables>;
 
 /** Value returned from `useConnect`. */
-export type UseConnectResult = Omit<
-  MutationResult,
-  "mutate" | "mutateAsync"
-> & {
+export type UseConnectResult = Omit<MutationResult, "mutate" | "mutateAsync"> & {
   /** Current connector. */
   connector?: WalletWithStarknetFeatures;
   /** Connectors available for the current chain. */
@@ -45,13 +36,7 @@ export type UseConnectResult = Omit<
  * ```
  */
 export function useConnect(props: UseConnectProps = {}): UseConnectResult {
-  const {
-    connected: connector,
-    injectedWallets,
-    extraWallets,
-    connect: connect_,
-    chain,
-  } = useStarknet();
+  const { connected: connector, injectedWallets, extraWallets, connect: connect_, chain } = useStarknet();
 
   const connectWrapper = useCallback(
     async (args: ConnectVariables): Promise<void> => {
@@ -69,10 +54,7 @@ export function useConnect(props: UseConnectProps = {}): UseConnectResult {
     ...props,
   });
 
-  const connect = useCallback(
-    (args?: ConnectVariables) => mutate(args ?? { connector }),
-    [mutate, connector],
-  );
+  const connect = useCallback((args?: ConnectVariables) => mutate(args ?? { connector }), [mutate, connector]);
 
   const connectAsync = useCallback(
     (args?: ConnectVariables) => mutateAsync(args ?? { connector }),

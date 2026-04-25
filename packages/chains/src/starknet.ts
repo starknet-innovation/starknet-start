@@ -13,8 +13,7 @@ export const mainnet = {
   network: "mainnet",
   name: "Starknet",
   nativeCurrency: {
-    address:
-      "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+    address: "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
     name: "Ether",
     symbol: "ETH",
     decimals: 18,
@@ -57,8 +56,7 @@ export const sepolia = {
   network: "sepolia",
   name: "Starknet Sepolia Testnet",
   nativeCurrency: {
-    address:
-      "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+    address: "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
     name: "Ether",
     symbol: "ETH",
     decimals: 18,
@@ -75,10 +73,7 @@ export const sepolia = {
       http: [],
     },
     public: {
-      http: [
-        "https://api.zan.top/public/starknet-sepolia/rpc/v0_10",
-        "https://starknet-sepolia.drpc.org/",
-      ],
+      http: ["https://api.zan.top/public/starknet-sepolia/rpc/v0_10", "https://starknet-sepolia.drpc.org/"],
     },
   },
   paymasterRpcUrls: {

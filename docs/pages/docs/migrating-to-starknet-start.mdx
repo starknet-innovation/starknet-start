@@ -84,13 +84,10 @@ import { publicProvider } from "@starknet-start/providers";
 
 function App() {
   return (
-    <StarknetConfig
-      chains={[mainnet]}
-      provider={publicProvider()}
-    >
+    <StarknetConfig chains={[mainnet]} provider={publicProvider()}>
       {children}
     </StarknetConfig>
-  )
+  );
 }
 ```
 

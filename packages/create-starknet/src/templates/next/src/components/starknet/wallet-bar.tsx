@@ -1,12 +1,7 @@
 "use client";
 
 import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
-import {
-  useAccount,
-  useConnect,
-  useDisconnect,
-  useNetwork,
-} from "@starknet-start/react";
+import { useAccount, useConnect, useDisconnect, useNetwork } from "@starknet-start/react";
 
 export function WalletBar() {
   const { address } = useAccount();
@@ -50,12 +45,10 @@ function ConnectWallet() {
   if (connectors.length === 0) {
     return (
       <section className="w-full rounded-xl border border-amber-200 bg-amber-50 p-4 shadow-sm">
-        <p className="text-sm font-semibold text-amber-900">
-          No wallet available
-        </p>
+        <p className="text-sm font-semibold text-amber-900">No wallet available</p>
         <p className="mt-2 text-sm text-amber-800">
-          No Starknet wallet was detected in this browser. Install one like
-          Ready Wallet (Formerly Argent) or Braavos, then refresh this page.
+          No Starknet wallet was detected in this browser. Install one like Ready Wallet (Formerly Argent) or Braavos,
+          then refresh this page.
         </p>
       </section>
     );
@@ -63,9 +56,7 @@ function ConnectWallet() {
 
   return (
     <section className="w-full rounded-xl border border-black/10 bg-white/90 p-4 shadow-sm">
-      <p className="text-sm font-semibold text-zinc-900">
-        Connect a Starknet wallet
-      </p>
+      <p className="text-sm font-semibold text-zinc-900">Connect a Starknet wallet</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {connectors.map((connector) => (
           <button

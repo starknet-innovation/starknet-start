@@ -1,14 +1,12 @@
 import { describe, expect, it } from "vitest";
+
 import { tokenAddress } from "../../test/devnet";
 import { renderHook } from "../../test/react";
-
 import { useContract } from "./use-contract";
 
 describe("useContract", () => {
   it("returns a contract", async () => {
-    const { result } = renderHook(() =>
-      useContract({ abi, address: tokenAddress }),
-    );
+    const { result } = renderHook(() => useContract({ abi, address: tokenAddress }));
 
     expect(result.current).toMatchInlineSnapshot(`
       {

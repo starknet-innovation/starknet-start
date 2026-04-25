@@ -22,18 +22,14 @@ export type UseSwitchChainResult = Omit<
   "request" | "requestAsync"
 > & {
   switchChain: (args?: UseSwitchChainArgs) => void;
-  switchChainAsync: (
-    args?: UseSwitchChainArgs,
-  ) => Promise<RequestResult<"wallet_switchStarknetChain">>;
+  switchChainAsync: (args?: UseSwitchChainArgs) => Promise<RequestResult<"wallet_switchStarknetChain">>;
 };
 
 /**
  * Hook to change the current network of the wallet.
  *
  */
-export function useSwitchChain(
-  props: UseSwitchChainProps,
-): UseSwitchChainResult {
+export function useSwitchChain(props: UseSwitchChainProps): UseSwitchChainResult {
   const { params, ...rest } = props;
 
   const { request, requestAsync, ...result } = useWalletRequest({

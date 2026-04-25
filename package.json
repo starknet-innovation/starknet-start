@@ -1,29 +1,31 @@
 {
   "name": "starknet-start",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/starknet-start/starknet-start.git"
+  },
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "test": "turbo run test --parallel",
     "test:ci": "turbo run test:ci --parallel",
-    "lint": "turbo run lint --parallel",
-    "lint:fix": "turbo run lint:fix --parallel",
-    "format": "turbo run format --parallel",
-    "format:check": "turbo run format:check --parallel",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
+    "format": "oxfmt .",
+    "format:check": "oxfmt . --check",
     "clean": "turbo run clean --parallel",
     "typecheck": "turbo run typecheck --parallel"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.5",
     "beachball": "^2.55.1",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
     "turbo": "^2.5.8",
     "typescript": "^5.9.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/starknet-start/starknet-start.git"
   },
   "engines": {
     "node": ">=20",

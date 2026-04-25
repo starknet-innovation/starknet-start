@@ -41,9 +41,7 @@ export function useQuery<
   TError = unknown,
   TData = TQueryFnData,
   TQueryKey extends QueryKey = QueryKey,
->(
-  args: UseQueryOptions_<TQueryFnData, TError, TData, TQueryKey>,
-): UseQueryResult<TData, TError> {
+>(args: UseQueryOptions_<TQueryFnData, TError, TData, TQueryKey>): UseQueryResult<TData, TError> {
   const base = useQuery_({ ...args, structuralSharing: false });
 
   return {
@@ -59,22 +57,12 @@ export function useQuery<
     refetch: base.refetch,
   };
 }
-export type UseMutationProps<
-  TData = unknown,
-  TError = unknown,
-  TVariables = void,
-  TContext = unknown,
-> = Pick<
+export type UseMutationProps<TData = unknown, TError = unknown, TVariables = void, TContext = unknown> = Pick<
   UseMutationOptions_<TData, TError, TVariables, TContext>,
   "onSuccess" | "onError" | "onMutate" | "onSettled"
 >;
 
-export type UseMutationResult<
-  TData = unknown,
-  TError = unknown,
-  TVariables = void,
-  TContext = unknown,
-> = Pick<
+export type UseMutationResult<TData = unknown, TError = unknown, TVariables = void, TContext = unknown> = Pick<
   UseMutationResult_<TData, TError, TVariables, TContext>,
   | "data"
   | "error"
@@ -90,12 +78,7 @@ export type UseMutationResult<
   | "variables"
 >;
 
-export function useMutation<
-  TData = unknown,
-  TError = unknown,
-  TVariables = unknown,
-  TContext = unknown,
->(
+export function useMutation<TData = unknown, TError = unknown, TVariables = unknown, TContext = unknown>(
   args: UseMutationOptions_<TData, TError, TVariables, TContext>,
 ): UseMutationResult<TData, TError, TVariables, TContext> {
   const base = useMutation_(args);
@@ -154,15 +137,7 @@ export function useInfiniteQuery<
   TData = InfiniteData<TQueryFnData>,
   TQueryKey extends QueryKey = QueryKey,
   TPageParam = unknown,
->(
-  args: UseInfiniteQueryOptions_<
-    TQueryFnData,
-    TError,
-    TData,
-    TQueryKey,
-    TPageParam
-  >,
-) {
+>(args: UseInfiniteQueryOptions_<TQueryFnData, TError, TData, TQueryKey, TPageParam>) {
   const base = useInfiniteQuery_({ ...args, structuralSharing: false });
 
   return {

@@ -22,18 +22,14 @@ export type UseDeclareContractResult = Omit<
   "request" | "requestAsync"
 > & {
   declare: (args?: UseDeclareContractArgs) => void;
-  declareAsync: (
-    args?: UseDeclareContractArgs,
-  ) => Promise<RequestResult<"wallet_addDeclareTransaction">>;
+  declareAsync: (args?: UseDeclareContractArgs) => Promise<RequestResult<"wallet_addDeclareTransaction">>;
 };
 
 /**
  * Hook to declare a new class in the current network.
  *
  */
-export function useDeclareContract(
-  props: UseDeclareContractProps,
-): UseDeclareContractResult {
+export function useDeclareContract(props: UseDeclareContractProps): UseDeclareContractResult {
   const { params, ...rest } = props;
 
   const { request, requestAsync, ...result } = useWalletRequest({

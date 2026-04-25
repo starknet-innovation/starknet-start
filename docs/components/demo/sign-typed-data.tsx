@@ -1,9 +1,7 @@
-import {
-  type UseSignTypedDataArgs,
-  useSignTypedData,
-} from "@starknet-start/react";
+import { type UseSignTypedDataArgs, useSignTypedData } from "@starknet-start/react";
 import stringify from "safe-stable-stringify";
 import { shortString } from "starknet";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 
@@ -56,14 +54,12 @@ const typedData: UseSignTypedDataArgs = {
     from: "0x2c94f628d125cd0e86eaefea735ba24c262b9a441728f63e5776661829a4066",
     amount: "400",
     nameGamer: "Hector26",
-    endDate:
-      "0x27d32a3033df4277caa9e9396100b7ca8c66a4ef8ea5f6765b91a7c17f0109c",
+    endDate: "0x27d32a3033df4277caa9e9396100b7ca8c66a4ef8ea5f6765b91a7c17f0109c",
     itemsAuthorized: ["0x01", "0x03", "0x0a", "0x0e"],
     chkFunction: "check_authorization",
     rootList: [
       {
-        address:
-          "0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79",
+        address: "0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79",
         amount: "1554785",
       },
     ],

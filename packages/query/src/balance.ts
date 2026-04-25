@@ -1,6 +1,8 @@
 import type { Chain } from "@starknet-start/chains";
+
 import { type BlockNumber, type CallOptions, num, shortString } from "starknet";
 import { formatUnits } from "viem";
+
 import type { StarknetTypedContract } from "./contract";
 
 type TAbi = typeof balanceABIFragment;
@@ -63,9 +65,7 @@ export function balanceQueryFn({
       decimals = Number(decimals_);
     }
 
-    const balanceOf = (await contract
-      .withOptions(options)
-      .balanceOf(address)) as bigint;
+    const balanceOf = (await contract.withOptions(options).balanceOf(address)) as bigint;
 
     const formatted = formatUnits(balanceOf, decimals);
 

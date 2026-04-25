@@ -2,6 +2,7 @@ import type { Address } from "@starknet-start/chains";
 import type { UseContractResult } from "@starknet-start/query";
 import type { Abi } from "abi-wan-kanabi";
 import type { ProviderInterface } from "starknet";
+
 import { useContract } from "./use-contract";
 
 export type UseUniversalDeployerContractProps = {
@@ -37,9 +38,7 @@ export function useUniversalDeployerContract(
   return {
     udc: useContract({
       abi,
-      address:
-        address ??
-        "0x04a64cd09a853868621d94cae9952b106f2c36a3f81260f85de6696c6b050221",
+      address: address ?? "0x04a64cd09a853868621d94cae9952b106f2c36a3f81260f85de6696c6b050221",
       provider,
     }).contract,
   };
@@ -53,8 +52,7 @@ const abi = [
   {
     name: "UniversalDeployerImpl",
     type: "impl",
-    interface_name:
-      "openzeppelin::utils::universal_deployer::interface::IUniversalDeployer",
+    interface_name: "openzeppelin::utils::universal_deployer::interface::IUniversalDeployer",
   },
   {
     name: "core::bool",

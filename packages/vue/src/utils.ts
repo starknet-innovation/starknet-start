@@ -1,4 +1,5 @@
 import type { Address } from "@starknet-start/chains";
+
 import { validateAndParseAddress } from "starknet";
 
 /**

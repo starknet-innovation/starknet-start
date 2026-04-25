@@ -1,10 +1,12 @@
 import { hash } from "starknet";
 import { describe, expect, it } from "vitest";
+
+import type { UseDeclareContractArgs } from "./use-declare-contract";
+
 import { defaultConnector } from "../../test/devnet";
 import { getRandomizedContract } from "../../test/fixtures/cairo210";
 import { act, renderHook, waitFor } from "../../test/react";
 import { useConnect } from "./use-connect";
-import type { UseDeclareContractArgs } from "./use-declare-contract";
 import { useDeclareContract } from "./use-declare-contract";
 import { useDisconnect } from "./use-disconnect";
 

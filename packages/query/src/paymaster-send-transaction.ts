@@ -1,10 +1,4 @@
-import type {
-  AccountInterface,
-  BigNumberish,
-  Call,
-  InvokeFunctionResponse,
-  PaymasterDetails,
-} from "starknet";
+import type { AccountInterface, BigNumberish, Call, InvokeFunctionResponse, PaymasterDetails } from "starknet";
 
 export function paymasterSendTransactionMutationKey(args: Call[]) {
   return [{ entity: "paymaster_sendTransaction", calls: args }] as const;
@@ -24,10 +18,6 @@ export function paymasterSendTransactionMutationFn({
     if (!calls || calls.length === 0) throw new Error("calls are required");
     if (!options) throw new Error("paymaster options are required");
 
-    return account.executePaymasterTransaction(
-      calls,
-      options,
-      maxFeeInGasToken,
-    );
+    return account.executePaymasterTransaction(calls, options, maxFeeInGasToken);
   };
 }

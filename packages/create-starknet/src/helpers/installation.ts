@@ -1,7 +1,8 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import spawn from "cross-spawn";
 import fs from "fs-extra";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 import type { PackageManager } from "./packageManager.ts";
 
 export type Template = "next" | "tanstack-start";
@@ -56,10 +57,7 @@ export function installTemplate(
   };
 }
 
-export async function installDependencies(
-  packageManager: PackageManager,
-  resolvedProjectPath: string,
-) {
+export async function installDependencies(packageManager: PackageManager, resolvedProjectPath: string) {
   console.log("Installing dependencies...");
   const args = ["install", packageManager === "pnpm" ? "--quiet" : "--silent"];
 

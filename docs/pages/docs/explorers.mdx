@@ -27,9 +27,7 @@ It provides the following properties and methods.
 following signature:
 
 ```ts
-type ExplorerFactory<T extends Explorer = Explorer> = (
-  chain: Chain
-) => T | null;
+type ExplorerFactory<T extends Explorer = Explorer> = (chain: Chain) => T | null;
 ```
 
 Starknet React ships with the following explorer factories:

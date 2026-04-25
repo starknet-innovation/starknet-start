@@ -1,6 +1,7 @@
 import { type Chain, mainnet, sepolia } from "@starknet-start/chains";
 import { useAccount, useNetwork } from "@starknet-start/react";
 import { useState } from "react";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 
@@ -9,10 +10,7 @@ export function ChangeDefaultNetwork() {
 
   return (
     <DemoContainer hasWallet defaultChainId={defaultChain.id}>
-      <ChangeNetworkInner
-        defaultChain={defaultChain}
-        setDefaultChain={setDefaultChain}
-      />
+      <ChangeNetworkInner defaultChain={defaultChain} setDefaultChain={setDefaultChain} />
     </DemoContainer>
   );
 }

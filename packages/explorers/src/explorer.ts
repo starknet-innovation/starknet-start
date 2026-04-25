@@ -13,6 +13,4 @@ export interface Explorer {
   name: string;
 }
 
-export type ExplorerFactory<T extends Explorer = Explorer> = (
-  chain: Chain,
-) => T | null;
+export type ExplorerFactory<T extends Explorer = Explorer> = (chain: Chain) => T | null;

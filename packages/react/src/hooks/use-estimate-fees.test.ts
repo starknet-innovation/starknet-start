@@ -1,5 +1,7 @@
 import type { Abi } from "abi-wan-kanabi";
+
 import { describe, expect, it } from "vitest";
+
 import { defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
 import { useAccount } from "./use-account";
@@ -19,9 +21,7 @@ function useEstimateFeesWithConnect() {
 
   const { address } = useAccount();
 
-  const calls = contract
-    ? [contract.populate("transfer", [address ?? "0x01", 1n])]
-    : undefined;
+  const calls = contract ? [contract.populate("transfer", [address ?? "0x01", 1n])] : undefined;
 
   return {
     estimateFees: useEstimateFees({ calls }),

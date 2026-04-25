@@ -1,4 +1,5 @@
 import type { Chain } from "@starknet-start/chains";
+
 import type { Explorer, ExplorerFactory } from "./explorer";
 
 // Define the ViewblockExplorer class that extends Explorer
@@ -12,9 +13,7 @@ export class ViewblockExplorer implements Explorer {
 
   block(hashOrNumber: { hash?: string; number?: number }): string {
     if (hashOrNumber.hash && hashOrNumber.number === undefined) {
-      throw new Error(
-        "The viewblock explorer doesnt support hashes for blocks. Please provide a number.",
-      );
+      throw new Error("The viewblock explorer doesnt support hashes for blocks. Please provide a number.");
     }
     return `${this.link}/block/${hashOrNumber.number}`;
   }

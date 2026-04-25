@@ -1,5 +1,6 @@
-import { mainnet, sepolia } from "@starknet-start/chains";
 import type { ExplorerFactory } from "@starknet-start/explorers";
+
+import { mainnet, sepolia } from "@starknet-start/chains";
 import { publicProvider } from "@starknet-start/providers";
 import { StarknetConfig } from "@starknet-start/react";
 
@@ -17,12 +18,7 @@ export function StarknetProvider({
   const provider = publicProvider();
 
   return (
-    <StarknetConfig
-      chains={chains}
-      provider={provider}
-      explorer={explorer}
-      defaultChainId={defaultChainId}
-    >
+    <StarknetConfig chains={chains} provider={provider} explorer={explorer} defaultChainId={defaultChainId}>
       {children}
     </StarknetConfig>
   );

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import path from "node:path";
 import chalk from "chalk";
 import { Command, Option } from "commander";
 import fs from "fs-extra";
+import path from "node:path";
 import prompts from "prompts";
 
 import createStarknetPackageJson from "../package.json";
@@ -13,10 +13,7 @@ import {
   type Template,
   type TemplateInstallResult,
 } from "./helpers/installation";
-import {
-  getPackageManager,
-  type PackageManager,
-} from "./helpers/packageManager";
+import { getPackageManager, type PackageManager } from "./helpers/packageManager";
 import { getPackageNameValidation } from "./helpers/validate";
 
 const handleSigTerm = () => process.exit(0);
@@ -52,28 +49,11 @@ program
     new Option(
       "-t, --template <name>",
       "Explicitly tell the CLI to bootstrap the app using the specified template",
-    ).choices(
-      templateNameToFolder.map(([_, templateFolderName]) => templateFolderName),
-    ),
+    ).choices(templateNameToFolder.map(([_, templateFolderName]) => templateFolderName)),
   )
-  .addOption(
-    new Option(
-      "--use-npm",
-      "Explicitly tell the CLI to bootstrap the app using npm",
-    ),
-  )
-  .addOption(
-    new Option(
-      "--use-yarn",
-      "Explicitly tell the CLI to bootstrap the app using yarn",
-    ),
-  )
-  .addOption(
-    new Option(
-      "--use-pnpm",
-      "Explicitly tell the CLI to bootstrap the app using pnpm",
-    ),
-  )
+  .addOption(new Option("--use-npm", "Explicitly tell the CLI to bootstrap the app using npm"))
+  .addOption(new Option("--use-yarn", "Explicitly tell the CLI to bootstrap the app using yarn"))
+  .addOption(new Option("--use-pnpm", "Explicitly tell the CLI to bootstrap the app using pnpm"))
   .action((projectDirectory: string | undefined, options: CliOptions) => {
     if (projectDirectory) {
       projectPath = projectDirectory;
@@ -101,9 +81,7 @@ async function run() {
     const validation = getPackageNameValidation(projectPath);
     if (validation !== true) {
       console.error(
-        `Could not create a project called ${chalk.red(
-          path.basename(path.resolve(projectPath)),
-        )}\n${validation}`,
+        `Could not create a project called ${chalk.red(path.basename(path.resolve(projectPath)))}\n${validation}`,
       );
       return;
     }
@@ -124,13 +102,8 @@ async function run() {
   const resolvedProjectPath = path.resolve(projectPath);
   const projectName = path.basename(resolvedProjectPath);
 
-  if (
-    fs.existsSync(resolvedProjectPath) &&
-    fs.readdirSync(resolvedProjectPath).length > 0
-  ) {
-    throw new Error(
-      `Directory ${chalk.red(resolvedProjectPath)} already exists and is not empty.`,
-    );
+  if (fs.existsSync(resolvedProjectPath) && fs.readdirSync(resolvedProjectPath).length > 0) {
+    throw new Error(`Directory ${chalk.red(resolvedProjectPath)} already exists and is not empty.`);
   }
 
   // If the project template has not already been selected with the options
@@ -140,12 +113,10 @@ async function run() {
       type: "select",
       name: "framework",
       message: "What framework would you like to use?",
-      choices: templateNameToFolder.map(
-        ([templateName, templateFolderName]) => ({
-          title: templateName,
-          value: templateFolderName,
-        }),
-      ),
+      choices: templateNameToFolder.map(([templateName, templateFolderName]) => ({
+        title: templateName,
+        value: templateFolderName,
+      })),
     });
 
     selectedTemplate = response.framework;
@@ -164,23 +135,15 @@ async function run() {
     `Creating ${chalk.cyan(projectName)} at ${chalk.green(resolvedProjectPath)} using ${chalk.cyan(selectedTemplate)} template...`,
   );
 
-  const installResult = installTemplate(
-    selectedTemplate,
-    resolvedProjectPath,
-    projectName,
-  );
+  const installResult = installTemplate(selectedTemplate, resolvedProjectPath, projectName);
   logTemplateFiles(installResult);
 
   await installDependencies(packageManager, resolvedProjectPath);
 
-  console.log(
-    `Success! Created ${projectName} at ${chalk.green(resolvedProjectPath)}\n`,
-  );
+  console.log(`Success! Created ${projectName} at ${chalk.green(resolvedProjectPath)}\n`);
   console.log("We suggest that you begin by typing:\n");
   console.log(`    ${chalk.cyan("cd")} ${projectName}`);
-  console.log(
-    `    ${chalk.cyan(`${packageManager} ${packageManager === "yarn" ? "" : "run "}dev`)}`,
-  );
+  console.log(`    ${chalk.cyan(`${packageManager} ${packageManager === "yarn" ? "" : "run "}dev`)}`);
 }
 
 function logTemplateFiles({ filePaths }: TemplateInstallResult) {

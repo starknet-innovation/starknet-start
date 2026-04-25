@@ -6,13 +6,7 @@ import { useBlockNumber } from "./use-block-number";
 /**
  * Invalidate the given query on every new block.
  */
-export function useInvalidateOnBlock({
-  enabled = true,
-  queryKey,
-}: {
-  enabled?: boolean;
-  queryKey: QueryKey;
-}) {
+export function useInvalidateOnBlock({ enabled = true, queryKey }: { enabled?: boolean; queryKey: QueryKey }) {
   const queryClient = useQueryClient();
 
   const [prevBlockNumber, setPrevBlockNumber] = useState<number | undefined>();

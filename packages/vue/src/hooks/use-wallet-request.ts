@@ -1,19 +1,13 @@
 import type { RpcMessage, RpcTypeToMessageMap } from "@starknet-io/types-js";
-import {
-  walletRequestMutationFn,
-  walletRequestMutationKey,
-} from "@starknet-start/query";
+
+import { walletRequestMutationFn, walletRequestMutationKey } from "@starknet-start/query";
+
 import { useStarknet } from "../context/starknet";
-import {
-  type UseMutationProps,
-  type UseMutationResult,
-  useMutation,
-} from "../query";
+import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";
 
 export type RequestMessageTypes = RpcMessage["type"];
 
-export type RequestResult<T extends RequestMessageTypes> =
-  RpcTypeToMessageMap[T]["result"];
+export type RequestResult<T extends RequestMessageTypes> = RpcTypeToMessageMap[T]["result"];
 
 export type RequestArgs<T extends RequestMessageTypes> = Partial<{
   type: T;
@@ -27,8 +21,8 @@ type MutationResult<T extends RequestMessageTypes> = UseMutationResult<
   unknown
 >;
 
-export type UseWalletRequestProps<T extends RequestMessageTypes> =
-  RequestArgs<T> & UseMutationProps<RequestResult<T>, Error, RequestArgs<T>>;
+export type UseWalletRequestProps<T extends RequestMessageTypes> = RequestArgs<T> &
+  UseMutationProps<RequestResult<T>, Error, RequestArgs<T>>;
 
 export type UseWalletRequestResult<T extends RequestMessageTypes> = Omit<
   MutationResult<T>,
@@ -53,17 +47,11 @@ export function useWalletRequest<T extends RequestMessageTypes>(
   >({
     mutationKey: walletRequestMutationKey({ type, params }),
     mutationFn: walletRequestMutationFn({ connector: starknet.connector }),
-    ...((rest ?? {}) as UseMutationProps<
-      RequestResult<T>,
-      Error,
-      RequestArgs<T>,
-      unknown
-    >),
+    ...((rest ?? {}) as UseMutationProps<RequestResult<T>, Error, RequestArgs<T>, unknown>),
   });
 
   const request = (args?: RequestArgs<T>) => mutate(args ?? { type, params });
-  const requestAsync = (args?: RequestArgs<T>) =>
-    mutateAsync(args ?? { type, params });
+  const requestAsync = (args?: RequestArgs<T>) => mutateAsync(args ?? { type, params });
 
   return {
     request,
