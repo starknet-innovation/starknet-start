@@ -1,8 +1,16 @@
 # Change Log - @starknet-start/react
 
-<!-- This log was last generated on Tue, 31 Mar 2026 14:03:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 25 Apr 2026 15:56:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.8
+
+Sat, 25 Apr 2026 15:56:45 GMT
+
+### Patches
+
+- react: update README (francesco@ceccon.me)
 
 ## 1.0.7
 

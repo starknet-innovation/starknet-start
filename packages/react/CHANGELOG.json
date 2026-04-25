@@ -2,6 +2,21 @@
   "name": "@starknet-start/react",
   "entries": [
     {
+      "date": "Sat, 25 Apr 2026 15:56:45 GMT",
+      "version": "1.0.8",
+      "tag": "@starknet-start/react_v1.0.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "francesco@ceccon.me",
+            "package": "@starknet-start/react",
+            "commit": "ea67f2a3703b8a95127909e08be0727f8fd0ff4b",
+            "comment": "react: update README"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 25 Apr 2026 15:13:11 GMT",
       "version": "1.0.7",
       "tag": "@starknet-start/react_v1.0.7",
