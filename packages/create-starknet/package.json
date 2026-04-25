@@ -23,6 +23,8 @@
   ],
   "author": "Yohan Tancrez",
   "license": "MIT",
+  "repository": "starknet-start/starknet-start",
+  "homepage": "https://start.starknet-react.com/",
   "devDependencies": {
     "@starknet-start/typescript-config": "workspace:^",
     "@types/cross-spawn": "^6.0.2",

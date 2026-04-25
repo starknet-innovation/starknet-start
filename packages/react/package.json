@@ -2,8 +2,8 @@
   "name": "@starknet-start/react",
   "version": "1.0.7",
   "license": "MIT",
-  "repository": "apibara/starknet-react",
-  "homepage": "https://www.starknet-react.com",
+  "repository": "starknet-start/starknet-start",
+  "homepage": "https://start.starknet-react.com/",
   "keywords": [
     "starknet",
     "ethereum",

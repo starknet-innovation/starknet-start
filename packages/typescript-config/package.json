@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
+  "repository": "starknet-start/starknet-start",
+  "homepage": "https://start.starknet-react.com/",
   "publishConfig": {
     "access": "public"
   }
