@@ -1,17 +1,14 @@
 import type { Address } from "@starknet-start/chains";
+
 import { starkNameQueryFn, starkNameQueryKey } from "@starknet-start/query";
 import { useMemo } from "react";
+
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useNetwork } from "./use-network";
 import { useProvider } from "./use-provider";
 
 /** Arguments for `useStarkName` hook. */
-export type StarkNameArgs = UseQueryProps<
-  string,
-  Error,
-  string,
-  ReturnType<typeof starkNameQueryKey>
-> & {
+export type StarkNameArgs = UseQueryProps<string, Error, string, ReturnType<typeof starkNameQueryKey>> & {
   /** Account address. */
   address?: Address;
   /** Naming contract to use . */
@@ -40,10 +37,7 @@ export function useStarkName({
   const { provider } = useProvider();
   const { chain } = useNetwork();
 
-  const enabled = useMemo(
-    () => Boolean(enabled_ && address),
-    [enabled_, address],
-  );
+  const enabled = useMemo(() => Boolean(enabled_ && address), [enabled_, address]);
 
   return useQuery({
     queryKey: starkNameQueryKey({

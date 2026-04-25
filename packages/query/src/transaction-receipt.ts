@@ -1,8 +1,5 @@
 import type { Chain } from "@starknet-start/chains";
-import type {
-  GetTransactionReceiptResponse,
-  ProviderInterface,
-} from "starknet";
+import type { GetTransactionReceiptResponse, ProviderInterface } from "starknet";
 
 export type TransactionReceiptQueryKeyParams = {
   chain?: Chain;
@@ -14,19 +11,11 @@ export type TransactionReceiptQueryFnParams = {
   hash?: string;
 };
 
-export function transactionReceiptQueryKey({
-  chain,
-  hash,
-}: TransactionReceiptQueryKeyParams) {
-  return [
-    { entity: "transactionReceipt" as const, chainId: chain?.name, hash },
-  ] as const;
+export function transactionReceiptQueryKey({ chain, hash }: TransactionReceiptQueryKeyParams) {
+  return [{ entity: "transactionReceipt" as const, chainId: chain?.name, hash }] as const;
 }
 
-export function transactionReceiptQueryFn({
-  provider,
-  hash,
-}: TransactionReceiptQueryFnParams) {
+export function transactionReceiptQueryFn({ provider, hash }: TransactionReceiptQueryFnParams) {
   return async (): Promise<GetTransactionReceiptResponse> => {
     if (!hash) throw new Error("hash is required");
 

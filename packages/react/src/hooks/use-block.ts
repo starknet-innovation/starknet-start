@@ -26,10 +26,7 @@ export type UseBlockResult = UseQueryResult<GetBlockResponse, Error>;
  * Specify which block to fetch with the `blockIdentifier` argument.
  * Control if and how often data is refreshed with `refetchInterval`.
  */
-export function useBlock({
-  blockIdentifier = BlockTag.LATEST,
-  ...props
-}: UseBlockProps = {}): UseBlockResult {
+export function useBlock({ blockIdentifier = BlockTag.LATEST, ...props }: UseBlockProps = {}): UseBlockResult {
   const { provider } = useStarknet();
   return useQuery({
     queryKey: blockQueryKey({ blockIdentifier }),

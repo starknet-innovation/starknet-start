@@ -1,8 +1,6 @@
-import {
-  type UseDeclareContractArgs,
-  useDeclareContract,
-} from "@starknet-start/react";
+import { type UseDeclareContractArgs, useDeclareContract } from "@starknet-start/react";
 import stringify from "safe-stable-stringify";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 

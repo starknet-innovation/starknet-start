@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
+
 import { accounts } from "../../test/devnet";
 import { renderHook, waitFor } from "../../test/react";
-
 import { useBalance } from "./use-balance";
 
 describe("useBalance", () => {

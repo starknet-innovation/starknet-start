@@ -1,31 +1,15 @@
-import {
-  type Address,
-  type Chain,
-  mainnet,
-  sepolia,
-} from "@starknet-start/chains";
+import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-wallet-standard/features";
 import type { ExplorerFactory } from "@starknet-start/explorers";
 import type { ChainProviderFactory } from "@starknet-start/providers";
-import {
-  avnuPaymasterProvider,
-  type ChainPaymasterFactory,
-} from "@starknet-start/providers/paymaster";
-import {
-  QueryClient,
-  VueQueryPlugin,
-  type VueQueryPluginOptions,
-} from "@tanstack/vue-query";
-import {
-  constants,
-  type PaymasterRpc,
-  type ProviderInterface,
-} from "starknet";
 import type { App, InjectionKey } from "vue";
-import { inject, ref, shallowRef } from "vue";
-import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-wallet-standard/features";
 
-const StarknetContextKey: InjectionKey<StarknetState> =
-  Symbol("StarknetContext");
+import { type Address, type Chain, mainnet, sepolia } from "@starknet-start/chains";
+import { avnuPaymasterProvider, type ChainPaymasterFactory } from "@starknet-start/providers/paymaster";
+import { QueryClient, VueQueryPlugin, type VueQueryPluginOptions } from "@tanstack/vue-query";
+import { constants, type PaymasterRpc, type ProviderInterface } from "starknet";
+import { inject, ref, shallowRef } from "vue";
+
+const StarknetContextKey: InjectionKey<StarknetState> = Symbol("StarknetContext");
 
 const defaultQueryClient = new QueryClient();
 
@@ -64,10 +48,7 @@ function getStorage(): SafeStorage | undefined {
   return globalObj.localStorage;
 }
 
-function providerForChain(
-  chain: Chain,
-  factory: ChainProviderFactory,
-): { chain: Chain; provider: ProviderInterface } {
+function providerForChain(chain: Chain, factory: ChainProviderFactory): { chain: Chain; provider: ProviderInterface } {
   const provider = factory(chain);
   if (provider) {
     return { chain, provider };
@@ -95,9 +76,7 @@ function createStarknetManager({
   autoConnect = false,
   defaultChainId,
 }: StarknetManagerOptions) {
-  const defaultChain = defaultChainId
-    ? (chains.find((c) => c.id === defaultChainId) ?? chains[0])
-    : chains[0];
+  const defaultChain = defaultChainId ? (chains.find((c) => c.id === defaultChainId) ?? chains[0]) : chains[0];
   if (defaultChain === undefined) {
     throw new Error("Must provide at least one chain.");
   }
@@ -110,20 +89,14 @@ function createStarknetManager({
     seen.add(chain.id);
   }
 
-  const { provider: defaultProvider } = providerForChain(
-    defaultChain,
-    provider,
-  );
+  const { provider: defaultProvider } = providerForChain(defaultChain, provider);
   const paymasterFactory = paymasterProvider ?? avnuPaymasterProvider({});
-  const { paymasterProvider: defaultPaymasterProvider } =
-    paymasterProviderForChain(defaultChain, paymasterFactory);
+  const { paymasterProvider: defaultPaymasterProvider } = paymasterProviderForChain(defaultChain, paymasterFactory);
 
   const connectorRef = shallowRef<WalletWithStarknetFeatures | undefined>();
   const currentChain = ref(defaultChain);
   const currentProvider = shallowRef<ProviderInterface>(defaultProvider);
-  const currentPaymasterProvider = shallowRef<PaymasterRpc | undefined>(
-    defaultPaymasterProvider,
-  );
+  const currentPaymasterProvider = shallowRef<PaymasterRpc | undefined>(defaultPaymasterProvider);
   const currentAddress = ref<Address | undefined>();
   const error = shallowRef<Error | undefined>();
 
@@ -131,12 +104,8 @@ function createStarknetManager({
     if (!chainId) return;
     const targetChain = chains.find((chain) => chain.id === chainId);
     if (!targetChain) return;
-    const { chain, provider: newProvider } = providerForChain(
-      targetChain,
-      provider,
-    );
-    const { paymasterProvider: newPaymasterProvider } =
-      paymasterProviderForChain(targetChain, paymasterFactory);
+    const { chain, provider: newProvider } = providerForChain(targetChain, provider);
+    const { paymasterProvider: newPaymasterProvider } = paymasterProviderForChain(targetChain, paymasterFactory);
     currentChain.value = chain;
     currentProvider.value = newProvider;
     currentPaymasterProvider.value = newPaymasterProvider;
@@ -224,7 +193,9 @@ function createStarknetManager({
           .ready()
           .then((ready) => {
             if (!ready) return;
-            connect({ connector: lastConnectedWalletWithStarknetFeatures }).catch(() => {
+            connect({
+              connector: lastConnectedWalletWithStarknetFeatures,
+            }).catch(() => {
               /* ignore */
             });
           })
@@ -285,16 +256,12 @@ export function createStarknetVue(options: StarknetPluginOptions) {
 export function useStarknet(): StarknetState {
   const state = inject(StarknetContextKey);
   if (!state) {
-    throw new Error(
-      "useStarknet must be used after installing createStarknetVue plugin",
-    );
+    throw new Error("useStarknet must be used after installing createStarknetVue plugin");
   }
   return state;
 }
 
-export function starknetChainId(
-  chainId: bigint,
-): constants.StarknetChainId | undefined {
+export function starknetChainId(chainId: bigint): constants.StarknetChainId | undefined {
   switch (chainId) {
     case mainnet.id:
       return constants.StarknetChainId.SN_MAIN;

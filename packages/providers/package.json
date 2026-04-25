@@ -1,20 +1,20 @@
 {
   "name": "@starknet-start/providers",
   "version": "1.0.7",
+  "keywords": [
+    "ethereum",
+    "l2",
+    "starknet"
+  ],
+  "homepage": "https://start.starknet-react.com/",
   "license": "MIT",
   "repository": "starknet-start/starknet-start",
-  "homepage": "https://www.starknet-react.com",
-  "keywords": [
-    "starknet",
-    "ethereum",
-    "l2"
-  ],
-  "type": "module",
   "files": [
     "dist",
     "src",
     "README.md"
   ],
+  "type": "module",
   "main": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "exports": {
@@ -34,11 +34,7 @@
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
     "test": "vitest",
-    "test:ci": "vitest run",
-    "lint": "biome check src",
-    "lint:fix": "pnpm lint --write",
-    "format:check": "biome format .",
-    "format": "biome format . --write"
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@starknet-start/chains": "workspace:^",

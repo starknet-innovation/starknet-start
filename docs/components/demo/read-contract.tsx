@@ -2,16 +2,11 @@ import { useNetwork, useReadContract } from "@starknet-start/react";
 import { useState } from "react";
 import stringify from "safe-stable-stringify";
 import { BlockTag } from "starknet";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 export function ReadContractInner() {
   const [blockIdentifier, setBlockIdentifier] = useState("latest");
@@ -37,16 +32,12 @@ export function ReadContractInner() {
     args: [],
     watch: true,
     enabled: enable,
-    blockIdentifier:
-      blockIdentifier === "latest" ? BlockTag.LATEST : BlockTag.PRE_CONFIRMED,
+    blockIdentifier: blockIdentifier === "latest" ? BlockTag.LATEST : BlockTag.PRE_CONFIRMED,
   });
 
   return (
     <div className="flex flex-col gap-4">
-      <Select
-        onValueChange={(value) => setBlockIdentifier(value)}
-        value={blockIdentifier}
-      >
+      <Select onValueChange={(value) => setBlockIdentifier(value)} value={blockIdentifier}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Block Identifier" />
         </SelectTrigger>

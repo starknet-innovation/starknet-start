@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { act, renderHook, waitFor } from "../../test/react";
 
+import { act, renderHook, waitFor } from "../../test/react";
 import { useConnect } from "./use-connect";
 
 describe("useConnect", () => {

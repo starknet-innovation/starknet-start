@@ -20,8 +20,8 @@ import { mainnet } from '@starknet-start/chains`
 
 ## Contributing
 
-Want to add your Starknet Appchain to the list? 
+Want to add your Starknet Appchain to the list?
 
- - Add your appchain information to a new file in `src`.
- - Export the definitions from `src/index.ts`.
- - Open a PR with your changes.
+- Add your appchain information to a new file in `src`.
+- Export the definitions from `src/index.ts`.
+- Open a PR with your changes.

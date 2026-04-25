@@ -1,6 +1,7 @@
 import { type UseAddChainArgs, useAddChain } from "@starknet-start/react";
 import stringify from "safe-stable-stringify";
 import { shortString } from "starknet";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 
@@ -21,8 +22,7 @@ function AddChainInner() {
     native_currency: {
       type: "ERC20",
       options: {
-        address:
-          "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+        address: "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
         name: "ETHER",
         symbol: "ETH",
         decimals: 18,
@@ -54,8 +54,7 @@ function AddChainInner() {
       <Button onClick={() => addChain()}>Add Chain</Button>
       <Button onClick={() => addChain(chainData)}>Add Chain (override)</Button>
       <p className="text-sm text-muted-foreground">
-        Important: This does not work with Braavos wallet, as they don't support
-        the API at the moment.
+        Important: This does not work with Braavos wallet, as they don't support the API at the moment.
       </p>
     </div>
   );

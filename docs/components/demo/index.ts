@@ -16,8 +16,8 @@ import { StarkAddress } from "./stark-address";
 import { StarkName } from "./stark-name";
 import { StarkProfile } from "./stark-profile";
 import { SwitchChain } from "./switch-chain";
-import { WalletPermission } from "./wallet-permission";
 import { UI } from "./ui";
+import { WalletPermission } from "./wallet-permission";
 
 export default {
   Account,

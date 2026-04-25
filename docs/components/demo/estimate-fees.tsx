@@ -1,11 +1,6 @@
-import {
-  type Abi,
-  useAccount,
-  useContract,
-  useEstimateFees,
-  useNetwork,
-} from "@starknet-start/react";
+import { type Abi, useAccount, useContract, useEstimateFees, useNetwork } from "@starknet-start/react";
 import stringify from "safe-stable-stringify";
+
 import { DemoContainer } from "../starknet";
 
 export function EstimateFees() {
@@ -25,10 +20,7 @@ function EstimateFeesInner() {
   });
 
   const { data, isError, isLoading, isPending, error } = useEstimateFees({
-    calls:
-      contract && address
-        ? [contract.populate("transfer", [address, 1n])]
-        : undefined,
+    calls: contract && address ? [contract.populate("transfer", [address, 1n])] : undefined,
   });
 
   return (
@@ -77,9 +69,6 @@ const abi = [
   },
 ] as const satisfies Abi;
 
-const formatAmount = (
-  unformattedAmount: bigint | unknown,
-  decimals: number,
-) => {
+const formatAmount = (unformattedAmount: bigint | unknown, decimals: number) => {
   return Number(BigInt(unformattedAmount?.toString() || 0)) / 10 ** decimals;
 };

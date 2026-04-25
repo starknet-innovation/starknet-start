@@ -1041,16 +1041,12 @@
       {
         "selector": "0x11e8e8caedade09c333b865af974b57a88a87e673cee2ab5920dba841924fc1",
         "offset": 177,
-        "builtins": [
-          "range_check"
-        ]
+        "builtins": ["range_check"]
       },
       {
         "selector": "0x2c2c5a8bc1087f63772728099e970bfdfcac1558a10b9518575460292850835",
         "offset": 0,
-        "builtins": [
-          "range_check"
-        ]
+        "builtins": ["range_check"]
       }
     ],
     "L1_HANDLER": [],

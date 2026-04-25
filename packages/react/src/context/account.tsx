@@ -1,7 +1,7 @@
 import type { Address } from "@starknet-start/chains";
-import React, { useContext } from "react";
-
 import type { AccountInterface } from "starknet";
+
+import React, { useContext } from "react";
 
 const AccountContext = React.createContext<{
   account: AccountInterface | undefined;
@@ -25,9 +25,5 @@ export function AccountProvider({
   account?: AccountInterface;
   children: React.ReactNode;
 }) {
-  return (
-    <AccountContext.Provider value={{ account, address }}>
-      {children}
-    </AccountContext.Provider>
-  );
+  return <AccountContext.Provider value={{ account, address }}>{children}</AccountContext.Provider>;
 }

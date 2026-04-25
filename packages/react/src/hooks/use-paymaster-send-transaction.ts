@@ -1,15 +1,9 @@
-import {
-  paymasterSendTransactionMutationFn,
-  paymasterSendTransactionMutationKey,
-} from "@starknet-start/query";
+import type { BigNumberish, Call, InvokeFunctionResponse, PaymasterDetails } from "starknet";
+
+import { paymasterSendTransactionMutationFn, paymasterSendTransactionMutationKey } from "@starknet-start/query";
 import { useCallback } from "react";
 import { useStarknetAccount } from "src/context/account";
-import type {
-  BigNumberish,
-  Call,
-  InvokeFunctionResponse,
-  PaymasterDetails,
-} from "starknet";
+
 import { type UseMutationResult, useMutation } from "../query";
 
 export type UsePaymasterSendTransactionArgs = {
@@ -31,17 +25,11 @@ export type UsePaymasterSendTransactionResult = Omit<
 };
 
 /** Hook to send one or several transaction(s) to the network through a paymaster. */
-export function usePaymasterSendTransaction(
-  props: UsePaymasterSendTransactionArgs,
-): UsePaymasterSendTransactionResult {
+export function usePaymasterSendTransaction(props: UsePaymasterSendTransactionArgs): UsePaymasterSendTransactionResult {
   const { calls, options, maxFeeInGasToken, ...rest } = props;
   const { account } = useStarknetAccount();
 
-  const { mutate, mutateAsync, ...result } = useMutation<
-    InvokeFunctionResponse,
-    Error,
-    Call[]
-  >({
+  const { mutate, mutateAsync, ...result } = useMutation<InvokeFunctionResponse, Error, Call[]>({
     mutationKey: paymasterSendTransactionMutationKey(calls || []),
     mutationFn: paymasterSendTransactionMutationFn({
       account,

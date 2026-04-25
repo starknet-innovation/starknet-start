@@ -1,4 +1,5 @@
 import type { Address } from "@starknet-start/chains";
+
 import {
   type BlockIdentifier as BlockIdentifier_,
   BlockTag,
@@ -24,13 +25,7 @@ export type EventsQueryFnParams = {
   provider: RpcProvider;
 } & EventsQueryKeyParams;
 
-export function eventsQueryKey({
-  address,
-  eventName,
-  fromBlock,
-  toBlock,
-  pageSize,
-}: EventsQueryKeyParams) {
+export function eventsQueryKey({ address, eventName, fromBlock, toBlock, pageSize }: EventsQueryKeyParams) {
   return [
     {
       entity: "events" as const,
@@ -43,31 +38,16 @@ export function eventsQueryKey({
   ] as const;
 }
 
-export function eventsQueryFn({
-  provider,
-  address,
-  eventName,
-  fromBlock,
-  toBlock,
-  pageSize,
-}: EventsQueryFnParams) {
-  const keyFilter = eventName
-    ? [num.toHex(hash.starknetKeccak(eventName))]
-    : [];
+export function eventsQueryFn({ provider, address, eventName, fromBlock, toBlock, pageSize }: EventsQueryFnParams) {
+  const keyFilter = eventName ? [num.toHex(hash.starknetKeccak(eventName))] : [];
   const keys = [keyFilter];
 
-  const fromBlockId = fromBlock
-    ? blockIdentifierToBlockId(fromBlock)
-    : undefined;
+  const fromBlockId = fromBlock ? blockIdentifierToBlockId(fromBlock) : undefined;
 
   const toBlockId = toBlock ? blockIdentifierToBlockId(toBlock) : undefined;
   const chunkSize = pageSize ? pageSize : DEFAULT_PAGE_SIZE;
 
-  return async ({
-    pageParam,
-  }: {
-    pageParam?: string;
-  }): Promise<EVENTS_CHUNK> => {
+  return async ({ pageParam }: { pageParam?: string }): Promise<EVENTS_CHUNK> => {
     const res = await provider.getEvents({
       from_block: fromBlockId,
       to_block: toBlockId,
@@ -97,7 +77,5 @@ function blockIdentifierToBlockId(blockIdentifier: BlockIdentifier) {
     return { block_hash: blockIdentifier };
   }
 
-  throw new Error(
-    `Unsupported BlockIdentifier type: ${typeof blockIdentifier}`,
-  );
+  throw new Error(`Unsupported BlockIdentifier type: ${typeof blockIdentifier}`);
 }

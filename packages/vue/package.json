@@ -2,14 +2,13 @@
   "name": "starknet-vue",
   "version": "0.0.1-alpha.2",
   "private": true,
+  "homepage": "https://start.starknet-react.com/",
   "license": "MIT",
-  "repository": "apibara/starknet-react",
+  "repository": "starknet-start/starknet-start",
   "type": "module",
   "main": "./src/index.ts",
   "exports": "./src/index.ts",
   "publishConfig": {
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
     "exports": {
       ".": {
         "types": "./dist/index.d.ts",
@@ -21,21 +20,15 @@
       "dist",
       "src",
       "README.md"
-    ]
+    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts"
   },
   "scripts": {
     "build": "tsup",
     "clean": "rimraf dist",
     "test": "vitest",
-    "test:ci": "vitest run",
-    "lint": "biome check src",
-    "lint:fix": "pnpm lint --write",
-    "format:check": "biome format .",
-    "format": "biome format . --write"
-  },
-  "peerDependencies": {
-    "starknet": "^9.4.2",
-    "vue": "^3.4.0"
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@starknet-io/get-starknet-core": "^5.0.0",
@@ -61,6 +54,10 @@
     "starknet": "^9.4.2",
     "tsup": "^8.0.2",
     "vitest": "^4.0.15",
+    "vue": "^3.4.0"
+  },
+  "peerDependencies": {
+    "starknet": "^9.4.2",
     "vue": "^3.4.0"
   }
 }

@@ -1,3 +1,5 @@
+import type React from "react";
+
 import { devnet, mainnet } from "@starknet-start/chains";
 import { jsonRpcProvider } from "@starknet-start/providers";
 import { QueryClient } from "@tanstack/react-query";
@@ -8,8 +10,9 @@ import {
   render,
   renderHook,
 } from "@testing-library/react";
-import type React from "react";
+
 import type { MockWalletOptions } from "../src/connectors/mock";
+
 import { StarknetConfig as OgStarknetConfig } from "../src/context";
 import { defaultConnector } from "./devnet";
 
@@ -42,12 +45,7 @@ function StarknetConfig({
   });
 
   return (
-    <OgStarknetConfig
-      chains={chains}
-      provider={provider}
-      extraWallets={[defaultConnector]}
-      queryClient={queryClient}
-    >
+    <OgStarknetConfig chains={chains} provider={provider} extraWallets={[defaultConnector]} queryClient={queryClient}>
       {children}
     </OgStarknetConfig>
   );
@@ -61,11 +59,7 @@ function customRender(
 ): RenderResult {
   const { connectorOptions, ...renderOptions } = options;
   return render(ui, {
-    wrapper: ({ children }) => (
-      <StarknetConfig connectorOptions={connectorOptions}>
-        {children}
-      </StarknetConfig>
-    ),
+    wrapper: ({ children }) => <StarknetConfig connectorOptions={connectorOptions}>{children}</StarknetConfig>,
     ...renderOptions,
   });
 }
@@ -78,11 +72,7 @@ function customRenderHook<RenderResult, Props>(
 ) {
   const { connectorOptions, hydrate, ...renderOptions } = options;
   return renderHook(render, {
-    wrapper: ({ children }) => (
-      <StarknetConfig connectorOptions={connectorOptions}>
-        {children}
-      </StarknetConfig>
-    ),
+    wrapper: ({ children }) => <StarknetConfig connectorOptions={connectorOptions}>{children}</StarknetConfig>,
     hydrate: hydrate as false | undefined,
     ...renderOptions,
   });

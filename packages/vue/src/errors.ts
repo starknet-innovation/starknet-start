@@ -20,13 +20,7 @@ export class UserRejectedRequestError extends Error {
 
 export class WalletRequestError extends Error {
   constructor(error?: string | Error | unknown, _cause?: Error | unknown) {
-    super(
-      error instanceof Error
-        ? error.message
-        : typeof error === "string"
-          ? error
-          : "Unknown Request Error",
-    );
+    super(error instanceof Error ? error.message : typeof error === "string" ? error : "Unknown Request Error");
     this.name = "WalletRequestError";
     this.stack = error instanceof Error ? error.stack : undefined;
   }

@@ -14,24 +14,17 @@ export type UseSendTransactionArgs = {
 };
 
 export type UseSendTransactionProps = UseSendTransactionArgs &
-  Omit<
-    UseWalletRequestProps<"wallet_addInvokeTransaction">,
-    keyof RequestArgs<"wallet_addInvokeTransaction">
-  >;
+  Omit<UseWalletRequestProps<"wallet_addInvokeTransaction">, keyof RequestArgs<"wallet_addInvokeTransaction">>;
 
 export type UseSendTransactionResult = Omit<
   UseWalletRequestResult<"wallet_addInvokeTransaction">,
   "request" | "requestAsync"
 > & {
   send: (args?: Call[]) => void;
-  sendAsync: (
-    args?: Call[],
-  ) => Promise<RequestResult<"wallet_addInvokeTransaction">>;
+  sendAsync: (args?: Call[]) => Promise<RequestResult<"wallet_addInvokeTransaction">>;
 };
 
-export function useSendTransaction(
-  props: UseSendTransactionProps,
-): UseSendTransactionResult {
+export function useSendTransaction(props: UseSendTransactionProps): UseSendTransactionResult {
   const { calls, ...rest } = props;
 
   const params = calls ? { calls: transformCalls(calls) } : undefined;

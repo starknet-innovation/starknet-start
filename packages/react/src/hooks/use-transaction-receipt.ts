@@ -1,9 +1,8 @@
-import {
-  transactionReceiptQueryFn,
-  transactionReceiptQueryKey,
-} from "@starknet-start/query";
-import { useMemo } from "react";
 import type { GetTransactionReceiptResponse } from "starknet";
+
+import { transactionReceiptQueryFn, transactionReceiptQueryKey } from "@starknet-start/query";
+import { useMemo } from "react";
+
 import { useStarknet } from "../context/starknet";
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
@@ -21,10 +20,7 @@ export type UseTransactionReceiptProps = UseQueryProps<
   watch?: boolean;
 };
 
-export type UseTransactionReceiptResult = UseQueryResult<
-  GetTransactionReceiptResponse,
-  Error
->;
+export type UseTransactionReceiptResult = UseQueryResult<GetTransactionReceiptResponse, Error>;
 
 /**
  * Hook to fetch a single transaction receipt.
@@ -48,10 +44,7 @@ export function useTransactionReceipt({
 }: UseTransactionReceiptProps): UseTransactionReceiptResult {
   const { provider, chain } = useStarknet();
 
-  const queryKey_ = useMemo(
-    () => transactionReceiptQueryKey({ chain, hash }),
-    [chain, hash],
-  );
+  const queryKey_ = useMemo(() => transactionReceiptQueryKey({ chain, hash }), [chain, hash]);
 
   const enabled = useMemo(() => Boolean(enabled_ && hash), [enabled_, hash]);
 

@@ -1,31 +1,18 @@
-import {
-  type DeployAccountVariables,
-  deployAccountMutationFn,
-  deployAccountMutationKey,
-} from "@starknet-start/query";
-import { useStarknetAccount } from "src/context/account";
 import type { DeployContractResponse } from "starknet";
-import {
-  type UseMutationProps,
-  type UseMutationResult,
-  useMutation,
-} from "../query";
+
+import { type DeployAccountVariables, deployAccountMutationFn, deployAccountMutationKey } from "@starknet-start/query";
+import { useStarknetAccount } from "src/context/account";
+
+import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";
 
 export type { DeployAccountVariables };
 
 export type UseDeployAccountProps = DeployAccountVariables &
   UseMutationProps<DeployContractResponse, Error, DeployAccountVariables>;
 
-type MutationResult = UseMutationResult<
-  DeployContractResponse,
-  Error,
-  DeployAccountVariables
->;
+type MutationResult = UseMutationResult<DeployContractResponse, Error, DeployAccountVariables>;
 
-export type UseDeployAccountResult = Omit<
-  MutationResult,
-  "mutate" | "mutateAsync"
-> & {
+export type UseDeployAccountResult = Omit<MutationResult, "mutate" | "mutateAsync"> & {
   /** Deploy account. */
   deployAccount: MutationResult["mutate"];
 

@@ -1,6 +1,7 @@
 import { type Address, useStarkName } from "@starknet-start/react";
 import { useState } from "react";
 import stringify from "safe-stable-stringify";
+
 import { DemoContainer } from "../starknet";
 import { Input } from "../ui/input";
 
@@ -13,9 +14,7 @@ export function StarkName() {
 }
 
 function StarkNameInner() {
-  const [address, setAddress] = useState(
-    "0x7cffe72748da43594c5924129b4f18bffe643270a96b8760a6f2e2db49d9732",
-  );
+  const [address, setAddress] = useState("0x7cffe72748da43594c5924129b4f18bffe643270a96b8760a6f2e2db49d9732");
 
   const { data, isLoading, isPending, isError, error } = useStarkName({
     address: address as Address,

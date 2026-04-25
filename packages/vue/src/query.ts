@@ -6,8 +6,4 @@ export type {
   UseQueryOptions as UseQueryProps,
   UseQueryReturnType as UseQueryResult,
 } from "@tanstack/vue-query";
-export {
-  useInfiniteQuery,
-  useMutation,
-  useQuery,
-} from "@tanstack/vue-query";
+export { useInfiniteQuery, useMutation, useQuery } from "@tanstack/vue-query";

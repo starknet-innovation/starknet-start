@@ -6,8 +6,7 @@ export function getSlotChain(projectId: string) {
     network: `slot-${projectId}`,
     name: `${projectId}`,
     nativeCurrency: {
-      address:
-        "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+      address: "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
       name: "Ether",
       symbol: "ETH",
       decimals: 18,

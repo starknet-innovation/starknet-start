@@ -13,7 +13,7 @@
 </p>
 
 **Starknet Start** is a library to build Starknet applications in React and Vue. It is inspired by
-[wagmi](https://github.com/tmm/wagmi), powered by [starknet.js](https://github.com/0xs34n/starknet.js).
+[wagmi](https://github.com/wevm/wagmi), powered by [starknet.js](https://starknetjs.com/).
 
 ## License
 

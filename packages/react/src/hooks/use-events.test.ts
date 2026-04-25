@@ -1,5 +1,7 @@
 import type { Abi } from "abi-wan-kanabi";
+
 import { describe, expect, it } from "vitest";
+
 import { accounts, defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
 import { useAccount } from "./use-account";
@@ -20,10 +22,7 @@ function useSendTransactionWithConnect() {
 
   const { address } = useAccount();
 
-  const calls =
-    contract && address
-      ? [contract.populate("transfer", [address, 1n])]
-      : undefined;
+  const calls = contract && address ? [contract.populate("transfer", [address, 1n])] : undefined;
 
   return {
     sendTransaction: useSendTransaction({ calls }),

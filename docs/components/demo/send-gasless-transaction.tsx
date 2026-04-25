@@ -1,3 +1,5 @@
+import type { Abi, Call, FeeMode } from "starknet";
+
 import { mainnet, sepolia } from "@starknet-start/chains";
 import {
   useAccount,
@@ -8,15 +10,13 @@ import {
 } from "@starknet-start/react";
 import { useMemo } from "react";
 import stringify from "safe-stable-stringify";
-import type { Abi, Call, FeeMode } from "starknet";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 
 const USDC_ADDRESS_PER_CHAIN: Record<string, string> = {
-  [mainnet.name]:
-    "0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8",
-  [sepolia.name]:
-    "0x053b40a647cedfca6ca84f542a0fe36736031905a9639a7f19a3c1e66bfd5080",
+  [mainnet.name]: "0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8",
+  [sepolia.name]: "0x053b40a647cedfca6ca84f542a0fe36736031905a9639a7f19a3c1e66bfd5080",
 };
 
 export function SendGaslessTransaction() {
@@ -44,8 +44,7 @@ function SendGaslessTransactionInner() {
   );
 
   const calls = useMemo<Call[]>(
-    () =>
-      contract && address ? [contract.populate("transfer", [address, 1n])] : [],
+    () => (contract && address ? [contract.populate("transfer", [address, 1n])] : []),
     [contract, address],
   );
 

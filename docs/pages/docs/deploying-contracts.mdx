@@ -37,16 +37,7 @@ function DeployContract() {
   const { udc } = useUniversalDeployerContract();
 
   const { send, isPending, error, data } = useSendTransaction({
-    calls: udc
-      ? [
-          udc.populate("deploy_contract", [
-            classHash,
-            salt,
-            fromZero,
-            constructorCalldata,
-          ]),
-        ]
-      : undefined,
+    calls: udc ? [udc.populate("deploy_contract", [classHash, salt, fromZero, constructorCalldata])] : undefined,
   });
 }
 ```
@@ -56,10 +47,7 @@ function DeployContract() {
 Here's a complete example showing how to deploy an ERC20 token:
 
 ```tsx
-import {
-  useUniversalDeployerContract,
-  useSendTransaction,
-} from "@starknet-start/react";
+import { useUniversalDeployerContract, useSendTransaction } from "@starknet-start/react";
 import { CallData } from "starknet";
 
 function DeployERC20() {

@@ -1,11 +1,8 @@
-import {
-  useAccount,
-  useContract,
-  useNetwork,
-  useSendTransaction,
-} from "@starknet-start/react";
-import stringify from "safe-stable-stringify";
 import type { Abi } from "starknet";
+
+import { useAccount, useContract, useNetwork, useSendTransaction } from "@starknet-start/react";
+import stringify from "safe-stable-stringify";
+
 import { DemoContainer } from "../starknet";
 import { Button } from "../ui/button";
 
@@ -26,10 +23,7 @@ function SendTransactionInner() {
   });
 
   const { isError, error, send, data, isPending } = useSendTransaction({
-    calls:
-      contract && address
-        ? [contract.populate("transfer", [address, 1n])]
-        : undefined,
+    calls: contract && address ? [contract.populate("transfer", [address, 1n])] : undefined,
   });
 
   return (

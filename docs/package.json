@@ -6,11 +6,7 @@
     "dev": "vocs dev",
     "typecheck": "tsc --noEmit",
     "build": "vocs build -o dist",
-    "preview": "vocs preview",
-    "lint": "biome lint components",
-    "lint:fix": "biome lint components --write",
-    "format:check": "biome format components",
-    "format": "biome format components --write"
+    "preview": "vocs preview"
   },
   "dependencies": {
     "@cartridge/connector": "^0.11.2",
@@ -21,8 +17,8 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@starknet-io/get-starknet-core": "^5.0.0",
     "@starknet-io/get-starknet-modal": "^5.0.0",
-    "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
     "@starknet-io/get-starknet-ui": "^5.0.0",
+    "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
     "@starknet-start/chains": "workspace:^",
     "@starknet-start/explorers": "workspace:^",
     "@starknet-start/providers": "workspace:^",

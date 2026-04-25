@@ -1,5 +1,1 @@
-export {
-  MockWallet,
-  type MockWalletAccounts,
-  type MockWalletOptions,
-} from "./mock";
+export { MockWallet, type MockWalletAccounts, type MockWalletOptions } from "./mock";

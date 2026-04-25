@@ -1,5 +1,6 @@
 import { shortString } from "starknet";
 import { describe, expect, it } from "vitest";
+
 import { defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
 import { type UseAddChainArgs, useAddChain } from "./use-add-chain";
@@ -15,8 +16,7 @@ const chainData: UseAddChainArgs = {
   native_currency: {
     type: "ERC20",
     options: {
-      address:
-        "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+      address: "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
       name: "ETHER",
       symbol: "ETH",
       decimals: 18,

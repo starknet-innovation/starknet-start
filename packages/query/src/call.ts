@@ -18,22 +18,14 @@ export type CallQueryFnParams = {
   contract?: Contract;
 } & CallQueryArgs;
 
-export function callQueryKey({
-  chain,
-  contract,
-  functionName,
-  args,
-  blockIdentifier,
-}: CallQueryKeyParams) {
+export function callQueryKey({ chain, contract, functionName, args, blockIdentifier }: CallQueryKeyParams) {
   return [
     {
       entity: "readContract" as const,
       chainId: chain?.name,
       contract: contract?.address,
       functionName,
-      args: JSON.stringify(args, (_, v) =>
-        typeof v === "bigint" ? v.toString(10) : v,
-      ),
+      args: JSON.stringify(args, (_, v) => (typeof v === "bigint" ? v.toString(10) : v)),
       blockIdentifier,
     },
   ] as const;

@@ -96,17 +96,12 @@ export function useContractFactory({
         );
       }
 
-      throw new Error(
-        "Either compiledContract + casm or classHash is required to deploy a contract",
-      );
+      throw new Error("Either compiledContract + casm or classHash is required to deploy a contract");
     },
     [account, compiledContract, casm, classHash, abi],
   );
 
   return {
-    deployContract:
-      account && ((compiledContract && casm) || classHash)
-        ? deployContract
-        : undefined,
+    deployContract: account && ((compiledContract && casm) || classHash) ? deployContract : undefined,
   };
 }

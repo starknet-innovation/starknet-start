@@ -1,42 +1,52 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
+  # Releases are triggered manually via the GitHub UI
+  workflow_dispatch:
+
+permissions: {}
 
 jobs:
   release:
     permissions:
+      id-token: write
       contents: write
+
     environment: Release
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
       - name: Set Node version
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - uses: pnpm/action-setup@v4
+          node-version: 24
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
         with:
-          version: 10.18.0
+          cache: true
+
       - name: Install dependencies
         run: pnpm install --strict-peer-dependencies=false --no-frozen-lockfile
       - name: Run build
         run: pnpm build
       - name: Setup git
         run: |
-          git config user.name "Capy Bot"
+          git config user.name "Kapy Bot"
           git config user.email "capy-bot@apibara.com"
-          git remote set-url origin "https://x-access-token:${GIT_TOKEN}@github.com/starknet-start/starknet-start"
+          git remote set-url origin "https://x-access-token:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}"
         env:
           GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install dependencies
-        run: pnpm install --strict-peer-dependencies=false --no-frozen-lockfile
       - name: Publish package
-        run: pnpm beachball publish --access public --token "${NPM_TOKEN}"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm beachball publish --access public -y

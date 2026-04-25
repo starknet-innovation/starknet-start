@@ -1,10 +1,6 @@
 import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
-import {
-  useAccount,
-  useConnect,
-  useDisconnect,
-  useNetwork,
-} from "@starknet-start/react";
+import { useAccount, useConnect, useDisconnect, useNetwork } from "@starknet-start/react";
+
 import { Button } from "../ui/button";
 
 export function WalletBar() {
@@ -30,12 +26,7 @@ function ConnectedWallet({ address }: { address: `0x${string}` }) {
         <pre title={chain.name}>
           {chain.name} | {chain.network}
         </pre>
-        <Button
-          size={"sm"}
-          variant={"destructive"}
-          className="flex-none"
-          onClick={() => disconnect()}
-        >
+        <Button size={"sm"} variant={"destructive"} className="flex-none" onClick={() => disconnect()}>
           Disconnect
         </Button>
       </div>

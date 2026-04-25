@@ -1,4 +1,5 @@
 import type { Chain } from "@starknet-start/chains";
+
 import type { Explorer, ExplorerFactory } from "./explorer";
 
 // Define the VoyagerExplorer class that extends Explorer

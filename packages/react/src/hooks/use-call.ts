@@ -1,11 +1,9 @@
 import type { Address } from "@starknet-start/chains";
-import {
-  type CallQueryArgs,
-  callQueryFn,
-  callQueryKey,
-} from "@starknet-start/query";
+
+import { type CallQueryArgs, callQueryFn, callQueryKey } from "@starknet-start/query";
 import { useMemo } from "react";
 import { type Abi, BlockTag, type CallResult, type Contract } from "starknet";
+
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useContract } from "./use-contract";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
@@ -72,10 +70,7 @@ export function useCall({
   );
 
   const refetchInterval =
-    refetchInterval_ ??
-    (blockIdentifier === BlockTag.PRE_CONFIRMED && watch
-      ? DEFAULT_FETCH_INTERVAL
-      : undefined);
+    refetchInterval_ ?? (blockIdentifier === BlockTag.PRE_CONFIRMED && watch ? DEFAULT_FETCH_INTERVAL : undefined);
 
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),

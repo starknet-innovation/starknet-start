@@ -1,5 +1,6 @@
 import ts from "typescript";
 import { defineConfig } from "vocs";
+
 import { sidebar } from "./sidebar";
 
 export default defineConfig({

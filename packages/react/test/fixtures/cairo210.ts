@@ -19,20 +19,16 @@ export function getRandomizedContract() {
   sierraEntry.selector = randomSelector;
   customizedSierra.entry_points_by_type.EXTERNAL.push(sierraEntry);
   customizedSierra.entry_points_by_type.EXTERNAL.sort(
-    (
-      a: { selector: string | number | bigint | boolean },
-      b: { selector: string | number | bigint | boolean },
-    ) => (BigInt(a.selector) < BigInt(b.selector) ? -1 : 1),
+    (a: { selector: string | number | bigint | boolean }, b: { selector: string | number | bigint | boolean }) =>
+      BigInt(a.selector) < BigInt(b.selector) ? -1 : 1,
   );
 
   const casmEntry = { ...customizedCasm.entry_points_by_type.EXTERNAL[0] };
   casmEntry.selector = randomSelector;
   customizedCasm.entry_points_by_type.EXTERNAL.push(casmEntry);
   customizedCasm.entry_points_by_type.EXTERNAL.sort(
-    (
-      a: { selector: string | number | bigint | boolean },
-      b: { selector: string | number | bigint | boolean },
-    ) => (BigInt(a.selector) < BigInt(b.selector) ? -1 : 1),
+    (a: { selector: string | number | bigint | boolean }, b: { selector: string | number | bigint | boolean }) =>
+      BigInt(a.selector) < BigInt(b.selector) ? -1 : 1,
   );
 
   return {

@@ -9,9 +9,7 @@ export type JsonRpcProviderArgs = {
 };
 
 /** Configure the JSON-RPC provider using the provided function. */
-export function jsonRpcProvider({
-  rpc,
-}: JsonRpcProviderArgs): ChainProviderFactory<RpcProvider> {
+export function jsonRpcProvider({ rpc }: JsonRpcProviderArgs): ChainProviderFactory<RpcProvider> {
   return (chain) => {
     const config = rpc(chain);
     if (!config) return null;
@@ -22,9 +20,7 @@ export function jsonRpcProvider({
   };
 }
 
-function starknetChainIdHint(
-  chainId: bigint,
-): constants.StarknetChainId | undefined {
+function starknetChainIdHint(chainId: bigint): constants.StarknetChainId | undefined {
   switch (chainId) {
     case mainnet.id:
       return constants.StarknetChainId.SN_MAIN;

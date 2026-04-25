@@ -1,19 +1,13 @@
 import type { Address } from "@starknet-start/chains";
-import {
-  starkAddressQueryFn,
-  starkAddressQueryKey,
-} from "@starknet-start/query";
+
+import { starkAddressQueryFn, starkAddressQueryKey } from "@starknet-start/query";
 import { useMemo } from "react";
+
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useNetwork } from "./use-network";
 import { useProvider } from "./use-provider";
 
-export type UseStarkAddressProps = UseQueryProps<
-  Address,
-  Error,
-  Address,
-  ReturnType<typeof starkAddressQueryKey>
-> & {
+export type UseStarkAddressProps = UseQueryProps<Address, Error, Address, ReturnType<typeof starkAddressQueryKey>> & {
   /** Stark name. */
   name?: string;
   /** Naming contract to use . */

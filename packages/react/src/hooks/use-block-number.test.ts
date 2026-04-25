@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { renderHook, waitFor } from "../../test/react";
 
+import { renderHook, waitFor } from "../../test/react";
 import { useBlockNumber } from "./use-block-number";
 
 describe("useBlockNumber", () => {

@@ -1,4 +1,13 @@
 import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-core";
+import type { RequestFn, RequestFnCall, RpcMessage, RpcTypeToMessageMap } from "@starknet-io/types-js";
+import type { Chain } from "@starknet-start/chains";
+import type {
+  StandardConnectMethod,
+  StandardDisconnectMethod,
+  StandardEventsOnMethod,
+} from "@wallet-standard/features";
+import type { AccountInterface, Call } from "starknet";
+
 import {
   StandardConnect,
   StandardDisconnect,
@@ -7,12 +16,6 @@ import {
   type StandardEventsNames,
   StarknetWalletApi,
 } from "@starknet-io/get-starknet-core";
-import type {
-  RequestFn,
-  RequestFnCall,
-  RpcMessage,
-  RpcTypeToMessageMap,
-} from "@starknet-io/types-js";
 import {
   type AddDeclareTransactionParameters,
   type AddInvokeTransactionParameters,
@@ -21,14 +24,8 @@ import {
   type SwitchStarknetChainParameters,
   type TypedData,
 } from "@starknet-io/types-js";
-import type { Chain } from "@starknet-start/chains";
 import { devnet, mainnet, sepolia } from "@starknet-start/chains";
-import type {
-  StandardConnectMethod,
-  StandardDisconnectMethod,
-  StandardEventsOnMethod,
-} from "@wallet-standard/features";
-import type { AccountInterface, Call } from "starknet";
+
 import { UserRejectedRequestError } from "../errors";
 
 export type MockWalletOptions = {
@@ -192,22 +189,14 @@ export class MockWallet implements WalletWithStarknetFeatures {
     return (): void => this._off(event, listener);
   };
 
-  private _off<E extends StandardEventsNames>(
-    event: E,
-    listener: StandardEventsListeners[E],
-  ): void {
+  private _off<E extends StandardEventsNames>(event: E, listener: StandardEventsListeners[E]): void {
     const listeners = this._listeners[event];
     if (!listeners) return;
 
-    this._listeners[event] = listeners.filter(
-      (existingListener) => listener !== existingListener,
-    );
+    this._listeners[event] = listeners.filter((existingListener) => listener !== existingListener);
   }
 
-  private _emit<E extends StandardEventsNames>(
-    event: E,
-    ...args: Parameters<StandardEventsListeners[E]>
-  ): void {
+  private _emit<E extends StandardEventsNames>(event: E, ...args: Parameters<StandardEventsListeners[E]>): void {
     const listeners = this._listeners[event];
     if (!listeners) return;
 
@@ -254,8 +243,7 @@ export class MockWallet implements WalletWithStarknetFeatures {
           throw new UserRejectedRequestError();
         }
         if (!params) throw new Error("Params are missing");
-        const { compiled_class_hash, contract_class, class_hash } =
-          params as AddDeclareTransactionParameters;
+        const { compiled_class_hash, contract_class, class_hash } = params as AddDeclareTransactionParameters;
 
         return await this._currentAccount.declare({
           compiledClassHash: compiled_class_hash,
