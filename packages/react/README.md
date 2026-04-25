@@ -1,18 +1,18 @@
-# `@starknet-react/core`
+# `@starknet-start/react`
 
 Starknet React is a collection of React hooks for Starknet.
 
 ## Installation
 
 ```
-npm install @starknet-react/core
+npm install @starknet-start/react
 # or
-yarn add @starknet-react/core
+yarn add @starknet-start/react
 ```
 
 ## Documentation
 
-Documentation [is available online](https://apibara.github.io/starknet-react/).
+Documentation [is available online](https://start.starknet-react.com/docs/getting-started).
 
 ## Development
 
