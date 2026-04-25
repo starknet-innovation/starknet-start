@@ -2,6 +2,21 @@
   "name": "@starknet-start/providers",
   "entries": [
     {
+      "date": "Sat, 25 Apr 2026 15:13:11 GMT",
+      "version": "1.0.7",
+      "tag": "@starknet-start/providers_v1.0.7",
+      "comments": {
+        "none": [
+          {
+            "author": "francesco@ceccon.me",
+            "package": "@starknet-start/providers",
+            "commit": "cdfe253e37c444e5e11839e7c9017f4d2699c8af",
+            "comment": "build: update workflows"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Mar 2026 14:03:06 GMT",
       "version": "1.0.7",
       "tag": "@starknet-start/providers_v1.0.7",

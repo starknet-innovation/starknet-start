@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "build: update workflows",
-  "packageName": "@starknet-start/chains",
-  "email": "francesco@ceccon.me",
-  "dependentChangeType": "none"
-}
