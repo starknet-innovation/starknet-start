@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "react: update README",
+  "packageName": "@starknet-start/react",
+  "email": "francesco@ceccon.me",
+  "dependentChangeType": "patch"
+}
