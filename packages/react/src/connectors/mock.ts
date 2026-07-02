@@ -21,6 +21,8 @@ import {
   type AddInvokeTransactionParameters,
   Permission,
   type Call as RequestCall,
+  type STRK20_BALANCE_ENTRY,
+  type STRK20_CALL_AND_PROOF,
   type SwitchStarknetChainParameters,
   type TypedData,
 } from "@starknet-io/types-js";
@@ -259,6 +261,33 @@ export class MockWallet implements WalletWithStarknetFeatures {
         if (!params) throw new Error("Params are missing");
         const { calls } = params as AddInvokeTransactionParameters;
         return await this._currentAccount.execute(transformCalls(calls));
+      }
+
+      case "wallet_strk20Balances": {
+        if (!params) throw new Error("Params are missing");
+        const { tokens } = params as RpcTypeToMessageMap["wallet_strk20Balances"]["params"];
+        return tokens.map((token) => ({ token, balance: "0x0" })) as STRK20_BALANCE_ENTRY[];
+      }
+
+      case "wallet_strk20PrepareInvoke": {
+        return {
+          call: {
+            contract_address: "0x1",
+            entry_point: "execute_strk20",
+            calldata: [],
+          },
+          proof: {
+            data: "0x0",
+            output: [],
+            proof_facts: [],
+          },
+        } as STRK20_CALL_AND_PROOF;
+      }
+
+      case "wallet_strk20InvokeTransaction": {
+        return {
+          transaction_hash: "0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        };
       }
 
       case "wallet_signTypedData": {

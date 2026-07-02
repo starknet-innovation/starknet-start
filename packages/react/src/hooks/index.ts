@@ -23,6 +23,7 @@ export * from "./use-provider";
 export * from "./use-read-contract";
 export * from "./use-send-transaction";
 export * from "./use-sign";
+export * from "./use-strk20";
 export * from "./use-stark-address";
 export * from "./use-stark-name";
 export * from "./use-stark-profile";
