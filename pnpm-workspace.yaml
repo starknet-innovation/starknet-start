@@ -6,7 +6,7 @@ packages:
   - packages/query
   - packages/react
   - packages/create-starknet
-  # - packages/vue
+  - packages/vue
   - docs
 
 onlyBuiltDependencies:

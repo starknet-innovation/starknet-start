@@ -255,7 +255,7 @@ function decodeSocials({ twitter, github, discord }: { twitter: bigint; github: 
 function decodeVerifierData(data: bigint) {
   if (data === BigInt(0)) return undefined;
 
-  // TODO: check if this is a correct way, as the old code was using older version of starknet.js and things were deprecated
+  // Starknet ID verifier data is stored as a felt short string.
   const decoded = shortString.decodeShortString(numToHex(data));
   return decoded === "" ? undefined : decoded;
 }

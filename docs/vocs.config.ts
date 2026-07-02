@@ -5,7 +5,7 @@ import { sidebar } from "./sidebar";
 
 export default defineConfig({
   rootDir: ".",
-  title: "Starknet React",
+  title: "Starknet Start",
   sidebar,
   twoslash: {
     compilerOptions: {

@@ -6,9 +6,9 @@
     "l2",
     "starknet"
   ],
-  "homepage": "https://start.starknet-react.com/",
+  "homepage": "https://github.com/starknet-innovation/starknet-start#readme",
   "license": "MIT",
-  "repository": "starknet-start/starknet-start",
+  "repository": "starknet-innovation/starknet-start",
   "files": [
     "dist",
     "src",

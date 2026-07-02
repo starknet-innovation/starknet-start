@@ -7,9 +7,9 @@ Hook to fetch a single transaction receipt.
 ```ts twoslash
 import { useTransactionReceipt } from "@starknet-start/react";
 
-// TODO
 const { data, error } = useTransactionReceipt({
-  hash: "",
+  hash: "0x0123",
+  watch: true,
 });
 ```
 

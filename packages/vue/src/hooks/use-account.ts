@@ -1,9 +1,9 @@
+import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-wallet-standard/features";
 import type { Address } from "@starknet-start/chains";
 import type { AccountInterface } from "starknet";
 
+import { WalletAccountV5 } from "starknet";
 import { reactive, shallowRef, watch } from "vue";
-
-import type { Connector } from "../connectors";
 
 import { useStarknet } from "../context/starknet";
 import { getAddress } from "../utils";
@@ -14,7 +14,7 @@ export type AccountStatus = "connected" | "disconnected" | "connecting" | "recon
 export interface UseAccountResult {
   account?: AccountInterface;
   address?: Address;
-  connector?: Connector;
+  connector?: WalletWithStarknetFeatures;
   chainId?: bigint;
   isConnecting?: boolean;
   isReconnecting?: boolean;
@@ -64,7 +64,12 @@ export function useAccount(): UseAccountResult {
       setConnectedState(accountRef.value);
 
       try {
-        const connectedAccount = (await starknet.connector.account(provider, paymasterProvider)) as AccountInterface;
+        const connectedAccount = new WalletAccountV5({
+          address: starknet.address,
+          provider,
+          walletProvider: starknet.connector,
+          paymaster: paymasterProvider,
+        }) as AccountInterface;
         accountRef.value = connectedAccount;
         setConnectedState(connectedAccount);
       } catch {

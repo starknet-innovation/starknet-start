@@ -8,7 +8,7 @@ describe("publicProvider", () => {
     expect(publicProvider()(devnet)?.channel.nodeUrl).toMatchInlineSnapshot('"http://localhost:5050/rpc"');
   });
 
-  it("returns the chain", () => {
-    expect(publicProvider()(devnet)?.getChainId()).resolves.toMatch("0x534e5f5345504f4c4941");
+  it("returns the chain", async () => {
+    await expect(publicProvider()(devnet)?.getChainId()).resolves.toMatch("0x534e5f5345504f4c4941");
   });
 });

@@ -1,6 +1,6 @@
 # `@starknet-start/react`
 
-Starknet React is a collection of React hooks for Starknet.
+Starknet Start is a collection of React hooks for Starknet.
 
 ## Installation
 
@@ -12,7 +12,7 @@ yarn add @starknet-start/react
 
 ## Documentation
 
-Documentation [is available online](https://start.starknet-react.com/docs/getting-started).
+Documentation is available in the [Starknet Start repository](https://github.com/starknet-innovation/starknet-start#readme).
 
 ## Development
 
@@ -26,7 +26,7 @@ Running tests requires to have `starknet-devnet` running locally.
 The easiest way is to use docker with:
 
 ```
-docker run --rm -p 5050:5050 shardlabs/starknet-devnet:latest
+docker run --rm -p 5050:5050 shardlabs/starknet-devnet-rs:0.7.0-seed0
 ```
 
 After that, you can run tests with `pnpm test`.

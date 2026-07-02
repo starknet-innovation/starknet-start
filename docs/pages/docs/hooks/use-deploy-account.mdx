@@ -7,8 +7,12 @@ Hook for deploying a contract.
 ```ts twoslash
 import { useDeployAccount } from "@starknet-start/react";
 
-// TODO
-const { deployAccount, error } = useDeployAccount({});
+const { deployAccount, error } = useDeployAccount({
+  classHash: "0x0123",
+  constructorCalldata: [],
+  addressSalt: "0x1",
+  contractAddress: "0x0456",
+});
 ```
 
 ## Arguments

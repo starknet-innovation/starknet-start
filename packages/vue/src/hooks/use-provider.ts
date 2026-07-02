@@ -1,10 +1,10 @@
-import type { PaymasterInterface, ProviderInterface } from "starknet";
+import type { PaymasterRpc, ProviderInterface } from "starknet";
 
 import { useStarknet } from "../context/starknet";
 
 export interface UseProviderResult {
   provider: ProviderInterface;
-  paymasterProvider?: PaymasterInterface;
+  paymasterProvider?: PaymasterRpc;
 }
 
 export function useProvider(): UseProviderResult {

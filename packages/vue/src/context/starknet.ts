@@ -1,8 +1,17 @@
-import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-wallet-standard/features";
+import type {
+  StandardEventsListeners,
+  WalletWithStarknetFeatures,
+} from "@starknet-io/get-starknet-wallet-standard/features";
 import type { ExplorerFactory } from "@starknet-start/explorers";
 import type { ChainProviderFactory } from "@starknet-start/providers";
 import type { App, InjectionKey } from "vue";
 
+import {
+  StandardConnect,
+  StandardDisconnect,
+  StandardEvents,
+  StarknetWalletApi,
+} from "@starknet-io/get-starknet-wallet-standard/features";
 import { type Address, type Chain, mainnet, sepolia } from "@starknet-start/chains";
 import { avnuPaymasterProvider, type ChainPaymasterFactory } from "@starknet-start/providers/paymaster";
 import { QueryClient, VueQueryPlugin, type VueQueryPluginOptions } from "@tanstack/vue-query";
@@ -46,6 +55,29 @@ type SafeStorage = {
 function getStorage(): SafeStorage | undefined {
   const globalObj = globalThis as { localStorage?: SafeStorage };
   return globalObj.localStorage;
+}
+
+type WalletAccount = WalletWithStarknetFeatures["accounts"][number];
+
+function walletId(connector: WalletWithStarknetFeatures): string {
+  return connector.features[StarknetWalletApi].id;
+}
+
+function chainIdFromAccount(account?: WalletAccount): bigint | undefined {
+  const chainIdentifier = account?.chains[0];
+  if (!chainIdentifier) return undefined;
+
+  try {
+    const parts = chainIdentifier.split(":");
+    const chainId = parts[parts.length - 1];
+    return chainId ? BigInt(chainId) : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function chainIdFromConnector(connector: WalletWithStarknetFeatures): bigint | undefined {
+  return chainIdFromAccount(connector.accounts[0]);
 }
 
 function providerForChain(chain: Chain, factory: ChainProviderFactory): { chain: Chain; provider: ProviderInterface } {
@@ -99,6 +131,7 @@ function createStarknetManager({
   const currentPaymasterProvider = shallowRef<PaymasterRpc | undefined>(defaultPaymasterProvider);
   const currentAddress = ref<Address | undefined>();
   const error = shallowRef<Error | undefined>();
+  let removeChangeListener: (() => void) | undefined;
 
   const updateChainAndProvider = ({ chainId }: { chainId?: bigint }) => {
     if (!chainId) return;
@@ -111,14 +144,22 @@ function createStarknetManager({
     currentPaymasterProvider.value = newPaymasterProvider;
   };
 
-  const handleWalletWithStarknetFeaturesChange = async ({
-    chainId,
-    account: address,
-  }: WalletWithStarknetFeaturesData) => {
-    if (chainId) {
+  const handleWalletWithStarknetFeaturesChange: StandardEventsListeners["change"] = (change) => {
+    if (change.accounts && change.accounts.length === 0) {
+      currentAddress.value = undefined;
+      currentProvider.value = defaultProvider;
+      currentPaymasterProvider.value = defaultPaymasterProvider;
+      currentChain.value = defaultChain;
+      return;
+    }
+
+    const account = change.accounts?.[0] ?? connectorRef.value?.accounts[0];
+    const chainId = chainIdFromAccount(account);
+    if (chainId !== undefined) {
       updateChainAndProvider({ chainId });
     }
-    if (address && connectorRef.value) {
+    const address = account?.address;
+    if (address) {
       currentAddress.value = address as Address;
     }
   };
@@ -133,12 +174,11 @@ function createStarknetManager({
       getStorage()?.removeItem("lastUsedWalletWithStarknetFeatures");
     }
 
-    if (!connectorRef.value) return;
-    connectorRef.value.off("change", handleWalletWithStarknetFeaturesChange);
-    connectorRef.value.off("disconnect", disconnect);
+    removeChangeListener?.();
+    removeChangeListener = undefined;
 
     try {
-      await connectorRef.value.disconnect();
+      await connectorRef.value?.features[StandardDisconnect].disconnect();
     } catch {}
 
     connectorRef.value = undefined;
@@ -149,34 +189,33 @@ function createStarknetManager({
       throw new Error("Must provide a connector.");
     }
 
-    const needsListenerSetup = connectorRef.value?.id !== connector.id;
+    const needsListenerSetup = connectorRef.value ? walletId(connectorRef.value) !== walletId(connector) : true;
     if (needsListenerSetup) {
-      connectorRef.value?.off("change", handleWalletWithStarknetFeaturesChange);
-      connectorRef.value?.off("disconnect", disconnect);
+      removeChangeListener?.();
+      removeChangeListener = undefined;
     }
 
     try {
-      const { chainId, account: address } = await connector.connect({
-        chainIdHint: defaultChain.id,
-      });
+      const { accounts } = await connector.features[StandardConnect].connect();
+      const address = accounts[0]?.address;
 
       if (address !== currentAddress.value) {
         connectorRef.value = connector;
-        currentAddress.value = address as Address;
+        currentAddress.value = address ? (address as Address) : undefined;
       }
 
       if (autoConnect) {
-        getStorage()?.setItem("lastUsedWalletWithStarknetFeatures", connector.id);
+        getStorage()?.setItem("lastUsedWalletWithStarknetFeatures", walletId(connector));
       }
 
       if (needsListenerSetup) {
-        connector.on("change", handleWalletWithStarknetFeaturesChange);
-        connector.on("disconnect", disconnect);
+        removeChangeListener = connector.features[StandardEvents].on("change", handleWalletWithStarknetFeaturesChange);
       }
 
+      const chainId = chainIdFromConnector(connector);
       updateChainAndProvider({ chainId });
     } catch (err) {
-      error.value = new WalletWithStarknetFeaturesNotFoundError();
+      error.value = err instanceof Error ? err : new Error("Failed to connect wallet.");
       throw err;
     }
   };
@@ -186,17 +225,14 @@ function createStarknetManager({
     const lastConnectedWalletWithStarknetFeaturesId = storage?.getItem("lastUsedWalletWithStarknetFeatures");
     if (lastConnectedWalletWithStarknetFeaturesId) {
       const lastConnectedWalletWithStarknetFeatures = connectors.find(
-        (connector) => connector.id === lastConnectedWalletWithStarknetFeaturesId,
+        (connector) => walletId(connector) === lastConnectedWalletWithStarknetFeaturesId,
       );
       if (lastConnectedWalletWithStarknetFeatures) {
-        lastConnectedWalletWithStarknetFeatures
-          .ready()
-          .then((ready) => {
-            if (!ready) return;
-            connect({
+        lastConnectedWalletWithStarknetFeatures.features[StandardConnect]
+          .connect({ silent: true })
+          .then(() => {
+            return connect({
               connector: lastConnectedWalletWithStarknetFeatures,
-            }).catch(() => {
-              /* ignore */
             });
           })
           .catch(() => {

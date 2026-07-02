@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/starknet-start/starknet-start.git"
+    "url": "https://github.com/starknet-innovation/starknet-start.git"
   },
   "type": "module",
   "scripts": {
@@ -32,10 +32,33 @@
     "pnpm": ">=10"
   },
   "packageManager": "pnpm@10.24.0",
+  "pnpm": {
+    "overrides": {
+      "@babel/core": "7.29.6",
+      "@hono/node-server": "1.19.13",
+      "@remix-run/router": "1.23.3",
+      "defu": "6.1.7",
+      "dompurify": "3.4.11",
+      "h3": "1.15.9",
+      "hono": "4.12.27",
+      "lodash-es": "4.18.1",
+      "mermaid": "11.16.0",
+      "picomatch@^2.0.4": "2.3.2",
+      "picomatch@^4.0.3": "4.0.4",
+      "postcss": "8.5.16",
+      "react-router@6.30.2": "6.30.4",
+      "react-router@^7.9.4": "7.18.1",
+      "react-router-dom@6.30.2": "6.30.4",
+      "rollup": "4.62.2",
+      "uuid": "11.1.1",
+      "vite": "7.3.5",
+      "ws": "8.21.0",
+      "yaml": "2.9.0"
+    }
+  },
   "beachball": {
     "ignorePatterns": [
-      "docs/**",
-      "packages/vue/**"
+      "docs/**"
     ]
   }
 }

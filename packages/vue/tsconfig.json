@@ -1,7 +1,8 @@
 {
-  "extends": "@starknet-react/typescript-config/base.json",
+  "extends": "@starknet-start/typescript-config/base.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "rootDir": ".",
     "outDir": "dist"
   },

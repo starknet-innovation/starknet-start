@@ -42,7 +42,6 @@ export function useEvents({
   const rpcProvider = provider as RpcProvider;
 
   return useInfiniteQuery({
-    // TODO: useMemo ?
     queryKey: eventsQueryKey({
       address,
       eventName,

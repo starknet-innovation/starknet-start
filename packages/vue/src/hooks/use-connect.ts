@@ -1,20 +1,20 @@
-import { unref } from "vue";
+import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-wallet-standard/features";
 
-import type { Connector } from "../connectors/base";
+import { unref } from "vue";
 
 import { useStarknet } from "../context/starknet";
 import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";
 
-export type ConnectVariables = { connector?: Connector };
+export type ConnectVariables = { connector?: WalletWithStarknetFeatures };
 
 type MutationResult = UseMutationResult<void, Error, ConnectVariables, unknown>;
 
 export type UseConnectProps = UseMutationProps<void, Error, ConnectVariables>;
 
 export type UseConnectResult = Omit<MutationResult, "mutate" | "mutateAsync"> & {
-  connector?: Connector;
-  connectors: Connector[];
-  pendingConnector?: Connector;
+  connector?: WalletWithStarknetFeatures;
+  connectors: WalletWithStarknetFeatures[];
+  pendingConnector?: WalletWithStarknetFeatures;
   connect: (args?: ConnectVariables) => void;
   connectAsync: (args?: ConnectVariables) => Promise<void>;
 };

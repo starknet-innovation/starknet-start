@@ -3,17 +3,17 @@
 You need to configure an RPC provider to allow your dapp to fetch data from
 Starknet.
 
-Starknet React providers are factories that, given a chain, return a Starknet.js
+Starknet Start providers are factories that, given a chain, return a Starknet.js
 `ProviderInterface` object.
 
 ## Providers
 
 This section provides an alphabetical list of RPC Providers supported by
-Starknet React.
+Starknet Start.
 
 ### Public
 
-Starknet React ships with a public provider that you can use for quick demos.
+Starknet Start ships with a public provider that you can use for quick demos.
 For any project that makes more than an handful of requests, you should use one
 of the providers below.
 
@@ -26,7 +26,7 @@ At the moment, this provider uses the free RPC endpoints provided by:
 ### JSON-RPC
 
 This is generic RPC provider. Use it to connect to private endpoints or to
-services not yet supported by Starknet React. The value returned by the `rpc`
+services not yet supported by Starknet Start. The value returned by the `rpc`
 function is passed to the Starknet `RpcProvider` constructor.
 
 ```tsx twoslash

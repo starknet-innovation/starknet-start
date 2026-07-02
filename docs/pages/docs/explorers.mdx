@@ -3,7 +3,7 @@
 The `StarknetConfig` provider accepts an optional `explorer` property to
 configure the block explorer used by the `useExplorer` hook.
 
-Starknet React ships with the following block explorers (in alphabetical order):
+Starknet Start ships with the following block explorers (in alphabetical order):
 
 - Cartridge Explorer
 - Viewblock
@@ -30,7 +30,7 @@ following signature:
 type ExplorerFactory<T extends Explorer = Explorer> = (chain: Chain) => T | null;
 ```
 
-Starknet React ships with the following explorer factories:
+Starknet Start ships with the following explorer factories:
 
 - `cartridge`
 - `viewblock`

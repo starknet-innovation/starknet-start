@@ -1,10 +1,12 @@
-# starknet-vue
+# @starknet-start/vue
 
-Vue composables and plugin to connect Starknet wallets using the same primitives as `@starknet-react/core`.
+Vue composables and plugin to connect Starknet wallets using the same primitives as `@starknet-start/react`.
 
 ```ts
 import { createApp } from "vue";
-import { createStarknetVue, publicProvider, mainnet } from "starknet-vue";
+import { mainnet } from "@starknet-start/chains";
+import { publicProvider } from "@starknet-start/providers";
+import { createStarknetVue } from "@starknet-start/vue";
 
 const app = createApp(App);
 

@@ -2,11 +2,11 @@
 
 Connectors are used to _connect_ the user's wallet to your dapp.
 If you dapp requires the user to submit a transaction or sign a message,
-you must provide a list of supported wallets to Starknet React.
+you must provide a list of supported wallets to Starknet Start.
 
 ## Connectors
 
-This in an alphabetical list of connectors supported by Starknet React.
+This in an alphabetical list of connectors supported by Starknet Start.
 
 ### Injected Connector
 
@@ -63,32 +63,28 @@ pnpm i @cartridge/connector @cartridge/controller
 ```
 
 ```tsx
-// TODO: This Code has to be updated as per get-starknet standards.
 import { ControllerConnector } from "@cartridge/connector";
-import { Connector } from "@starknet-start/react";
 import { constants } from "starknet";
 
 // Without Session Keys
-const connectors = [
-  new ControllerConnector({
-    chains: [
-      {
-        rpcUrl: "https://api.cartridge.gg/x/starknet/sepolia",
-      },
-      {
-        rpcUrl: "https://api.cartridge.gg/x/starknet/mainnet",
-      },
-    ],
-    defaultChainId: constants.StarknetChainId.SN_SEPOLIA,
-  }),
-];
+const controller = new ControllerConnector({
+  chains: [
+    {
+      rpcUrl: "https://api.cartridge.gg/x/starknet/sepolia",
+    },
+    {
+      rpcUrl: "https://api.cartridge.gg/x/starknet/mainnet",
+    },
+  ],
+  defaultChainId: constants.StarknetChainId.SN_SEPOLIA,
+});
+
+const wallets = [controller.asWalletStandard()];
 ```
 
 ```tsx
-// TODO: This Code has to be updated as per get-starknet standards.
 import { ControllerConnector } from "@cartridge/connector";
 import { SessionPolicies } from "@cartridge/controller";
-import { Connector } from "@starknet-start/react";
 import { constants } from "starknet";
 
 // Define session policies
@@ -109,18 +105,18 @@ const policies: SessionPolicies = {
 };
 
 // With Session Keys
-const connectors = [
-  new ControllerConnector({
-    chains: [
-      {
-        rpcUrl: "https://api.cartridge.gg/x/starknet/sepolia",
-      },
-      {
-        rpcUrl: "https://api.cartridge.gg/x/starknet/mainnet",
-      },
-    ],
-    defaultChainId: constants.StarknetChainId.SN_SEPOLIA,
-    policies,
-  }),
-];
+const controller = new ControllerConnector({
+  chains: [
+    {
+      rpcUrl: "https://api.cartridge.gg/x/starknet/sepolia",
+    },
+    {
+      rpcUrl: "https://api.cartridge.gg/x/starknet/mainnet",
+    },
+  ],
+  defaultChainId: constants.StarknetChainId.SN_SEPOLIA,
+  policies,
+});
+
+const wallets = [controller.asWalletStandard()];
 ```

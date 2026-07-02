@@ -34,5 +34,5 @@ export class UserNotConnectedError extends Error {
 export class UnsupportedAccountInterfaceError extends Error {
   override name = "UnsupportedAccountInterfaceError";
   override message =
-    "Unsupported account interface. starknet-react v1 only supports the starknet.js v5 account interface";
+    "Unsupported account interface. Starknet Start v1 only supports the starknet.js v5 account interface";
 }

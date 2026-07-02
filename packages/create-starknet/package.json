@@ -7,10 +7,10 @@
     "l2",
     "starknet"
   ],
-  "homepage": "https://start.starknet-react.com/",
+  "homepage": "https://github.com/starknet-innovation/starknet-start#readme",
   "license": "MIT",
   "author": "Yohan Tancrez",
-  "repository": "starknet-start/starknet-start",
+  "repository": "starknet-innovation/starknet-start",
   "bin": {
     "create-starknet": "dist/index.js"
   },

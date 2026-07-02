@@ -4,11 +4,11 @@
   <a href="https://www.npmjs.com/package/@starknet-start/react">
     <img alt="@starknet-start/react" src="https://img.shields.io/npm/v/@starknet-start/react">
   </a>
-  <a href="https://github.com/starknet-start/starknet-start/actions/workflows/release.yml">
-    <img alt="Release Status" src="https://img.shields.io/github/actions/workflow/status/starknet-start/starknet-start/build.yml">
+  <a href="https://github.com/starknet-innovation/starknet-start/actions/workflows/release.yml">
+    <img alt="Release Status" src="https://img.shields.io/github/actions/workflow/status/starknet-innovation/starknet-start/build.yml">
   </a>
-  <a href="https://www.github.com/starknet-start/starknet-start">
-    <img alt="MIT LICENSE" src="https://img.shields.io/github/license/starknet-start/starknet-start">
+  <a href="https://www.github.com/starknet-innovation/starknet-start">
+    <img alt="MIT LICENSE" src="https://img.shields.io/github/license/starknet-innovation/starknet-start">
   </a>
 </p>
 

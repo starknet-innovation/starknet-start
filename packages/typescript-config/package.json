@@ -2,9 +2,9 @@
   "name": "@starknet-start/typescript-config",
   "version": "0.0.0",
   "private": true,
-  "homepage": "https://start.starknet-react.com/",
+  "homepage": "https://github.com/starknet-innovation/starknet-start#readme",
   "license": "MIT",
-  "repository": "starknet-start/starknet-start",
+  "repository": "starknet-innovation/starknet-start",
   "publishConfig": {
     "access": "public"
   }
