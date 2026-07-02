@@ -30,8 +30,8 @@ services not yet supported by Starknet Start. The value returned by the `rpc`
 function is passed to the Starknet `RpcProvider` constructor.
 
 ```tsx twoslash
-import { jsonRpcProvider } from "@starknet-start/providers";
-import { Chain } from "@starknet-start/chains";
+import { jsonRpcProvider } from "@starknetfoundation/starknet-start-providers";
+import { Chain } from "@starknetfoundation/starknet-start-chains";
 
 function rpc(chain: Chain) {
   return {
@@ -47,7 +47,7 @@ const provider = jsonRpcProvider({ rpc });
 Create an Alchemy API key from the dashboard.
 
 ```ts twoslash
-import { alchemyProvider } from "@starknet-start/providers";
+import { alchemyProvider } from "@starknetfoundation/starknet-start-providers";
 
 const apiKey = "your-api-key";
 const provider = alchemyProvider({ apiKey });
@@ -58,7 +58,7 @@ const provider = alchemyProvider({ apiKey });
 Create a Bast API key from the dashboard.
 
 ```ts twoslash
-import { blastProvider } from "@starknet-start/providers";
+import { blastProvider } from "@starknetfoundation/starknet-start-providers";
 
 const apiKey = "your-api-key";
 const provider = blastProvider({ apiKey });
@@ -69,7 +69,7 @@ const provider = blastProvider({ apiKey });
 Create an Infura API key from the dashboard.
 
 ```ts twoslash
-import { infuraProvider } from "@starknet-start/providers";
+import { infuraProvider } from "@starknetfoundation/starknet-start-providers";
 
 const apiKey = "your-api-key";
 const provider = infuraProvider({ apiKey });
@@ -80,7 +80,7 @@ const provider = infuraProvider({ apiKey });
 Create a Lava API key from the dashboard.
 
 ```ts twoslash
-import { lavaProvider } from "@starknet-start/providers";
+import { lavaProvider } from "@starknetfoundation/starknet-start-providers";
 
 const apiKey = "your-api-key";
 const provider = lavaProvider({ apiKey });
@@ -91,7 +91,7 @@ const provider = lavaProvider({ apiKey });
 Cartridge offers a Starknet RPC provider.
 
 ```ts twoslash
-import { cartridgeProvider } from "@starknet-start/providers";
+import { cartridgeProvider } from "@starknetfoundation/starknet-start-providers";
 
 const provider = cartridgeProvider();
 ```
@@ -101,7 +101,7 @@ const provider = cartridgeProvider();
 Create a Slot project from the [CLI](https://github.com/cartridge-gg/slot).
 
 ```ts twoslash
-import { slotProvider } from "@starknet-start/providers";
+import { slotProvider } from "@starknetfoundation/starknet-start-providers";
 
 const projectId = "your-project-id";
 const provider = slotProvider({ projectId });

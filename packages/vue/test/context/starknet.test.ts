@@ -1,4 +1,4 @@
-import { devnet, mainnet } from "@starknet-start/chains";
+import { devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
 import { describe, expect, it } from "vitest";
 
 import { createStarknetVue } from "../../src/context/starknet";

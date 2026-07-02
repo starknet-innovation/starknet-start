@@ -1,5 +1,5 @@
 {
-  "name": "@starknet-start/providers",
+  "name": "@starknetfoundation/starknet-start-providers",
   "version": "1.0.7",
   "keywords": [
     "ethereum",
@@ -29,6 +29,9 @@
       "default": "./dist/paymaster/index.mjs"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "typecheck": "tsc --noEmit",
@@ -37,11 +40,11 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@starknet-start/chains": "workspace:^",
+    "@starknetfoundation/starknet-start-chains": "workspace:^",
     "starknet": "^9.4.2"
   },
   "devDependencies": {
-    "@starknet-start/typescript-config": "workspace:^",
+    "@starknetfoundation/starknet-start-typescript-config": "workspace:^",
     "rimraf": "^4.1.2",
     "tsdown": "^0.16.8",
     "vitest": "^4.0.15"

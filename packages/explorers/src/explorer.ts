@@ -1,4 +1,4 @@
-import type { Chain } from "@starknet-start/chains";
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
 
 export interface Explorer {
   // link to a block

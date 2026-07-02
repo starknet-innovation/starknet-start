@@ -1,4 +1,8 @@
-import type { StarknetTypedContract, UseContractArgs, UseContractResult } from "@starknet-start/query";
+import type {
+  StarknetTypedContract,
+  UseContractArgs,
+  UseContractResult,
+} from "@starknetfoundation/starknet-start-query";
 import type { Abi } from "abi-wan-kanabi";
 
 import { useMemo } from "react";

@@ -4,7 +4,7 @@ import {
   type PaymasterEstimateFeesArgs,
   paymasterEstimateFeesQueryFn,
   paymasterEstimateFeesQueryKey,
-} from "@starknet-start/query";
+} from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 import { useStarknetAccount } from "src/context/account";
 

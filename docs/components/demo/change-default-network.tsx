@@ -1,5 +1,5 @@
-import { type Chain, mainnet, sepolia } from "@starknet-start/chains";
-import { useAccount, useNetwork } from "@starknet-start/react";
+import { type Chain, mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
+import { useAccount, useNetwork } from "@starknetfoundation/starknet-start-react";
 import { useState } from "react";
 
 import { DemoContainer } from "../starknet";

@@ -1,4 +1,4 @@
-import { devnet } from "@starknet-start/chains";
+import { devnet } from "@starknetfoundation/starknet-start-chains";
 import { Account, type AccountInterface, RpcProvider } from "starknet";
 
 import { MockWallet, type MockWalletAccounts } from "../src/connectors/mock";

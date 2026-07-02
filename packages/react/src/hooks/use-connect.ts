@@ -1,6 +1,6 @@
 import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-core";
 
-import { type ConnectVariables, connectMutationFn, connectMutationKey } from "@starknet-start/query";
+import { type ConnectVariables, connectMutationFn, connectMutationKey } from "@starknetfoundation/starknet-start-query";
 import { useCallback } from "react";
 
 import { useStarknet } from "../context/starknet";

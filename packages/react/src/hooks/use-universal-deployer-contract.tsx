@@ -1,5 +1,5 @@
-import type { Address } from "@starknet-start/chains";
-import type { UseContractResult } from "@starknet-start/query";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
+import type { UseContractResult } from "@starknetfoundation/starknet-start-query";
 import type { Abi } from "abi-wan-kanabi";
 import type { ProviderInterface } from "starknet";
 

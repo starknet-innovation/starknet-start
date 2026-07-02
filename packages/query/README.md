@@ -1,1 +1,1 @@
-# `@starknet-start/query`
+# `@starknetfoundation/starknet-start-query`
