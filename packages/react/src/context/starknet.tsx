@@ -17,7 +17,7 @@ import {
 } from "@starknetfoundation/starknet-start-providers/paymaster";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { constants, WalletAccountV5 } from "starknet";
+import { constants, WalletAccountV6 } from "starknet";
 
 import { AccountProvider } from "./account";
 
@@ -240,7 +240,7 @@ function StarknetProviderInner({
   useEffect(() => {
     if (connected && address) {
       setAccount(
-        new WalletAccountV5({
+        new WalletAccountV6({
           address,
           provider: currentProvider,
           walletProvider: connected,

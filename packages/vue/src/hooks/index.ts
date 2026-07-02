@@ -5,4 +5,5 @@ export * from "./use-network";
 export * from "./use-provider";
 export * from "./use-send-transaction";
 export * from "./use-sign";
+export * from "./use-strk20";
 export * from "./use-wallet-request";

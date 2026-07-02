@@ -35,9 +35,9 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@starknet-io/get-starknet-core": "^5.0.0",
-    "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
-    "@starknet-io/types-js": "^0.10.1",
+    "@starknet-io/get-starknet-core": "^6.0.1",
+    "@starknet-io/get-starknet-wallet-standard": "^6.0.2",
+    "@starknet-io/types-js": "^0.10.3",
     "@starknetfoundation/starknet-start-chains": "workspace:^",
     "abi-wan-kanabi": "^2.2.4",
     "viem": "^2.21.1"
@@ -49,6 +49,6 @@
     "vitest": "^4.0.15"
   },
   "peerDependencies": {
-    "starknet": "^9.4.2"
+    "starknet": ">=10.4.0"
   }
 }

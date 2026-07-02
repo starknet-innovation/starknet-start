@@ -1,0 +1,91 @@
+# useStrk20
+
+Hooks for STRK20 privacy wallet requests.
+
+These hooks require a connected wallet that supports the STRK20 wallet API methods.
+
+## Hooks
+
+### useStrk20Balances
+
+Queries private STRK20 balances for one or more token addresses.
+
+```ts twoslash
+import { useStrk20Balances } from "@starknetfoundation/starknet-start-react";
+
+const token = "0x123";
+
+const { getBalances, data } = useStrk20Balances({
+  tokens: [token],
+});
+```
+
+### useStrk20PrepareInvoke
+
+Builds a Starknet call and SNIP-36 proof for STRK20 actions without submitting it.
+
+```ts twoslash
+import { useStrk20PrepareInvoke } from "@starknetfoundation/starknet-start-react";
+import type { STRK20_ACTION } from "@starknet-io/types-js";
+
+const actions: STRK20_ACTION[] = [
+  {
+    type: "deposit",
+    token: "0x123",
+    amount: "0x1",
+  },
+];
+
+const { prepareAsync } = useStrk20PrepareInvoke({
+  actions,
+  simulate: true,
+});
+```
+
+Use `simulate: true` for fee previews. The returned proof has the same shape, but is not submittable on-chain.
+
+### useStrk20InvokeTransaction
+
+Submits STRK20 actions through the wallet.
+
+```ts twoslash
+import { useStrk20InvokeTransaction } from "@starknetfoundation/starknet-start-react";
+import type { STRK20_ACTION } from "@starknet-io/types-js";
+
+const actions: STRK20_ACTION[] = [
+  {
+    type: "transfer",
+    token: "0x123",
+    amount: "0x1",
+    recipient: "0x456",
+  },
+];
+
+const { invokeAsync } = useStrk20InvokeTransaction({ actions });
+```
+
+## Prepared Calls
+
+If you prepare a STRK20 call and want to submit it yourself, pass the returned proof to `useSendTransaction`.
+
+```ts twoslash
+import { useSendTransaction, useStrk20PrepareInvoke } from "@starknetfoundation/starknet-start-react";
+import type { STRK20_ACTION } from "@starknet-io/types-js";
+
+const actions: STRK20_ACTION[] = [
+  {
+    type: "withdraw",
+    token: "0x123",
+    amount: "0x1",
+    recipient: "0x456",
+  },
+];
+
+const { prepareAsync } = useStrk20PrepareInvoke({ actions });
+const { sendAsync } = useSendTransaction({});
+
+async function submit() {
+  const { call, proof } = await prepareAsync();
+  await sendAsync({ calls: [call], proof });
+}
+```

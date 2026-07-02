@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@starknetfoundation/starknet-start-chains": "workspace:^",
-    "starknet": "^9.4.2"
+    "starknet": "^10.4.0"
   },
   "devDependencies": {
     "@starknetfoundation/starknet-start-typescript-config": "workspace:^",

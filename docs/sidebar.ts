@@ -96,6 +96,10 @@ export const sidebar = {
           link: "/docs/hooks/use-wallet-request",
         },
         {
+          text: "useStrk20",
+          link: "/docs/hooks/use-strk20",
+        },
+        {
           text: "useDeclareContract",
           link: "/docs/hooks/use-declare-contract",
         },

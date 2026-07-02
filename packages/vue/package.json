@@ -39,8 +39,8 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
-    "@starknet-io/types-js": "^0.10.1",
+    "@starknet-io/get-starknet-wallet-standard": "^6.0.2",
+    "@starknet-io/types-js": "^0.10.3",
     "@starknetfoundation/starknet-start-chains": "workspace:^",
     "@starknetfoundation/starknet-start-explorers": "workspace:^",
     "@starknetfoundation/starknet-start-providers": "workspace:^",
@@ -52,14 +52,14 @@
     "@vue/test-utils": "^2.4.6",
     "jsdom": "^27.2.0",
     "rimraf": "^4.1.2",
-    "starknet": "^9.4.2",
+    "starknet": "^10.4.0",
     "tsdown": "^0.16.8",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.15",
     "vue": "^3.4.0"
   },
   "peerDependencies": {
-    "starknet": "^9.4.2",
+    "starknet": ">=10.4.0",
     "vue": "^3.4.0"
   }
 }

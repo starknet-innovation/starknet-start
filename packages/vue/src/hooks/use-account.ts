@@ -2,7 +2,7 @@ import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-walle
 import type { Address } from "@starknetfoundation/starknet-start-chains";
 import type { AccountInterface } from "starknet";
 
-import { WalletAccountV5 } from "starknet";
+import { WalletAccountV6 } from "starknet";
 import { reactive, shallowRef, watch } from "vue";
 
 import { useStarknet } from "../context/starknet";
@@ -64,7 +64,7 @@ export function useAccount(): UseAccountResult {
       setConnectedState(accountRef.value);
 
       try {
-        const connectedAccount = new WalletAccountV5({
+        const connectedAccount = new WalletAccountV6({
           address: starknet.address,
           provider,
           walletProvider: starknet.connector,

@@ -55,21 +55,27 @@ const { send, error } = useSendTransaction({
 
 ### calls
 
-- Type: `Call[]`
+- Type: `(Call | WalletApiCall)[]`
 
-List of smart contract calls to execute. Type is from `starknet`
+List of smart contract calls to execute. Accepts Starknet.js `Call` objects and wallet API calls returned by `wallet_strk20PrepareInvoke`.
+
+### proof
+
+- Type: `STRK20_PROOF | undefined`
+
+Optional proof returned by `wallet_strk20PrepareInvoke`. Pass this when submitting a STRK20 prepared call yourself.
 
 ## Returns
 
 ### send
 
-- Type: `(args?: Call[]) => void`
+- Type: `(args?: (Call | WalletApiCall)[] | { calls?: (Call | WalletApiCall)[]; proof?: STRK20_PROOF }) => void`
 
 Function to send the request to the user, optionally overriding the arguments to the hook.
 
 ### sendAsync
 
-- Type: `(args?: Call[]) => Promise<AddInvokeTransactionResult>`
+- Type: `(args?: (Call | WalletApiCall)[] | { calls?: (Call | WalletApiCall)[]; proof?: STRK20_PROOF }) => Promise<AddInvokeTransactionResult>`
 
 Send the request to the user and block until it receives a response.
 
@@ -93,7 +99,7 @@ Reset the mutation status.
 
 ### variables
 
-- Type: `Call[] | undefined`
+- Type: `(Call | WalletApiCall)[] | { calls?: (Call | WalletApiCall)[]; proof?: STRK20_PROOF } | undefined`
 
 The variables passed to `send` or `sendAsync`.
 
