@@ -38,9 +38,9 @@ export function eventsQueryFn({ provider, address, eventName, fromBlock, toBlock
   const keyFilter = eventName ? [num.toHex(hash.starknetKeccak(eventName))] : [];
   const keys = [keyFilter];
 
-  const fromBlockId = fromBlock ? blockIdentifierToBlockId(fromBlock) : undefined;
+  const fromBlockId = fromBlock !== undefined ? blockIdentifierToBlockId(fromBlock) : undefined;
 
-  const toBlockId = toBlock ? blockIdentifierToBlockId(toBlock) : undefined;
+  const toBlockId = toBlock !== undefined ? blockIdentifierToBlockId(toBlock) : undefined;
   const chunkSize = pageSize ? pageSize : DEFAULT_PAGE_SIZE;
 
   return async ({ pageParam }: { pageParam?: string }): Promise<EVENTS_CHUNK> => {

@@ -39,7 +39,7 @@ export function usePaymasterGasTokens({
 
   const queryKey_ = useMemo(() => paymasterGasTokensQueryKey({ chain }), [chain]);
 
-  const enabled = useMemo(() => Boolean(enabled_), [enabled_]);
+  const enabled = useMemo(() => Boolean(enabled_ && paymasterProvider), [enabled_, paymasterProvider]);
 
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),

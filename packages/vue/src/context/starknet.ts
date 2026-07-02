@@ -94,12 +94,8 @@ function providerForChain(chain: Chain, factory: ChainProviderFactory): { chain:
 function paymasterProviderForChain(
   chain: Chain,
   factory: ChainPaymasterFactory,
-): { chain: Chain; paymasterProvider: PaymasterRpc } {
-  const paymasterProvider = factory(chain);
-  if (paymasterProvider) {
-    return { chain, paymasterProvider };
-  }
-  throw new Error(`No paymaster provider found for chain ${chain.name}`);
+): { chain: Chain; paymasterProvider?: PaymasterRpc } {
+  return { chain, paymasterProvider: factory(chain) ?? undefined };
 }
 
 function createStarknetManager({

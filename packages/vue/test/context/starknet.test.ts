@@ -1,4 +1,4 @@
-import { devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
+import { type Chain, devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
 import { describe, expect, it } from "vitest";
 
 import { createStarknetVue } from "../../src/context/starknet";
@@ -51,5 +51,16 @@ describe("createStarknetVue", () => {
         provider: (chain) => createTestProvider(chain),
       }),
     ).toThrowError("Duplicated chain id found");
+  });
+
+  it("allows chains without an avnu paymaster", () => {
+    const chain = { ...devnet, paymasterRpcUrls: {} } as Chain;
+    const plugin = createStarknetVue({
+      chains: [chain],
+      provider: (chain_) => createTestProvider(chain_),
+    });
+
+    expect(plugin.manager.chain.id).toBe(chain.id);
+    expect(plugin.manager.paymasterProvider).toBeUndefined();
   });
 });
