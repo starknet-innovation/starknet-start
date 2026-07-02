@@ -2,6 +2,33 @@
   "name": "@starknetfoundation/starknet-start-explorers",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 13:38:27 GMT",
+      "version": "1.0.9",
+      "tag": "@starknetfoundation/starknet-start-explorers_v1.0.9",
+      "comments": {
+        "none": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-explorers",
+            "commit": "53d7a4f1ef3000e66befda79f2ce1dfbe8576ca4",
+            "comment": "Mark the Trusted Publisher republish as already published."
+          },
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-explorers",
+            "commit": "53d7a4f1ef3000e66befda79f2ce1dfbe8576ca4",
+            "comment": "Mark the bootstrap release bump as already published."
+          },
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-explorers",
+            "commit": "53d7a4f1ef3000e66befda79f2ce1dfbe8576ca4",
+            "comment": "Mark the Trusted Publisher republish as already published."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 12:55:19 GMT",
       "version": "1.0.9",
       "tag": "@starknetfoundation/starknet-start-explorers_v1.0.9",

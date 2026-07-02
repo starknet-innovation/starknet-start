@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-chains
 
-<!-- This log was last generated on Thu, 02 Jul 2026 12:55:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 13:38:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.10
+
+Thu, 02 Jul 2026 13:38:27 GMT
+
+### Patches
+
+- Test the release automation with a patch version bump. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.9
 

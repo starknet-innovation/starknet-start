@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Mark the Trusted Publisher republish as already published.",
-  "packageName": "@starknetfoundation/starknet-start-react",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "none"
-}

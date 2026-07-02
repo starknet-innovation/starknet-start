@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Test the release automation with a patch version bump.",
-  "packageName": "@starknetfoundation/starknet-start-chains",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "none"
-}
