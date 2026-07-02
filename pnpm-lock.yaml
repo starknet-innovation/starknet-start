@@ -72,16 +72,16 @@ importers:
       '@starknet-io/get-starknet-wallet-standard':
         specifier: ^5.0.0
         version: 5.0.0(typescript@5.9.3)(zod@3.25.76)
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../packages/chains
-      '@starknet-start/explorers':
+      '@starknetfoundation/starknet-start-explorers':
         specifier: workspace:^
         version: link:../packages/explorers
-      '@starknet-start/providers':
+      '@starknetfoundation/starknet-start-providers':
         specifier: workspace:^
         version: link:../packages/providers
-      '@starknet-start/react':
+      '@starknetfoundation/starknet-start-react':
         specifier: workspace:^
         version: link:../packages/react
       class-variance-authority:
@@ -118,7 +118,7 @@ importers:
         specifier: 1.2.1
         version: 1.2.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rollup@4.62.2)(terser@5.44.1)(typescript@5.9.3)
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../packages/typescript-config
       '@types/react':
@@ -130,7 +130,7 @@ importers:
 
   packages/chains:
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       rimraf:
@@ -161,7 +161,7 @@ importers:
         specifier: ^5.0.0
         version: 5.0.1
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       '@types/cross-spawn':
@@ -188,11 +188,11 @@ importers:
 
   packages/explorers:
     dependencies:
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       rimraf:
@@ -207,14 +207,14 @@ importers:
 
   packages/providers:
     dependencies:
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
       starknet:
         specifier: ^9.4.2
         version: 9.4.2(typescript@5.9.3)(zod@3.25.76)
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       rimraf:
@@ -238,7 +238,7 @@ importers:
       '@starknet-io/types-js':
         specifier: ^0.10.1
         version: 0.10.1
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
       abi-wan-kanabi:
@@ -251,7 +251,7 @@ importers:
         specifier: ^2.21.1
         version: 2.38.0(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       rimraf:
@@ -269,16 +269,16 @@ importers:
       '@starknet-io/types-js':
         specifier: ^0.10.1
         version: 0.10.1
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
-      '@starknet-start/explorers':
+      '@starknetfoundation/starknet-start-explorers':
         specifier: workspace:^
         version: link:../explorers
-      '@starknet-start/providers':
+      '@starknetfoundation/starknet-start-providers':
         specifier: workspace:^
         version: link:../providers
-      '@starknet-start/query':
+      '@starknetfoundation/starknet-start-query':
         specifier: workspace:^
         version: link:../query
       '@tanstack/react-query':
@@ -309,7 +309,7 @@ importers:
       '@starknet-io/get-starknet-wallet-standard':
         specifier: ^5.0.0
         version: 5.0.0(typescript@5.9.3)(zod@3.25.76)
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       '@testing-library/jest-dom':
@@ -362,23 +362,23 @@ importers:
       '@starknet-io/types-js':
         specifier: ^0.10.1
         version: 0.10.1
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
-      '@starknet-start/explorers':
+      '@starknetfoundation/starknet-start-explorers':
         specifier: workspace:^
         version: link:../explorers
-      '@starknet-start/providers':
+      '@starknetfoundation/starknet-start-providers':
         specifier: workspace:^
         version: link:../providers
-      '@starknet-start/query':
+      '@starknetfoundation/starknet-start-query':
         specifier: workspace:^
         version: link:../query
       '@tanstack/vue-query':
         specifier: ^5.25.0
         version: 5.101.2(vue@3.5.39(typescript@5.9.3))
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       '@vue/test-utils':

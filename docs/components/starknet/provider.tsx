@@ -1,8 +1,8 @@
-import type { ExplorerFactory } from "@starknet-start/explorers";
+import type { ExplorerFactory } from "@starknetfoundation/starknet-start-explorers";
 
-import { mainnet, sepolia } from "@starknet-start/chains";
-import { publicProvider } from "@starknet-start/providers";
-import { StarknetConfig } from "@starknet-start/react";
+import { mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
+import { publicProvider } from "@starknetfoundation/starknet-start-providers";
+import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
 
 export function StarknetProvider({
   defaultChainId,

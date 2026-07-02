@@ -1,4 +1,4 @@
-import type { Chain } from "@starknet-start/chains";
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
 
 import { PaymasterRpc, type RpcProviderOptions } from "starknet";
 

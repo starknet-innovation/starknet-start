@@ -1,6 +1,6 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 
-import { starkNameQueryFn, starkNameQueryKey } from "@starknet-start/query";
+import { starkNameQueryFn, starkNameQueryKey } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";

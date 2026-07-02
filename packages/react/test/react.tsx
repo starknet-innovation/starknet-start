@@ -1,7 +1,7 @@
 import type React from "react";
 
-import { devnet, mainnet } from "@starknet-start/chains";
-import { jsonRpcProvider } from "@starknet-start/providers";
+import { devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
+import { jsonRpcProvider } from "@starknetfoundation/starknet-start-providers";
 import { QueryClient } from "@tanstack/react-query";
 import {
   type RenderHookOptions,

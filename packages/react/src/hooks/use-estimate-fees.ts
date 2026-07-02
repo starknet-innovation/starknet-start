@@ -1,6 +1,10 @@
 import type { EstimateFeeResponseOverhead } from "starknet";
 
-import { type EstimateFeesArgs, estimateFeesQueryFn, estimateFeesQueryKey } from "@starknet-start/query";
+import {
+  type EstimateFeesArgs,
+  estimateFeesQueryFn,
+  estimateFeesQueryKey,
+} from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 import { useStarknetAccount } from "src/context/account";
 

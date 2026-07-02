@@ -1,5 +1,5 @@
 import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-core";
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 
 import { useCallback, useEffect, useState } from "react";
 

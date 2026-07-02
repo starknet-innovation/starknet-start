@@ -1,4 +1,4 @@
-import { devnet } from "@starknet-start/chains";
+import { devnet } from "@starknetfoundation/starknet-start-chains";
 import { describe, expect, it } from "vitest";
 
 import { publicProvider } from "./public";

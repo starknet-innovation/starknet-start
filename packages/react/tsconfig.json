@@ -1,5 +1,5 @@
 {
-  "extends": "@starknet-start/typescript-config/react-library.json",
+  "extends": "@starknetfoundation/starknet-start-typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",

@@ -1,6 +1,10 @@
 import type { DeployContractResponse } from "starknet";
 
-import { type DeployAccountVariables, deployAccountMutationFn, deployAccountMutationKey } from "@starknet-start/query";
+import {
+  type DeployAccountVariables,
+  deployAccountMutationFn,
+  deployAccountMutationKey,
+} from "@starknetfoundation/starknet-start-query";
 import { useStarknetAccount } from "src/context/account";
 
 import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";

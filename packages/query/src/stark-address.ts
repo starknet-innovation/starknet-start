@@ -1,4 +1,4 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 
 import { CallData, Provider, type ProviderInterface, starknetId } from "starknet";
 

@@ -2,18 +2,18 @@
 
 Starknet Start React (formerly Starknet React) represents a major rewrite of the library. The core packages have been renamed and restructured to support multiple frameworks (React, Vue) and provide a more consistent experience with the wider Starknet ecosystem via `@starknet-io/get-starknet-core`.
 
-The most significant change is the renaming of the package from `@starknet-react/core` (or `starknet-react`) to `@starknet-start/react`.
+The most significant change is the renaming of the package from `@starknet-react/core` (or `starknet-react`) to `@starknetfoundation/starknet-start-react`.
 
 ## Package Renaming
 
 The monorepo structure has changed to separate core logic from framework-specific bindings.
 
-| Old Package                               | New Package                     | Description                               |
-| :---------------------------------------- | :------------------------------ | :---------------------------------------- |
-| `starknet-react` / `@starknet-react/core` | **`@starknet-start/react`**     | The main React library.                   |
-| (internal)                                | **`@starknet-start/providers`** | Shared provider logic and factories.      |
-| (internal)                                | **`@starknet-start/chains`**    | Chain definitions (`mainnet`, `sepolia`). |
-| (internal)                                | **`@starknet-start/explorers`** | Block explorer URL helpers.               |
+| Old Package                               | New Package                                        | Description                               |
+| :---------------------------------------- | :------------------------------------------------- | :---------------------------------------- |
+| `starknet-react` / `@starknet-react/core` | **`@starknetfoundation/starknet-start-react`**     | The main React library.                   |
+| (internal)                                | **`@starknetfoundation/starknet-start-providers`** | Shared provider logic and factories.      |
+| (internal)                                | **`@starknetfoundation/starknet-start-chains`**    | Chain definitions (`mainnet`, `sepolia`). |
+| (internal)                                | **`@starknetfoundation/starknet-start-explorers`** | Block explorer URL helpers.               |
 
 ## Installation
 
@@ -23,17 +23,17 @@ Uninstall the old packages and install the new ones along with their peer depend
 
 ```bash [npm]
 npm uninstall @starknet-react/core
-npm install @starknet-start/react starknet @tanstack/react-query
+npm install @starknetfoundation/starknet-start-react starknet @tanstack/react-query
 ```
 
 ```bash [pnpm]
 pnpm remove @starknet-react/core
-pnpm add @starknet-start/react starknet @tanstack/react-query
+pnpm add @starknetfoundation/starknet-start-react starknet @tanstack/react-query
 ```
 
 ```bash [yarn]
 yarn remove @starknet-react/core
-yarn add @starknet-start/react starknet @tanstack/react-query
+yarn add @starknetfoundation/starknet-start-react starknet @tanstack/react-query
 ```
 
 :::
@@ -48,7 +48,7 @@ Update your imports to point to the new package.
 
 ```diff
 - import { StarknetConfig, useConnect } from "@starknet-react/core";
-+ import { StarknetConfig, useConnect } from "@starknet-start/react";
++ import { StarknetConfig, useConnect } from "@starknetfoundation/starknet-start-react";
 ```
 
 ### 2. Update Provider Props
@@ -78,9 +78,9 @@ function App() {
 **After:**
 
 ```tsx
-import { StarknetConfig } from "@starknet-start/react";
-import { mainnet } from "@starknet-start/chains";
-import { publicProvider } from "@starknet-start/providers";
+import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
+import { mainnet } from "@starknetfoundation/starknet-start-chains";
+import { publicProvider } from "@starknetfoundation/starknet-start-providers";
 
 function App() {
   return (
@@ -91,24 +91,24 @@ function App() {
 }
 ```
 
-The `chains` are now imported from `@starknet-start/chains`.
-Providers are imported from `@starknet-start/providers`.
+The `chains` are now imported from `@starknetfoundation/starknet-start-chains`.
+Providers are imported from `@starknetfoundation/starknet-start-providers`.
 
 ## Shared Logic & Consistency
 
-By moving shared logic to `@starknet-start/core` packages, the library ensures that both React and Vue adapters behave consistently. This also brings the library closer to the `get-starknet` standard, ensuring better compatibility with future wallet updates.
+By moving shared logic to Starknet Start packages, the library ensures that both React and Vue adapters behave consistently. This also brings the library closer to the `get-starknet` standard, ensuring better compatibility with future wallet updates.
 
 Notice that this is only relevant for developers who wish to use a framework other than React.
 
 ### Chains and Providers
 
-Chains are no longer hardcoded or internal types but are exported from `@starknet-start/chains`.
+Chains are no longer hardcoded or internal types but are exported from `@starknetfoundation/starknet-start-chains`.
 
 ```ts
-import { mainnet, sepolia } from "@starknet-start/chains";
+import { mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
 ```
 
-Similarly, RPC providers and other network logic reside in `@starknet-start/providers`.
+Similarly, RPC providers and other network logic reside in `@starknetfoundation/starknet-start-providers`.
 
 ```ts
 import {
@@ -116,15 +116,15 @@ import {
   publicProvider,
   alchemyProvider,
   /* and more... */
-} from "@starknet-start/providers";
+} from "@starknetfoundation/starknet-start-providers";
 ```
 
 ## Breaking Changes Checklist
 
 - [ ] **Package Name**: Update `package.json` dependencies.
-- [ ] **Imports**: Global find/replace `@starknet-react/core` (or `starknet-react`) with `@starknet-start/react`.
+- [ ] **Imports**: Global find/replace `@starknet-react/core` (or `starknet-react`) with `@starknetfoundation/starknet-start-react`.
 - [ ] **Connectors**: Remove manual `InjectedConnector` setup unless you have custom needs; rely on the provider's default discovery or `recommendedWallets` prop.
-- [ ] **Chains**: Import chain objects from `@starknet-start/chains`.
+- [ ] **Chains**: Import chain objects from `@starknetfoundation/starknet-start-chains`.
 
 ## Get Starknet Integration
 
@@ -145,8 +145,8 @@ You can customize which wallets are displayed or highlighted using props on the 
 - **`extraWallets`**: An array of additional non-standard or custom wallets to include in the discovery list.
 
 ```tsx
-import { StarknetConfig } from "@starknet-start/react";
-import { mainnet } from "@starknet-start/chains";
+import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
+import { mainnet } from "@starknetfoundation/starknet-start-chains";
 
 function App() {
   return (
@@ -176,7 +176,7 @@ Use the `WalletConnectModal` to handle the connection flow.
 
 ```tsx
 import { WalletConnectModal } from "@starknet-io/get-starknet-ui";
-import { useConnect } from "@starknet-start/react";
+import { useConnect } from "@starknetfoundation/starknet-start-react";
 
 function ConnectWallet() {
   // StarknetConfig manages the state, so we just use the UI component
@@ -189,7 +189,7 @@ function ConnectWallet() {
 If you prefer to build your own UI without the modal, you can use `useConnect` to iterate over available wallets and connect to them programmatically.
 
 ```tsx
-import { useConnect } from "@starknet-start/react";
+import { useConnect } from "@starknetfoundation/starknet-start-react";
 
 function WalletList() {
   const { connectors, connect } = useConnect();

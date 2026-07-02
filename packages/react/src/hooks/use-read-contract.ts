@@ -1,4 +1,4 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 import type { Abi, ExtractAbiFunction, ExtractAbiFunctionNames, ExtractArgs, FunctionRet } from "abi-wan-kanabi/kanabi";
 import type { BlockNumber } from "starknet";
 

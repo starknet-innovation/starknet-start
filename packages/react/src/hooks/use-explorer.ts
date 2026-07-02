@@ -1,4 +1,4 @@
-import type { Explorer } from "@starknet-start/explorers";
+import type { Explorer } from "@starknetfoundation/starknet-start-explorers";
 
 import { useStarknet } from "../context/starknet";
 

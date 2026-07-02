@@ -1,4 +1,4 @@
-# Change Log - create-starknet
+# Change Log - @starknetfoundation/starknet-start-create-starknet
 
 <!-- This log was last generated on Tue, 31 Mar 2026 14:03:06 GMT and should not be manually modified. -->
 

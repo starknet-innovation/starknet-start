@@ -1,5 +1,5 @@
 import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
-import { useAccount } from "@starknet-start/react";
+import { useAccount } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 
 import { DemoContainer } from "../starknet";

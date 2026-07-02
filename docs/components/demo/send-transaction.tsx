@@ -1,6 +1,6 @@
 import type { Abi } from "starknet";
 
-import { useAccount, useContract, useNetwork, useSendTransaction } from "@starknet-start/react";
+import { useAccount, useContract, useNetwork, useSendTransaction } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 
 import { DemoContainer } from "../starknet";

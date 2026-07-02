@@ -1,4 +1,4 @@
-import { type UseAddChainArgs, useAddChain } from "@starknet-start/react";
+import { type UseAddChainArgs, useAddChain } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 import { shortString } from "starknet";
 

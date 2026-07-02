@@ -1,4 +1,4 @@
-import type { Chain } from "@starknet-start/chains";
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
 import type { GetTransactionReceiptResponse, ProviderInterface } from "starknet";
 
 export type TransactionReceiptQueryKeyParams = {
