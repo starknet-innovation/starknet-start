@@ -6,6 +6,7 @@
     "dev": "vocs dev",
     "typecheck": "tsc --noEmit",
     "build": "vocs build -o dist",
+    "prepare:github-pages": "node scripts/prepare-github-pages.mjs",
     "preview": "vocs preview"
   },
   "dependencies": {
