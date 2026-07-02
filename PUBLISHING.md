@@ -19,6 +19,38 @@ The release workflow must keep these properties:
 If the workflow file name, repository, or GitHub environment changes, every npm
 trusted publishing relationship must be updated to match.
 
+## Release GitHub App
+
+The release workflow publishes packages and then lets Beachball push the
+generated version and changelog commit back to `main`. The default
+`GITHUB_TOKEN` cannot bypass the `main` branch rules, so releases authenticate as
+a dedicated GitHub App installation.
+
+Create an organization-owned GitHub App for releases and install it only on this
+repository. The app needs these repository permissions:
+
+- Metadata: read
+- Contents: read and write
+
+Store the app credentials on the `Release` environment:
+
+- Variable `RELEASE_APP_CLIENT_ID`: the app client ID.
+- Secret `RELEASE_APP_PRIVATE_KEY`: the app private key PEM.
+
+Configure `main` branch protection through a repository ruleset so the release
+app can bypass every branch rule that blocks its generated commit:
+
+- Target: the default branch.
+- Bypass actor: the release GitHub App, with bypass mode `always`.
+- Rules equivalent to the project policy: require pull requests, require the
+  `test` status check, require linear history, block deletions, block
+  non-fast-forward pushes, and require conversation resolution.
+
+Classic branch protection can allow an app to bypass pull-request requirements,
+but it does not provide an app bypass for required status checks. Keep the
+classic rule disabled for `main` once the equivalent ruleset is active, otherwise
+the direct release commit can still be rejected.
+
 ## Package policy
 
 | Package                                                | Workspace path               | npm policy                                                                                                                                                                                          |
