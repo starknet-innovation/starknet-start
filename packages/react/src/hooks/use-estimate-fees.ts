@@ -39,6 +39,7 @@ export function useEstimateFees({
   options,
   watch = false,
   enabled: enabled_ = true,
+  refetchInterval: refetchInterval_,
   ...props
 }: UseEstimateFeesProps): UseEstimateFeesResult {
   const { account } = useStarknetAccount();
@@ -54,6 +55,7 @@ export function useEstimateFees({
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),
     queryKey: queryKey_,
+    refetchInterval: typeof refetchInterval_ === "number" ? refetchInterval_ : undefined,
   });
 
   return useQuery({
@@ -64,6 +66,7 @@ export function useEstimateFees({
       options,
     }),
     enabled,
+    refetchInterval: watch ? undefined : refetchInterval_,
     ...props,
   });
 }

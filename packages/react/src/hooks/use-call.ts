@@ -9,8 +9,6 @@ import { useContract } from "./use-contract";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
 import { useNetwork } from "./use-network";
 
-const DEFAULT_FETCH_INTERVAL = 5_000;
-
 export type CallQueryKey = typeof callQueryKey;
 
 /** Options for `useCall`. */
@@ -69,12 +67,12 @@ export function useCall({
     [enabled_, contract, functionName, args],
   );
 
-  const refetchInterval =
-    refetchInterval_ ?? (blockIdentifier === BlockTag.PRE_CONFIRMED && watch ? DEFAULT_FETCH_INTERVAL : undefined);
-
+  // When watching, refresh is driven by block invalidation alone; giving the
+  // query its own interval on top would fetch the same data twice per cycle.
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),
     queryKey: queryKey_,
+    refetchInterval: typeof refetchInterval_ === "number" ? refetchInterval_ : undefined,
   });
 
   return useQuery({
@@ -87,7 +85,7 @@ export function useCall({
       parseArgs,
       parseResult,
     }),
-    refetchInterval,
+    refetchInterval: watch ? undefined : refetchInterval_,
     enabled,
     ...props,
   });

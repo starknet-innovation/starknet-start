@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Scope block, blockNumber, events, nonce, estimateFees and paymaster gas token query keys by chain (and account) so a chain switch no longer serves stale cached data; fix .stark suffix stripping in starkAddress; map the legacy pending block tag to pre_confirmed.",
+  "comment": "Scope block, blockNumber, events, nonce, estimateFees, paymaster estimate fees and paymaster gas token query keys by chain id (and account) so a chain switch no longer serves stale cached data; fix .stark suffix stripping in starkAddress; map the legacy pending block tag to pre_confirmed.",
   "packageName": "@starknetfoundation/starknet-start-query",
   "email": "6303520+adrienlacombe@users.noreply.github.com",
   "dependentChangeType": "patch"

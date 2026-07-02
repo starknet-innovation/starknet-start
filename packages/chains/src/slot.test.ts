@@ -15,8 +15,8 @@ describe("getSlotChain", () => {
     expect(getSlotChain("my-slot-chain").id).toBe(BigInt(shortString.encodeShortString("WP_MY_SLOT_CHAIN")));
   });
 
-  it("keeps numeric project ids as numeric chain ids", () => {
-    expect(getSlotChain("123").id).toBe(123n);
+  it("encodes numeric project ids like Cartridge parseChainId", () => {
+    expect(getSlotChain("123").id).toBe(BigInt(shortString.encodeShortString("WP_123")));
   });
 
   it("gives distinct project names distinct chain ids", () => {

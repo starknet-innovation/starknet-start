@@ -14,7 +14,8 @@ function encodeShortString(str: string): bigint {
 }
 
 function slotChainId(projectId: string): bigint {
-  if (/^\d+$/.test(projectId)) return BigInt(projectId);
+  // Cartridge encodes every project id, numeric ones included, so a numeric
+  // passthrough here would never match the chain id the katana node reports.
   const chainName = `WP_${projectId.toUpperCase().replace(/-/g, "_")}`;
   return encodeShortString(chainName);
 }

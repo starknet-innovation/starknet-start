@@ -12,7 +12,7 @@ export type TransactionReceiptQueryFnParams = {
 };
 
 export function transactionReceiptQueryKey({ chain, hash }: TransactionReceiptQueryKeyParams) {
-  return [{ entity: "transactionReceipt" as const, chainId: chain?.name, hash }] as const;
+  return [{ entity: "transactionReceipt" as const, chainId: chain?.id.toString(), hash }] as const;
 }
 
 export function transactionReceiptQueryFn({ provider, hash }: TransactionReceiptQueryFnParams) {

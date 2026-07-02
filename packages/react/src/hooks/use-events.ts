@@ -8,6 +8,8 @@ import { type UseInfiniteQueryProps, type UseInfiniteQueryResult, useInfiniteQue
 import { useProvider } from "./use-provider";
 
 /** Arguments for `useEvents`. */
+// The chain always comes from the provider context; accepting it as a prop
+// would advertise per-call chain targeting the hook doesn't implement.
 export type UseEventsProps = UseInfiniteQueryProps<
   Events,
   Error,
@@ -16,7 +18,7 @@ export type UseEventsProps = UseInfiniteQueryProps<
   ReturnType<typeof eventsQueryKey>,
   string
 > &
-  EventsQueryKeyParams;
+  Omit<EventsQueryKeyParams, "chain">;
 
 /** Value returned from `useEvents`. */
 export type UseEventsResult = Omit<

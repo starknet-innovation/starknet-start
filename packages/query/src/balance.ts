@@ -22,7 +22,7 @@ export function balanceQueryKey({
   return [
     {
       entity: "balance",
-      chainId: chain?.name,
+      chainId: chain?.id.toString(),
       token,
       address,
       blockIdentifier,

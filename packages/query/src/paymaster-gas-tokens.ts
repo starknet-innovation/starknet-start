@@ -13,7 +13,7 @@ export function paymasterGasTokensQueryKey({ chain }: PaymasterGasTokensQueryKey
   return [
     {
       entity: "paymaster_gasTokens" as const,
-      chainId: chain?.name,
+      chainId: chain?.id.toString(),
     },
   ] as const;
 }

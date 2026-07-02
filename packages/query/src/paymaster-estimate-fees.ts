@@ -1,3 +1,4 @@
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
 import type { AccountInterface, Call, PaymasterDetails, PaymasterFeeEstimate } from "starknet";
 
 export type PaymasterEstimateFeesArgs = {
@@ -5,14 +6,21 @@ export type PaymasterEstimateFeesArgs = {
   options?: PaymasterDetails;
 };
 
+export type PaymasterEstimateFeesQueryKeyParams = PaymasterEstimateFeesArgs & {
+  chain?: Chain;
+  address?: string;
+};
+
 export type PaymasterEstimateFeesQueryFnParams = {
   account?: AccountInterface;
 } & PaymasterEstimateFeesArgs;
 
-export function paymasterEstimateFeesQueryKey({ calls, options }: PaymasterEstimateFeesArgs) {
+export function paymasterEstimateFeesQueryKey({ chain, address, calls, options }: PaymasterEstimateFeesQueryKeyParams) {
   return [
     {
       entity: "estimatePaymasterTransactionFee" as const,
+      chainId: chain?.id.toString(),
+      address,
       calls,
       options,
     },

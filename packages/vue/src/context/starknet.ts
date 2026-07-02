@@ -189,27 +189,27 @@ function createStarknetManager({
     }
 
     const needsListenerSetup = connectorRef.value ? walletId(connectorRef.value) !== walletId(connector) : true;
-    if (needsListenerSetup) {
-      removeChangeListener?.();
-      removeChangeListener = undefined;
-    }
 
     try {
       const { accounts } = await connector.features[StandardConnect].connect();
       const address = accounts[0]?.address;
 
+      // Swap listeners only once the new wallet connected: if the user
+      // dismisses its popup, the still-active previous wallet keeps its
+      // change listener.
+      if (needsListenerSetup) {
+        removeChangeListener?.();
+        removeChangeListener = connector.features[StandardEvents].on("change", handleWalletWithStarknetFeaturesChange);
+      }
+
       // Always track the connector: two wallets can expose the same address,
-      // and the change listener registered below belongs to this one.
+      // and the change listener registered above belongs to this one.
       connectorRef.value = connector;
       currentAddress.value = address ? (address as Address) : undefined;
       error.value = undefined;
 
       if (autoConnect) {
         getStorage()?.setItem("lastUsedWalletWithStarknetFeatures", walletId(connector));
-      }
-
-      if (needsListenerSetup) {
-        removeChangeListener = connector.features[StandardEvents].on("change", handleWalletWithStarknetFeaturesChange);
       }
 
       const chainId = chainIdFromConnector(connector);

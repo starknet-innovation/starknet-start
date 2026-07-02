@@ -19,7 +19,7 @@ export function estimateFeesQueryKey({ chain, address, calls, options }: Estimat
   return [
     {
       entity: "estimateInvokeFee" as const,
-      chainId: chain?.name,
+      chainId: chain?.id.toString(),
       address,
       calls,
       options,

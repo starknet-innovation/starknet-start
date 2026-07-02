@@ -22,7 +22,7 @@ export function callQueryKey({ chain, contract, functionName, args, blockIdentif
   return [
     {
       entity: "readContract" as const,
-      chainId: chain?.name,
+      chainId: chain?.id.toString(),
       contract: contract?.address,
       functionName,
       args: JSON.stringify(args, (_, v) => (typeof v === "bigint" ? v.toString(10) : v)),

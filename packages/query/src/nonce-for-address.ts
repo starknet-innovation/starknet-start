@@ -12,7 +12,7 @@ export type NonceForAddressQueryFnParams = {
 } & Omit<NonceForAddressQueryKeyParams, "chain">;
 
 export function nonceForAddressQueryKey({ chain, address, blockIdentifier }: NonceForAddressQueryKeyParams) {
-  return [{ entity: "nonce" as const, chainId: chain?.name, blockIdentifier, address }] as const;
+  return [{ entity: "nonce" as const, chainId: chain?.id.toString(), blockIdentifier, address }] as const;
 }
 
 export function nonceForAddressQueryFn({ provider, blockIdentifier, address }: NonceForAddressQueryFnParams) {

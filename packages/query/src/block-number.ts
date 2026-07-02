@@ -13,7 +13,7 @@ export type BlockNumberQueryFnParams = {
 };
 
 export function blockNumberQueryKey({ chain, blockIdentifier }: BlockNumberQueryKeyParams) {
-  return [{ entity: "blockNumber" as const, chainId: chain?.name, blockIdentifier }] as const;
+  return [{ entity: "blockNumber" as const, chainId: chain?.id.toString(), blockIdentifier }] as const;
 }
 
 export function blockNumberQueryFn({ provider, blockIdentifier }: BlockNumberQueryFnParams) {

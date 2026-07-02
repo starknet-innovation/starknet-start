@@ -1,6 +1,6 @@
 {
   "type": "major",
-  "comment": "watch: true now polls the block number so watched queries actually refresh; useEvents forwards enabled/retry/refetchInterval; remove the non-functional autoConnect prop; clear the account when the wallet reports an empty accounts list; chain-scoped query keys.",
+  "comment": "watch: true now polls the block number so watched queries actually refresh (poll cadence follows refetchInterval, no double-fetch); useEvents forwards enabled/retry/refetchInterval; remove the non-functional autoConnect prop; clear the account when the wallet reports an empty accounts list; chain-scoped query keys. useExplorer returns null for chains without the configured explorer instead of throwing; paymaster hooks error clearly on chains without a configured paymaster instead of silently querying the default sepolia endpoint.",
   "packageName": "@starknetfoundation/starknet-start-react",
   "email": "6303520+adrienlacombe@users.noreply.github.com",
   "dependentChangeType": "patch"

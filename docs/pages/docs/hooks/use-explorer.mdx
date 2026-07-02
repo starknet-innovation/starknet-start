@@ -14,6 +14,8 @@ const explorer = useExplorer();
 
 ### explorer
 
-- Type: `Explorer`
+- Type: `Explorer | null`
 
-The current explorer, e.g. voyager.
+The current explorer, e.g. voyager. Returns `null` when the current chain
+does not define an endpoint for the configured explorer (e.g. devnet), so
+handle that case before building links.

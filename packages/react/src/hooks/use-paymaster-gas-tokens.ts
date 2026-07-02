@@ -32,6 +32,7 @@ export type UsePaymasterGasTokensResult = UseQueryResult<TokenData[], Error>;
 export function usePaymasterGasTokens({
   watch = false,
   enabled: enabled_ = true,
+  refetchInterval: refetchInterval_,
   ...props
 }: UsePaymasterGasTokensProps = {}): UsePaymasterGasTokensResult {
   const { paymasterProvider } = useProvider();
@@ -44,6 +45,7 @@ export function usePaymasterGasTokens({
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),
     queryKey: queryKey_,
+    refetchInterval: typeof refetchInterval_ === "number" ? refetchInterval_ : undefined,
   });
 
   return useQuery({
@@ -52,6 +54,7 @@ export function usePaymasterGasTokens({
       paymasterProvider,
     }),
     enabled,
+    refetchInterval: watch ? undefined : refetchInterval_,
     ...props,
   });
 }

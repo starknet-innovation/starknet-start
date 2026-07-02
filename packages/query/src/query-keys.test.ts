@@ -6,6 +6,7 @@ import { blockNumberQueryKey } from "./block-number";
 import { estimateFeesQueryKey } from "./estimate-fees";
 import { eventsQueryKey } from "./events";
 import { nonceForAddressQueryKey } from "./nonce-for-address";
+import { paymasterEstimateFeesQueryKey } from "./paymaster-estimate-fees";
 import { paymasterGasTokensQueryKey } from "./paymaster-gas-tokens";
 
 // Keys must differ across chains or a chain switch serves the previous
@@ -45,6 +46,24 @@ describe("query keys are chain-scoped", () => {
     );
     expect(estimateFeesQueryKey({ chain: mainnet, address: "0x1" })).not.toEqual(
       estimateFeesQueryKey({ chain: mainnet, address: "0x2" }),
+    );
+  });
+
+  it("paymaster estimate fees is chain- and account-scoped", () => {
+    expect(paymasterEstimateFeesQueryKey({ chain: mainnet, address: "0x1" })).not.toEqual(
+      paymasterEstimateFeesQueryKey({ chain: sepolia, address: "0x1" }),
+    );
+    expect(paymasterEstimateFeesQueryKey({ chain: mainnet, address: "0x1" })).not.toEqual(
+      paymasterEstimateFeesQueryKey({ chain: mainnet, address: "0x2" }),
+    );
+  });
+
+  // Only ids are unique (the providers enforce it); names are display labels,
+  // so a fork sharing a name must still get its own cache entries.
+  it("distinguishes chains that share a name but not an id", () => {
+    const fork = { ...mainnet, id: mainnet.id + 1n };
+    expect(blockQueryKey({ chain: mainnet, blockIdentifier: "latest" })).not.toEqual(
+      blockQueryKey({ chain: fork, blockIdentifier: "latest" }),
     );
   });
 });

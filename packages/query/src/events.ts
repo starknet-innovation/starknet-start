@@ -24,7 +24,7 @@ export function eventsQueryKey({ chain, address, eventName, fromBlock, toBlock, 
   return [
     {
       entity: "events" as const,
-      chainId: chain?.name,
+      chainId: chain?.id.toString(),
       address,
       eventName,
       fromBlock,

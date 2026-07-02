@@ -8,6 +8,7 @@ import { useCallback } from "react";
 
 import { useStarknetAccount } from "../context/account";
 import { type UseMutationResult, useMutation } from "../query";
+import { useProvider } from "./use-provider";
 
 export type UsePaymasterSendTransactionArgs = {
   /** List of smart contract calls to execute. */
@@ -31,14 +32,21 @@ export type UsePaymasterSendTransactionResult = Omit<
 export function usePaymasterSendTransaction(props: UsePaymasterSendTransactionArgs): UsePaymasterSendTransactionResult {
   const { calls, options, maxFeeInGasToken, ...rest } = props;
   const { account } = useStarknetAccount();
+  const { paymasterProvider } = useProvider();
 
   const { mutate, mutateAsync, ...result } = useMutation<InvokeFunctionResponse, Error, Call[]>({
     mutationKey: paymasterSendTransactionMutationKey(calls || []),
-    mutationFn: paymasterSendTransactionMutationFn({
-      account,
-      options,
-      maxFeeInGasToken,
-    }),
+    // Without a configured paymaster the account falls back to starknet.js's
+    // default (sepolia) endpoint, so fail rather than send to the wrong network.
+    mutationFn: paymasterProvider
+      ? paymasterSendTransactionMutationFn({
+          account,
+          options,
+          maxFeeInGasToken,
+        })
+      : async () => {
+          throw new Error("No paymaster is configured for the current chain.");
+        },
     ...rest,
   });
 
