@@ -1,3 +1,5 @@
+"use client";
+
 import { type Address, useStarkName } from "@starknetfoundation/starknet-start-react";
 import { useState } from "react";
 import stringify from "safe-stable-stringify";

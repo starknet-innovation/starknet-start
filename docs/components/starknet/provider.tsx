@@ -1,3 +1,5 @@
+"use client";
+
 import type { ExplorerFactory } from "@starknetfoundation/starknet-start-explorers";
 
 import { mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";

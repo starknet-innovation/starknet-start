@@ -1,3 +1,5 @@
+"use client";
+
 import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
 import { WalletConnectModal } from "@starknet-io/get-starknet-ui";
 import { useAccount } from "@starknetfoundation/starknet-start-react";

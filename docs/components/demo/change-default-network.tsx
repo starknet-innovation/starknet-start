@@ -1,3 +1,5 @@
+"use client";
+
 import { type Chain, mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
 import { useAccount, useNetwork } from "@starknetfoundation/starknet-start-react";
 import { useState } from "react";

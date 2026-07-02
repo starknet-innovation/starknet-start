@@ -1,3 +1,5 @@
+"use client";
+
 import { useWalletRequest } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 

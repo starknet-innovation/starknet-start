@@ -1,3 +1,5 @@
+"use client";
+
 import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
 import { useAccount, useConnect, useDisconnect, useNetwork } from "@starknetfoundation/starknet-start-react";
 

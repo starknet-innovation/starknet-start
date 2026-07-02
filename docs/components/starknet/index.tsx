@@ -1,3 +1,5 @@
+"use client";
+
 import { WalletBar } from "./bar";
 import { StarknetProvider } from "./provider";
 
