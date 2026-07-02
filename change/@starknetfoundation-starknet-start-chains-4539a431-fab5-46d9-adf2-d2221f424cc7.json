@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix getSlotChain crashing on name-style project ids and restore the blast RPC endpoints on mainnet and sepolia.",
+  "comment": "Fix getSlotChain crashing on name-style project ids, align Slot chain ids with Cartridge parseChainId (WP_ short-string encoding), and restore the blast RPC endpoints on mainnet and sepolia.",
   "packageName": "@starknetfoundation/starknet-start-chains",
   "email": "6303520+adrienlacombe@users.noreply.github.com",
   "dependentChangeType": "patch"

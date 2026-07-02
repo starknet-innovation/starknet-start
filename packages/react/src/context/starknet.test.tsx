@@ -1,6 +1,5 @@
 import type { ProviderInterface } from "starknet";
 
-import { StandardDisconnect } from "@starknet-io/get-starknet-core";
 import { type Chain, devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
 import { jsonRpcProvider } from "@starknetfoundation/starknet-start-providers";
 import { renderHook as renderHookRaw } from "@testing-library/react";
@@ -85,7 +84,7 @@ describe("StarknetProvider", () => {
     expect(result.current.useStarknetResult.connected?.chains[0]).toEqual(chainToWalletStandardChain(mainnet));
   });
 
-  it("resets chain and account state when wallet accounts are cleared", async () => {
+  it("resets chain and account state when the wallet emits an empty accounts change event", async () => {
     const { result } = renderHook(() => useStarknetWithAccount());
 
     await act(async () => {
@@ -101,7 +100,7 @@ describe("StarknetProvider", () => {
     expect(result.current.useStarknetAccountResult.account?.address).toEqual(accounts.mainnet[0].address);
 
     await act(async () => {
-      await (result.current.useStarknetResult.connected as MockWallet).features[StandardDisconnect].disconnect();
+      (result.current.useStarknetResult.connected as MockWallet).clearAccounts();
     });
 
     expect(result.current.useStarknetResult.chain.id).toEqual(devnet.id);

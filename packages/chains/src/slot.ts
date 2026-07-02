@@ -1,15 +1,22 @@
 import type { Chain } from "./types";
 
-// Slot project ids are usually names, not numbers. Numeric ids keep their
-// numeric value; anything else is encoded as a Starknet short string so the
-// chain id stays a bigint instead of BigInt() throwing on non-numeric input.
+// Matches Cartridge parseChainId for https://api.cartridge.gg/x/{projectId}/katana:
+// shortString.encodeShortString(`WP_${projectId.toUpperCase().replace(/-/g, "_")}`)
+function encodeShortString(str: string): bigint {
+  if (str.length > 31) {
+    throw new Error(`Short string cannot exceed 31 characters: "${str}"`);
+  }
+  let hex = "";
+  for (let i = 0; i < str.length; i++) {
+    hex += str.charCodeAt(i).toString(16).padStart(2, "0");
+  }
+  return BigInt(`0x${hex}`);
+}
+
 function slotChainId(projectId: string): bigint {
   if (/^\d+$/.test(projectId)) return BigInt(projectId);
-  let id = 0n;
-  for (const codeUnit of new TextEncoder().encode(projectId)) {
-    id = (id << 8n) | BigInt(codeUnit);
-  }
-  return id;
+  const chainName = `WP_${projectId.toUpperCase().replace(/-/g, "_")}`;
+  return encodeShortString(chainName);
 }
 
 export function getSlotChain(projectId: string) {

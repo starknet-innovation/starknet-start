@@ -145,6 +145,12 @@ export class MockWallet implements WalletWithStarknetFeatures {
     this._emit("change", { accounts: this.accounts });
   }
 
+  /** Simulates wallet lock / account revocation via an empty accounts change event. */
+  clearAccounts(): void {
+    this._connected = false;
+    this._emit("change", { accounts: [] });
+  }
+
   readonly instanceId = Math.random().toString(36).slice(2);
 
   updateOptions(options: Partial<MockWalletOptions>): void {

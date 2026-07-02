@@ -1,3 +1,4 @@
+import { shortString } from "starknet";
 import { describe, expect, it } from "vitest";
 
 import { getSlotChain } from "./slot";
@@ -7,7 +8,11 @@ describe("getSlotChain", () => {
     const chain = getSlotChain("my-game");
     expect(chain.network).toBe("slot-my-game");
     expect(chain.rpcUrls.public.http[0]).toBe("https://api.cartridge.gg/x/my-game/katana");
-    expect(typeof chain.id).toBe("bigint");
+    expect(chain.id).toBe(BigInt(shortString.encodeShortString("WP_MY_GAME")));
+  });
+
+  it("matches Cartridge parseChainId for hyphenated project names", () => {
+    expect(getSlotChain("my-slot-chain").id).toBe(BigInt(shortString.encodeShortString("WP_MY_SLOT_CHAIN")));
   });
 
   it("keeps numeric project ids as numeric chain ids", () => {
