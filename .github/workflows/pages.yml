@@ -44,6 +44,8 @@ jobs:
         run: pnpm install --strict-peer-dependencies=false --frozen-lockfile
 
       - name: Build docs
+        env:
+          GITHUB_PAGES_BASE_PATH: /${{ github.event.repository.name }}
         run: pnpm --filter @starknetfoundation/starknet-start-docs... build
 
       - name: Prepare GitHub Pages artifact
@@ -52,7 +54,7 @@ jobs:
         run: pnpm --filter @starknetfoundation/starknet-start-docs prepare:github-pages
 
       - name: Disable Jekyll
-        run: touch docs/dist/.nojekyll
+        run: touch docs/dist/public/.nojekyll
 
       - name: Configure Pages
         uses: actions/configure-pages@v6
@@ -60,7 +62,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: docs/dist
+          path: docs/dist/public
 
   deploy:
     needs: build

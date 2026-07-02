@@ -6,13 +6,13 @@ import { docsHosting } from "../site.config.mjs";
 
 const basePath = normalizeBasePath(process.env.GITHUB_PAGES_BASE_PATH ?? docsHosting.githubPagesBasePath);
 const basePathPattern = escapeRegExp(basePath.slice(1));
-const distDir = fileURLToPath(new URL("../dist/", import.meta.url));
+const distDir = fileURLToPath(new URL("../dist/public/", import.meta.url));
 
 for await (const file of files(distDir)) {
   if (!shouldPatch(file)) continue;
 
   const source = await readFile(file, "utf8");
-  const patched = patch(source);
+  const patched = patch(source, file);
   if (patched !== source) await writeFile(file, patched);
 }
 
@@ -35,15 +35,32 @@ function shouldPatch(file) {
   return [".html", ".js", ".css", ".txt"].some((extension) => file.endsWith(extension));
 }
 
-function patch(source) {
+function patch(source, file) {
   if (!basePath) return source;
 
-  return source
+  let patched = source
     .replaceAll('basePath:""', `basePath:"${basePath}"`)
+    .replaceAll('basePath:"/"', `basePath:"${basePath}"`)
+    .replaceAll("basePath:`/`", `basePath:\`${basePath}\``)
     .replaceAll('fetch("/.vocs/', `fetch("${basePath}/.vocs/`)
+    .replaceAll('"/assets/', `"${basePath}/assets/`)
+    .replaceAll("'/assets/", `'${basePath}/assets/`)
+    .replaceAll("`/assets/", `\`${basePath}/assets/`)
+    .replaceAll('\\"/assets/', `\\"${basePath}/assets/`)
+    .replaceAll("\\'/assets/", `\\'${basePath}/assets/`)
+    .replace(new RegExp(`\\\\"href\\\\":\\\\"/(?!/|${basePathPattern}(?:/|\\\\"))`, "g"), `\\"href\\":\\"${basePath}/`)
     .replace(new RegExp(`\\b(href|src)="/(?!/|${basePathPattern}(?:/|"))`, "g"), `$1="${basePath}/`)
     .replace(new RegExp(`url\\(/(?!/|${basePathPattern}(?:/|\\)))`, "g"), `url(${basePath}/`)
     .replace(new RegExp(`\\]\\(/(?!/|${basePathPattern}(?:/|\\)))`, "g"), `](${basePath}/`);
+
+  if (file.endsWith(".js")) {
+    patched = patched
+      .replace(new RegExp(`\\bhref:\`/(?!/|${basePathPattern}(?:/|\`))`, "g"), `href:\`${basePath}/`)
+      .replace(new RegExp(`\\bhref:"/(?!/|${basePathPattern}(?:/|"))`, "g"), `href:"${basePath}/`)
+      .replace(new RegExp(`\\bhref:'/(?!/|${basePathPattern}(?:/|'))`, "g"), `href:'${basePath}/`);
+  }
+
+  return patched;
 }
 
 function escapeRegExp(value) {
