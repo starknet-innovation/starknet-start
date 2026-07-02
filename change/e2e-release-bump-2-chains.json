@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Run a second end-to-end release workflow test.",
+  "packageName": "@starknetfoundation/starknet-start-chains",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
