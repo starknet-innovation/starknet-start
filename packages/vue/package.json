@@ -55,7 +55,7 @@
     "starknet": "^10.4.0",
     "tsdown": "^0.16.8",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.0.15",
+    "vitest": "^4.1.0",
     "vue": "^3.4.0"
   },
   "peerDependencies": {
