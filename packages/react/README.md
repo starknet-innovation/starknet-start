@@ -12,7 +12,7 @@ yarn add @starknet-start/react
 
 ## Documentation
 
-Documentation is available in the [Starknet Start repository](https://github.com/starknet-innovation/starknet-start#readme).
+Documentation is available at [Starknet Start Docs](https://starknet-innovation.github.io/starknet-start/).
 
 ## Development
 

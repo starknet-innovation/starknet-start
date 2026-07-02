@@ -4,10 +4,10 @@
   <a href="https://www.npmjs.com/package/@starknet-start/react">
     <img alt="@starknet-start/react" src="https://img.shields.io/npm/v/@starknet-start/react">
   </a>
-  <a href="https://github.com/starknet-innovation/starknet-start/actions/workflows/release.yml">
-    <img alt="Release Status" src="https://img.shields.io/github/actions/workflow/status/starknet-innovation/starknet-start/build.yml">
+  <a href="https://github.com/starknet-innovation/starknet-start/actions/workflows/build.yml">
+    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/starknet-innovation/starknet-start/build.yml">
   </a>
-  <a href="https://www.github.com/starknet-innovation/starknet-start">
+  <a href="https://github.com/starknet-innovation/starknet-start">
     <img alt="MIT LICENSE" src="https://img.shields.io/github/license/starknet-innovation/starknet-start">
   </a>
 </p>
@@ -17,4 +17,6 @@
 
 ## License
 
-This library is licensed under the MIT license.
+This library is licensed under the MIT license. The upstream Starknet React
+copyright attribution is intentionally preserved in [LICENSE](./LICENSE); see
+[NOTICE](./NOTICE.md) for fork attribution notes.

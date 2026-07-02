@@ -2,9 +2,9 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const basePath = normalizeBasePath(
-  process.env.GITHUB_PAGES_BASE_PATH ?? "/starknet-start",
-);
+import { docsHosting } from "../site.config.mjs";
+
+const basePath = normalizeBasePath(process.env.GITHUB_PAGES_BASE_PATH ?? docsHosting.githubPagesBasePath);
 const basePathPattern = escapeRegExp(basePath.slice(1));
 const distDir = fileURLToPath(new URL("../dist/", import.meta.url));
 
@@ -32,9 +32,7 @@ async function* files(dir) {
 }
 
 function shouldPatch(file) {
-  return [".html", ".js", ".css", ".txt"].some((extension) =>
-    file.endsWith(extension),
-  );
+  return [".html", ".js", ".css", ".txt"].some((extension) => file.endsWith(extension));
 }
 
 function patch(source) {
@@ -43,18 +41,9 @@ function patch(source) {
   return source
     .replaceAll('basePath:""', `basePath:"${basePath}"`)
     .replaceAll('fetch("/.vocs/', `fetch("${basePath}/.vocs/`)
-    .replace(
-      new RegExp(`\\b(href|src)="/(?!/|${basePathPattern}(?:/|"))`, "g"),
-      `$1="${basePath}/`,
-    )
-    .replace(
-      new RegExp(`url\\(/(?!/|${basePathPattern}(?:/|\\)))`, "g"),
-      `url(${basePath}/`,
-    )
-    .replace(
-      new RegExp(`\\]\\(/(?!/|${basePathPattern}(?:/|\\)))`, "g"),
-      `](${basePath}/`,
-    );
+    .replace(new RegExp(`\\b(href|src)="/(?!/|${basePathPattern}(?:/|"))`, "g"), `$1="${basePath}/`)
+    .replace(new RegExp(`url\\(/(?!/|${basePathPattern}(?:/|\\)))`, "g"), `url(${basePath}/`)
+    .replace(new RegExp(`\\]\\(/(?!/|${basePathPattern}(?:/|\\)))`, "g"), `](${basePath}/`);
 }
 
 function escapeRegExp(value) {
