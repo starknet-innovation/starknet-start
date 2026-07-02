@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Return null instead of throwing when a chain has no avnu paymaster endpoint; blastProvider works again now that chains define blast RPC urls.",
-  "packageName": "@starknetfoundation/starknet-start-providers",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-explorers
 
-<!-- This log was last generated on Thu, 02 Jul 2026 12:55:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 16:53:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.10
+
+Thu, 02 Jul 2026 16:53:58 GMT
+
+### Patches
+
+- Explorer factories return null for chains without that explorer, use the first configured url instead of joining them, and block() validates its arguments. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.9
 

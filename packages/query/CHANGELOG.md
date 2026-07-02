@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-query
 
-<!-- This log was last generated on Thu, 02 Jul 2026 12:55:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 16:53:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.2.0
+
+Thu, 02 Jul 2026 16:53:59 GMT
+
+### Minor changes
+
+- Scope block, blockNumber, events, nonce, estimateFees, paymaster estimate fees and paymaster gas token query keys by chain id (and account) so a chain switch no longer serves stale cached data; fix .stark suffix stripping in starkAddress; map the legacy pending block tag to pre_confirmed. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.1.1
 

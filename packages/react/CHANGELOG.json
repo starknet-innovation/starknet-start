@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-react",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 16:53:59 GMT",
+      "version": "2.0.0",
+      "tag": "@starknetfoundation/starknet-start-react_v2.0.0",
+      "comments": {
+        "major": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-react",
+            "commit": "7f008317f2046150c752114d2316799099e471f7",
+            "comment": "watch: true now polls the block number so watched queries actually refresh (poll cadence follows refetchInterval, no double-fetch); useEvents forwards enabled/retry/refetchInterval; remove the non-functional autoConnect prop; clear the account when the wallet reports an empty accounts list; chain-scoped query keys. useExplorer returns null for chains without the configured explorer instead of throwing; paymaster hooks error clearly on chains without a configured paymaster instead of silently querying the default sepolia endpoint."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 13:38:27 GMT",
       "version": "1.1.1",
       "tag": "@starknetfoundation/starknet-start-react_v1.1.1",
