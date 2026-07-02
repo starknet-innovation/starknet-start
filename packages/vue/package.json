@@ -1,13 +1,14 @@
 {
   "name": "@starknetfoundation/starknet-start-vue",
   "version": "0.0.1-alpha.2",
+  "private": true,
   "keywords": [
     "ethereum",
     "l2",
     "starknet",
     "vue"
   ],
-  "homepage": "https://github.com/starknet-innovation/starknet-start#readme",
+  "homepage": "https://starknet-innovation.github.io/starknet-start/",
   "license": "MIT",
   "repository": "starknet-innovation/starknet-start",
   "files": [
@@ -29,9 +30,6 @@
       "import": "./dist/hooks/index.mjs",
       "default": "./dist/hooks/index.mjs"
     }
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "scripts": {
     "build": "tsdown",

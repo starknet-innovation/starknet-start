@@ -2,8 +2,10 @@ import ts from "typescript";
 import { defineConfig } from "vocs";
 
 import { sidebar } from "./sidebar";
+import { docsHosting } from "./site.config.mjs";
 
 export default defineConfig({
+  baseUrl: docsHosting.url,
   rootDir: ".",
   title: "Starknet Start",
   description: "React hooks and shared utilities for building Starknet apps.",

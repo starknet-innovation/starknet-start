@@ -25,7 +25,7 @@ export default function Home() {
           </li>
           <li>
             Read docs at
-            <a className="ml-1 underline" href="https://github.com/starknet-innovation/starknet-start#readme">
+            <a className="ml-1 underline" href="https://starknet-innovation.github.io/starknet-start/">
               Starknet Start
             </a>
             .

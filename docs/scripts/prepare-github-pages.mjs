@@ -2,7 +2,9 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const basePath = normalizeBasePath(process.env.GITHUB_PAGES_BASE_PATH ?? "/starknet-start");
+import { docsHosting } from "../site.config.mjs";
+
+const basePath = normalizeBasePath(process.env.GITHUB_PAGES_BASE_PATH ?? docsHosting.githubPagesBasePath);
 const basePathPattern = escapeRegExp(basePath.slice(1));
 const distDir = fileURLToPath(new URL("../dist/", import.meta.url));
 
