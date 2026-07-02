@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add Vue package tests and public npm publish metadata.",
-  "packageName": "@starknetfoundation/starknet-start-vue",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

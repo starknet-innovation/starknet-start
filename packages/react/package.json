@@ -6,7 +6,7 @@
     "l2",
     "starknet"
   ],
-  "homepage": "https://github.com/starknet-innovation/starknet-start#readme",
+  "homepage": "https://starknet-innovation.github.io/starknet-start/",
   "license": "MIT",
   "repository": "starknet-innovation/starknet-start",
   "files": [
@@ -63,6 +63,7 @@
     "rimraf": "^4.1.2",
     "starknet": "^10.4.0",
     "tsdown": "^0.16.8",
+    "vite": "7.3.5",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.15"
   },

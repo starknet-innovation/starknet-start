@@ -4,6 +4,12 @@ Starknet Start React (formerly Starknet React) represents a major rewrite of the
 
 The most significant change is the renaming of the package from `@starknet-react/core` (or `starknet-react`) to `@starknetfoundation/starknet-start-react`.
 
+## Legacy Reference Policy
+
+This migration guide intentionally mentions `starknet-react`, `@starknet-react/core`, and Starknet React only as historical source-side references for projects upgrading to Starknet Start. Keep current-facing installation, import, API, and integration guidance branded as Starknet Start and using `@starknetfoundation/starknet-start-*` package names.
+
+Do not link to `starknet-react.com` or old Starknet React documentation from current-facing guidance. When linking is needed, prefer Starknet Start documentation, local examples in this site, or the current `@starknet-io/get-starknet-*` package names used by Starknet Start.
+
 ## Package Renaming
 
 The monorepo structure has changed to separate core logic from framework-specific bindings.
@@ -40,7 +46,7 @@ yarn add @starknetfoundation/starknet-start-react starknet @tanstack/react-query
 
 ## Enhancements to `StarknetConfig`
 
-The `StarknetConfig` component to track the dapps current state is now a lightweight wrapper around the [`GetStarknetProvider` from `@starknet-io/get-starknet-modal`](https://get-starknet.starknet-react.com/modal/GetStarknetProvider).
+The `StarknetConfig` component to track the dapps current state is now a lightweight wrapper around `GetStarknetProvider` from `@starknet-io/get-starknet-modal`.
 
 ### 1. Update Imports
 
@@ -128,7 +134,7 @@ import {
 
 ## Get Starknet Integration
 
-Starknet Start integrates deeply with the [Get Starknet](https://get-starknet.starknet-react.com/) ecosystem to provide a unified wallet connection experience. This ensures your dApp behaves consistently with other major Starknet applications and automatically supports new wallets as they adhere to the standard.
+Starknet Start integrates deeply with the `@starknet-io/get-starknet-*` packages to provide a unified wallet connection experience. This ensures your dApp behaves consistently with other major Starknet applications and automatically supports new wallets as they adhere to the standard.
 
 ### Wallet Discovery
 

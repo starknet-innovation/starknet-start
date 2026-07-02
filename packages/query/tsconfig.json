@@ -4,5 +4,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "outDir": "dist"
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

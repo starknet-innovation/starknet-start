@@ -9,6 +9,10 @@
         "src/**/*.tsx",
         "components/**/*.tsx",
         "pages/**/*.mdx",
+        "scripts/**/*.mjs",
+        "*.mjs",
+        "*.ts",
+        "styles.css",
         "package.json",
         "tsconfig.json"
       ],
