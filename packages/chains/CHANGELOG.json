@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-chains",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 13:50:38 GMT",
+      "version": "1.0.11",
+      "tag": "@starknetfoundation/starknet-start-chains_v1.0.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-chains",
+            "commit": "07840f66557b1f17cb856ef3a922835dd3adf92f",
+            "comment": "Run a second end-to-end release workflow test."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 13:38:27 GMT",
       "version": "1.0.10",
       "tag": "@starknetfoundation/starknet-start-chains_v1.0.10",

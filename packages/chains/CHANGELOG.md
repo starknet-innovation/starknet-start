@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-chains
 
-<!-- This log was last generated on Thu, 02 Jul 2026 13:38:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 13:50:38 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.11
+
+Thu, 02 Jul 2026 13:50:38 GMT
+
+### Patches
+
+- Run a second end-to-end release workflow test. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.10
 
