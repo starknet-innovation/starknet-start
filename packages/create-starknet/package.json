@@ -31,20 +31,20 @@
   },
   "dependencies": {
     "chalk": "4.1.2",
-    "commander": "^10.0.0",
-    "cross-spawn": "^7.0.3",
-    "fs-extra": "^11.1.0",
-    "prompts": "2.1.0",
-    "validate-npm-package-name": "^5.0.0"
+    "commander": "^10.0.1",
+    "cross-spawn": "^7.0.6",
+    "fs-extra": "^11.3.6",
+    "prompts": "2.4.2",
+    "validate-npm-package-name": "^5.0.1"
   },
   "devDependencies": {
     "@starknetfoundation/starknet-start-typescript-config": "workspace:^",
-    "@types/cross-spawn": "^6.0.2",
-    "@types/fs-extra": "^11.0.1",
-    "@types/node": "^18.11.18",
-    "@types/prompts": "2.0.1",
-    "@types/validate-npm-package-name": "^4.0.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.5.4"
+    "@types/cross-spawn": "^6.0.6",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^18.19.130",
+    "@types/prompts": "2.4.9",
+    "@types/validate-npm-package-name": "^4.0.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   }
 }

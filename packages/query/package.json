@@ -40,13 +40,13 @@
     "@starknet-io/types-js": "^0.10.3",
     "@starknetfoundation/starknet-start-chains": "workspace:^",
     "abi-wan-kanabi": "^2.2.4",
-    "viem": "^2.21.1"
+    "viem": "^2.54.1"
   },
   "devDependencies": {
     "@starknetfoundation/starknet-start-typescript-config": "workspace:^",
-    "rimraf": "^4.1.2",
+    "rimraf": "^4.4.1",
     "tsdown": "^0.16.8",
-    "vitest": "^4.0.15"
+    "vitest": "^4.1.9"
   },
   "peerDependencies": {
     "starknet": ">=10.4.0"
