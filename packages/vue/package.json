@@ -1,7 +1,12 @@
 {
   "name": "@starknet-start/vue",
   "version": "0.0.1-alpha.2",
-  "private": true,
+  "keywords": [
+    "ethereum",
+    "l2",
+    "starknet",
+    "vue"
+  ],
   "homepage": "https://github.com/starknet-innovation/starknet-start#readme",
   "license": "MIT",
   "repository": "starknet-innovation/starknet-start",
@@ -25,12 +30,15 @@
       "default": "./dist/hooks/index.mjs"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
     "test": "vitest",
-    "test:ci": "vitest run --passWithNoTests"
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
@@ -48,6 +56,7 @@
     "rimraf": "^4.1.2",
     "starknet": "^9.4.2",
     "tsdown": "^0.16.8",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.15",
     "vue": "^3.4.0"
   },
