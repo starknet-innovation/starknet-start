@@ -47,6 +47,8 @@ jobs:
         run: pnpm --filter @starknetfoundation/starknet-start-docs... build
 
       - name: Prepare GitHub Pages artifact
+        env:
+          GITHUB_PAGES_BASE_PATH: /${{ github.event.repository.name }}
         run: pnpm --filter @starknetfoundation/starknet-start-docs prepare:github-pages
 
       - name: Disable Jekyll

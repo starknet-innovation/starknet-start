@@ -1,10 +1,14 @@
 import type { Sidebar } from "vocs";
 
 export const sidebar = {
-  "/docs/": [
+  "/docs": [
     {
       text: "Introduction",
       items: [
+        {
+          text: "Overview",
+          link: "/docs/",
+        },
         {
           text: "Getting Started",
           link: "/docs/getting-started",
