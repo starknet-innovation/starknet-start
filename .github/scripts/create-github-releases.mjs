@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
-import { readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -106,8 +106,9 @@ function releaseNotes(pkg, packageJsonPath) {
 }
 
 function createOrUpdateRelease({ tag, title, notes }) {
-  const notesPath = join(tmpdir(), `${tag.replaceAll("/", "-")}.md`);
-  writeFileSync(notesPath, notes);
+  const notesDir = mkdtempSync(join(tmpdir(), "starknet-start-release-"));
+  const notesPath = join(notesDir, "notes.md");
+  writeFileSync(notesPath, notes, { mode: 0o600 });
 
   try {
     if (releaseExists(tag)) {
@@ -122,7 +123,7 @@ function createOrUpdateRelease({ tag, title, notes }) {
       );
     }
   } finally {
-    rmSync(notesPath, { force: true });
+    rmSync(notesDir, { recursive: true, force: true });
   }
 }
 
