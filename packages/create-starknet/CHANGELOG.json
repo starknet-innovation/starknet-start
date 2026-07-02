@@ -2,6 +2,41 @@
   "name": "@starknetfoundation/starknet-start-create-starknet",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 12:21:03 GMT",
+      "version": "10.1.0",
+      "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "5fe55495fc1bff149692f89659825560169bdafe",
+            "comment": "Upgrade Starknet.js and expose privacy transaction helpers."
+          }
+        ],
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "e0bc4fe00e854da7276d7d3dd446eaa41ec7e818",
+            "comment": "Address Dependabot alerts by updating the Next template dependency."
+          },
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "cee6f2f416f9ad5d8fc20d6a01d03ce8ecb65827",
+            "comment": "Point package metadata and template links to the GitHub Pages documentation site."
+          },
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "5d8c28ba4c30f2819950cfda709ef9d7476c2104",
+            "comment": "Rename package under the Starknet Foundation npm scope."
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 25 Apr 2026 15:13:11 GMT",
       "version": "10.0.1",
       "tag": "@starknetfoundation/starknet-start-create-starknet_v10.0.1",

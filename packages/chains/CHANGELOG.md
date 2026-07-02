@@ -1,8 +1,17 @@
 # Change Log - @starknetfoundation/starknet-start-chains
 
-<!-- This log was last generated on Tue, 31 Mar 2026 14:03:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 12:21:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.8
+
+Thu, 02 Jul 2026 12:21:03 GMT
+
+### Patches
+
+- Point package metadata to the GitHub Pages documentation site. (6303520+adrienlacombe@users.noreply.github.com)
+- Rename package under the Starknet Foundation npm scope. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.7
 
