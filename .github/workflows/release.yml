@@ -67,6 +67,10 @@ jobs:
           GIT_TOKEN: ${{ steps.app-token.outputs.token }}
       - name: Publish packages
         run: pnpm beachball publish --access public --no-git-tags -y
+      - name: Refresh published commit
+        run: |
+          git fetch origin "${GITHUB_REF_NAME}" --depth=2
+          git reset --hard "origin/${GITHUB_REF_NAME}"
       - name: Create GitHub releases
         run: node .github/scripts/create-github-releases.mjs
         env:
