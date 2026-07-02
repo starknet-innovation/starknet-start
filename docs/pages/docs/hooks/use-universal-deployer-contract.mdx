@@ -2,7 +2,7 @@
 
 Get a typed contract for the Universal Deployer contract.
 
-This hook internally calls `useContract` with the Universal Deployer contract address and it's ABI.
+This hook internally calls `useContract` with the Universal Deployer contract address and its ABI.
 
 ## Usage
 
@@ -30,14 +30,14 @@ The contract address.
 
 ### provider
 
-- Type: `ProviderInterface | undefined`
+- Type: `ProviderInterface | null | undefined`
 
 ProviderInterface is from starknet.js. by default it will be the current one
 
 ## Returns
 
-### contract
+### udc
 
 - Type: `StarknetTypedContract | undefined`
 
-Typed Contract
+Typed contract for the Universal Deployer contract.

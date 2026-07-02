@@ -18,17 +18,11 @@ The list of `TokenData` supported by the Paymaster. `TokenData` type from `stark
 
 ## Arguments
 
-### calls
+### watch
 
-- Type: `Call[] | undefined`
+- Type: `boolean | undefined`
 
-List of smart contract calls to estimate, type from `starknet`
-
-### options
-
-- Type: `PaymasterDetails`
-
-Paymaster details, type from `starknet`
+If `true`, refetch the data at every block.
 
 ### enabled
 
@@ -58,17 +52,11 @@ The resolved data.
 
 Any error thrown by the query.
 
-### reset
-
-- Type: `() => void`
-
-Reset the query status.
-
 ### status
 
 - Type: `"error" | "pending" | "success"`
 
-The mutation status.
+The query status.
 
 - `pending`: the query is being executed.
 - `success`: the query executed without an error.
@@ -106,14 +94,14 @@ Derived from `status`.
 
 Derived from `fetchStatus`.
 
-### isPaused
+### isLoading
 
 - Type: `boolean`
 
-Derived from `fetchStatus`.
+True while the query is loading for the first time.
 
-### isIdle
+### refetch
 
-- Type: `boolean`
+- Type: `(options?: RefetchOptions) => Promise<QueryObserverResult<Data, Error>>`
 
-Derived from `fetchStatus`.
+Refetch the query.

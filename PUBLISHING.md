@@ -53,17 +53,17 @@ the direct release commit can still be rejected.
 
 ## Package policy
 
-| Package                                                | Workspace path               | npm policy                                                                                                                                                                                          |
-| ------------------------------------------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@starknetfoundation/starknet-start-react`             | `packages/react`             | Public npm package.                                                                                                                                                                                 |
-| `@starknetfoundation/starknet-start-query`             | `packages/query`             | Public npm package.                                                                                                                                                                                 |
-| `@starknetfoundation/starknet-start-providers`         | `packages/providers`         | Public npm package.                                                                                                                                                                                 |
-| `@starknetfoundation/starknet-start-chains`            | `packages/chains`            | Public npm package.                                                                                                                                                                                 |
-| `@starknetfoundation/starknet-start-explorers`         | `packages/explorers`         | Public npm package.                                                                                                                                                                                 |
-| `@starknetfoundation/starknet-start-create-starknet`   | `packages/create-starknet`   | Public npm package.                                                                                                                                                                                 |
-| `@starknetfoundation/starknet-start-vue`               | `packages/vue`               | Not part of the public release set until maintainers intentionally approve and publish it. Do not configure trusted publishing for it while public npm metadata returns 404 or while it is private. |
-| `@starknetfoundation/starknet-start-typescript-config` | `packages/typescript-config` | Workspace-only private package. Do not publish.                                                                                                                                                     |
-| `@starknetfoundation/starknet-start-docs`              | `docs`                       | Workspace-only private package. Do not publish.                                                                                                                                                     |
+| Package                                                | Workspace path               | npm policy                                                                                                                                                                                                             |
+| ------------------------------------------------------ | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@starknetfoundation/starknet-start-react`             | `packages/react`             | Public npm package.                                                                                                                                                                                                    |
+| `@starknetfoundation/starknet-start-query`             | `packages/query`             | Public npm package.                                                                                                                                                                                                    |
+| `@starknetfoundation/starknet-start-providers`         | `packages/providers`         | Public npm package.                                                                                                                                                                                                    |
+| `@starknetfoundation/starknet-start-chains`            | `packages/chains`            | Public npm package.                                                                                                                                                                                                    |
+| `@starknetfoundation/starknet-start-explorers`         | `packages/explorers`         | Public npm package.                                                                                                                                                                                                    |
+| `@starknetfoundation/starknet-start-create-starknet`   | `packages/create-starknet`   | Public npm package.                                                                                                                                                                                                    |
+| `@starknetfoundation/starknet-start-vue`               | `packages/vue`               | Not part of the public release set until maintainers intentionally approve and publish it. Do not configure trusted publishing for it while public npm metadata returns 404 or while it stays outside the release set. |
+| `@starknetfoundation/starknet-start-typescript-config` | `packages/typescript-config` | Workspace-only package. Do not publish.                                                                                                                                                                                |
+| `@starknetfoundation/starknet-start-docs`              | `docs`                       | Workspace-only package. Do not publish.                                                                                                                                                                                |
 
 New public packages must be approved by maintainers before they are added to the
 release set. Trusted publishing can be configured only after the npm package
@@ -88,7 +88,7 @@ Current npm state checked on 2026-07-02:
   `@starknetfoundation/starknet-start-*` package names before approving the first
   automated release under this scope.
 - `@starknetfoundation/starknet-start-vue` is not part of the public release set
-  while the workspace package remains private.
+  while npm metadata returns 404 and maintainers have not approved it for release.
 
 Useful checks:
 

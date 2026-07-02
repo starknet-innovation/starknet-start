@@ -49,7 +49,7 @@ Function to send the request to the user, optionally overriding the arguments to
 
 ### addChainAsync
 
-- Type: `(args?: AddStarknetChainParameters) => Promise<boloean>`
+- Type: `(args?: AddStarknetChainParameters) => Promise<boolean>`
 
 Send the request to the user and block until it receives a response.
 
@@ -73,9 +73,9 @@ Reset the mutation status.
 
 ### variables
 
-- Type: `AddStarknetChainParameters | undefined`
+- Type: `RequestArgs<"wallet_addStarknetChain"> | undefined`
 
-The variables passed to `addChain` or `addChainAsync`.
+The request variables used by the underlying wallet mutation.
 
 ### status
 

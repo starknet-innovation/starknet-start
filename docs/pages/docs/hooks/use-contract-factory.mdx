@@ -1,49 +1,61 @@
 # useContractFactory
 
-Hook to create a `ContractFactory`
+Hook to deploy contracts with `Contract.factory()`.
 
 ## Usage
 
 ```tsx
 import { useContractFactory } from "@starknetfoundation/starknet-start-react";
 
-const { contractFactory } = useContractFactory({
+const { deployContract } = useContractFactory({
   compiledContract: compiledErc20,
-  classHash: erc20ClassHash,
+  casm: compiledErc20Casm,
   abi: compiledErc20.abi,
+});
+
+const contract = await deployContract?.({
+  constructorCalldata: ["0x1"],
+  salt: "0x123",
+  unique: true,
 });
 ```
 
-## Data
+## Deploy result
 
-- Type: `ContractFactory`
+- Type: `Contract`
 
-Type `ContractFactory` from `starknet`.
+Type `Contract` from `starknet`.
 
 ## Arguments
 
 ### compiledContract
 
-- Type: `CompiledContract`
+- Type: `CompiledContract | undefined`
 
-Type `CompiledContract` from `starknet`.
+The compiled Sierra contract. Provide this with `casm` for declare-and-deploy mode.
+
+### casm
+
+- Type: `CompiledSierraCasm | undefined`
+
+The compiled CASM contract. Required with `compiledContract` for declare-and-deploy mode.
 
 ### classHash
 
-- Type: `string`
+- Type: `string | undefined`
 
-The class hash.
+The class hash to use for deploy-only mode.
 
 ### abi
 
-- Type: `Abi`
+- Type: `Abi | undefined`
 
-The contract abi.
+The contract ABI to use in deploy-only mode.
 
 ## Returns
 
-### contractFactory
+### deployContract
 
-- Type: `ContractFactory | undefined`
+- Type: `((options?: DeployContractOptions) => Promise<Contract>) | undefined`
 
-The contract factory.
+Deploys the contract. It is `undefined` until an account is connected and either `compiledContract` with `casm`, or `classHash`, is provided.

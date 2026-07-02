@@ -9,7 +9,7 @@ You can create a new project interactively by running:
 ```bash
 npx @starknetfoundation/starknet-start-create-starknet
 # or
-npm init starknet
+pnpm dlx @starknetfoundation/starknet-start-create-starknet
 ```
 
 You will be asked for the name of your project before it can be created for you.
@@ -20,15 +20,15 @@ You can also pass command line arguments to set up a new project
 non-interactively. See `create-starknet --help`:
 
 ```
-@starknetfoundation/starknet-start-create-starknet [project-directory] [options]
+create-starknet [project-directory] [options]
 
 Options:
-  -V, --version  output the version number
+  -V, --version       output the version number
   -t, --template <name>  Explicitly tell the CLI to bootstrap the app using the specified template (choices: "next", "tanstack-start")
   --use-npm              Explicitly tell the CLI to bootstrap the app using npm
   --use-yarn             Explicitly tell the CLI to bootstrap the app using yarn
   --use-pnpm             Explicitly tell the CLI to bootstrap the app using pnpm
-  -h, --help     display help for command
+  -h, --help          display help for command
 ```
 
 Examples:

@@ -1,6 +1,6 @@
 # usePaymasterSendTransaction
 
-Hook to send one or several transaction(s) to the network in a **Gasless**/**Gasfree** way using the Paymaster.
+Hook to send one or several transactions through a paymaster.
 
 Use this hook together with [`usePaymasterGasTokens`](/docs/hooks/use-paymaster-gas-tokens) to fetch supported gas tokens & [`usePaymasterEstimateFees`](/docs/hooks/use-paymaster-estimate-fees) to estimate
 fees in gas token.
@@ -38,9 +38,21 @@ const { data, error } = usePaymasterSendTransaction({
 
 ### calls
 
-- Type: `Call[]`
+- Type: `Call[] | undefined`
 
 List of smart contract calls to execute. Type is from `starknet`
+
+### options
+
+- Type: `PaymasterDetails | undefined`
+
+Paymaster details. Type is from `starknet`.
+
+### maxFeeInGasToken
+
+- Type: `BigNumberish | undefined`
+
+Maximum fee in the selected gas token. Type is from `starknet`.
 
 ## Returns
 
@@ -60,7 +72,7 @@ Send the request to the user and block until it receives a response, optionally 
 
 - Type: `InvokeFunctionResponse | undefined`
 
-The resolved data. This type is defined in the Starknet Types package.
+The resolved data. This type is defined in `starknet`.
 
 ### error
 

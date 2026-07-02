@@ -10,7 +10,7 @@ Thu, 02 Jul 2026 16:53:58 GMT
 
 ### Patches
 
-- Fix getSlotChain crashing on name-style project ids, align Slot chain ids with Cartridge parseChainId (WP_ short-string encoding), and restore the blast RPC endpoints on mainnet and sepolia. (6303520+adrienlacombe@users.noreply.github.com)
+- Fix getSlotChain crashing on name-style project ids, align Slot chain ids with Cartridge parseChainId (WP\_ short-string encoding), and restore the blast RPC endpoints on mainnet and sepolia. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.11
 

@@ -31,7 +31,6 @@ Use `useSendTransaction` to prepare and execute the contract deployment. You'll 
 
 ```tsx
 import { useSendTransaction } from "@starknetfoundation/starknet-start-react";
-import { CallData } from "starknet";
 
 function DeployContract() {
   const { udc } = useUniversalDeployerContract();
@@ -47,8 +46,7 @@ function DeployContract() {
 Here's a complete example showing how to deploy an ERC20 token:
 
 ```tsx
-import { useUniversalDeployerContract, useSendTransaction } from "@starknetfoundation/starknet-start-react";
-import { CallData } from "starknet";
+import { useAccount, useUniversalDeployerContract, useSendTransaction } from "@starknetfoundation/starknet-start-react";
 
 function DeployERC20() {
   const { address } = useAccount();
@@ -85,7 +83,7 @@ function useUniversalDeployerContract(props?: {
   address?: Address; // Optional: Override default UDC address
   provider?: ProviderInterface | null; // Optional: Custom provider
 }): {
-  udc: Contract; // The UDC contract instance
+  udc: StarknetTypedContract | undefined; // The UDC contract instance
 };
 ```
 

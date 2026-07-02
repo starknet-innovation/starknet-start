@@ -24,9 +24,9 @@ const { data, error } = useEstimateFees({
 
 ## Data
 
-- Type: `EstimateFeeResponse`
+- Type: `EstimateFeeResponseOverhead`
 
-The `EstimateFeeResponse` response type from `starknet`.
+The `EstimateFeeResponseOverhead` response type from `starknet`.
 
 ## Arguments
 
@@ -41,6 +41,12 @@ List of smart contract calls to estimate, type from `starknet`
 - Type: `EstimateFeeDetails`
 
 Estimate Fee options, type from `starknet`
+
+### watch
+
+- Type: `boolean | undefined`
+
+If `true`, refetch the data at every block.
 
 ### enabled
 
@@ -70,17 +76,11 @@ The resolved data.
 
 Any error thrown by the query.
 
-### reset
-
-- Type: `() => void`
-
-Reset the query status.
-
 ### status
 
 - Type: `"error" | "pending" | "success"`
 
-The mutation status.
+The query status.
 
 - `pending`: the query is being executed.
 - `success`: the query executed without an error.
@@ -118,14 +118,14 @@ Derived from `status`.
 
 Derived from `fetchStatus`.
 
-### isPaused
+### isLoading
 
 - Type: `boolean`
 
-Derived from `fetchStatus`.
+True while the query is loading for the first time.
 
-### isIdle
+### refetch
 
-- Type: `boolean`
+- Type: `(options?: RefetchOptions) => Promise<QueryObserverResult<Data, Error>>`
 
-Derived from `fetchStatus`.
+Refetch the query.

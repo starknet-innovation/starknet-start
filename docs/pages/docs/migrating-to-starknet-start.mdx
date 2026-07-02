@@ -29,17 +29,17 @@ Uninstall the old packages and install the new ones along with their peer depend
 
 ```bash [npm]
 npm uninstall @starknet-react/core
-npm install @starknetfoundation/starknet-start-react starknet @tanstack/react-query
+npm install @starknetfoundation/starknet-start-chains @starknetfoundation/starknet-start-providers @starknetfoundation/starknet-start-react starknet @starknet-io/get-starknet-core @starknet-io/get-starknet-modal @starknet-io/get-starknet-wallet-standard
 ```
 
 ```bash [pnpm]
 pnpm remove @starknet-react/core
-pnpm add @starknetfoundation/starknet-start-react starknet @tanstack/react-query
+pnpm add @starknetfoundation/starknet-start-chains @starknetfoundation/starknet-start-providers @starknetfoundation/starknet-start-react starknet @starknet-io/get-starknet-core @starknet-io/get-starknet-modal @starknet-io/get-starknet-wallet-standard
 ```
 
 ```bash [yarn]
 yarn remove @starknet-react/core
-yarn add @starknetfoundation/starknet-start-react starknet @tanstack/react-query
+yarn add @starknetfoundation/starknet-start-chains @starknetfoundation/starknet-start-providers @starknetfoundation/starknet-start-react starknet @starknet-io/get-starknet-core @starknet-io/get-starknet-modal @starknet-io/get-starknet-wallet-standard
 ```
 
 :::
@@ -151,16 +151,14 @@ You can customize which wallets are displayed or highlighted using props on the 
 - **`extraWallets`**: An array of additional non-standard or custom wallets to include in the discovery list.
 
 ```tsx
+import { readyWallet } from "@starknet-io/get-starknet-core/wallets";
+import { publicProvider } from "@starknetfoundation/starknet-start-providers";
 import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
 import { mainnet } from "@starknetfoundation/starknet-start-chains";
 
 function App() {
   return (
-    <StarknetConfig
-      chains={[mainnet]}
-      // highlight optional specific wallets
-      recommendedWallets={[...]}
-    >
+    <StarknetConfig chains={[mainnet]} provider={publicProvider()} recommendedWallets={[readyWallet]}>
       {/* ... */}
     </StarknetConfig>
   );
@@ -174,7 +172,7 @@ For a complete UI solution (connect modal, wallet lists), you can use `@starknet
 **Installation**:
 
 ```bash
-npm install @starknet-io/get-starknet-ui@next
+npm install @starknet-io/get-starknet-ui
 ```
 
 **Example Usage**:

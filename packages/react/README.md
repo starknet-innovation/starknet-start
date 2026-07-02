@@ -5,9 +5,9 @@ Starknet Start is a collection of React hooks for Starknet.
 ## Installation
 
 ```
-npm install @starknetfoundation/starknet-start-react
+npm install @starknetfoundation/starknet-start-react starknet @starknet-io/get-starknet-core @starknet-io/get-starknet-modal @starknet-io/get-starknet-wallet-standard
 # or
-yarn add @starknetfoundation/starknet-start-react
+yarn add @starknetfoundation/starknet-start-react starknet @starknet-io/get-starknet-core @starknet-io/get-starknet-modal @starknet-io/get-starknet-wallet-standard
 ```
 
 ## Documentation
