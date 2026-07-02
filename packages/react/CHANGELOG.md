@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-react
 
-<!-- This log was last generated on Thu, 02 Jul 2026 12:55:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 16:53:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 2.0.0
+
+Thu, 02 Jul 2026 16:53:59 GMT
+
+### Major changes
+
+- watch: true now polls the block number so watched queries actually refresh (poll cadence follows refetchInterval, no double-fetch); useEvents forwards enabled/retry/refetchInterval; remove the non-functional autoConnect prop; clear the account when the wallet reports an empty accounts list; chain-scoped query keys. useExplorer returns null for chains without the configured explorer instead of throwing; paymaster hooks error clearly on chains without a configured paymaster instead of silently querying the default sepolia endpoint. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.1.1
 

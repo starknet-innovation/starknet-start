@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-providers",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 16:53:59 GMT",
+      "version": "1.1.2",
+      "tag": "@starknetfoundation/starknet-start-providers_v1.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-providers",
+            "commit": "7f008317f2046150c752114d2316799099e471f7",
+            "comment": "Return null instead of throwing when a chain has no avnu paymaster endpoint; blastProvider works again now that chains define blast RPC urls."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 13:38:27 GMT",
       "version": "1.1.1",
       "tag": "@starknetfoundation/starknet-start-providers_v1.1.1",

@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-create-starknet",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 16:53:58 GMT",
+      "version": "10.1.2",
+      "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "7f008317f2046150c752114d2316799099e471f7",
+            "comment": "Exit non-zero on failure, handle prompt cancellation cleanly, ship oxlint/oxfmt with the templates, pin TanStack dependencies, and surface package manager spawn errors."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 13:38:27 GMT",
       "version": "10.1.1",
       "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.1",

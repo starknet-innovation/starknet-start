@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-providers
 
-<!-- This log was last generated on Thu, 02 Jul 2026 12:55:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 16:53:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.1.2
+
+Thu, 02 Jul 2026 16:53:59 GMT
+
+### Patches
+
+- Return null instead of throwing when a chain has no avnu paymaster endpoint; blastProvider works again now that chains define blast RPC urls. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.1.1
 

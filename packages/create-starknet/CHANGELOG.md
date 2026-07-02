@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-create-starknet
 
-<!-- This log was last generated on Thu, 02 Jul 2026 12:55:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 16:53:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 10.1.2
+
+Thu, 02 Jul 2026 16:53:58 GMT
+
+### Patches
+
+- Exit non-zero on failure, handle prompt cancellation cleanly, ship oxlint/oxfmt with the templates, pin TanStack dependencies, and surface package manager spawn errors. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 10.1.1
 

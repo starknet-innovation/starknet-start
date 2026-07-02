@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-chains
 
-<!-- This log was last generated on Thu, 02 Jul 2026 13:50:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 16:53:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.12
+
+Thu, 02 Jul 2026 16:53:58 GMT
+
+### Patches
+
+- Fix getSlotChain crashing on name-style project ids, align Slot chain ids with Cartridge parseChainId (WP_ short-string encoding), and restore the blast RPC endpoints on mainnet and sepolia. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.11
 

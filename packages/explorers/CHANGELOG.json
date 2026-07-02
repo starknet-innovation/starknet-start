@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-explorers",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 16:53:58 GMT",
+      "version": "1.0.10",
+      "tag": "@starknetfoundation/starknet-start-explorers_v1.0.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-explorers",
+            "commit": "7f008317f2046150c752114d2316799099e471f7",
+            "comment": "Explorer factories return null for chains without that explorer, use the first configured url instead of joining them, and block() validates its arguments."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 13:38:27 GMT",
       "version": "1.0.9",
       "tag": "@starknetfoundation/starknet-start-explorers_v1.0.9",

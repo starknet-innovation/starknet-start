@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Explorer factories return null for chains without that explorer, use the first configured url instead of joining them, and block() validates its arguments.",
-  "packageName": "@starknetfoundation/starknet-start-explorers",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
