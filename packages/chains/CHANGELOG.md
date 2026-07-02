@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-chains
 
-<!-- This log was last generated on Thu, 02 Jul 2026 12:21:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 12:55:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.9
+
+Thu, 02 Jul 2026 12:55:19 GMT
+
+### Patches
+
+- Republish packages from the current main branch through Trusted Publisher. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.8
 
