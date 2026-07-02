@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Clarify React package installation dependencies in the README.",
+  "packageName": "@starknetfoundation/starknet-start-react",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

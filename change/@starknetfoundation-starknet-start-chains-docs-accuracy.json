@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix the README import example for the chains package.",
+  "packageName": "@starknetfoundation/starknet-start-chains",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
