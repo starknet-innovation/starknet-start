@@ -1,3 +1,5 @@
+"use client";
+
 import { sepolia } from "@starknetfoundation/starknet-start-chains";
 import { useNetwork, useSwitchChain } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";

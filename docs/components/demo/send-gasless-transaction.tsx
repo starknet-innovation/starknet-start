@@ -1,3 +1,5 @@
+"use client";
+
 import type { Abi, Call, FeeMode } from "starknet";
 
 import { mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";

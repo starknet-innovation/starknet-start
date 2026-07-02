@@ -1,5 +1,5 @@
 import ts from "typescript";
-import { defineConfig } from "vocs";
+import { defineConfig } from "vocs/config";
 
 import { sidebar } from "./sidebar";
 import { docsHosting } from "./site.config.mjs";
@@ -7,21 +7,20 @@ import { docsHosting } from "./site.config.mjs";
 export default defineConfig({
   baseUrl: docsHosting.url,
   rootDir: ".",
+  srcDir: ".",
+  checkDeadlinks: "warn",
   title: "Starknet Start",
   description: "React hooks and shared utilities for building Starknet apps.",
   sidebar,
   twoslash: {
-    compilerOptions: {
-      moduleResolution: ts.ModuleResolutionKind.Bundler,
+    twoslashOptions: {
+      compilerOptions: {
+        moduleResolution: ts.ModuleResolutionKind.Bundler,
+      },
     },
   },
   topNav: [
     { text: "Docs", link: "/docs/", match: "/docs" },
     { text: "Demo", link: "/demo", match: "/demo" },
   ],
-  vite: {
-    ssr: {
-      noExternal: ["@starknet-io/get-starknet-ui"],
-    },
-  },
 });

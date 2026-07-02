@@ -1,3 +1,5 @@
+"use client";
+
 import { type UseDeclareContractArgs, useDeclareContract } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 

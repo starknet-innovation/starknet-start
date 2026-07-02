@@ -1,3 +1,5 @@
+"use client";
+
 import { type UseSignTypedDataArgs, useSignTypedData } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 import { shortString } from "starknet";

@@ -1,3 +1,5 @@
+"use client";
+
 import type { Abi } from "starknet";
 
 import { useAccount, useContract, useNetwork, useSendTransaction } from "@starknetfoundation/starknet-start-react";
