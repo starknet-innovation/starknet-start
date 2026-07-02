@@ -1,5 +1,7 @@
 ## How to contribute to Starknet Start
 
+For AI coding agents and automated assistants, see [AGENTS.md](./AGENTS.md) for the repository map, validation commands, test infrastructure notes, and change-file expectations.
+
 #### **Did you find a bug?**
 
 - **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/starknet-innovation/starknet-start/issues).
