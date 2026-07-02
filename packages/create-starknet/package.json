@@ -27,7 +27,9 @@
   "scripts": {
     "build": "tsup",
     "clean": "rimraf dist",
-    "start": "pnpm run build && node dist/index.js"
+    "start": "pnpm run build && node dist/index.js",
+    "test": "vitest",
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "chalk": "4.1.2",
@@ -45,6 +47,8 @@
     "@types/prompts": "2.0.1",
     "@types/validate-npm-package-name": "^4.0.0",
     "tsup": "^8.0.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vite": "7.3.5",
+    "vitest": "^4.1.0"
   }
 }

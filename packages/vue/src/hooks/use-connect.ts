@@ -1,6 +1,7 @@
 import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-wallet-standard/features";
+import type { ComputedRef } from "vue";
 
-import { unref } from "vue";
+import { computed, unref } from "vue";
 
 import { useStarknet } from "../context/starknet";
 import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";
@@ -12,9 +13,9 @@ type MutationResult = UseMutationResult<void, Error, ConnectVariables, unknown>;
 export type UseConnectProps = UseMutationProps<void, Error, ConnectVariables>;
 
 export type UseConnectResult = Omit<MutationResult, "mutate" | "mutateAsync"> & {
-  connector?: WalletWithStarknetFeatures;
+  connector: ComputedRef<WalletWithStarknetFeatures | undefined>;
   connectors: WalletWithStarknetFeatures[];
-  pendingConnector?: WalletWithStarknetFeatures;
+  pendingConnector: ComputedRef<WalletWithStarknetFeatures | undefined>;
   connect: (args?: ConnectVariables) => void;
   connectAsync: (args?: ConnectVariables) => Promise<void>;
 };
@@ -32,9 +33,11 @@ export function useConnect(props: UseConnectProps = {}): UseConnectResult {
   const connectAsync = (args?: ConnectVariables) => mutateAsync(args ?? { connector: starknet.connector });
 
   return {
-    connector: starknet.connector,
+    // Computed refs: evaluating these during setup would freeze them at their
+    // pre-connect values.
+    connector: computed(() => starknet.connector),
     connectors: starknet.connectors,
-    pendingConnector: unref(variables)?.connector,
+    pendingConnector: computed(() => unref(variables)?.connector),
     connect,
     connectAsync,
     variables,

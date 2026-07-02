@@ -202,10 +202,11 @@ function createStarknetManager({
       const { accounts } = await connector.features[StandardConnect].connect();
       const address = accounts[0]?.address;
 
-      if (address !== currentAddress.value) {
-        connectorRef.value = connector;
-        currentAddress.value = address ? (address as Address) : undefined;
-      }
+      // Always track the connector: two wallets can expose the same address,
+      // and the change listener registered below belongs to this one.
+      connectorRef.value = connector;
+      currentAddress.value = address ? (address as Address) : undefined;
+      error.value = undefined;
 
       if (autoConnect) {
         getStorage()?.setItem("lastUsedWalletWithStarknetFeatures", walletId(connector));

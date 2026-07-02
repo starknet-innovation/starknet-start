@@ -6,8 +6,9 @@ import {
   estimateFeesQueryKey,
 } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
-import { useStarknetAccount } from "src/context/account";
 
+import { useStarknetAccount } from "../context/account";
+import { useStarknet } from "../context/starknet";
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
 
@@ -41,8 +42,12 @@ export function useEstimateFees({
   ...props
 }: UseEstimateFeesProps): UseEstimateFeesResult {
   const { account } = useStarknetAccount();
+  const { chain } = useStarknet();
 
-  const queryKey_ = useMemo(() => estimateFeesQueryKey({ calls, options }), [calls, options]);
+  const queryKey_ = useMemo(
+    () => estimateFeesQueryKey({ chain, address: account?.address, calls, options }),
+    [chain, account?.address, calls, options],
+  );
 
   const enabled = useMemo(() => Boolean(enabled_ && calls), [enabled_, calls]);
 

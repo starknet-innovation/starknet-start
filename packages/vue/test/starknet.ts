@@ -142,6 +142,11 @@ export class MockWallet implements WalletWithStarknetFeatures {
         return `0x${this.chainId.toString(16)}` as RpcTypeToMessageMap[T]["result"];
       case "wallet_getPermissions":
         return [] as RpcTypeToMessageMap[T]["result"];
+      case "wallet_addInvokeTransaction":
+        if (!this.connected) {
+          throw new Error("Wallet not connected");
+        }
+        return { transaction_hash: "0x1" } as RpcTypeToMessageMap[T]["result"];
       default:
         throw new Error(`Unknown request type: ${call.type}`);
     }

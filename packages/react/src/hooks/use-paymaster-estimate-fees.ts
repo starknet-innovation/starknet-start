@@ -6,8 +6,8 @@ import {
   paymasterEstimateFeesQueryKey,
 } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
-import { useStarknetAccount } from "src/context/account";
 
+import { useStarknetAccount } from "../context/account";
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
 

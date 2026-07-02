@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import { useStarknetAccount } from "src/context/account";
 import {
   type Abi,
   type CompiledContract,
@@ -8,6 +7,8 @@ import {
   type RawArgs,
   type UniversalDetails,
 } from "starknet";
+
+import { useStarknetAccount } from "../context/account";
 
 /** Arguments for `useContractFactory`. */
 export interface UseContractFactoryProps {

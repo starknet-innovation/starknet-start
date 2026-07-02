@@ -1,13 +1,19 @@
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
 import type { PaymasterInterface, TokenData } from "starknet";
+
+export type PaymasterGasTokensQueryKeyParams = {
+  chain?: Chain;
+};
 
 export type PaymasterGasTokensQueryFnParams = {
   paymasterProvider?: PaymasterInterface;
 };
 
-export function paymasterGasTokensQueryKey() {
+export function paymasterGasTokensQueryKey({ chain }: PaymasterGasTokensQueryKeyParams = {}) {
   return [
     {
       entity: "paymaster_gasTokens" as const,
+      chainId: chain?.name,
     },
   ] as const;
 }

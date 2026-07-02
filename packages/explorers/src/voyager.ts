@@ -8,10 +8,13 @@ export class VoyagerExplorer implements Explorer {
   private link: string;
 
   constructor(chain: Chain) {
-    this.link = chain.explorers?.["voyager"]?.toString() ?? "";
+    this.link = chain.explorers?.["voyager"]?.[0] ?? "";
   }
 
   block(hashOrNumber: { hash?: string; number?: number }): string {
+    if (hashOrNumber.hash === undefined && hashOrNumber.number === undefined) {
+      throw new Error("Provide a block hash or a block number.");
+    }
     return `${this.link}/block/${hashOrNumber.hash ?? hashOrNumber.number}`;
   }
 
@@ -30,5 +33,6 @@ export class VoyagerExplorer implements Explorer {
 
 // Define the voyager factory function
 export const voyager: ExplorerFactory<VoyagerExplorer> = (chain: Chain) => {
+  if (!chain.explorers?.["voyager"]?.[0]) return null;
   return new VoyagerExplorer(chain);
 };

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Exit non-zero on failure, handle prompt cancellation cleanly, ship oxlint/oxfmt with the templates, pin TanStack dependencies, and surface package manager spawn errors.",
+  "packageName": "@starknetfoundation/starknet-start-create-starknet",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

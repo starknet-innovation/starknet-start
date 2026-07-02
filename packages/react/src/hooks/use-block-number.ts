@@ -29,10 +29,10 @@ export function useBlockNumber({
   blockIdentifier = BlockTag.LATEST,
   ...props
 }: UseBlockNumberProps = {}): UseBlockNumberResult {
-  const { provider } = useStarknet();
+  const { provider, chain } = useStarknet();
 
   return useQuery({
-    queryKey: blockNumberQueryKey({ blockIdentifier }),
+    queryKey: blockNumberQueryKey({ chain, blockIdentifier }),
     queryFn: blockNumberQueryFn({ provider, blockIdentifier }),
     ...props,
   });

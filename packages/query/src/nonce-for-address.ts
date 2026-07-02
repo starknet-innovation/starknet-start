@@ -1,17 +1,18 @@
-import type { Address } from "@starknetfoundation/starknet-start-chains";
+import type { Address, Chain } from "@starknetfoundation/starknet-start-chains";
 import type { BlockNumber, Nonce, ProviderInterface } from "starknet";
 
 export type NonceForAddressQueryKeyParams = {
+  chain?: Chain;
   address?: Address;
   blockIdentifier?: BlockNumber;
 };
 
 export type NonceForAddressQueryFnParams = {
   provider: ProviderInterface;
-} & NonceForAddressQueryKeyParams;
+} & Omit<NonceForAddressQueryKeyParams, "chain">;
 
-export function nonceForAddressQueryKey({ address, blockIdentifier }: NonceForAddressQueryKeyParams) {
-  return [{ entity: "nonce" as const, blockIdentifier, address }] as const;
+export function nonceForAddressQueryKey({ chain, address, blockIdentifier }: NonceForAddressQueryKeyParams) {
+  return [{ entity: "nonce" as const, chainId: chain?.name, blockIdentifier, address }] as const;
 }
 
 export function nonceForAddressQueryFn({ provider, blockIdentifier, address }: NonceForAddressQueryFnParams) {

@@ -3,6 +3,7 @@ import type { RpcProvider } from "starknet";
 
 import { type EventsQueryKeyParams, eventsQueryFn, eventsQueryKey } from "@starknetfoundation/starknet-start-query";
 
+import { useStarknet } from "../context/starknet";
 import { type UseInfiniteQueryProps, type UseInfiniteQueryResult, useInfiniteQuery } from "../query";
 import { useProvider } from "./use-provider";
 
@@ -37,12 +38,15 @@ export function useEvents({
   fromBlock: fromBlock_,
   toBlock: toBlock_,
   pageSize,
+  ...props
 }: UseEventsProps): UseEventsResult {
   const { provider } = useProvider();
+  const { chain } = useStarknet();
   const rpcProvider = provider as RpcProvider;
 
   return useInfiniteQuery({
     queryKey: eventsQueryKey({
+      chain,
       address,
       eventName,
       fromBlock: fromBlock_,
@@ -59,5 +63,6 @@ export function useEvents({
     }),
     initialPageParam: "0",
     getNextPageParam: (lastPage, _pages) => lastPage.continuation_token,
+    ...props,
   });
 }

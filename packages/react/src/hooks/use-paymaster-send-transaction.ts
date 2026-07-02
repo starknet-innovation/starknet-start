@@ -5,8 +5,8 @@ import {
   paymasterSendTransactionMutationKey,
 } from "@starknetfoundation/starknet-start-query";
 import { useCallback } from "react";
-import { useStarknetAccount } from "src/context/account";
 
+import { useStarknetAccount } from "../context/account";
 import { type UseMutationResult, useMutation } from "../query";
 
 export type UsePaymasterSendTransactionArgs = {

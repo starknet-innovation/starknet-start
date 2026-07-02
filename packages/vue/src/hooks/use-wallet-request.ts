@@ -46,7 +46,9 @@ export function useWalletRequest<T extends RequestMessageTypes>(
     unknown
   >({
     mutationKey: walletRequestMutationKey({ type, params }),
-    mutationFn: walletRequestMutationFn({ connector: starknet.connector }),
+    // Resolve the connector at request time: reading it during setup snapshots
+    // undefined for components mounted before the wallet connects.
+    mutationFn: (args: RequestArgs<T>) => walletRequestMutationFn<T>({ connector: starknet.connector })(args),
     ...((rest ?? {}) as UseMutationProps<RequestResult<T>, Error, RequestArgs<T>, unknown>),
   });
 

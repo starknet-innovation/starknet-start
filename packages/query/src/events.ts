@@ -1,19 +1,14 @@
-import type { Address } from "@starknetfoundation/starknet-start-chains";
+import type { EVENTS_CHUNK } from "@starknet-io/types-js";
+import type { Address, Chain } from "@starknetfoundation/starknet-start-chains";
 
-import {
-  type BlockIdentifier as BlockIdentifier_,
-  BlockTag,
-  type EVENTS_CHUNK,
-  hash,
-  num,
-  type RpcProvider,
-} from "starknet";
+import { type BlockIdentifier as BlockIdentifier_, BlockTag, hash, num, type RpcProvider } from "starknet";
 
 const DEFAULT_PAGE_SIZE = 5;
 
 type BlockIdentifier = Exclude<BlockIdentifier_, bigint>;
 
 export type EventsQueryKeyParams = {
+  chain?: Chain;
   address?: Address;
   eventName?: string;
   fromBlock?: BlockIdentifier;
@@ -23,12 +18,13 @@ export type EventsQueryKeyParams = {
 
 export type EventsQueryFnParams = {
   provider: RpcProvider;
-} & EventsQueryKeyParams;
+} & Omit<EventsQueryKeyParams, "chain">;
 
-export function eventsQueryKey({ address, eventName, fromBlock, toBlock, pageSize }: EventsQueryKeyParams) {
+export function eventsQueryKey({ chain, address, eventName, fromBlock, toBlock, pageSize }: EventsQueryKeyParams) {
   return [
     {
       entity: "events" as const,
+      chainId: chain?.name,
       address,
       eventName,
       fromBlock,
@@ -56,7 +52,9 @@ export function eventsQueryFn({ provider, address, eventName, fromBlock, toBlock
       chunk_size: chunkSize,
       continuation_token: pageParam === "0" ? undefined : pageParam,
     });
-    return res;
+    // starknet.js types getEvents against the RPC spec version of its channel,
+    // which may lag the pinned @starknet-io/types-js; the wire shape is the same.
+    return res as EVENTS_CHUNK;
   };
 }
 
@@ -70,8 +68,17 @@ function blockIdentifierToBlockId(blockIdentifier: BlockIdentifier) {
   }
 
   if (typeof blockIdentifier === "string") {
-    if (blockIdentifier === "latest" || blockIdentifier === "pending") {
-      return blockIdentifier as BlockTag;
+    // "pending" was the pre-RPC-0.9 name for what is now "pre_confirmed".
+    if (blockIdentifier === "pending") {
+      return BlockTag.PRE_CONFIRMED;
+    }
+
+    if (
+      blockIdentifier === BlockTag.LATEST ||
+      blockIdentifier === BlockTag.PRE_CONFIRMED ||
+      blockIdentifier === BlockTag.L1_ACCEPTED
+    ) {
+      return blockIdentifier;
     }
 
     return { block_hash: blockIdentifier };

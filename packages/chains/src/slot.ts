@@ -1,8 +1,20 @@
 import type { Chain } from "./types";
 
+// Slot project ids are usually names, not numbers. Numeric ids keep their
+// numeric value; anything else is encoded as a Starknet short string so the
+// chain id stays a bigint instead of BigInt() throwing on non-numeric input.
+function slotChainId(projectId: string): bigint {
+  if (/^\d+$/.test(projectId)) return BigInt(projectId);
+  let id = 0n;
+  for (const codeUnit of new TextEncoder().encode(projectId)) {
+    id = (id << 8n) | BigInt(codeUnit);
+  }
+  return id;
+}
+
 export function getSlotChain(projectId: string) {
   return {
-    id: BigInt(projectId),
+    id: slotChainId(projectId),
     network: `slot-${projectId}`,
     name: `${projectId}`,
     nativeCurrency: {

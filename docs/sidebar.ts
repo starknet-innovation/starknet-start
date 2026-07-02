@@ -129,10 +129,6 @@ export const sidebar = {
     {
       text: "Connectors",
       items: [
-        {
-          text: "useInjectedConnectors",
-          link: "/docs/hooks/use-injected-connectors",
-        },
         { text: "useAccount", link: "/docs/hooks/use-account" },
         {
           text: "useConnect",

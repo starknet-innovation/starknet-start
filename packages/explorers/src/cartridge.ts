@@ -8,10 +8,13 @@ export class CartridgeExplorer implements Explorer {
   private link: string;
 
   constructor(chain: Chain) {
-    this.link = chain.explorers?.["cartridge"]?.toString() ?? "";
+    this.link = chain.explorers?.["cartridge"]?.[0] ?? "";
   }
 
   block(hashOrNumber: { hash?: string; number?: number }): string {
+    if (hashOrNumber.hash === undefined && hashOrNumber.number === undefined) {
+      throw new Error("Provide a block hash or a block number.");
+    }
     return `${this.link}/block/${hashOrNumber.hash ?? hashOrNumber.number}`;
   }
 
@@ -30,5 +33,6 @@ export class CartridgeExplorer implements Explorer {
 
 // Define the cartridge factory function
 export const cartridge: ExplorerFactory<CartridgeExplorer> = (chain: Chain) => {
+  if (!chain.explorers?.["cartridge"]?.[0]) return null;
   return new CartridgeExplorer(chain);
 };

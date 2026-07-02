@@ -5,8 +5,8 @@ import {
   deployAccountMutationFn,
   deployAccountMutationKey,
 } from "@starknetfoundation/starknet-start-query";
-import { useStarknetAccount } from "src/context/account";
 
+import { useStarknetAccount } from "../context/account";
 import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";
 
 export type { DeployAccountVariables };

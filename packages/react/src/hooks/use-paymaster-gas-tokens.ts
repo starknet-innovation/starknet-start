@@ -3,6 +3,7 @@ import type { TokenData } from "starknet";
 import { paymasterGasTokensQueryFn, paymasterGasTokensQueryKey } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 
+import { useStarknet } from "../context/starknet";
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
 import { useProvider } from "./use-provider";
@@ -34,8 +35,9 @@ export function usePaymasterGasTokens({
   ...props
 }: UsePaymasterGasTokensProps = {}): UsePaymasterGasTokensResult {
   const { paymasterProvider } = useProvider();
+  const { chain } = useStarknet();
 
-  const queryKey_ = useMemo(() => paymasterGasTokensQueryKey(), []);
+  const queryKey_ = useMemo(() => paymasterGasTokensQueryKey({ chain }), [chain]);
 
   const enabled = useMemo(() => Boolean(enabled_), [enabled_]);
 
