@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Upgrade Starknet.js and expose privacy transaction helpers.",
+  "packageName": "create-starknet",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
