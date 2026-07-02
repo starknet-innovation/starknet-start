@@ -1,8 +1,22 @@
 # Change Log - @starknetfoundation/starknet-start-react
 
-<!-- This log was last generated on Sat, 25 Apr 2026 15:56:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 12:21:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.1.0
+
+Thu, 02 Jul 2026 12:21:03 GMT
+
+### Minor changes
+
+- Upgrade Starknet.js and expose privacy transaction helpers. (6303520+adrienlacombe@users.noreply.github.com)
+
+### Patches
+
+- Address Dependabot alerts by updating test dependencies. (6303520+adrienlacombe@users.noreply.github.com)
+- Point package metadata and README links to the GitHub Pages documentation site and exclude generated output from typechecking. (6303520+adrienlacombe@users.noreply.github.com)
+- Rename package under the Starknet Foundation npm scope. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.8
 

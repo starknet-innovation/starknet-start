@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Point package metadata to the GitHub Pages documentation site and exclude generated output from typechecking.",
-  "packageName": "@starknetfoundation/starknet-start-explorers",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

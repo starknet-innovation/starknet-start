@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Point package metadata and template links to the GitHub Pages documentation site.",
-  "packageName": "@starknetfoundation/starknet-start-create-starknet",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

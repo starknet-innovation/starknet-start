@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Address Dependabot alerts by updating test dependencies.",
-  "packageName": "@starknetfoundation/starknet-start-query",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

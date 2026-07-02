@@ -1,8 +1,22 @@
 # Change Log - @starknetfoundation/starknet-start-create-starknet
 
-<!-- This log was last generated on Tue, 31 Mar 2026 14:03:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 12:21:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 10.1.0
+
+Thu, 02 Jul 2026 12:21:03 GMT
+
+### Minor changes
+
+- Upgrade Starknet.js and expose privacy transaction helpers. (6303520+adrienlacombe@users.noreply.github.com)
+
+### Patches
+
+- Address Dependabot alerts by updating the Next template dependency. (6303520+adrienlacombe@users.noreply.github.com)
+- Point package metadata and template links to the GitHub Pages documentation site. (6303520+adrienlacombe@users.noreply.github.com)
+- Rename package under the Starknet Foundation npm scope. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 10.0.1
 

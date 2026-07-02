@@ -2,6 +2,41 @@
   "name": "@starknetfoundation/starknet-start-react",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 12:21:03 GMT",
+      "version": "1.1.0",
+      "tag": "@starknetfoundation/starknet-start-react_v1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-react",
+            "commit": "5fe55495fc1bff149692f89659825560169bdafe",
+            "comment": "Upgrade Starknet.js and expose privacy transaction helpers."
+          }
+        ],
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-react",
+            "commit": "e0bc4fe00e854da7276d7d3dd446eaa41ec7e818",
+            "comment": "Address Dependabot alerts by updating test dependencies."
+          },
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-react",
+            "commit": "cee6f2f416f9ad5d8fc20d6a01d03ce8ecb65827",
+            "comment": "Point package metadata and README links to the GitHub Pages documentation site and exclude generated output from typechecking."
+          },
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-react",
+            "commit": "5d8c28ba4c30f2819950cfda709ef9d7476c2104",
+            "comment": "Rename package under the Starknet Foundation npm scope."
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 25 Apr 2026 15:56:45 GMT",
       "version": "1.0.8",
       "tag": "@starknetfoundation/starknet-start-react_v1.0.8",
