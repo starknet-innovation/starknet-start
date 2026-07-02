@@ -16,10 +16,13 @@ import {
 import { getPackageManager, type PackageManager } from "./helpers/packageManager";
 import { getPackageNameValidation } from "./helpers/validate";
 
-const handleSigTerm = () => process.exit(0);
+process.on("SIGINT", () => process.exit(130));
+process.on("SIGTERM", () => process.exit(143));
 
-process.on("SIGINT", handleSigTerm);
-process.on("SIGTERM", handleSigTerm);
+const onPromptCancel = () => {
+  console.log("Aborted.");
+  process.exit(130);
+};
 
 let projectPath = "";
 let selectedTemplate: Template | null = null;
@@ -40,7 +43,7 @@ type CliOptions = {
 };
 
 program
-  .name(createStarknetPackageJson.name)
+  .name("create-starknet")
   .description(createStarknetPackageJson.description)
   .version(createStarknetPackageJson.version)
   .arguments("[project-directory]")
@@ -80,19 +83,21 @@ async function run() {
   if (projectPath.length > 0) {
     const validation = getPackageNameValidation(projectPath);
     if (validation !== true) {
-      console.error(
+      throw new Error(
         `Could not create a project called ${chalk.red(path.basename(path.resolve(projectPath)))}\n${validation}`,
       );
-      return;
     }
   } else {
-    const response = await prompts({
-      initial: "my-starknet-app",
-      type: "text",
-      name: "projectPath",
-      message: "What is your project named?",
-      validate: getPackageNameValidation,
-    });
+    const response = await prompts(
+      {
+        initial: "my-starknet-app",
+        type: "text",
+        name: "projectPath",
+        message: "What is your project named?",
+        validate: getPackageNameValidation,
+      },
+      { onCancel: onPromptCancel },
+    );
 
     if (typeof response.projectPath === "string") {
       projectPath = response.projectPath.trim();
@@ -107,19 +112,22 @@ async function run() {
   }
 
   // If the project template has not already been selected with the options
-  if (selectedTemplate === null) {
-    const response = await prompts({
-      initial: 0,
-      type: "select",
-      name: "framework",
-      message: "What framework would you like to use?",
-      choices: templateNameToFolder.map(([templateName, templateFolderName]) => ({
-        title: templateName,
-        value: templateFolderName,
-      })),
-    });
+  if (selectedTemplate == null) {
+    const response = await prompts(
+      {
+        initial: 0,
+        type: "select",
+        name: "framework",
+        message: "What framework would you like to use?",
+        choices: templateNameToFolder.map(([templateName, templateFolderName]) => ({
+          title: templateName,
+          value: templateFolderName,
+        })),
+      },
+      { onCancel: onPromptCancel },
+    );
 
-    selectedTemplate = response.framework;
+    selectedTemplate = response.framework ?? null;
   }
 
   // If the project package manager has not been defined with the options
@@ -127,7 +135,7 @@ async function run() {
     packageManager = getPackageManager();
   }
 
-  if (selectedTemplate === null) {
+  if (selectedTemplate == null) {
     throw new Error("A template should be selected");
   }
 
@@ -163,4 +171,7 @@ function logTemplateFiles({ filePaths }: TemplateInstallResult) {
 
 run()
   .then(() => process.exit(0))
-  .catch(console.error);
+  .catch((error) => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exit(1);
+  });

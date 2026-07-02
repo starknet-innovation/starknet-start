@@ -19,7 +19,9 @@
       "outputs": ["dist/**"]
     },
     "dev": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "persistent": true,
+      "cache": false
     },
     "test": {
       "dependsOn": ["^build"]
@@ -27,14 +29,12 @@
     "test:ci": {
       "dependsOn": ["^build"]
     },
-    "test:typecheck": {
-      "dependsOn": ["^build"]
-    },
     "typecheck": {
       "dependsOn": ["^build"]
     },
     "clean": {
-      "dependsOn": []
+      "dependsOn": [],
+      "cache": false
     }
   }
 }

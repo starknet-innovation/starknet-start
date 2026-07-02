@@ -1,6 +1,8 @@
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
 import type { BlockNumber, GetBlockResponse, ProviderInterface } from "starknet";
 
 export type BlockQueryKeyParams = {
+  chain?: Chain;
   blockIdentifier: BlockNumber;
 };
 
@@ -9,8 +11,8 @@ export type BlockQueryFnParams = {
   blockIdentifier: BlockNumber;
 };
 
-export function blockQueryKey({ blockIdentifier }: BlockQueryKeyParams) {
-  return [{ entity: "block" as const, blockIdentifier }] as const;
+export function blockQueryKey({ chain, blockIdentifier }: BlockQueryKeyParams) {
+  return [{ entity: "block" as const, chainId: chain?.id.toString(), blockIdentifier }] as const;
 }
 
 export function blockQueryFn({ provider, blockIdentifier }: BlockQueryFnParams) {

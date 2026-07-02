@@ -20,7 +20,7 @@ function AddChainInner() {
     id: "ZORG",
     chain_id: shortString.encodeShortString("ZORG"),
     chain_name: "ZORG",
-    rpc_urls: ["http://192.168.1.44:6060"],
+    rpc_urls: ["http://localhost:6060"],
     native_currency: {
       type: "ERC20",
       options: {

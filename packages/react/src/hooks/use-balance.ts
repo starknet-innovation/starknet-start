@@ -9,8 +9,6 @@ import { useContract } from "./use-contract";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
 import { useNetwork } from "./use-network";
 
-const DEFAULT_FETCH_INTERVAL = 5_000;
-
 export type Balance = {
   decimals: number;
   symbol: string;
@@ -60,17 +58,17 @@ export function useBalance({
 
   const enabled = useMemo(() => Boolean(enabled_ && contract && address), [enabled_, contract, address]);
 
-  const refetchInterval =
-    refetchInterval_ ?? (blockIdentifier === BlockTag.PRE_CONFIRMED && watch ? DEFAULT_FETCH_INTERVAL : undefined);
-
+  // When watching, refresh is driven by block invalidation alone; giving the
+  // query its own interval on top would fetch the same data twice per cycle.
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),
     queryKey: queryKey_,
+    refetchInterval: typeof refetchInterval_ === "number" ? refetchInterval_ : undefined,
   });
 
   return useQuery({
     enabled,
-    refetchInterval,
+    refetchInterval: watch ? undefined : refetchInterval_,
     queryKey: queryKey_,
     queryFn: balanceQueryFn({
       chain,

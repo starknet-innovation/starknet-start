@@ -1,3 +1,4 @@
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
 import type { AccountInterface, Call, EstimateFeeResponseOverhead, UniversalDetails } from "starknet";
 
 export type EstimateFeesArgs = {
@@ -5,14 +6,21 @@ export type EstimateFeesArgs = {
   options?: UniversalDetails;
 };
 
+export type EstimateFeesQueryKeyParams = EstimateFeesArgs & {
+  chain?: Chain;
+  address?: string;
+};
+
 export type EstimateFeesQueryFnParams = {
   account?: AccountInterface;
 } & EstimateFeesArgs;
 
-export function estimateFeesQueryKey({ calls, options }: EstimateFeesArgs) {
+export function estimateFeesQueryKey({ chain, address, calls, options }: EstimateFeesQueryKeyParams) {
   return [
     {
       entity: "estimateInvokeFee" as const,
+      chainId: chain?.id.toString(),
+      address,
       calls,
       options,
     },

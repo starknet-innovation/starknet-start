@@ -55,8 +55,6 @@ type StarknetProviderInnerProps = {
   paymasterProvider?: ChainPaymasterFactory;
   /** Explorer to use. */
   explorer?: ExplorerFactory;
-  /** Connect the first available connector on page load. */
-  autoConnect?: boolean;
   /** React-query client to use. */
   queryClient?: QueryClient;
   /** Application. */
@@ -77,7 +75,6 @@ export function StarknetProvider(props: StarknetProviderProps) {
 function StarknetProviderInner({
   chains,
   provider,
-  // autoConnect,
   children,
   defaultChainId,
   explorer,
@@ -154,9 +151,16 @@ function StarknetProviderInner({
         } catch (error) {
           console.error("Failed to parse chain ID:", error);
         }
+      } else if (change.accounts) {
+        // The wallet was locked or access was revoked: drop the stale account.
+        setAddress(undefined);
+        setAccount(undefined);
+        setCurrentChain(defaultChain);
+        setCurrentProvider(defaultProvider);
+        setCurrentPaymasterProvider(defaultPaymasterProvider);
       }
     },
-    [updateChainAndProvider],
+    [defaultChain, defaultPaymasterProvider, defaultProvider, updateChainAndProvider],
   );
 
   useEffect(() => {
@@ -324,12 +328,8 @@ function providerForChain(chain: Chain, factory: ChainProviderFactory): { chain:
 function paymasterProviderForChain(
   chain: Chain,
   factory: ChainPaymasterFactory,
-): { chain: Chain; paymasterProvider: PaymasterRpc } {
-  const paymasterProvider = factory(chain);
-  if (paymasterProvider) {
-    return { chain, paymasterProvider };
-  }
-  throw new Error(`No paymaster provider found for chain ${chain.name}`);
+): { chain: Chain; paymasterProvider?: PaymasterRpc } {
+  return { chain, paymasterProvider: factory(chain) ?? undefined };
 }
 
 export function starknetChainId(chainId: bigint): constants.StarknetChainId | undefined {

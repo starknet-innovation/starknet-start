@@ -38,10 +38,9 @@ following:
 
 - `chains`: a list of chains supported by your dapp.
 - `provider`: the JSON-RPC provider you want to use.
-- `connectors`: the wallet connectors supported by your dapp. See the wallets page for more information.
 
-Starknet Start provides the `useInjectedConnectors` hook to merge a static list
-of recommended connectors with a dynamic list of injected connectors.
+Wallets installed in the user's browser are discovered automatically; use the
+`recommendedWallets` and `extraWallets` props to adjust the list shown to users.
 
 ```tsx [components/starknet-provider.tsx]
 "use client";

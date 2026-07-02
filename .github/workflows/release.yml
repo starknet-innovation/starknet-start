@@ -14,6 +14,12 @@ jobs:
     environment: Release
     runs-on: ubuntu-latest
 
+    services:
+      devnet:
+        image: shardlabs/starknet-devnet-rs:0.7.0-seed0
+        ports:
+          - 5050:5050
+
     steps:
       - name: Create release app token
         id: app-token
@@ -35,19 +41,26 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
       - name: Set Node version
         uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Install pnpm
-        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271
-        with:
-          cache: true
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --strict-peer-dependencies=false --frozen-lockfile
+      - name: Run lint
+        run: pnpm lint
+      - name: Run format check
+        run: pnpm format:check
       - name: Run build
         run: pnpm build
+      - name: Run typecheck
+        run: pnpm typecheck
+      - name: Run test
+        run: pnpm test:ci
       - name: Resolve release app user
         id: release-app-user
         run: |

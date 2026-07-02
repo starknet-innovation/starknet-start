@@ -14,7 +14,7 @@ export type AvnuPaymasterProviderArgs = {
 export function avnuPaymasterProvider({ apiKey }: AvnuPaymasterProviderArgs): ChainPaymasterFactory<PaymasterRpc> {
   return paymasterRpcProvider({
     rpc: (chain) => {
-      const baseHttpUrl = chain.paymasterRpcUrls.avnu.http[0];
+      const baseHttpUrl = chain.paymasterRpcUrls?.avnu?.http[0];
       if (!baseHttpUrl) return null;
       return {
         nodeUrl: baseHttpUrl,

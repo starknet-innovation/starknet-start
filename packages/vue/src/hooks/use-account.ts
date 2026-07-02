@@ -60,15 +60,15 @@ export function useAccount(): UseAccountResult {
   const accountRef = shallowRef<AccountInterface | undefined>();
 
   const refreshState = async () => {
-    if (starknet.connector && provider && starknet.address) {
+    if (starknet.connector && provider.value && starknet.address) {
       setConnectedState(accountRef.value);
 
       try {
         const connectedAccount = new WalletAccountV6({
           address: starknet.address,
-          provider,
+          provider: provider.value,
           walletProvider: starknet.connector,
-          paymaster: paymasterProvider,
+          paymaster: paymasterProvider.value,
         }) as AccountInterface;
         accountRef.value = connectedAccount;
         setConnectedState(connectedAccount);
@@ -82,7 +82,7 @@ export function useAccount(): UseAccountResult {
   };
 
   watch(
-    () => [starknet.connector, provider, paymasterProvider, starknet.address, starknet.chain],
+    () => [starknet.connector, provider.value, paymasterProvider.value, starknet.address, starknet.chain],
     () => {
       refreshState().catch(() => {
         /* ignore */

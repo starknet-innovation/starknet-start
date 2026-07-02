@@ -6,8 +6,9 @@ import {
   estimateFeesQueryKey,
 } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
-import { useStarknetAccount } from "src/context/account";
 
+import { useStarknetAccount } from "../context/account";
+import { useStarknet } from "../context/starknet";
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
 
@@ -38,17 +39,23 @@ export function useEstimateFees({
   options,
   watch = false,
   enabled: enabled_ = true,
+  refetchInterval: refetchInterval_,
   ...props
 }: UseEstimateFeesProps): UseEstimateFeesResult {
   const { account } = useStarknetAccount();
+  const { chain } = useStarknet();
 
-  const queryKey_ = useMemo(() => estimateFeesQueryKey({ calls, options }), [calls, options]);
+  const queryKey_ = useMemo(
+    () => estimateFeesQueryKey({ chain, address: account?.address, calls, options }),
+    [chain, account?.address, calls, options],
+  );
 
   const enabled = useMemo(() => Boolean(enabled_ && calls), [enabled_, calls]);
 
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),
     queryKey: queryKey_,
+    refetchInterval: typeof refetchInterval_ === "number" ? refetchInterval_ : undefined,
   });
 
   return useQuery({
@@ -59,6 +66,7 @@ export function useEstimateFees({
       options,
     }),
     enabled,
+    refetchInterval: watch ? undefined : refetchInterval_,
     ...props,
   });
 }

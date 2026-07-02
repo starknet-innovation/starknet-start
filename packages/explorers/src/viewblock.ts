@@ -8,12 +8,12 @@ export class ViewblockExplorer implements Explorer {
   private link: string;
 
   constructor(chain: Chain) {
-    this.link = chain.explorers?.["viewblock"]?.toString() ?? "";
+    this.link = chain.explorers?.["viewblock"]?.[0] ?? "";
   }
 
   block(hashOrNumber: { hash?: string; number?: number }): string {
-    if (hashOrNumber.hash && hashOrNumber.number === undefined) {
-      throw new Error("The viewblock explorer doesnt support hashes for blocks. Please provide a number.");
+    if (hashOrNumber.number === undefined) {
+      throw new Error("The viewblock explorer doesn't support hashes for blocks. Please provide a number.");
     }
     return `${this.link}/block/${hashOrNumber.number}`;
   }
@@ -33,5 +33,6 @@ export class ViewblockExplorer implements Explorer {
 
 // Define the viewblock factory function
 export const viewblock: ExplorerFactory<ViewblockExplorer> = (chain: Chain) => {
+  if (!chain.explorers?.["viewblock"]?.[0]) return null;
   return new ViewblockExplorer(chain);
 };

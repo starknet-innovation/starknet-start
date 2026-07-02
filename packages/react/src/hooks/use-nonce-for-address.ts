@@ -25,10 +25,10 @@ export function useNonceForAddress({
   blockIdentifier = BlockTag.LATEST,
   ...props
 }: UseNonceForAddressProps): UseNonceForAddressResult {
-  const { provider } = useStarknet();
+  const { provider, chain } = useStarknet();
 
   return useQuery({
-    queryKey: nonceForAddressQueryKey({ address, blockIdentifier }),
+    queryKey: nonceForAddressQueryKey({ chain, address, blockIdentifier }),
     queryFn: nonceForAddressQueryFn({
       address,
       provider,

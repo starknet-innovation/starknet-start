@@ -18,12 +18,11 @@ export function installTemplate(
   selectedTemplate: Template | null,
   resolvedProjectPath: string,
   projectName: string,
+  templatesFolderPath: string = path.join(__dirname, "../src", "templates"),
 ): TemplateInstallResult {
-  if (selectedTemplate === null) {
+  if (selectedTemplate == null) {
     throw new Error("A template should be selected");
   }
-
-  const templatesFolderPath = path.join(__dirname, "../src", "templates");
   const selectedTemplatePath = path.join(templatesFolderPath, selectedTemplate);
   const templateFilePaths = listFiles(selectedTemplatePath).map((filePath) => {
     const relativePath = path.relative(selectedTemplatePath, filePath);
@@ -72,9 +71,16 @@ export async function installDependencies(packageManager: PackageManager, resolv
         DISABLE_OPENCOLLECTIVE: "1",
       },
     });
+    child.on("error", (error: Error) => {
+      reject(
+        new Error(
+          `Could not run "${packageManager} install" (${error.message}). Run it manually inside ${resolvedProjectPath}.`,
+        ),
+      );
+    });
     child.on("close", (code: number | null) => {
       if (code !== 0) {
-        reject(new Error("Error while installing dependencies"));
+        reject(new Error(`Dependency installation failed. Run "${packageManager} install" inside the project.`));
         return;
       }
       resolve(true);

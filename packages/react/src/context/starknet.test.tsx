@@ -1,5 +1,8 @@
-import { devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
+import type { ProviderInterface } from "starknet";
+
+import { type Chain, devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
 import { jsonRpcProvider } from "@starknetfoundation/starknet-start-providers";
+import { renderHook as renderHookRaw } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { accounts, defaultConnector } from "../../test/devnet";
@@ -79,6 +82,46 @@ describe("StarknetProvider", () => {
     const account2 = result.current.useStarknetAccountResult.account;
     expect(account2?.address).toEqual(accounts.mainnet[0].address);
     expect(result.current.useStarknetResult.connected?.chains[0]).toEqual(chainToWalletStandardChain(mainnet));
+  });
+
+  it("resets chain and account state when the wallet emits an empty accounts change event", async () => {
+    const { result } = renderHook(() => useStarknetWithAccount());
+
+    await act(async () => {
+      defaultConnector.switchChain(devnet.id);
+      await result.current.useStarknetResult.connect(defaultConnector);
+    });
+
+    await act(async () => {
+      (result.current.useStarknetResult.connected as MockWallet).switchChain(mainnet.id);
+    });
+
+    expect(result.current.useStarknetResult.chain.id).toEqual(mainnet.id);
+    expect(result.current.useStarknetAccountResult.account?.address).toEqual(accounts.mainnet[0].address);
+
+    await act(async () => {
+      (result.current.useStarknetResult.connected as MockWallet).clearAccounts();
+    });
+
+    expect(result.current.useStarknetResult.chain.id).toEqual(devnet.id);
+    expect(result.current.useStarknetAccountResult.account).toBeUndefined();
+    expect(result.current.useStarknetAccountResult.address).toBeUndefined();
+  });
+
+  it("allows chains without an avnu paymaster", () => {
+    const chain = { ...devnet, paymasterRpcUrls: {} } as Chain;
+    const provider = (chain_: Chain) => ({ chainId: chain_.id }) as unknown as ProviderInterface;
+
+    const { result } = renderHookRaw(() => useStarknet(), {
+      wrapper: ({ children }) => (
+        <StarknetProvider chains={[chain]} provider={provider}>
+          {children}
+        </StarknetProvider>
+      ),
+    });
+
+    expect(result.current.chain).toBe(chain);
+    expect(result.current.paymasterProvider).toBeUndefined();
   });
 
   it("fails if there is duplicated chain ids", async () => {

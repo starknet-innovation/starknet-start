@@ -6,10 +6,12 @@ import {
   paymasterEstimateFeesQueryKey,
 } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
-import { useStarknetAccount } from "src/context/account";
 
+import { useStarknetAccount } from "../context/account";
+import { useStarknet } from "../context/starknet";
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";
 import { useInvalidateOnBlock } from "./use-invalidate-on-block";
+import { useProvider } from "./use-provider";
 
 /** Options for `useEstimateFees`. */
 export type UsePaymasterEstimateFeesProps = PaymasterEstimateFeesArgs &
@@ -33,17 +35,30 @@ export function usePaymasterEstimateFees({
   options,
   watch = false,
   enabled: enabled_ = true,
+  refetchInterval: refetchInterval_,
   ...props
 }: UsePaymasterEstimateFeesProps): UsePaymasterEstimateFeesResult {
   const { account } = useStarknetAccount();
+  const { chain } = useStarknet();
+  const { paymasterProvider } = useProvider();
 
-  const queryKey_ = useMemo(() => paymasterEstimateFeesQueryKey({ calls, options }), [calls, options]);
+  const queryKey_ = useMemo(
+    () => paymasterEstimateFeesQueryKey({ chain, address: account?.address, calls, options }),
+    [chain, account?.address, calls, options],
+  );
 
-  const enabled = useMemo(() => Boolean(enabled_ && calls && options), [enabled_, calls, options]);
+  // Without a configured paymaster the account falls back to starknet.js's
+  // default (sepolia) endpoint, so refuse to run rather than query the wrong
+  // network.
+  const enabled = useMemo(
+    () => Boolean(enabled_ && calls && options && paymasterProvider),
+    [enabled_, calls, options, paymasterProvider],
+  );
 
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),
     queryKey: queryKey_,
+    refetchInterval: typeof refetchInterval_ === "number" ? refetchInterval_ : undefined,
   });
 
   return useQuery({
@@ -54,6 +69,7 @@ export function usePaymasterEstimateFees({
       options,
     }),
     enabled,
+    refetchInterval: watch ? undefined : refetchInterval_,
     ...props,
   });
 }

@@ -30,15 +30,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+
       - name: Set Node version
         uses: actions/setup-node@v6
         with:
           node-version: 24
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271
-        with:
-          cache: true
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --strict-peer-dependencies=false --frozen-lockfile

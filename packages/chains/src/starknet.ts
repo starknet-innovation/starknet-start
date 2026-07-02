@@ -23,6 +23,9 @@ export const mainnet = {
     alchemy: {
       http: ["https://starknet-mainnet.g.alchemy.com/v2"],
     },
+    blast: {
+      http: ["https://starknet-mainnet.blastapi.io"],
+    },
     infura: {
       http: ["https://starknet-mainnet.infura.io/v3"],
     },
@@ -63,6 +66,9 @@ export const sepolia = {
   },
   testnet: true,
   rpcUrls: {
+    blast: {
+      http: ["https://starknet-sepolia.blastapi.io"],
+    },
     infura: {
       http: ["https://starknet-sepolia.infura.io/v3"],
     },

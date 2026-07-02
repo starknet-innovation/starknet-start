@@ -3,10 +3,13 @@ import type { RpcProvider } from "starknet";
 
 import { type EventsQueryKeyParams, eventsQueryFn, eventsQueryKey } from "@starknetfoundation/starknet-start-query";
 
+import { useStarknet } from "../context/starknet";
 import { type UseInfiniteQueryProps, type UseInfiniteQueryResult, useInfiniteQuery } from "../query";
 import { useProvider } from "./use-provider";
 
 /** Arguments for `useEvents`. */
+// The chain always comes from the provider context; accepting it as a prop
+// would advertise per-call chain targeting the hook doesn't implement.
 export type UseEventsProps = UseInfiniteQueryProps<
   Events,
   Error,
@@ -15,7 +18,7 @@ export type UseEventsProps = UseInfiniteQueryProps<
   ReturnType<typeof eventsQueryKey>,
   string
 > &
-  EventsQueryKeyParams;
+  Omit<EventsQueryKeyParams, "chain">;
 
 /** Value returned from `useEvents`. */
 export type UseEventsResult = Omit<
@@ -37,12 +40,15 @@ export function useEvents({
   fromBlock: fromBlock_,
   toBlock: toBlock_,
   pageSize,
+  ...props
 }: UseEventsProps): UseEventsResult {
   const { provider } = useProvider();
+  const { chain } = useStarknet();
   const rpcProvider = provider as RpcProvider;
 
   return useInfiniteQuery({
     queryKey: eventsQueryKey({
+      chain,
       address,
       eventName,
       fromBlock: fromBlock_,
@@ -59,5 +65,6 @@ export function useEvents({
     }),
     initialPageParam: "0",
     getNextPageParam: (lastPage, _pages) => lastPage.continuation_token,
+    ...props,
   });
 }

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix setup-time snapshot reactivity in useNetwork, useProvider, useConnect, useAccount and useWalletRequest; clear stale manager error on connect; optional paymaster on chains without AVNU; a failed connect keeps the previous wallet's change listener registered. Breaking: useNetwork().chain, useProvider().provider/paymasterProvider and useConnect().connector/pendingConnector are now ComputedRef values (use .value in script setup).",
+  "packageName": "@starknetfoundation/starknet-start-vue",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

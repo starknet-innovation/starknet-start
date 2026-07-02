@@ -34,10 +34,13 @@ export function starkAddressQueryFn({ name, contract, provider, network }: Stark
     if (!network) throw new Error("network is required");
 
     const namingContract = contract ?? StarknetIdNamingContract[network];
+    if (!namingContract) {
+      throw new Error(`Starknet ID naming contract is not configured for network "${network}"`);
+    }
     const p = new Provider(provider);
     const encodedDomain = encodeDomain(name);
     const result = await p.callContract({
-      contractAddress: namingContract as string,
+      contractAddress: namingContract,
       entrypoint: "domain_to_address",
       calldata: CallData.compile({ domain: encodedDomain, hint: [] }),
     });
@@ -48,11 +51,11 @@ export function starkAddressQueryFn({ name, contract, provider, network }: Stark
   };
 }
 
-const encodeDomain = (domain: string): string[] => {
+export const encodeDomain = (domain: string): string[] => {
   if (!domain) return ["0"];
 
   const encoded = [];
-  for (const subdomain of domain.replace(".stark", "").split(".")) {
+  for (const subdomain of domain.replace(/\.stark$/, "").split(".")) {
     encoded.push(starknetId.useEncoded(subdomain).toString(10));
   }
   return encoded;

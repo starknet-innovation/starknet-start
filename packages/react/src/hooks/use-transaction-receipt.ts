@@ -40,6 +40,7 @@ export function useTransactionReceipt({
   hash,
   watch,
   enabled: enabled_ = true,
+  refetchInterval: refetchInterval_,
   ...props
 }: UseTransactionReceiptProps): UseTransactionReceiptResult {
   const { provider, chain } = useStarknet();
@@ -51,12 +52,14 @@ export function useTransactionReceipt({
   useInvalidateOnBlock({
     enabled: Boolean(enabled && watch),
     queryKey: queryKey_,
+    refetchInterval: typeof refetchInterval_ === "number" ? refetchInterval_ : undefined,
   });
 
   return useQuery({
     queryKey: queryKey_,
     queryFn: transactionReceiptQueryFn({ provider, hash }),
     enabled,
+    refetchInterval: watch ? undefined : refetchInterval_,
     ...props,
   });
 }

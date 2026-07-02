@@ -39,13 +39,14 @@ Starknet Start ships with the following explorer factories:
 ## `useExplorer` hook
 
 You can get an instance of the current explorer already initialized for the current chain
-using the `useExplorer` hook.
+using the `useExplorer` hook. It returns `null` when the current chain does not
+define an endpoint for the configured explorer (e.g. devnet).
 
 ```tsx twoslash
 import { useExplorer } from "@starknetfoundation/starknet-start-react";
 
 const explorer = useExplorer();
 
-const name = explorer.name;
-const link = explorer.block({ number: 123 });
+const name = explorer?.name;
+const link = explorer?.block({ number: 123 });
 ```

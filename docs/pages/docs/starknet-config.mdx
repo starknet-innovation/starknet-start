@@ -35,23 +35,25 @@ List of supported chains.
 
 The JSON-RPC provider you want to use. See [the RPC providers page](/docs/providers) for more information.
 
-### connectors
+### recommendedWallets
 
-- Type: `Connector[]`
+List of wallets to recommend to users who don't have a wallet installed. See [the wallets page](/docs/wallets) for more information.
 
-List of wallet connectors you want to use. See [the wallets page](/docs/wallets) for more information.
+### extraWallets
+
+Additional wallets to show alongside the wallets discovered in the user's browser.
+
+### paymasterProvider
+
+- Type: `ChainPaymasterFactory | undefined`
+
+Paymaster provider to use for gasless transactions. Defaults to the AVNU paymaster.
 
 ### explorer
 
 - Type: `ExplorerFactory`
 
 Explorer factory to use. See [the explorers page](/docs/explorers) for more information.
-
-### autoConnect
-
-- Type: `boolean | undefined`
-
-Whether to automatically connect to the first available wallet.
 
 ### queryClient
 
