@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Rename package under the Starknet Foundation npm scope.",
+  "packageName": "@starknetfoundation/starknet-start-explorers",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

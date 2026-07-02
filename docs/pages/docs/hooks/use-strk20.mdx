@@ -11,7 +11,7 @@ These hooks require a connected wallet that supports the STRK20 wallet API metho
 Queries private STRK20 balances for one or more token addresses.
 
 ```ts twoslash
-import { useStrk20Balances } from "@starknet-start/react";
+import { useStrk20Balances } from "@starknetfoundation/starknet-start-react";
 
 const token = "0x123";
 
@@ -25,7 +25,7 @@ const { getBalances, data } = useStrk20Balances({
 Builds a Starknet call and SNIP-36 proof for STRK20 actions without submitting it.
 
 ```ts twoslash
-import { useStrk20PrepareInvoke } from "@starknet-start/react";
+import { useStrk20PrepareInvoke } from "@starknetfoundation/starknet-start-react";
 import type { STRK20_ACTION } from "@starknet-io/types-js";
 
 const actions: STRK20_ACTION[] = [
@@ -49,7 +49,7 @@ Use `simulate: true` for fee previews. The returned proof has the same shape, bu
 Submits STRK20 actions through the wallet.
 
 ```ts twoslash
-import { useStrk20InvokeTransaction } from "@starknet-start/react";
+import { useStrk20InvokeTransaction } from "@starknetfoundation/starknet-start-react";
 import type { STRK20_ACTION } from "@starknet-io/types-js";
 
 const actions: STRK20_ACTION[] = [
@@ -69,7 +69,7 @@ const { invokeAsync } = useStrk20InvokeTransaction({ actions });
 If you prepare a STRK20 call and want to submit it yourself, pass the returned proof to `useSendTransaction`.
 
 ```ts twoslash
-import { useSendTransaction, useStrk20PrepareInvoke } from "@starknet-start/react";
+import { useSendTransaction, useStrk20PrepareInvoke } from "@starknetfoundation/starknet-start-react";
 import type { STRK20_ACTION } from "@starknet-io/types-js";
 
 const actions: STRK20_ACTION[] = [

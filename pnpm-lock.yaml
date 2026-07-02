@@ -75,16 +75,16 @@ importers:
       '@starknet-io/types-js':
         specifier: ^0.10.3
         version: 0.10.3
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../packages/chains
-      '@starknet-start/explorers':
+      '@starknetfoundation/starknet-start-explorers':
         specifier: workspace:^
         version: link:../packages/explorers
-      '@starknet-start/providers':
+      '@starknetfoundation/starknet-start-providers':
         specifier: workspace:^
         version: link:../packages/providers
-      '@starknet-start/react':
+      '@starknetfoundation/starknet-start-react':
         specifier: workspace:^
         version: link:../packages/react
       class-variance-authority:
@@ -121,7 +121,7 @@ importers:
         specifier: 1.2.1
         version: 1.2.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rollup@4.62.2)(terser@5.44.1)(typescript@5.9.3)
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../packages/typescript-config
       '@types/react':
@@ -133,7 +133,7 @@ importers:
 
   packages/chains:
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       rimraf:
@@ -164,7 +164,7 @@ importers:
         specifier: ^5.0.0
         version: 5.0.1
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       '@types/cross-spawn':
@@ -191,11 +191,11 @@ importers:
 
   packages/explorers:
     dependencies:
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       rimraf:
@@ -210,14 +210,14 @@ importers:
 
   packages/providers:
     dependencies:
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
       starknet:
         specifier: ^10.4.0
         version: 10.4.0(typescript@5.9.3)(zod@3.25.76)
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       rimraf:
@@ -241,7 +241,7 @@ importers:
       '@starknet-io/types-js':
         specifier: ^0.10.3
         version: 0.10.3
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
       abi-wan-kanabi:
@@ -254,7 +254,7 @@ importers:
         specifier: ^2.21.1
         version: 2.38.0(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       rimraf:
@@ -272,16 +272,16 @@ importers:
       '@starknet-io/types-js':
         specifier: ^0.10.3
         version: 0.10.3
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
-      '@starknet-start/explorers':
+      '@starknetfoundation/starknet-start-explorers':
         specifier: workspace:^
         version: link:../explorers
-      '@starknet-start/providers':
+      '@starknetfoundation/starknet-start-providers':
         specifier: workspace:^
         version: link:../providers
-      '@starknet-start/query':
+      '@starknetfoundation/starknet-start-query':
         specifier: workspace:^
         version: link:../query
       '@tanstack/react-query':
@@ -312,7 +312,7 @@ importers:
       '@starknet-io/get-starknet-wallet-standard':
         specifier: ^6.0.2
         version: 6.0.2(typescript@5.9.3)(zod@3.25.76)
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       '@testing-library/jest-dom':
@@ -365,23 +365,23 @@ importers:
       '@starknet-io/types-js':
         specifier: ^0.10.3
         version: 0.10.3
-      '@starknet-start/chains':
+      '@starknetfoundation/starknet-start-chains':
         specifier: workspace:^
         version: link:../chains
-      '@starknet-start/explorers':
+      '@starknetfoundation/starknet-start-explorers':
         specifier: workspace:^
         version: link:../explorers
-      '@starknet-start/providers':
+      '@starknetfoundation/starknet-start-providers':
         specifier: workspace:^
         version: link:../providers
-      '@starknet-start/query':
+      '@starknetfoundation/starknet-start-query':
         specifier: workspace:^
         version: link:../query
       '@tanstack/vue-query':
         specifier: ^5.25.0
         version: 5.101.2(vue@3.5.39(typescript@5.9.3))
     devDependencies:
-      '@starknet-start/typescript-config':
+      '@starknetfoundation/starknet-start-typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
       '@vue/test-utils':
@@ -2724,6 +2724,7 @@ packages:
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
+    deprecated: Potential CWE-502 - Update to 1.3.1 or higher
 
   '@upsetjs/venn.js@2.0.0':
     resolution: {integrity: sha512-WbBhLrooyePuQ1VZxrJjtLvTc4NVfpOyKx0sKqioq9bX1C1m7Jgykkn8gLrtwumBioXIqam8DLxp88Adbue6Hw==}
@@ -2989,6 +2990,7 @@ packages:
   beachball@2.65.1:
     resolution: {integrity: sha512-tTbQop5ZXIGjhuIeCLjH14Z5c17YXyshJlKRbi9A+36++IzAL4qhsm2ttFELEdO5fXwa5tPjVSjsqSkClZfAVA==}
     engines: {node: '>=14.0.0'}
+    deprecated: Token auth with Yarn 4 + Linux is broken in this version (use 2.65.4+)
     hasBin: true
 
   bidi-js@1.0.3:
@@ -5199,6 +5201,7 @@ packages:
   tsconfck@3.1.6:
     resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0

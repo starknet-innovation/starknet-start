@@ -1,7 +1,7 @@
 "use client";
 
 import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
-import { useAccount, useConnect, useDisconnect, useNetwork } from "@starknet-start/react";
+import { useAccount, useConnect, useDisconnect, useNetwork } from "@starknetfoundation/starknet-start-react";
 
 export function WalletBar() {
   const { address } = useAccount();

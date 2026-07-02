@@ -1,5 +1,5 @@
-import type { ExplorerFactory } from "@starknet-start/explorers";
-import type { ChainProviderFactory } from "@starknet-start/providers";
+import type { ExplorerFactory } from "@starknetfoundation/starknet-start-explorers";
+import type { ChainProviderFactory } from "@starknetfoundation/starknet-start-providers";
 import type { AccountInterface, PaymasterRpc, ProviderInterface } from "starknet";
 
 import { StandardEvents, type StandardEventsListeners } from "@starknet-io/get-starknet-core";
@@ -10,8 +10,11 @@ import {
   useStarknetProvider,
 } from "@starknet-io/get-starknet-modal";
 import { StarknetWalletApi } from "@starknet-io/get-starknet-wallet-standard/features";
-import { type Address, type Chain, mainnet, sepolia } from "@starknet-start/chains";
-import { avnuPaymasterProvider, type ChainPaymasterFactory } from "@starknet-start/providers/paymaster";
+import { type Address, type Chain, mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
+import {
+  avnuPaymasterProvider,
+  type ChainPaymasterFactory,
+} from "@starknetfoundation/starknet-start-providers/paymaster";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { constants, WalletAccountV6 } from "starknet";

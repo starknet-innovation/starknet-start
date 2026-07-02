@@ -1,5 +1,5 @@
 {
-  "name": "@starknet-start/vue",
+  "name": "@starknetfoundation/starknet-start-vue",
   "version": "0.0.1-alpha.2",
   "keywords": [
     "ethereum",
@@ -38,19 +38,19 @@
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
     "test": "vitest",
-    "test:ci": "vitest run --passWithNoTests"
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@starknet-io/get-starknet-wallet-standard": "^6.0.2",
     "@starknet-io/types-js": "^0.10.3",
-    "@starknet-start/chains": "workspace:^",
-    "@starknet-start/explorers": "workspace:^",
-    "@starknet-start/providers": "workspace:^",
-    "@starknet-start/query": "workspace:^",
+    "@starknetfoundation/starknet-start-chains": "workspace:^",
+    "@starknetfoundation/starknet-start-explorers": "workspace:^",
+    "@starknetfoundation/starknet-start-providers": "workspace:^",
+    "@starknetfoundation/starknet-start-query": "workspace:^",
     "@tanstack/vue-query": "^5.25.0"
   },
   "devDependencies": {
-    "@starknet-start/typescript-config": "workspace:^",
+    "@starknetfoundation/starknet-start-typescript-config": "workspace:^",
     "@vue/test-utils": "^2.4.6",
     "jsdom": "^27.2.0",
     "rimraf": "^4.1.2",

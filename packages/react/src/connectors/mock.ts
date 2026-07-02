@@ -1,6 +1,6 @@
 import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-core";
 import type { RequestFn, RequestFnCall, RpcMessage, RpcTypeToMessageMap } from "@starknet-io/types-js";
-import type { Chain } from "@starknet-start/chains";
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
 import type {
   StandardConnectMethod,
   StandardDisconnectMethod,
@@ -26,7 +26,7 @@ import {
   type SwitchStarknetChainParameters,
   type TypedData,
 } from "@starknet-io/types-js";
-import { devnet, mainnet, sepolia } from "@starknet-start/chains";
+import { devnet, mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
 
 import { UserRejectedRequestError } from "../errors";
 

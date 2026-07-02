@@ -1,5 +1,5 @@
-import { devnet, mainnet } from "@starknet-start/chains";
-import { jsonRpcProvider } from "@starknet-start/providers";
+import { devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
+import { jsonRpcProvider } from "@starknetfoundation/starknet-start-providers";
 import { describe, expect, it } from "vitest";
 
 import { accounts, defaultConnector } from "../../test/devnet";

@@ -1,4 +1,4 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 import type { AccountInterface } from "starknet";
 
 import React, { useContext } from "react";

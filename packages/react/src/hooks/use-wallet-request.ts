@@ -6,7 +6,7 @@ import {
   type RequestResult,
   walletRequestMutationFn,
   walletRequestMutationKey,
-} from "@starknet-start/query";
+} from "@starknetfoundation/starknet-start-query";
 import { useCallback } from "react";
 
 import { useStarknet } from "../context/starknet";

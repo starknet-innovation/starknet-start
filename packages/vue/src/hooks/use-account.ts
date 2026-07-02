@@ -1,5 +1,5 @@
 import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-wallet-standard/features";
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 import type { AccountInterface } from "starknet";
 
 import { WalletAccountV6 } from "starknet";

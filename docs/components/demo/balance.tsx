@@ -1,4 +1,4 @@
-import { useAccount, useBalance } from "@starknet-start/react";
+import { useAccount, useBalance } from "@starknetfoundation/starknet-start-react";
 
 import { DemoContainer } from "../starknet";
 

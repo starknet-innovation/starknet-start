@@ -5,7 +5,7 @@ import {
   useSendTransaction,
   useSwitchChain,
   useUniversalDeployerContract,
-} from "@starknet-start/react";
+} from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 import { CallData, constants } from "starknet";
 

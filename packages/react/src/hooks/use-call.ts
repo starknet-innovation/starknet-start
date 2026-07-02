@@ -1,6 +1,6 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 
-import { type CallQueryArgs, callQueryFn, callQueryKey } from "@starknet-start/query";
+import { type CallQueryArgs, callQueryFn, callQueryKey } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 import { type Abi, BlockTag, type CallResult, type Contract } from "starknet";
 
