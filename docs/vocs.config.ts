@@ -8,6 +8,7 @@ export default defineConfig({
   baseUrl: docsHosting.url,
   rootDir: ".",
   title: "Starknet Start",
+  description: "React hooks and shared utilities for building Starknet apps.",
   sidebar,
   twoslash: {
     compilerOptions: {
@@ -15,7 +16,7 @@ export default defineConfig({
     },
   },
   topNav: [
-    { text: "Docs", link: "/docs/getting-started", match: "/docs" },
+    { text: "Docs", link: "/docs/", match: "/docs" },
     { text: "Demo", link: "/demo", match: "/demo" },
   ],
   vite: {
