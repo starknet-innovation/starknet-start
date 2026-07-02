@@ -48,5 +48,9 @@ jobs:
           git remote set-url origin "https://x-access-token:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}"
         env:
           GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish package
-        run: pnpm beachball publish --access public -y
+      - name: Publish packages
+        run: pnpm beachball publish --access public --no-git-tags -y
+      - name: Create GitHub releases
+        run: node .github/scripts/create-github-releases.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}

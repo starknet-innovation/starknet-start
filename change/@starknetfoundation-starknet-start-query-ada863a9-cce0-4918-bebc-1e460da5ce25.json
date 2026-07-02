@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Republish packages from the current main branch through Trusted Publisher.",
+  "packageName": "@starknetfoundation/starknet-start-query",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "none"
+}

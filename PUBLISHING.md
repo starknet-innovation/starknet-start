@@ -12,7 +12,9 @@ The release workflow must keep these properties:
   the GitHub OIDC token for publish authority.
 - It does not use a long-lived `NPM_TOKEN` secret.
 - Package publishing remains bounded to Beachball via
-  `pnpm beachball publish --access public -y`.
+  `pnpm beachball publish --access public --no-git-tags -y`.
+- GitHub Releases are created after publishing for each public package whose
+  version changed. Release tags use the `name@version` format.
 
 If the workflow file name, repository, or GitHub environment changes, every npm
 trusted publishing relationship must be updated to match.
