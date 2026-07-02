@@ -7,7 +7,7 @@ Hook for accessing the current provider.
 ```ts twoslash
 import { useProvider } from "@starknetfoundation/starknet-start-react";
 
-const { provider } = useProvider();
+const { provider, paymasterProvider } = useProvider();
 ```
 
 ## Returns
@@ -17,3 +17,9 @@ const { provider } = useProvider();
 - Type: `ProviderInterface`
 
 The current provider.
+
+### paymasterProvider
+
+- Type: `PaymasterInterface | undefined`
+
+The current paymaster provider, if one is configured for the current chain.

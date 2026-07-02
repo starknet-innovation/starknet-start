@@ -59,7 +59,7 @@ export interface UseContractArgs<TAbi extends Abi> {
    *     inputs: [
    *       {
    *         name: "arg",
-   *         type: "core::array::Array::<core::integer::u8>",
+   *         type: "felt252",
    *       },
    *     ],
    *     outputs: [],

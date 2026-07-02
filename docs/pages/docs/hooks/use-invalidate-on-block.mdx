@@ -14,12 +14,18 @@ useInvalidateOnBlock({ queryKey: ["somekey"] });
 
 ### enabled
 
-- enabled: `boolean`
+- Type: `boolean | undefined`
 
 Enable or disable the query from automatically running. `true` by default
 
 ### queryKey
 
-- queryKey: `QueryKey`
+- Type: `QueryKey`
 
 Type from `@tanstack/react-query`
+
+### refetchInterval
+
+- Type: `number | undefined`
+
+How often to poll the current block number, in milliseconds. Defaults to `5000`.

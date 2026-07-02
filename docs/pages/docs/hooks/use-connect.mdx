@@ -1,6 +1,6 @@
 # useConnect
 
-Hook for connecting to a StarkNet wallet.
+Hook for connecting to a Starknet wallet.
 
 ## Usage
 
@@ -16,6 +16,24 @@ No arguments are required
 
 ## Returns
 
+### connector
+
+- Type: `WalletWithStarknetFeatures | undefined`
+
+The currently connected wallet.
+
+### connectors
+
+- Type: `WalletWithStarknetFeatures[]`
+
+Injected and extra wallets available for connection.
+
+### pendingConnector
+
+- Type: `WalletWithStarknetFeatures | undefined`
+
+The wallet currently waiting for connection approval.
+
 ### connect
 
 - Type: `(args?: ConnectVariables) => void`
@@ -30,7 +48,7 @@ Send the request to the user and block until it receives a response.
 
 ### data
 
-- Type: `boolean | undefined`
+- Type: `void | undefined`
 
 The resolved data.
 

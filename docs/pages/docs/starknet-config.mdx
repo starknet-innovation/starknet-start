@@ -65,4 +65,5 @@ React Query client to use.
 
 - Type: `bigint | undefined`
 
-Default chain to use when no wallet is connected. This chain must be included in the `chains` array.
+Default chain to use when no wallet is connected.
+If the provided id is not in `chains`, Starknet Start falls back to the first configured chain.

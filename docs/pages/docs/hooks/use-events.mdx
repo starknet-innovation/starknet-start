@@ -2,7 +2,7 @@
 
 Fetch Starknet events continuously
 
-By default this hook tries to fetches all the events (5 events per page) starting from genesis but you can pass arguments for filtering
+By default this hook fetches events in pages of 5 starting from genesis, but you can pass arguments for filtering.
 
 ## Usage
 
@@ -60,7 +60,7 @@ The number of events returned from each individual query, default to 5.
 
 ### data
 
-- Type: `InfiniteData<Events, string>`
+- Type: `InfiniteData<Events, string> | undefined`
 
 ```
 InfiniteData<Events, string> = {
@@ -85,9 +85,9 @@ Will be true while fetching the next page with `fetchNextPage`.
 
 ### fetchNextPage
 
-- Type: `(options?: FetchNextPageOptions) => Promise<UseEventsResult>`
+- Type: `UseEventsResult["fetchNextPage"]`
 
-`UseEventsResult` is the same return type of the `useEvents` hook
+`UseEventsResult` is the return type of the `useEvents` hook.
 
 This function allows you to fetch the next page of events, make sure to check `isFetchingNextPage` and `hasNextPage` before calling it.
 
@@ -140,3 +140,15 @@ Derived from `status`.
 - Type: `boolean`
 
 Derived from `fetchStatus`.
+
+### isLoading
+
+- Type: `boolean`
+
+True while the query is loading for the first time.
+
+### refetch
+
+- Type: `UseEventsResult["refetch"]`
+
+Refetch the query.

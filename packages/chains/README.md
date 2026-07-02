@@ -15,7 +15,7 @@ yarn add @starknetfoundation/starknet-start-chains
 Simply import any chain you want to use.
 
 ```ts
-import { mainnet } from '@starknetfoundation/starknet-start-chains`
+import { mainnet } from "@starknetfoundation/starknet-start-chains";
 ```
 
 ## Contributing

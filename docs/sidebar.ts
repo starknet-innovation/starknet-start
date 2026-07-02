@@ -96,6 +96,10 @@ export const sidebar = {
           link: "/docs/hooks/use-wallet-request",
         },
         {
+          text: "useWatchAsset",
+          link: "/docs/hooks/use-watch-asset",
+        },
+        {
           text: "useStrk20",
           link: "/docs/hooks/use-strk20",
         },

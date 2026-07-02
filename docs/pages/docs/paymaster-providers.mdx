@@ -1,6 +1,6 @@
 # Paymaster Providers
 
-You need to configure a Paymaster RPC provider to allow your dapp to execute gasless/gasfree transaction to
+You need to configure a Paymaster RPC provider to allow your dapp to execute gasless transactions on
 Starknet.
 
 Starknet Start paymaster providers are factories that, given a chain, return a Starknet.js
@@ -13,8 +13,8 @@ Starknet Start.
 
 ### Public
 
-Starknet Start ships with a public provider that you can use to run **Gasless** transactions.
-For any project that needs **Gasfree** transaction, you should configure an _api key_ to one
+Starknet Start ships with a public provider that you can use to run gasless transactions.
+For any production project, you should configure an API key for one
 of the providers below.
 
 At the moment, this provider uses the free Paymaster RPC endpoints provided by:
@@ -23,7 +23,7 @@ At the moment, this provider uses the free Paymaster RPC endpoints provided by:
 
 ### AVNU
 
-Create an AVNU API key from the dashboard(soon available - contact AVNU team until available).
+Create an AVNU API key from the AVNU dashboard, or contact AVNU if dashboard access is not available.
 
 ```ts twoslash
 import { avnuPaymasterProvider } from "@starknetfoundation/starknet-start-providers/paymaster";

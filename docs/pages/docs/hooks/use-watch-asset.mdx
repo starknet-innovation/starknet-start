@@ -1,20 +1,20 @@
-# useDeclareContract
+# useWatchAsset
 
-Hook to declare a new class in the current network.
+Request the user to add or watch an asset in their wallet.
 
 ## Usage
 
-```tsx
-import { useDeclareContract } from "@starknetfoundation/starknet-start-react";
+```ts twoslash
+import { useWatchAsset } from "@starknetfoundation/starknet-start-react";
 
-const { declare, error } = useDeclareContract({
+const { watchAsset, error } = useWatchAsset({
   params: {
-    compiled_class_hash: hash.computeCompiledClassHash(contractCasm),
-    contract_class: {
-      sierra_program: contractSierra.sierra_program,
-      contract_class_version: "0x01",
-      entry_points_by_type: contractSierra.entry_points_by_type,
-      abi: JSON.stringify(contractSierra.abi),
+    type: "ERC20",
+    options: {
+      address: "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+      name: "ETHER",
+      symbol: "ETH",
+      decimals: 18,
     },
   },
 });
@@ -24,29 +24,29 @@ const { declare, error } = useDeclareContract({
 
 ### params
 
-- Type: `AddDeclareTransactionParameters`
+- Type: `WatchAssetParameters`
 
-The Contract definition. This type is defined in the Starknet Types package.
+The asset definition. This type is defined in the Starknet Types package.
 
 ## Returns
 
-### declare
+### watchAsset
 
-- Type: `(args?: AddDeclareTransactionParameters) => void`
+- Type: `(args?: WatchAssetParameters) => void`
 
 Function to send the request to the user, optionally overriding the arguments to the hook.
 
-### declareAsync
+### watchAssetAsync
 
-- Type: `(args?: AddDeclareTransactionParameters) => Promise<AddDeclareTransactionResult>`
+- Type: `(args?: WatchAssetParameters) => Promise<boolean>`
 
 Send the request to the user and block until it receives a response.
 
 ### data
 
-- Type: `AddDeclareTransactionResult | undefined`
+- Type: `boolean | undefined`
 
-The resolved data. This type is defined in the Starknet Types package.
+The resolved data.
 
 ### error
 
@@ -62,7 +62,7 @@ Reset the mutation status.
 
 ### variables
 
-- Type: `RequestArgs<"wallet_addDeclareTransaction"> | undefined`
+- Type: `RequestArgs<"wallet_watchAsset"> | undefined`
 
 The request variables used by the underlying wallet mutation.
 

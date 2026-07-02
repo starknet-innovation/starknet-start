@@ -99,9 +99,9 @@ Reset the mutation status.
 
 ### variables
 
-- Type: `(Call | WalletApiCall)[] | { calls?: (Call | WalletApiCall)[]; proof?: STRK20_PROOF } | undefined`
+- Type: `RequestArgs<"wallet_addInvokeTransaction"> | undefined`
 
-The variables passed to `send` or `sendAsync`.
+The request variables used by the underlying wallet mutation.
 
 ### status
 
