@@ -1,5 +1,5 @@
 {
-  "name": "@starknet-start/docs",
+  "name": "@starknetfoundation/starknet-start-docs",
   "private": true,
   "type": "module",
   "scripts": {
@@ -18,10 +18,10 @@
     "@starknet-io/get-starknet-modal": "^5.0.0",
     "@starknet-io/get-starknet-ui": "^5.0.0",
     "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
-    "@starknet-start/chains": "workspace:^",
-    "@starknet-start/explorers": "workspace:^",
-    "@starknet-start/providers": "workspace:^",
-    "@starknet-start/react": "workspace:^",
+    "@starknetfoundation/starknet-start-chains": "workspace:^",
+    "@starknetfoundation/starknet-start-explorers": "workspace:^",
+    "@starknetfoundation/starknet-start-providers": "workspace:^",
+    "@starknetfoundation/starknet-start-react": "workspace:^",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.438.0",
@@ -35,7 +35,7 @@
     "vocs": "1.2.1"
   },
   "devDependencies": {
-    "@starknet-start/typescript-config": "workspace:^",
+    "@starknetfoundation/starknet-start-typescript-config": "workspace:^",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3"
   }

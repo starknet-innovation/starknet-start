@@ -1,4 +1,4 @@
-import { useWalletRequest } from "@starknet-start/react";
+import { useWalletRequest } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 
 import { DemoContainer } from "../starknet";

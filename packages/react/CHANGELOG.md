@@ -1,4 +1,4 @@
-# Change Log - @starknet-start/react
+# Change Log - @starknetfoundation/starknet-start-react
 
 <!-- This log was last generated on Sat, 25 Apr 2026 15:56:45 GMT and should not be manually modified. -->
 

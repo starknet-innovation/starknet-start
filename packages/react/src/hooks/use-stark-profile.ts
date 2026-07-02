@@ -1,4 +1,4 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 
 import {
   STARKNET_ID_CONTRACTS,
@@ -6,7 +6,7 @@ import {
   type StarkProfileResponse,
   starkProfileQueryFn,
   starkProfileQueryKey,
-} from "@starknet-start/query";
+} from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";

@@ -1,4 +1,4 @@
-import { useStarkAddress } from "@starknet-start/react";
+import { useStarkAddress } from "@starknetfoundation/starknet-start-react";
 import { useState } from "react";
 import stringify from "safe-stable-stringify";
 

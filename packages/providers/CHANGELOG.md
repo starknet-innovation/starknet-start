@@ -1,4 +1,4 @@
-# Change Log - @starknet-start/providers
+# Change Log - @starknetfoundation/starknet-start-providers
 
 <!-- This log was last generated on Tue, 31 Mar 2026 14:03:06 GMT and should not be manually modified. -->
 

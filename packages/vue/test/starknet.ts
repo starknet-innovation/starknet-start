@@ -5,9 +5,9 @@ import type {
   WalletWithStarknetFeatures,
 } from "@starknet-io/get-starknet-wallet-standard/features";
 import type { RequestFn, RequestFnCall, RpcMessage, RpcTypeToMessageMap } from "@starknet-io/types-js";
-import type { Chain } from "@starknet-start/chains";
-import type { ChainProviderFactory } from "@starknet-start/providers";
-import type { ChainPaymasterFactory } from "@starknet-start/providers/paymaster";
+import type { Chain } from "@starknetfoundation/starknet-start-chains";
+import type { ChainProviderFactory } from "@starknetfoundation/starknet-start-providers";
+import type { ChainPaymasterFactory } from "@starknetfoundation/starknet-start-providers/paymaster";
 import type { ProviderInterface } from "starknet";
 
 import {
@@ -16,7 +16,7 @@ import {
   StandardEvents,
   StarknetWalletApi,
 } from "@starknet-io/get-starknet-wallet-standard/features";
-import { devnet, mainnet } from "@starknet-start/chains";
+import { devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
 import { PaymasterRpc } from "starknet";
 
 import { createStarknetVue } from "../src/context/starknet";

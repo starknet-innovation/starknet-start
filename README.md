@@ -1,8 +1,8 @@
 # Starknet Start
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@starknet-start/react">
-    <img alt="@starknet-start/react" src="https://img.shields.io/npm/v/@starknet-start/react">
+  <a href="https://www.npmjs.com/package/@starknetfoundation/starknet-start-react">
+    <img alt="@starknetfoundation/starknet-start-react" src="https://img.shields.io/npm/v/@starknetfoundation/starknet-start-react">
   </a>
   <a href="https://github.com/starknet-innovation/starknet-start/actions/workflows/build.yml">
     <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/starknet-innovation/starknet-start/build.yml">

@@ -1,4 +1,4 @@
-import { useAccount, useNonceForAddress } from "@starknet-start/react";
+import { useAccount, useNonceForAddress } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 
 import { DemoContainer } from "../starknet";

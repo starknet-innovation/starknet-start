@@ -1,4 +1,4 @@
-# `create-starknet`
+# `@starknetfoundation/starknet-start-create-starknet`
 
 Create starknet apps with one command
 
@@ -7,7 +7,7 @@ Create starknet apps with one command
 You can create a new project interactively by running:
 
 ```bash
-npx create-starknet
+npx @starknetfoundation/starknet-start-create-starknet
 # or
 npm init starknet
 ```
@@ -20,7 +20,7 @@ You can also pass command line arguments to set up a new project
 non-interactively. See `create-starknet --help`:
 
 ```
-create-starknet [project-directory] [options]
+@starknetfoundation/starknet-start-create-starknet [project-directory] [options]
 
 Options:
   -V, --version  output the version number
@@ -34,6 +34,6 @@ Options:
 Examples:
 
 ```bash
-npx create-starknet my-app --template next --use-pnpm
-npx create-starknet my-app --template tanstack-start --use-pnpm
+npx @starknetfoundation/starknet-start-create-starknet my-app --template next --use-pnpm
+npx @starknetfoundation/starknet-start-create-starknet my-app --template tanstack-start --use-pnpm
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "@starknet-start/chains",
+  "name": "@starknetfoundation/starknet-start-chains",
   "version": "1.0.7",
   "keywords": [
     "ethereum",
@@ -24,14 +24,16 @@
       "default": "./dist/index.mjs"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@starknet-start/typescript-config": "workspace:^",
+    "@starknetfoundation/starknet-start-typescript-config": "workspace:^",
     "rimraf": "^4.1.2",
     "tsdown": "^0.16.8"
   }

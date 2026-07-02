@@ -1,4 +1,4 @@
-import { disconnectMutationFn, disconnectMutationKey } from "@starknet-start/query";
+import { disconnectMutationFn, disconnectMutationKey } from "@starknetfoundation/starknet-start-query";
 
 import { useStarknet } from "../context/starknet";
 import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";

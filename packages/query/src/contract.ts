@@ -1,4 +1,4 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 import type { Abi } from "abi-wan-kanabi";
 import type {
   ContractFunctions,

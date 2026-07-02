@@ -1,6 +1,6 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 
-import { nonceForAddressQueryFn, nonceForAddressQueryKey } from "@starknet-start/query";
+import { nonceForAddressQueryFn, nonceForAddressQueryKey } from "@starknetfoundation/starknet-start-query";
 import { type BlockNumber, BlockTag, type Nonce } from "starknet";
 
 import { useStarknet } from "../context/starknet";

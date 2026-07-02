@@ -1,6 +1,9 @@
 import type { BigNumberish, Call, InvokeFunctionResponse, PaymasterDetails } from "starknet";
 
-import { paymasterSendTransactionMutationFn, paymasterSendTransactionMutationKey } from "@starknet-start/query";
+import {
+  paymasterSendTransactionMutationFn,
+  paymasterSendTransactionMutationKey,
+} from "@starknetfoundation/starknet-start-query";
 import { useCallback } from "react";
 import { useStarknetAccount } from "src/context/account";
 
