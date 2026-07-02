@@ -48,20 +48,14 @@ function patch(source, file) {
     .replaceAll("`/assets/", `\`${basePath}/assets/`)
     .replaceAll('\\"/assets/', `\\"${basePath}/assets/`)
     .replaceAll("\\'/assets/", `\\'${basePath}/assets/`)
-    .replace(
-      new RegExp(`\\\\"href\\\\":\\\\"/(?!/|${basePathPattern}(?:/|\\\\"))`, "g"),
-      `\\"href\\":\\"${basePath}/`,
-    )
+    .replace(new RegExp(`\\\\"href\\\\":\\\\"/(?!/|${basePathPattern}(?:/|\\\\"))`, "g"), `\\"href\\":\\"${basePath}/`)
     .replace(new RegExp(`\\b(href|src)="/(?!/|${basePathPattern}(?:/|"))`, "g"), `$1="${basePath}/`)
     .replace(new RegExp(`url\\(/(?!/|${basePathPattern}(?:/|\\)))`, "g"), `url(${basePath}/`)
     .replace(new RegExp(`\\]\\(/(?!/|${basePathPattern}(?:/|\\)))`, "g"), `](${basePath}/`);
 
   if (file.endsWith(".js")) {
     patched = patched
-      .replace(
-        new RegExp(`\\bhref:\`/(?!/|${basePathPattern}(?:/|\`))`, "g"),
-        `href:\`${basePath}/`,
-      )
+      .replace(new RegExp(`\\bhref:\`/(?!/|${basePathPattern}(?:/|\`))`, "g"), `href:\`${basePath}/`)
       .replace(new RegExp(`\\bhref:"/(?!/|${basePathPattern}(?:/|"))`, "g"), `href:"${basePath}/`)
       .replace(new RegExp(`\\bhref:'/(?!/|${basePathPattern}(?:/|'))`, "g"), `href:'${basePath}/`);
   }
