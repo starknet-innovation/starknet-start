@@ -1,4 +1,4 @@
-import { type UseSignTypedDataArgs, useSignTypedData } from "@starknet-start/react";
+import { type UseSignTypedDataArgs, useSignTypedData } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 import { shortString } from "starknet";
 

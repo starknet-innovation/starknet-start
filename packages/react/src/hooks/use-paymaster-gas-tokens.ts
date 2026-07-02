@@ -1,6 +1,6 @@
 import type { TokenData } from "starknet";
 
-import { paymasterGasTokensQueryFn, paymasterGasTokensQueryKey } from "@starknet-start/query";
+import { paymasterGasTokensQueryFn, paymasterGasTokensQueryKey } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 
 import { type UseQueryProps, type UseQueryResult, useQuery } from "../query";

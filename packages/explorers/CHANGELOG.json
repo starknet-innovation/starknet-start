@@ -1,15 +1,15 @@
 {
-  "name": "@starknet-start/explorers",
+  "name": "@starknetfoundation/starknet-start-explorers",
   "entries": [
     {
       "date": "Sat, 25 Apr 2026 15:13:11 GMT",
       "version": "1.0.7",
-      "tag": "@starknet-start/explorers_v1.0.7",
+      "tag": "@starknetfoundation/starknet-start-explorers_v1.0.7",
       "comments": {
         "none": [
           {
             "author": "francesco@ceccon.me",
-            "package": "@starknet-start/explorers",
+            "package": "@starknetfoundation/starknet-start-explorers",
             "commit": "cdfe253e37c444e5e11839e7c9017f4d2699c8af",
             "comment": "build: update workflows"
           }
@@ -19,12 +19,12 @@
     {
       "date": "Tue, 31 Mar 2026 14:03:06 GMT",
       "version": "1.0.7",
-      "tag": "@starknet-start/explorers_v1.0.7",
+      "tag": "@starknetfoundation/starknet-start-explorers_v1.0.7",
       "comments": {
         "patch": [
           {
             "author": "jadejajaipal5@gmail.com",
-            "package": "@starknet-start/explorers",
+            "package": "@starknetfoundation/starknet-start-explorers",
             "commit": "e222b5f715fad9fc6a436e86af5d99f2c8c29cf7",
             "comment": "chore: update deps"
           }

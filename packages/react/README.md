@@ -1,13 +1,13 @@
-# `@starknet-start/react`
+# `@starknetfoundation/starknet-start-react`
 
 Starknet Start is a collection of React hooks for Starknet.
 
 ## Installation
 
 ```
-npm install @starknet-start/react
+npm install @starknetfoundation/starknet-start-react
 # or
-yarn add @starknet-start/react
+yarn add @starknetfoundation/starknet-start-react
 ```
 
 ## Documentation

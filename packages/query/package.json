@@ -1,5 +1,5 @@
 {
-  "name": "@starknet-start/query",
+  "name": "@starknetfoundation/starknet-start-query",
   "version": "1.0.7",
   "keywords": [
     "ethereum",
@@ -24,6 +24,9 @@
       "default": "./dist/index.mjs"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "typecheck": "tsc --noEmit",
@@ -35,12 +38,12 @@
     "@starknet-io/get-starknet-core": "^5.0.0",
     "@starknet-io/get-starknet-wallet-standard": "^5.0.0",
     "@starknet-io/types-js": "^0.10.1",
-    "@starknet-start/chains": "workspace:^",
+    "@starknetfoundation/starknet-start-chains": "workspace:^",
     "abi-wan-kanabi": "^2.2.4",
     "viem": "^2.21.1"
   },
   "devDependencies": {
-    "@starknet-start/typescript-config": "workspace:^",
+    "@starknetfoundation/starknet-start-typescript-config": "workspace:^",
     "rimraf": "^4.1.2",
     "tsdown": "^0.16.8",
     "vitest": "^4.0.15"

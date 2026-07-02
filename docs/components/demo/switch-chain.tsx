@@ -1,5 +1,5 @@
-import { sepolia } from "@starknet-start/chains";
-import { useNetwork, useSwitchChain } from "@starknet-start/react";
+import { sepolia } from "@starknetfoundation/starknet-start-chains";
+import { useNetwork, useSwitchChain } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 import { constants } from "starknet";
 

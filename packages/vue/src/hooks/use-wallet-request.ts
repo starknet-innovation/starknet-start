@@ -1,6 +1,6 @@
 import type { RpcMessage, RpcTypeToMessageMap } from "@starknet-io/types-js";
 
-import { walletRequestMutationFn, walletRequestMutationKey } from "@starknet-start/query";
+import { walletRequestMutationFn, walletRequestMutationKey } from "@starknetfoundation/starknet-start-query";
 
 import { useStarknet } from "../context/starknet";
 import { type UseMutationProps, type UseMutationResult, useMutation } from "../query";

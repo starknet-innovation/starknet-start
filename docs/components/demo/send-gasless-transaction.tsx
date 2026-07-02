@@ -1,13 +1,13 @@
 import type { Abi, Call, FeeMode } from "starknet";
 
-import { mainnet, sepolia } from "@starknet-start/chains";
+import { mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
 import {
   useAccount,
   useContract,
   useNetwork,
   usePaymasterEstimateFees,
   usePaymasterSendTransaction,
-} from "@starknet-start/react";
+} from "@starknetfoundation/starknet-start-react";
 import { useMemo } from "react";
 import stringify from "safe-stable-stringify";
 

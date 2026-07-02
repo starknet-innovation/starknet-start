@@ -1,4 +1,4 @@
-import { mainnet } from "@starknet-start/chains";
+import { mainnet } from "@starknetfoundation/starknet-start-chains";
 import { assert, describe, expect, it } from "vitest";
 
 import { cartridge } from "./cartridge";

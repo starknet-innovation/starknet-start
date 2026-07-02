@@ -1,4 +1,4 @@
-import { type Chain, mainnet, sepolia } from "@starknet-start/chains";
+import { type Chain, mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
 import { constants, RpcProvider, type RpcProviderOptions } from "starknet";
 
 import type { ChainProviderFactory } from "./factory";

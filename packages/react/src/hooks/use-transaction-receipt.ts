@@ -1,6 +1,6 @@
 import type { GetTransactionReceiptResponse } from "starknet";
 
-import { transactionReceiptQueryFn, transactionReceiptQueryKey } from "@starknet-start/query";
+import { transactionReceiptQueryFn, transactionReceiptQueryKey } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 
 import { useStarknet } from "../context/starknet";

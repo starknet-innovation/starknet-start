@@ -1,4 +1,10 @@
-import { type Abi, useAccount, useContract, useEstimateFees, useNetwork } from "@starknet-start/react";
+import {
+  type Abi,
+  useAccount,
+  useContract,
+  useEstimateFees,
+  useNetwork,
+} from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 
 import { DemoContainer } from "../starknet";

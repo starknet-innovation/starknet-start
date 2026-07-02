@@ -1,4 +1,4 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 import type { BlockNumber, Nonce, ProviderInterface } from "starknet";
 
 export type NonceForAddressQueryKeyParams = {

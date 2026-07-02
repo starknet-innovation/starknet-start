@@ -1,4 +1,4 @@
-import { useBlockNumber, useEvents, useNetwork } from "@starknet-start/react";
+import { useBlockNumber, useEvents, useNetwork } from "@starknetfoundation/starknet-start-react";
 import stringify from "safe-stable-stringify";
 import { BlockTag } from "starknet";
 

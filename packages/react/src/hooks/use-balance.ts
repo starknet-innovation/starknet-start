@@ -1,6 +1,6 @@
-import type { Address } from "@starknet-start/chains";
+import type { Address } from "@starknetfoundation/starknet-start-chains";
 
-import { balanceQueryFn, balanceQueryKey } from "@starknet-start/query";
+import { balanceQueryFn, balanceQueryKey } from "@starknetfoundation/starknet-start-query";
 import { useMemo } from "react";
 import { type BlockNumber, BlockTag } from "starknet";
 

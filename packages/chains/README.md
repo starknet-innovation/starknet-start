@@ -1,13 +1,13 @@
-# `@starknet-start/chains`
+# `@starknetfoundation/starknet-start-chains`
 
 References to popular Starknet chains.
 
 ## Installation
 
 ```
-npm install @starknet-start/chains
+npm install @starknetfoundation/starknet-start-chains
 # or
-yarn add @starknet-start/chains
+yarn add @starknetfoundation/starknet-start-chains
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ yarn add @starknet-start/chains
 Simply import any chain you want to use.
 
 ```ts
-import { mainnet } from '@starknet-start/chains`
+import { mainnet } from '@starknetfoundation/starknet-start-chains`
 ```
 
 ## Contributing
