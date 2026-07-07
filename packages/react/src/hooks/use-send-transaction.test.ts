@@ -1,9 +1,11 @@
 import type { Abi } from "abi-wan-kanabi";
+import type { AccountInterface, Call } from "starknet";
 
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { defaultConnector } from "../../test/devnet";
 import { act, renderHook, waitFor } from "../../test/react";
+import { MockWallet } from "../connectors/mock";
 import { UserRejectedRequestError } from "../errors";
 import { useAccount } from "./use-account";
 import { useConnect } from "./use-connect";
@@ -28,6 +30,38 @@ function useSendTransactionWithConnect() {
     sendTransaction: useSendTransaction({ calls }),
     connect: useConnect(),
     disconnect: useDisconnect(),
+  };
+}
+
+function useManualSendTransactionWithConnect() {
+  return {
+    sendTransaction: useSendTransaction({}),
+    connect: useConnect(),
+  };
+}
+
+function createExecuteWallet() {
+  const execute = vi.fn(async () => ({
+    transaction_hash: "0x123",
+  }));
+  const account = {
+    address: "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691",
+    execute,
+  } as unknown as AccountInterface;
+
+  return {
+    execute,
+    connector: new MockWallet(
+      {
+        sepolia: [account],
+        mainnet: [account],
+      },
+      {
+        id: "controller",
+        name: "Cartridge Controller",
+        available: true,
+      },
+    ),
   };
 }
 
@@ -75,6 +109,36 @@ describe("useSendTransaction", () => {
     } finally {
       defaultConnector.updateOptions({ rejectRequest: false });
     }
+  });
+
+  it("sends calls passed to sendAsync through the connected wallet", async () => {
+    const { connector, execute } = createExecuteWallet();
+    const calls: Call[] = [
+      {
+        contractAddress: "0x123",
+        entrypoint: "increase_balance",
+        calldata: ["0x1"],
+      },
+    ];
+    const { result } = renderHook(() => useManualSendTransactionWithConnect(), {
+      extraWallets: [connector],
+    });
+
+    await act(async () => {
+      await result.current.connect.connectAsync({ connector });
+    });
+
+    let response: unknown;
+
+    await act(async () => {
+      response = await result.current.sendTransaction.sendAsync(calls);
+    });
+
+    await waitFor(() => {
+      expect(result.current.sendTransaction.isSuccess).toBeTruthy();
+    });
+    expect(response).toEqual({ transaction_hash: "0x123" });
+    expect(execute).toHaveBeenCalledWith(calls);
   });
 });
 
