@@ -43,6 +43,7 @@ export function chainToWalletStandardChain(chain: Chain): `starknet:0x${string}`
 export class MockWallet implements WalletWithStarknetFeatures {
   readonly version = "1.0.0" as const;
   readonly name: string;
+  // Intentionally minimal SVG data URI used as a placeholder icon in tests.
   readonly icon = "data:image/svg+xml;base64,PHN2Zy8+" as const;
 
   private accountIndex = 0;
@@ -67,14 +68,15 @@ export class MockWallet implements WalletWithStarknetFeatures {
       return [];
     }
 
-    return [
-      {
-        address: this.currentAddress,
-        publicKey: new Uint8Array(),
-        chains: this.chains,
-        features: [],
-      },
-    ] as unknown as WalletWithStarknetFeatures["accounts"];
+    type WalletAccount = WalletWithStarknetFeatures["accounts"][number];
+    const account: WalletAccount = {
+      address: this.currentAddress,
+      publicKey: new Uint8Array(),
+      chains: this.chains,
+      features: [],
+    };
+
+    return [account];
   }
 
   get features(): WalletWithStarknetFeatures["features"] {
@@ -176,13 +178,28 @@ export class MockWallet implements WalletWithStarknetFeatures {
 }
 
 export function createTestProvider(chain: Chain): TestProvider {
-  return {
-    chainId: chain.id,
+  const baseProvider = {
     channel: {
       id: `test-${chain.network}`,
       setChainId() {},
     },
-  } as unknown as TestProvider;
+  };
+
+  const provider = new Proxy(baseProvider as ProviderInterface, {
+    get(target, prop, receiver) {
+      if (Reflect.has(target, prop)) {
+        return Reflect.get(target, prop, receiver);
+      }
+      return () => {
+        throw new Error(`Mock provider method/property "${String(prop)}" is not implemented`);
+      };
+    },
+  });
+
+  return {
+    ...provider,
+    chainId: chain.id,
+  } as TestProvider;
 }
 
 export function createTestStarknetVue({ connectors = [new MockWallet()] } = {}) {
