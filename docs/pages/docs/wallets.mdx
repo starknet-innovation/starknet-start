@@ -121,3 +121,43 @@ const controller = new ControllerConnector({
 
 const wallets = [controller.asWalletStandard()];
 ```
+
+Pass the Wallet Standard object returned by `asWalletStandard()` to
+`StarknetConfig` with `extraWallets` to show it alongside discovered browser
+wallets. Use `recommendedWallets` instead if you want Cartridge Controller to be
+highlighted in the wallet UI.
+
+```tsx
+import type React from "react";
+
+import { ControllerConnector } from "@cartridge/connector";
+import { mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
+import { cartridgeProvider } from "@starknetfoundation/starknet-start-providers";
+import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
+import { constants } from "starknet";
+
+const controller = new ControllerConnector({
+  chains: [
+    {
+      rpcUrl: "https://api.cartridge.gg/x/starknet/sepolia",
+    },
+    {
+      rpcUrl: "https://api.cartridge.gg/x/starknet/mainnet",
+    },
+  ],
+  defaultChainId: constants.StarknetChainId.SN_SEPOLIA,
+});
+
+export function AppProviders({ children }: { children: React.ReactNode }) {
+  return (
+    <StarknetConfig
+      chains={[sepolia, mainnet]}
+      provider={cartridgeProvider()}
+      defaultChainId={sepolia.id}
+      extraWallets={[controller.asWalletStandard()]}
+    >
+      {children}
+    </StarknetConfig>
+  );
+}
+```

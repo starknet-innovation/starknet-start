@@ -1,3 +1,4 @@
+import type { WalletWithStarknetFeatures } from "@starknet-io/get-starknet-core";
 import type React from "react";
 
 import { devnet, mainnet } from "@starknetfoundation/starknet-start-chains";
@@ -25,9 +26,11 @@ function rpc() {
 function StarknetConfig({
   children,
   connectorOptions,
+  extraWallets = [defaultConnector],
 }: {
   children: React.ReactNode;
   connectorOptions?: Partial<MockWalletOptions>;
+  extraWallets?: WalletWithStarknetFeatures[];
 }) {
   const chains = [devnet, mainnet];
   const provider = jsonRpcProvider({ rpc });
@@ -45,7 +48,7 @@ function StarknetConfig({
   });
 
   return (
-    <OgStarknetConfig chains={chains} provider={provider} extraWallets={[defaultConnector]} queryClient={queryClient}>
+    <OgStarknetConfig chains={chains} provider={provider} extraWallets={extraWallets} queryClient={queryClient}>
       {children}
     </OgStarknetConfig>
   );
@@ -55,11 +58,16 @@ function customRender(
   ui: React.ReactElement,
   options: Omit<RenderOptions, "wrapper"> & {
     connectorOptions?: Partial<MockWalletOptions>;
+    extraWallets?: WalletWithStarknetFeatures[];
   } = {},
 ): RenderResult {
-  const { connectorOptions, ...renderOptions } = options;
+  const { connectorOptions, extraWallets, ...renderOptions } = options;
   return render(ui, {
-    wrapper: ({ children }) => <StarknetConfig connectorOptions={connectorOptions}>{children}</StarknetConfig>,
+    wrapper: ({ children }) => (
+      <StarknetConfig connectorOptions={connectorOptions} extraWallets={extraWallets}>
+        {children}
+      </StarknetConfig>
+    ),
     ...renderOptions,
   });
 }
@@ -68,11 +76,16 @@ function customRenderHook<RenderResult, Props>(
   render: (initialProps: Props) => RenderResult,
   options: Omit<RenderHookOptions<Props>, "wrapper"> & {
     connectorOptions?: Partial<MockWalletOptions>;
+    extraWallets?: WalletWithStarknetFeatures[];
   } = {},
 ) {
-  const { connectorOptions, hydrate, ...renderOptions } = options;
+  const { connectorOptions, extraWallets, hydrate, ...renderOptions } = options;
   return renderHook(render, {
-    wrapper: ({ children }) => <StarknetConfig connectorOptions={connectorOptions}>{children}</StarknetConfig>,
+    wrapper: ({ children }) => (
+      <StarknetConfig connectorOptions={connectorOptions} extraWallets={extraWallets}>
+        {children}
+      </StarknetConfig>
+    ),
     hydrate: hydrate as false | undefined,
     ...renderOptions,
   });

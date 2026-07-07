@@ -51,6 +51,28 @@ const { send, error } = useSendTransaction({
 }); // [!code focus]
 ```
 
+### Replacing `account.execute`
+
+If you previously called `account.execute(calls)` from `useAccount`, create the
+hook without default calls and pass the calls to `send` or `sendAsync`.
+
+```ts twoslash
+import { useSendTransaction } from "@starknetfoundation/starknet-start-react";
+import type { Call } from "starknet";
+
+const { sendAsync } = useSendTransaction({});
+
+const calls: Call[] = [
+  {
+    contractAddress: "0x123",
+    entrypoint: "transfer",
+    calldata: ["0x456", "1", "0"],
+  },
+];
+
+const result = await sendAsync(calls);
+```
+
 ## Arguments
 
 ### calls

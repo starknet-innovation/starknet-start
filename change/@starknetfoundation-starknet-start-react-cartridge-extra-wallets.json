@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add Cartridge Controller extraWallets integration docs, useSendTransaction sendAsync(calls) guidance, and focused tests for extra wallets and manual call execution.",
+  "packageName": "@starknetfoundation/starknet-start-react",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
