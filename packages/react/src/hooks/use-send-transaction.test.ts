@@ -66,7 +66,7 @@ function createExecuteWallet() {
 }
 
 describe("useSendTransaction", () => {
-  it("sends a transaction sucessfully", async () => {
+  it("sends a transaction successfully", async () => {
     const { result } = renderHook(() => useSendTransactionWithConnect());
 
     await act(async () => {
