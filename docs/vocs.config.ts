@@ -5,9 +5,8 @@ import { sidebar } from "./sidebar";
 import { docsHosting } from "./site.config.mjs";
 
 const basePath =
-  (
-    globalThis as { process?: { env?: { GITHUB_PAGES_BASE_PATH?: string } } }
-  ).process?.env?.GITHUB_PAGES_BASE_PATH || "/";
+  (globalThis as { process?: { env?: { GITHUB_PAGES_BASE_PATH?: string } } }).process?.env?.GITHUB_PAGES_BASE_PATH ||
+  "/";
 const baseUrl = basePath === "/" ? docsHosting.url : new URL(docsHosting.url).origin;
 
 export default defineConfig({
