@@ -12,22 +12,9 @@ const { address, status } = useAccount();
 
 `useAccount` returns wallet connection metadata such as `address`, `connector`,
 `chainId`, and `status`. It does not return the raw Starknet.js account object.
-If you previously used `account.execute(...)`, use
-[`useSendTransaction`](/docs/hooks/use-send-transaction) instead.
-
-```ts twoslash
-import { useSendTransaction } from "@starknetfoundation/starknet-start-react";
-
-const { sendAsync } = useSendTransaction({});
-
-await sendAsync([
-  {
-    contractAddress: "0x123",
-    entrypoint: "transfer",
-    calldata: ["0x456", "1", "0"],
-  },
-]);
-```
+If you previously used `account.execute(...)`, send transactions with
+[`useSendTransaction`](/docs/hooks/use-send-transaction) instead — its
+"Replacing `account.execute`" section has a full example.
 
 For lower-level wallet RPC methods that are not covered by a dedicated hook,
 use [`useWalletRequest`](/docs/hooks/use-wallet-request).
