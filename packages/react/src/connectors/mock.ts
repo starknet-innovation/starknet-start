@@ -72,6 +72,7 @@ export class MockWallet implements WalletWithStarknetFeatures {
   private _connected = false;
   private _chainId: bigint = devnet.id;
   private _options: MockWalletOptions;
+  private readonly _initialOptions: MockWalletOptions;
 
   private _listeners: {
     [E in StandardEventsNames]?: StandardEventsListeners[E][];
@@ -84,6 +85,7 @@ export class MockWallet implements WalletWithStarknetFeatures {
 
     this._accounts = accounts;
     this._options = options;
+    this._initialOptions = { ...options };
     this.name = options.name;
     this.icon = "data:image/svg+xml;base64,mock";
   }
@@ -155,6 +157,21 @@ export class MockWallet implements WalletWithStarknetFeatures {
 
   updateOptions(options: Partial<MockWalletOptions>): void {
     this._options = { ...this._options, ...options };
+  }
+
+  /**
+   * Restores the wallet to its constructed state (options, chain, accounts, and
+   * listeners). Intended for use between tests so a shared connector instance
+   * does not leak state from one case into the next. Unlike the other helpers,
+   * it does not emit a `change` event since no listeners should be attached
+   * during teardown.
+   */
+  reset(): void {
+    this._options = { ...this._initialOptions };
+    this._connected = false;
+    this._chainId = devnet.id;
+    this._accountIndex = 0;
+    this._listeners = {};
   }
 
   // Private implementation
