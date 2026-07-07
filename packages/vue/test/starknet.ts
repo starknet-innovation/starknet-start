@@ -179,6 +179,7 @@ export class MockWallet implements WalletWithStarknetFeatures {
 
 export function createTestProvider(chain: Chain): TestProvider {
   const baseProvider = {
+    chainId: chain.id,
     channel: {
       id: `test-${chain.network}`,
       setChainId() {},
@@ -196,10 +197,7 @@ export function createTestProvider(chain: Chain): TestProvider {
     },
   });
 
-  return {
-    ...provider,
-    chainId: chain.id,
-  } as TestProvider;
+  return provider as TestProvider;
 }
 
 export function createTestStarknetVue({ connectors = [new MockWallet()] } = {}) {
