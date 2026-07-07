@@ -1,16 +1,12 @@
-import ts from "typescript";
+import { ModuleResolutionKind } from "typescript";
 import { defineConfig } from "vocs/config";
 
 import { sidebar } from "./sidebar";
 import { docsHosting } from "./site.config.mjs";
 
-declare const process: {
-  env: {
-    GITHUB_PAGES_BASE_PATH?: string;
-  };
-};
-
-const basePath = process.env.GITHUB_PAGES_BASE_PATH || "/";
+const basePath =
+  (globalThis as { process?: { env?: { GITHUB_PAGES_BASE_PATH?: string } } }).process?.env?.GITHUB_PAGES_BASE_PATH ||
+  "/";
 const baseUrl = basePath === "/" ? docsHosting.url : new URL(docsHosting.url).origin;
 
 export default defineConfig({
@@ -26,7 +22,7 @@ export default defineConfig({
   twoslash: {
     twoslashOptions: {
       compilerOptions: {
-        moduleResolution: ts.ModuleResolutionKind.Bundler,
+        moduleResolution: ModuleResolutionKind.Bundler,
       },
     },
   },
