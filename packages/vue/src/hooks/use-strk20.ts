@@ -9,6 +9,10 @@ import {
 } from "./use-wallet-request";
 
 export type UseStrk20BalancesArgs = {
+  /**
+   * Optional list of token contract addresses to fetch balances for.
+   * Pass an empty array (`[]`) to return all shielded balances.
+   */
   tokens?: Address[];
 };
 
@@ -32,11 +36,13 @@ export function useStrk20Balances(props: UseStrk20BalancesProps = {}): UseStrk20
     ...rest,
   });
 
-  const getBalances = (args?: Address[]) =>
-    request(args ? { params: { tokens: args }, type: "wallet_strk20Balances" } : undefined);
+  const getBalances = (args?: Address[]) => {
+    return request(args ? { params: { tokens: args }, type: "wallet_strk20Balances" } : undefined);
+  };
 
-  const getBalancesAsync = (args?: Address[]) =>
-    requestAsync(args ? { params: { tokens: args }, type: "wallet_strk20Balances" } : undefined);
+  const getBalancesAsync = (args?: Address[]) => {
+    return requestAsync(args ? { params: { tokens: args }, type: "wallet_strk20Balances" } : undefined);
+  };
 
   return {
     getBalances,
@@ -46,7 +52,9 @@ export function useStrk20Balances(props: UseStrk20BalancesProps = {}): UseStrk20
 }
 
 export type UseStrk20PrepareInvokeArgs = {
+  /** Ordered STRK20 actions to bundle */
   actions?: STRK20_ACTION[];
+  /** Skip proof generation and return an unsubmittable preview call */
   simulate?: boolean;
 };
 
@@ -98,6 +106,7 @@ export function useStrk20PrepareInvoke(props: UseStrk20PrepareInvokeProps = {}):
 }
 
 export type UseStrk20InvokeTransactionArgs = {
+  /** Ordered STRK20 actions to execute atomically. */
   actions?: STRK20_ACTION[];
 };
 
