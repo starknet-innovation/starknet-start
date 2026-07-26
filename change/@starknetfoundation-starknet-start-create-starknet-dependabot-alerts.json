@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update the generated Next.js template to the patched 16.2.11 release.",
+  "packageName": "@starknetfoundation/starknet-start-create-starknet",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
