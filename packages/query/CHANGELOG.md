@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-query
 
-<!-- This log was last generated on Thu, 02 Jul 2026 16:53:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Jul 2026 11:56:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.2.1
+
+Sun, 26 Jul 2026 11:56:13 GMT
+
+### Patches
+
+- Correct the UseContractArgs ABI example. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.2.0
 

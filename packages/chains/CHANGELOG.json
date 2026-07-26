@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-chains",
   "entries": [
     {
+      "date": "Sun, 26 Jul 2026 11:56:13 GMT",
+      "version": "1.0.13",
+      "tag": "@starknetfoundation/starknet-start-chains_v1.0.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-chains",
+            "commit": "c453039bd1d94c3b4dd18fab1e26a98f967d7590",
+            "comment": "Fix the README import example for the chains package."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 16:53:58 GMT",
       "version": "1.0.12",
       "tag": "@starknetfoundation/starknet-start-chains_v1.0.12",

@@ -1,8 +1,18 @@
 # Change Log - @starknetfoundation/starknet-start-react
 
-<!-- This log was last generated on Thu, 02 Jul 2026 16:53:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Jul 2026 11:56:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 2.0.1
+
+Sun, 26 Jul 2026 11:56:13 GMT
+
+### Patches
+
+- Add Cartridge Controller extraWallets integration docs, useSendTransaction sendAsync(calls) guidance, and focused tests for extra wallets and manual call execution. (6303520+adrienlacombe@users.noreply.github.com)
+- Clarify React package installation dependencies in the README. (6303520+adrienlacombe@users.noreply.github.com)
+- Add MockWallet.reset() and reset the shared default test connector after each test to prevent wallet state leaking between test cases. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 2.0.0
 

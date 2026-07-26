@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-query",
   "entries": [
     {
+      "date": "Sun, 26 Jul 2026 11:56:13 GMT",
+      "version": "1.2.1",
+      "tag": "@starknetfoundation/starknet-start-query_v1.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-query",
+            "commit": "c453039bd1d94c3b4dd18fab1e26a98f967d7590",
+            "comment": "Correct the UseContractArgs ABI example."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 16:53:59 GMT",
       "version": "1.2.0",
       "tag": "@starknetfoundation/starknet-start-query_v1.2.0",

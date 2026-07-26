@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-chains
 
-<!-- This log was last generated on Thu, 02 Jul 2026 16:53:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 26 Jul 2026 11:56:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.13
+
+Sun, 26 Jul 2026 11:56:13 GMT
+
+### Patches
+
+- Fix the README import example for the chains package. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.0.12
 
