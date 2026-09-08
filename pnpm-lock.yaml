@@ -13,6 +13,7 @@ overrides:
   esbuild: 0.28.1
   fast-uri: 3.1.5
   hono: 4.12.34
+  image-size: npm:image-size-next@2.1.1
   ip-address: 10.3.1
   js-yaml: 4.3.1
   mermaid: 11.16.1
@@ -4043,9 +4044,9 @@ packages:
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
-  image-size@2.0.2:
-    resolution: {integrity: sha512-IRqXKlaXwgSMAMtpNzZa1ZAe8m+Sa1770Dhk8VkSsP9LS+iHD62Zd8FQKs8fbPiagBE7BzoFX23cxFnwshpV6w==}
-    engines: {node: '>=16.x'}
+  image-size-next@2.1.1:
+    resolution: {integrity: sha512-n+DFjUct+G9mxZck+lvzqrTsqBJvSHMs6iEo//W5iAgRV7oUbrh1JWmKgAEpmyRB5lw6plIQizS1wK1dvrsvAw==}
+    engines: {node: '>=18'}
     hasBin: true
 
   import-fresh@3.3.1:
@@ -10017,7 +10018,7 @@ snapshots:
 
   ieee754@1.2.1: {}
 
-  image-size@2.0.2: {}
+  image-size-next@2.1.1: {}
 
   import-fresh@3.3.1:
     dependencies:
@@ -12461,7 +12462,7 @@ snapshots:
       extend: 3.0.2
       github-slugger: 2.0.0
       hono: 4.12.34
-      image-size: 2.0.2
+      image-size: image-size-next@2.1.1
       lz-string: 1.5.0
       magic-string: 0.30.21
       mdast-util-from-markdown: 2.0.3
