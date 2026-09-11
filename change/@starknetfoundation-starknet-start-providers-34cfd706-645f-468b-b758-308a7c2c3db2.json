@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update the Starknet.js dependency to v10.8.0.",
+  "packageName": "@starknetfoundation/starknet-start-providers",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

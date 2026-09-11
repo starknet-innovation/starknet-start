@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Align wallet-standard dependencies with Starknet.js v10.8.0.",
+  "packageName": "@starknetfoundation/starknet-start-react",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

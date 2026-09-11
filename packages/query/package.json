@@ -36,8 +36,8 @@
   },
   "dependencies": {
     "@starknet-io/get-starknet-core": "^6.0.1",
-    "@starknet-io/get-starknet-wallet-standard": "^6.0.2",
-    "@starknet-io/types-js": "^0.10.3",
+    "@starknet-io/get-starknet-wallet-standard": "^6.0.6",
+    "@starknet-io/types-js": "^0.10.4",
     "@starknetfoundation/starknet-start-chains": "workspace:^",
     "abi-wan-kanabi": "^2.2.4",
     "viem": "^2.21.1"
