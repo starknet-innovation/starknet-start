@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-react",
   "entries": [
     {
+      "date": "Fri, 11 Sep 2026 07:08:21 GMT",
+      "version": "2.0.1",
+      "tag": "@starknetfoundation/starknet-start-react_v2.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-react",
+            "commit": "b219970cb2b4c395acd87cc053aede9553129a98",
+            "comment": "Update Vitest development dependencies to v5."
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 26 Jul 2026 11:56:13 GMT",
       "version": "2.0.1",
       "tag": "@starknetfoundation/starknet-start-react_v2.0.1",

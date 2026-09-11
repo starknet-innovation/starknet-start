@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-explorers",
   "entries": [
     {
+      "date": "Fri, 11 Sep 2026 07:08:21 GMT",
+      "version": "1.0.11",
+      "tag": "@starknetfoundation/starknet-start-explorers_v1.0.11",
+      "comments": {
+        "none": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-explorers",
+            "commit": "b219970cb2b4c395acd87cc053aede9553129a98",
+            "comment": "Update Vitest development dependencies to v5."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 16:53:58 GMT",
       "version": "1.0.10",
       "tag": "@starknetfoundation/starknet-start-explorers_v1.0.10",
