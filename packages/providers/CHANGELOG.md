@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-providers
 
-<!-- This log was last generated on Thu, 02 Jul 2026 16:53:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 11 Sep 2026 07:28:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.1.4
+
+Fri, 11 Sep 2026 07:28:21 GMT
+
+### Patches
+
+- Update the Starknet.js dependency to v10.8.0. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 1.1.2
 

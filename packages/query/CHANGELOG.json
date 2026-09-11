@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-query",
   "entries": [
     {
+      "date": "Fri, 11 Sep 2026 07:28:21 GMT",
+      "version": "1.2.2",
+      "tag": "@starknetfoundation/starknet-start-query_v1.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-query",
+            "commit": "3ccc7d3b68e87d571cb21eecb483b30b8a07431b",
+            "comment": "Align wallet-standard dependencies with Starknet.js v10.8.0."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Sep 2026 07:08:21 GMT",
       "version": "1.2.1",
       "tag": "@starknetfoundation/starknet-start-query_v1.2.1",

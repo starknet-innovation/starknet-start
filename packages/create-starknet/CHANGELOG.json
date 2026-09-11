@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-create-starknet",
   "entries": [
     {
+      "date": "Fri, 11 Sep 2026 07:28:21 GMT",
+      "version": "10.1.5",
+      "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "3ccc7d3b68e87d571cb21eecb483b30b8a07431b",
+            "comment": "Update generated app templates to Starknet.js v10.8.0."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Sep 2026 07:08:21 GMT",
       "version": "10.1.4",
       "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.4",
