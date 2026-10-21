@@ -1,73 +1,172 @@
 # Wallets
 
-Wallets are used to connect the user's wallet to your dapp.
-If your dapp requires the user to submit a transaction or sign a message,
-Starknet Start discovers injected wallets automatically and lets you provide
-recommended or extra wallets through `StarknetConfig`.
+Starknet Start does not need connector instances for browser wallets.
+`StarknetConfig` wraps `GetStarknetProvider` from `@starknet-io/get-starknet-modal`,
+which discovers the wallets injected in the page and exposes them to
+[`useConnect`](/docs/hooks/use-connect) and to the
+[premade connect UI](/demo/ui).
 
-## Connectors
+Three `StarknetConfig` props control which wallets your users see:
 
-This is an alphabetical list of wallets supported by Starknet Start.
+- [`recommendedWallets`](#recommended-wallets): wallets to suggest, including
+  ones the user has not installed yet.
+- [`extraWallets`](#extra-wallets): wallets that can't be discovered from the
+  page, such as a wallet injected under a custom key.
+- [`store`](#custom-discovery-store): a custom discovery store, to change how
+  wallets are discovered.
 
-### Injected Connector
+## Wallet discovery
 
-An _injected connector_ is a wallet that injects itself in the web page. This
-type of wallets are also known as _"browser wallets"_.
+Injected wallets are discovered automatically. You don't need to configure
+anything for wallets that use one of these mechanisms:
 
-Configure a new injected wallet with the following properties:
+| Mechanism                | How the wallet announces itself                                                                                                    |
+| :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| Wallet Standard          | The wallet registers through the `wallet-standard:register-wallet` event and implements the Starknet wallet features.              |
+| Legacy `window` objects  | The wallet injects a `StarknetWindowObject` (`id`, `name`, `version`, `icon`, `request`, `on`, `off`) on a `window.starknet*` key. |
+| EIP-6963 (MetaMask Snap) | MetaMask announces itself through EIP-6963 and is adapted to Starknet with the Starknet Snap.                                      |
 
-- `id` (required): unique wallet id, used when injecting the wallet in the web page.
-- `name` (optional): human friendly name.
-- `icon` (optional): wallet icons, for both light and dark mode. Icons should be base 64
-  encoded svg images that developers can use as `src` properties on an `img`
-  HTML tag.
+Legacy injected wallets are wrapped in `StarknetInjectedWallet` so every
+wallet exposes the same Wallet Standard interface
+(`WalletWithStarknetFeatures`). If a wallet is found both ways, the Wallet
+Standard registration replaces the legacy one.
 
-### Injected
+:::note
+Legacy `window.starknet*` objects are scanned once, when the discovery store is
+created. Wallet Standard registration is event-based and works whenever the
+wallet loads. A wallet injected under a key that doesn't start with `starknet`,
+or injected after the store is created, must be passed to
+[`extraWallets`](#custom-injected-wallets).
+:::
 
-This helper is useful to create a new connector with the provided `StarknetWindowObject`
+## Recommended wallets
 
-```tsx
+`recommendedWallets` takes wallet metadata (`WalletInformation`: `id`, `name`,
+`icon` and `downloads` links), not wallet instances. Recommended wallets that
+are not installed are listed as `"unavailable"` with their download links.
+Installed wallets are matched to their metadata by their Starknet wallet API
+id, `wallet.features[StarknetWalletApi].id`.
+
+When the prop is omitted, every wallet known to get-starknet is recommended:
+Ready Wallet (formerly Argent X), Braavos, MetaMask, OKX Wallet and Keplr. Pass
+your own list to change the suggestions, or an empty array to show only
+installed wallets.
+
+```tsx twoslash
+"use client";
+import React from "react";
+
+import { braavos, readyWallet } from "@starknet-io/get-starknet-core/wallets";
+import { mainnet } from "@starknetfoundation/starknet-start-chains";
+import { publicProvider } from "@starknetfoundation/starknet-start-providers";
+import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
+
+function App({ children }: { children: React.ReactNode }) {
+  return (
+    <StarknetConfig chains={[mainnet]} provider={publicProvider()} recommendedWallets={[readyWallet, braavos]}>
+      {children}
+    </StarknetConfig>
+  );
+}
+```
+
+`@starknet-io/get-starknet-core/wallets` exports `readyWallet`, `braavos`,
+`metaMask`, `okxWallet`, `keplr` and the full `wallets` list. To recommend
+another wallet, pass a `WalletInformation` object whose `id` equals the
+wallet's `features[StarknetWalletApi].id`. For a legacy injected wallet, that
+is the `id` of its window object. If the ids don't match, the modal lists the
+installed wallet and an unavailable recommendation as two separate entries.
+
+## Extra wallets
+
+`extraWallets` takes Wallet Standard objects (`WalletWithStarknetFeatures[]`)
+and lists them alongside the discovered wallets. They are always shown as
+available and are returned by `useConnect().connectors`.
+
+Keep extra wallets stable between renders (at module scope, in state or in a
+`useMemo`). Don't pass a wallet that discovery already finds, or it is listed
+twice.
+
+### Custom injected wallets
+
+If a wallet injects a `StarknetWindowObject` that discovery doesn't pick up,
+wrap it with `StarknetInjectedWallet` and pass it to `extraWallets`. Read the
+window object after your app mounts: `window` is not defined during
+server-side rendering, and the wallet may inject itself after your bundle is
+evaluated.
+
+```tsx twoslash
+"use client";
+import React, { useEffect, useMemo, useState } from "react";
+
 import { StarknetInjectedWallet } from "@starknet-io/get-starknet-core";
+import { mainnet } from "@starknetfoundation/starknet-start-chains";
+import { publicProvider } from "@starknetfoundation/starknet-start-providers";
+import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
 
-const connector = new StarknetInjectedWallet(window.starknet_myWallet);
+type StarknetWindowObject = ConstructorParameters<typeof StarknetInjectedWallet>[0];
+
+declare global {
+  interface Window {
+    myWallet?: StarknetWindowObject;
+  }
+}
+
+function useMyWallet() {
+  const [wallet, setWallet] = useState<StarknetInjectedWallet>();
+
+  useEffect(() => {
+    if (window.myWallet) {
+      setWallet(new StarknetInjectedWallet(window.myWallet));
+    }
+  }, []);
+
+  return wallet;
+}
+
+export function AppProviders({ children }: { children: React.ReactNode }) {
+  const myWallet = useMyWallet();
+  const extraWallets = useMemo(() => (myWallet ? [myWallet] : []), [myWallet]);
+
+  return (
+    <StarknetConfig chains={[mainnet]} provider={publicProvider()} extraWallets={extraWallets}>
+      {children}
+    </StarknetConfig>
+  );
+}
 ```
 
-### Ready Wallet (formerly Argent X)
+Replace `window.myWallet` with the key your wallet injects. If the wallet
+injects itself after your app has mounted, run the check again when the wallet
+signals that it is ready.
 
-The Ready Wallet (formerly Argent X) wallet is supported out of the box.
+If you are building a wallet, register it through the Wallet Standard. Dapps
+then discover it without extra configuration, whenever it loads.
 
-```tsx twoslash
-import { readyWallet } from "@starknet-io/get-starknet-core/wallets";
+## Cartridge Controller
 
-const wallets = [readyWallet];
-```
-
-### Braavos
-
-The Braavos wallet is supported out of the box.
-
-```tsx twoslash
-import { braavos } from "@starknet-io/get-starknet-core/wallets";
-
-const wallets = [braavos];
-```
-
-### Cartridge Controller
-
-The Cartridge Controller wallet is supported however, you need to install both the
-`@cartridge/connector` and `@cartridge/controller` packages.
-
-The Controller enables seamless use of Session Keys.
+Install both the `@cartridge/connector` and `@cartridge/controller` packages.
 
 ```bash
 pnpm i @cartridge/connector @cartridge/controller
 ```
 
+Creating a `ControllerConnector` registers Controller through the Wallet
+Standard, so wallet discovery finds it like any other wallet. Create the
+connector once, at module scope, and don't pass `controller.asWalletStandard()`
+to `extraWallets`: Controller would be listed twice.
+
 ```tsx
+"use client";
+import type React from "react";
+
 import { ControllerConnector } from "@cartridge/connector";
+import { mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
+import { cartridgeProvider } from "@starknetfoundation/starknet-start-providers";
+import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
 import { constants } from "starknet";
 
-// Without Session Keys
+// Registers Controller with the Wallet Standard when created in the browser.
 const controller = new ControllerConnector({
   chains: [
     {
@@ -80,15 +179,23 @@ const controller = new ControllerConnector({
   defaultChainId: constants.StarknetChainId.SN_SEPOLIA,
 });
 
-const wallets = [controller.asWalletStandard()];
+export function AppProviders({ children }: { children: React.ReactNode }) {
+  return (
+    <StarknetConfig chains={[sepolia, mainnet]} provider={cartridgeProvider()} defaultChainId={sepolia.id}>
+      {children}
+    </StarknetConfig>
+  );
+}
 ```
+
+The Controller enables seamless use of Session Keys. Pass session `policies`
+to the connector to enable them:
 
 ```tsx
 import { ControllerConnector } from "@cartridge/connector";
 import { SessionPolicies } from "@cartridge/controller";
 import { constants } from "starknet";
 
-// Define session policies
 const policies: SessionPolicies = {
   contracts: {
     "0x3f96056436be253753351fe689110ced7d53f5db3fd98f13df3f19058311b95": {
@@ -105,7 +212,6 @@ const policies: SessionPolicies = {
   },
 };
 
-// With Session Keys
 const controller = new ControllerConnector({
   chains: [
     {
@@ -118,46 +224,72 @@ const controller = new ControllerConnector({
   defaultChainId: constants.StarknetChainId.SN_SEPOLIA,
   policies,
 });
-
-const wallets = [controller.asWalletStandard()];
 ```
 
-Pass the Wallet Standard object returned by `asWalletStandard()` to
-`StarknetConfig` with `extraWallets` to show it alongside discovered browser
-wallets. Use `recommendedWallets` instead if you want Cartridge Controller to be
-highlighted in the wallet UI.
+To change where Controller appears in the premade UI, use the `sortAlgorithm`
+prop of `WalletConnectModal`.
 
-```tsx
-import type React from "react";
+## Custom discovery store
 
-import { ControllerConnector } from "@cartridge/connector";
-import { mainnet, sepolia } from "@starknetfoundation/starknet-start-chains";
-import { cartridgeProvider } from "@starknetfoundation/starknet-start-providers";
+By default, all `StarknetConfig` instances share one discovery store. Pass your
+own `store` to change how wallets are discovered. For example, to stop
+offering MetaMask through the Starknet Snap, create a store without EIP-1193
+adapters:
+
+```tsx twoslash
+"use client";
+import React from "react";
+
+import { createStore } from "@starknet-io/get-starknet-core";
+import { mainnet } from "@starknetfoundation/starknet-start-chains";
+import { publicProvider } from "@starknetfoundation/starknet-start-providers";
 import { StarknetConfig } from "@starknetfoundation/starknet-start-react";
-import { constants } from "starknet";
 
-const controller = new ControllerConnector({
-  chains: [
-    {
-      rpcUrl: "https://api.cartridge.gg/x/starknet/sepolia",
-    },
-    {
-      rpcUrl: "https://api.cartridge.gg/x/starknet/mainnet",
-    },
-  ],
-  defaultChainId: constants.StarknetChainId.SN_SEPOLIA,
-});
+// Create the store once: it registers discovery listeners on `window`.
+const store = createStore({ eip1193Adapters: [] });
 
-export function AppProviders({ children }: { children: React.ReactNode }) {
+function App({ children }: { children: React.ReactNode }) {
   return (
-    <StarknetConfig
-      chains={[sepolia, mainnet]}
-      provider={cartridgeProvider()}
-      defaultChainId={sepolia.id}
-      extraWallets={[controller.asWalletStandard()]}
-    >
+    <StarknetConfig chains={[mainnet]} provider={publicProvider()} store={store}>
       {children}
     </StarknetConfig>
   );
 }
 ```
+
+You may also want to drop `metaMask` from `recommendedWallets` so it is no
+longer suggested.
+
+## Connecting from your UI
+
+Use `WalletConnectModal` from `@starknet-io/get-starknet-ui` for a ready-made
+connect button and wallet list; see the [Connect Wallet UI demo](/demo/ui).
+
+To build your own list, `useConnect` returns the discovered and extra wallets
+as `connectors`:
+
+```tsx twoslash
+"use client";
+import React from "react";
+
+import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
+import { useConnect } from "@starknetfoundation/starknet-start-react";
+
+function WalletList() {
+  const { connectors, connect } = useConnect();
+
+  return (
+    <div>
+      {connectors.map((connector) => (
+        <button key={connector.features[StarknetWalletApi].id} onClick={() => connect({ connector })}>
+          <img src={connector.icon} alt="" width={20} height={20} />
+          Connect {connector.name}
+        </button>
+      ))}
+    </div>
+  );
+}
+```
+
+`connectors` only contains installed and extra wallets. Recommended wallets
+that are not installed are only listed by the premade UI.
