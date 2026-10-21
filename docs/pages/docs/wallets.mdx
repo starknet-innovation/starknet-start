@@ -272,6 +272,7 @@ as `connectors`:
 "use client";
 import React from "react";
 
+import { StarknetWalletApi } from "@starknet-io/get-starknet-core";
 import { useConnect } from "@starknetfoundation/starknet-start-react";
 
 function WalletList() {
@@ -280,7 +281,7 @@ function WalletList() {
   return (
     <div>
       {connectors.map((connector) => (
-        <button key={connector.name} onClick={() => connect({ connector })}>
+        <button key={connector.features[StarknetWalletApi].id} onClick={() => connect({ connector })}>
           <img src={connector.icon} alt="" width={20} height={20} />
           Connect {connector.name}
         </button>
