@@ -37,11 +37,21 @@ The JSON-RPC provider you want to use. See [the RPC providers page](/docs/provid
 
 ### recommendedWallets
 
-List of wallets to recommend to users who don't have a wallet installed. See [the wallets page](/docs/wallets) for more information.
+- Type: `WalletInformation[] | undefined`
+
+Metadata of wallets to suggest, including wallets the user has not installed yet. Defaults to every wallet known to get-starknet. See [recommended wallets](/docs/wallets#recommended-wallets) for more information.
 
 ### extraWallets
 
-Additional wallets to show alongside the wallets discovered in the user's browser.
+- Type: `WalletWithStarknetFeatures[] | undefined`
+
+Additional wallets to show alongside the wallets discovered in the user's browser, such as Cartridge Controller or a custom injected wallet. See [extra wallets](/docs/wallets#extra-wallets) for more information.
+
+### store
+
+- Type: `Store | undefined`
+
+Wallet discovery store created with `createStore` from `@starknet-io/get-starknet-core`. Defaults to a shared store that discovers Wallet Standard, legacy injected and MetaMask Snap wallets. See [custom discovery store](/docs/wallets#custom-discovery-store) for more information.
 
 ### paymasterProvider
 

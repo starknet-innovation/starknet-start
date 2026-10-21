@@ -140,15 +140,16 @@ Starknet Start integrates deeply with the `@starknet-io/get-starknet-*` packages
 
 The `StarknetConfig` automatically handles wallet discovery using the underlying get starknet library.
 
-- **Automatic Detection**: Standard Starknet wallets (like Argent X and Braavos) are detected automatically via the `window` object.
-- **No Manual Connectors**: You no longer need to instantiate `InjectedConnector` classes for standard wallets.
+- **Automatic Detection**: Starknet wallets (like Ready Wallet and Braavos) are detected automatically through the Wallet Standard, legacy `window.starknet*` injection, or EIP-6963 for MetaMask.
+- **No Manual Connectors**: You no longer need to instantiate `InjectedConnector` classes for standard wallets. Wrap a wallet that discovery doesn't find with `StarknetInjectedWallet` and pass it to `extraWallets`.
 
 ### Customizing Wallets
 
-You can customize which wallets are displayed or highlighted using props on the `StarknetConfig`. These are passed through to the `GetStarknetProvider`.
+You can customize which wallets are displayed or highlighted using props on the `StarknetConfig`. These are passed through to the `GetStarknetProvider`. See [the wallets page](/docs/wallets) for details.
 
-- **`recommendedWallets`**: An array of wallet objects to prioritize (e.g. show at the top of the list).
-- **`extraWallets`**: An array of additional non-standard or custom wallets to include in the discovery list.
+- **`recommendedWallets`**: Wallet metadata (`WalletInformation`) to suggest, including wallets the user has not installed yet.
+- **`extraWallets`**: Wallet Standard objects for wallets that can't be discovered from the page, such as Cartridge Controller.
+- **`store`**: A custom discovery store created with `createStore`.
 
 ```tsx
 import { readyWallet } from "@starknet-io/get-starknet-core/wallets";
@@ -201,7 +202,7 @@ function WalletList() {
   return (
     <div>
       {connectors.map((connector) => (
-        <button key={connector.id} onClick={() => connect({ connector })}>
+        <button key={connector.name} onClick={() => connect({ connector })}>
           Connect {connector.name}
         </button>
       ))}
