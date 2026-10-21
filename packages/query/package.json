@@ -46,7 +46,7 @@
     "@starknetfoundation/starknet-start-typescript-config": "workspace:^",
     "rimraf": "^4.1.2",
     "tsdown": "^0.16.8",
-    "vite": "7.3.5",
+    "vite": "7.3.7",
     "vitest": "^5.0.0"
   },
   "peerDependencies": {
