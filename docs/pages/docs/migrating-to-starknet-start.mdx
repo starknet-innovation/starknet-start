@@ -148,7 +148,7 @@ The `StarknetConfig` automatically handles wallet discovery using the underlying
 You can customize which wallets are displayed or highlighted using props on the `StarknetConfig`. These are passed through to the `GetStarknetProvider`. See [the wallets page](/docs/wallets) for details.
 
 - **`recommendedWallets`**: Wallet metadata (`WalletInformation`) to suggest, including wallets the user has not installed yet.
-- **`extraWallets`**: Wallet Standard objects for wallets that can't be discovered from the page, such as Cartridge Controller.
+- **`extraWallets`**: Wallet Standard objects for wallets that can't be discovered from the page, such as a wallet injected under a custom key.
 - **`store`**: A custom discovery store created with `createStore`.
 
 ```tsx
