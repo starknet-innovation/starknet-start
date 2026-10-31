@@ -45,7 +45,7 @@
     "eventemitter3": "^5.0.1",
     "lossless-json": "^4.3.0",
     "viem": "^2.21.1",
-    "zod": "^3.22.4"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@starknet-io/get-starknet-core": "^6.0.1",
