@@ -51,6 +51,31 @@ but it does not provide an app bypass for required status checks. Keep the
 classic rule disabled for `main` once the equivalent ruleset is active, otherwise
 the direct release commit can still be rejected.
 
+## Dependabot change files
+
+Dependabot does not write Beachball change files, so its npm pull requests
+would fail `pnpm beachball check`. The workflow at
+`.github/workflows/dependabot-change-files.yml` adds them: `none` for packages
+where only `devDependencies` changed, `patch` for anything else in a published
+package, and nothing for private packages. It pushes the commit back to the
+Dependabot branch as a GitHub App so the Build workflow runs again. A
+`GITHUB_TOKEN` push would not trigger it.
+
+Use a separate GitHub App, not the release app. The release app can bypass
+the `main` rules, and this workflow runs on Dependabot events. Create an
+organization-owned app installed only on this repository, with these repository
+permissions:
+
+- Metadata: read
+- Contents: read and write
+
+Do not add it as a bypass actor on any ruleset. Create a `dependabot-change-files`
+GitHub environment limited to protected branches, with no required reviewers,
+and store the credentials there:
+
+- Variable `CHANGE_FILES_APP_CLIENT_ID`: the app client ID.
+- Secret `CHANGE_FILES_APP_PRIVATE_KEY`: the app private key PEM.
+
 ## Package policy
 
 | Package                                                | Workspace path               | npm policy                                                                                                                                                                                                             |

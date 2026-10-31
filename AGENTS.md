@@ -61,6 +61,7 @@ If tests fail with connection errors to `localhost:5050`, confirm devnet is runn
 - Do not edit generated `dist` output or package changelogs by hand.
 - Public package changes usually need a Beachball change file under `change/`. Match the existing JSON shape and use one file per affected published package.
 - Docs-only changes are ignored by Beachball and do not need a change file.
+- Dependabot npm pull requests get change files from `.github/workflows/dependabot-change-files.yml`; see `PUBLISHING.md` before changing it.
 - If a public API changes, update the relevant package README and docs page in the same change.
 - Preserve fork attribution in `LICENSE` and `NOTICE.md`.
 

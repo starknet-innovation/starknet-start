@@ -1,0 +1,95 @@
+name: Dependabot change files
+
+# Dependabot never writes Beachball change files, so `pnpm beachball check` in
+# build.yml fails on its npm pull requests. This workflow writes them and pushes
+# a commit back to the Dependabot branch with a GitHub App token, which (unlike
+# GITHUB_TOKEN) re-triggers the Build workflow.
+#
+# pull_request_target runs this file from the default branch with access to the
+# environment secrets. It must never check out, install, build or execute code
+# from the pull request: the script reads the pull request only as git objects
+# and builds the commit with git plumbing. Event values reach shell steps only
+# through env, never through ${{ }} inside run.
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
+
+permissions: {}
+
+# Keyed by actor so the skipped run triggered by this workflow's own push does
+# not cancel the run that made it; a newer Dependabot push still cancels.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}-${{ github.actor }}
+  cancel-in-progress: true
+
+jobs:
+  change-files:
+    # github.actor alone can be spoofed: Dependabot running in a fork can push to
+    # a fork pull request. Require a Dependabot-authored pull request from a
+    # branch of this repository. The actor check also skips pushes by people and
+    # by this workflow's own app, so it cannot loop.
+    if: >-
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.actor == 'dependabot[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'dependabot/npm_and_yarn/')
+    environment:
+      name: dependabot-change-files
+      deployment: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Create change files app token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.CHANGE_FILES_APP_CLIENT_ID }}
+          private-key: ${{ secrets.CHANGE_FILES_APP_PRIVATE_KEY }}
+          permission-contents: write
+      - name: Resolve change files app user
+        id: app-user
+        run: |
+          user_id="$(gh api "/users/${APP_SLUG}%5Bbot%5D" --jq .id)"
+          echo "id=${user_id}" >> "$GITHUB_OUTPUT"
+        env:
+          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+      # Default branch only. fetch-depth 0 also fetches the Dependabot branch's
+      # commits as git objects; none of its files are written to the workspace.
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set Node version
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - name: Commit change files
+        id: commit
+        run: |
+          sha="$(node .github/scripts/dependabot-change-files.mjs --base "${BASE_SHA}" --head "${HEAD_SHA}")"
+          echo "sha=${sha}" >> "$GITHUB_OUTPUT"
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          GIT_AUTHOR_NAME: ${{ steps.app-token.outputs.app-slug }}[bot]
+          GIT_AUTHOR_EMAIL: ${{ steps.app-user.outputs.id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: ${{ steps.app-token.outputs.app-slug }}[bot]
+          GIT_COMMITTER_EMAIL: ${{ steps.app-user.outputs.id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com
+      # Fast-forward only: if Dependabot pushed again meanwhile, this fails and
+      # the run for the newer push takes over.
+      - name: Push change files
+        if: steps.commit.outputs.sha != ''
+        run: git push "https://x-access-token:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${COMMIT_SHA}:refs/heads/${HEAD_REF}"
+        env:
+          COMMIT_SHA: ${{ steps.commit.outputs.sha }}
+          GIT_TOKEN: ${{ steps.app-token.outputs.token }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
