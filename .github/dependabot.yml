@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # npm security updates stay on (repo setting); version updates for npm are
+  # off because every package.json bump needs a Beachball change file.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14
+    commit-message:
+      prefix: ci
+    groups:
+      github-actions:
+        patterns:
+          - "*"

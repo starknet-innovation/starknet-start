@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add a typecheck script so CI type-checks the CLI.",
+  "packageName": "@starknetfoundation/starknet-start-create-starknet",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
