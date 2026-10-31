@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Update zod dependency to v4.",
+  "comment": "Remove unused zod dependency.",
   "packageName": "@starknetfoundation/starknet-start-react",
   "email": "6303520+adrienlacombe@users.noreply.github.com",
   "dependentChangeType": "patch"
