@@ -18,7 +18,7 @@ This is a pnpm/Turbo monorepo for Starknet Start. Use pnpm only; do not introduc
 
 ## Toolchain
 
-- Use Node 24 when matching CI. The root `package.json` allows Node `>=22`.
+- Use Node 24 when matching CI; `.node-version` pins it for version managers. The root `package.json` allows Node `>=22.18`, the first release that can load the TypeScript `oxlint`/`oxfmt` configs.
 - Use pnpm 10. The pinned package manager is `pnpm@10.24.0`.
 - Install dependencies with `pnpm install --strict-peer-dependencies=false`; add `--frozen-lockfile` when reproducing CI exactly.
 - The repo uses `oxlint` for linting, `oxfmt` for formatting, `vitest` for tests, `tsdown` or `tsup` for package builds, and Vocs for docs.

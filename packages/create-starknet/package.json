@@ -29,7 +29,8 @@
     "clean": "rimraf dist",
     "start": "pnpm run build && node dist/index.js",
     "test": "vitest",
-    "test:ci": "vitest run"
+    "test:ci": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "chalk": "4.1.2",
