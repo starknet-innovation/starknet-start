@@ -2,6 +2,29 @@
   "name": "@starknetfoundation/starknet-start-react",
   "entries": [
     {
+      "date": "Sat, 31 Oct 2026 16:47:29 GMT",
+      "version": "2.0.3",
+      "tag": "@starknetfoundation/starknet-start-react_v2.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-react",
+            "commit": "c0cd1d073db869a28aa99d057b38a5e3d4eaddf2",
+            "comment": "Update Vite development dependency to the patched 7.3.7 release."
+          }
+        ],
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-react",
+            "commit": "c0cd1d073db869a28aa99d057b38a5e3d4eaddf2",
+            "comment": "Remove unused zod dependency."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Sep 2026 07:28:21 GMT",
       "version": "2.0.2",
       "tag": "@starknetfoundation/starknet-start-react_v2.0.2",

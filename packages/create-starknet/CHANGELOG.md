@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-create-starknet
 
-<!-- This log was last generated on Fri, 11 Sep 2026 07:28:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 31 Oct 2026 16:47:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 10.1.6
+
+Sat, 31 Oct 2026 16:47:29 GMT
+
+### Patches
+
+- Update the generated Next.js template to the patched 16.3.8 release and raise the TanStack Start template's Vite floor to 7.3.7. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 10.1.5
 

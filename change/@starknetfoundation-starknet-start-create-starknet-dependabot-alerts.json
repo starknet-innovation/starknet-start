@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update the generated Next.js template to the patched 16.3.8 release and raise the TanStack Start template's Vite floor to 7.3.7.",
-  "packageName": "@starknetfoundation/starknet-start-create-starknet",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

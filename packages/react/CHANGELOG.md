@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-react
 
-<!-- This log was last generated on Fri, 11 Sep 2026 07:28:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 31 Oct 2026 16:47:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 2.0.3
+
+Sat, 31 Oct 2026 16:47:29 GMT
+
+### Patches
+
+- Remove unused zod dependency. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 2.0.2
 

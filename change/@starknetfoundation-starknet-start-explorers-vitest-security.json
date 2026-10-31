@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update Vitest development dependency to the patched 5.0.5 release.",
-  "packageName": "@starknetfoundation/starknet-start-explorers",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "none"
-}
