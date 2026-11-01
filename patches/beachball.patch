@@ -1,0 +1,28 @@
+diff --git a/lib/monorepo/filterIgnoredFiles.js b/lib/monorepo/filterIgnoredFiles.js
+index fbd8517c5186bda04f768bb410cca05978bda35d..ecebc90b2b4cb8f3cc4ab4d46bf9b699ef5e2082 100644
+--- a/lib/monorepo/filterIgnoredFiles.js
++++ b/lib/monorepo/filterIgnoredFiles.js
+@@ -4,7 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.filterIgnoredFiles = void 0;
+-const minimatch_1 = __importDefault(require("minimatch"));
++// minimatch 11 (pinned via pnpm overrides) has no default export
++const minimatch_1 = { default: require("minimatch").minimatch };
+ const minimatchOptions = { matchBase: true };
+ /**
+  * Filter `filePaths` to exclude any paths matching `ignorePatterns`.
+diff --git a/lib/monorepo/isPathIncluded.js b/lib/monorepo/isPathIncluded.js
+index 14af2e881350eed1764b9c00ea9cf0b491f58da2..7f41fb783f2a562ea7b801608c6452f844e11be6 100644
+--- a/lib/monorepo/isPathIncluded.js
++++ b/lib/monorepo/isPathIncluded.js
+@@ -4,7 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.isPathIncluded = void 0;
+-const minimatch_1 = __importDefault(require("minimatch"));
++// minimatch 11 (pinned via pnpm overrides) has no default export
++const minimatch_1 = { default: require("minimatch").minimatch };
+ /**
+  * Check if a relative path should be included given include and exclude patterns using minimatch.
+  * @param relativePath Relative path to check.
