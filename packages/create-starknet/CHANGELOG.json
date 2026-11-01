@@ -2,6 +2,29 @@
   "name": "@starknetfoundation/starknet-start-create-starknet",
   "entries": [
     {
+      "date": "Sun, 01 Nov 2026 07:57:45 GMT",
+      "version": "10.1.7",
+      "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "ecddf8dfa615b9e86ed81262d434b283f371f992",
+            "comment": "Update the generated Next.js template to the patched 16.4.3 release."
+          }
+        ],
+        "none": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "ecddf8dfa615b9e86ed81262d434b283f371f992",
+            "comment": "Add a typecheck script so CI type-checks the CLI."
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 31 Oct 2026 16:47:29 GMT",
       "version": "10.1.6",
       "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.6",

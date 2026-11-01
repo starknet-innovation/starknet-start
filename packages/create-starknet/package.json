@@ -1,6 +1,6 @@
 {
   "name": "@starknetfoundation/starknet-start-create-starknet",
-  "version": "10.1.6",
+  "version": "10.1.7",
   "description": "Create starknet apps with one command",
   "keywords": [
     "ethereum",
