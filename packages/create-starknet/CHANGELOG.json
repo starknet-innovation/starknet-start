@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-create-starknet",
   "entries": [
     {
+      "date": "Tue, 17 Nov 2026 06:35:04 GMT",
+      "version": "10.1.9",
+      "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "2e83d32815681492278c9a937c181413b2c6cd06",
+            "comment": "Update template dependencies: starknet-start-react ^2.0.3 (drops vulnerable zod 3), oxfmt ^0.78.0 (drops vulnerable tinypool), and move the TanStack Start template to Vite 8 so generated apps build again."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Nov 2026 05:59:11 GMT",
       "version": "10.1.8",
       "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.8",

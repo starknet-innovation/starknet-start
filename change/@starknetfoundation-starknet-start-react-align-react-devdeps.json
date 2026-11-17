@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Align react/react-dom devDependencies with docs (^19.2.8) so the workspace resolves a single get-starknet-modal instance.",
-  "packageName": "@starknetfoundation/starknet-start-react",
-  "email": "6303520+adrienlacombe@users.noreply.github.com",
-  "dependentChangeType": "none"
-}

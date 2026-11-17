@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-create-starknet
 
-<!-- This log was last generated on Tue, 17 Nov 2026 05:59:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 17 Nov 2026 06:35:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 10.1.9
+
+Tue, 17 Nov 2026 06:35:04 GMT
+
+### Patches
+
+- Update template dependencies: starknet-start-react ^2.0.3 (drops vulnerable zod 3), oxfmt ^0.78.0 (drops vulnerable tinypool), and move the TanStack Start template to Vite 8 so generated apps build again. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 10.1.8
 
