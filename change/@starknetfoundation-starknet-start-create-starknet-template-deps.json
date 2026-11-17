@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update template dependencies: starknet-start-react ^2.0.3 (drops vulnerable zod 3), oxfmt ^0.78.0 (drops vulnerable tinypool), and move the TanStack Start template to Vite 8 so generated apps build again.",
+  "packageName": "@starknetfoundation/starknet-start-create-starknet",
+  "email": "6303520+adrienlacombe@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
