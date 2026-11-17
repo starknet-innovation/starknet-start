@@ -2,6 +2,21 @@
   "name": "@starknetfoundation/starknet-start-create-starknet",
   "entries": [
     {
+      "date": "Tue, 17 Nov 2026 05:59:11 GMT",
+      "version": "10.1.8",
+      "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "6303520+adrienlacombe@users.noreply.github.com",
+            "package": "@starknetfoundation/starknet-start-create-starknet",
+            "commit": "095e01bc7922830db39e9026c4b5cd93c8794013",
+            "comment": "Update the generated Next.js template to the patched 16.4.5 release."
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 01 Nov 2026 07:57:45 GMT",
       "version": "10.1.7",
       "tag": "@starknetfoundation/starknet-start-create-starknet_v10.1.7",

@@ -1,8 +1,16 @@
 # Change Log - @starknetfoundation/starknet-start-create-starknet
 
-<!-- This log was last generated on Sun, 01 Nov 2026 07:57:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 17 Nov 2026 05:59:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 10.1.8
+
+Tue, 17 Nov 2026 05:59:11 GMT
+
+### Patches
+
+- Update the generated Next.js template to the patched 16.4.5 release. (6303520+adrienlacombe@users.noreply.github.com)
 
 ## 10.1.7
 
